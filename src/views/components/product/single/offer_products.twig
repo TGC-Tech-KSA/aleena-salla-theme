@@ -1,7 +1,10 @@
-{# {% if is_page('product.single') %} #}
+{% if is_root_menu %}
+ {% block content %}
 <section class="s-block s-block--binary-banner aleena-block-animate {{ component.binary_margin ?'!my-0':''}}">
     <div class="grid grid-cols-2">
-      {% for slide in component.tab_categories %}
+      test1
+
+      {% for slide in section.tab_categories %}
         <a href="{{ slide.url }}" class="binary-banner aleena-anime-item" aria-label="Banner {{ image.alt }}">
           {% if dir =='rtl' %}
             <img width="980" height="1470" src=" " data-src="{{ slide.image_tab }}" loading="lazy" class="lazy aleena-anime-item w-full h-full" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
@@ -12,4 +15,7 @@
       {% endfor %}
     </div>
 </section>
-{# {% endif %} #}
+{% endblock %}
+{% else %}
+  test2
+{% endif %}

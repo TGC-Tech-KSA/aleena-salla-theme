@@ -1220,6 +1220,18 @@
             "icon": "sicon-ul",
             "path": "product.single.offer_products",
             "fields": [
+                 {
+                            "id": "offer_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
+                        }
                 {
                     "id": "tab_categories",
                     "type": "collection",

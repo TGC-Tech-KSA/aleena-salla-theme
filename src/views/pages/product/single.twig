@@ -408,7 +408,7 @@
     {# Comments Area #}
     <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
 
-    {% include 'components.product.single.offer_products.twig'%}
+    {% include 'components.product.single.offer_products' with {is_root_menu :true} %}
     {# {% component 'product.single.offer_products' %} #}
 
     {# Similar Products Area #}
