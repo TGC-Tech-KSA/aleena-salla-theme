@@ -17,9 +17,9 @@
   }
 }
 
-img.lazy{
-  @apply transition-all duration-700 delay-700 opacity-0 translate-y-6;
-  &.loaded {
-    @apply opacity-100 translate-y-0;
-  }
-}
+// img.lazy{
+//   @apply transition-all duration-700 delay-700 opacity-0 translate-y-6;
+//   &.loaded {
+//     @apply opacity-100 translate-y-0;
+//   }
+// }

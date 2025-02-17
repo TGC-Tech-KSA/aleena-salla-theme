@@ -1,15 +1,13 @@
 {% set dir = user.language.dir %}
-<section class="s-block s-block--binary-banner">
+<section class="s-block s-block--binary-banner aleena-block-animate">
     <div class="grid grid-cols-2">
       {% for slide in component.binary_banner %}
-        <a href="{{ slide.url }}" class="binary-banner" aria-label="Banner {{ image.alt }}">
+        <a href="{{ slide.url }}" class="binary-banner aleena-anime-item" aria-label="Banner {{ image.alt }}">
           {% if dir =='rtl' %}
-            <img width="980" height="1470" src=" " data-src="{{ slide.image }}" loading="lazy" class="lazy" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+            <img width="980" height="1470" src=" " data-src="{{ slide.image }}" loading="lazy" class="lazy aleena-anime-item" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
           {% else %}
-            <img width="980" height="1470" src=" " data-src="{{ slide.image_en }}" loading="lazy" class="lazy" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+            <img width="980" height="1470" src=" " data-src="{{ slide.image_en }}" loading="lazy aleena-anime-item" class="lazy" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
           {% endif %}
-
-
         </a>
       {% endfor %}
     </div>
