@@ -1219,7 +1219,35 @@
             "title": "تصنيفات مميزة",
             "icon": "sicon-ul",
             "path": "product.single.offer_products",
-            "fields": []
+            "fields": [
+                {
+                    "id": "tab_categories",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "تصنيفات",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "tab_categories.image_tab",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": 5
+                }
+            ]
         }
     ],
     "support_url": null,
