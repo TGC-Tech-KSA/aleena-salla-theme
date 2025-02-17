@@ -1260,7 +1260,89 @@
                     "maxLength": 5
                 }
             ]
+        },
+        {
+  "key": "638bb8cb-8f28-4083-b5be-3e918f4774a2",
+  "title": "طريقة استخدام البطاقات",
+  "icon": "sicon-checkbox-active",
+  "path": "home.cards-view",
+  "fields": [
+    {
+      "type": "static",
+      "format": "description",
+      "id": "without-bg",
+      "value": "<img src=’https://cdn.salla.network/images/themes/digital/how-to-activate.jpg’>"
+    },
+    {
+      "type": "boolean",
+      "label": "عرض العنصر في صفحة تصنيف المنتجات",
+      "id": "show_in_category",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "label": "عرض العنصر في صفحة نجاح الطلب (الشكر)",
+      "id": "show_in_thankyou",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الرئيسي",
+      "placeholder": "العنوان الرئيسي هنا …",
+      "minLength": 3,
+      "maxLength": 30
+    },
+    {
+      "id": "sub_title",
+      "type": "string",
+      "format": "textarea",
+      "label": "العنوان الفرعي",
+      "placeholder": "العنوان الفرعي هنا …",
+      "minLength": 2,
+      "maxLength": 255
+    },
+    {
+      "id": "items",
+      "type": "collection",
+      "label": "طرق عرض البطاقات",
+      "fields": [
+        {
+          "id": "items.image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة",
+          "description": "الحجم المناسب للصورة 100*100",
+          "required": true
+        },
+        {
+          "id": "items.name",
+          "type": "string",
+          "format": "text",
+          "label": "اسم طريقة العرض",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        {
+          "id": "items.sub_title",
+          "type": "string",
+          "format": "textarea",
+          "label": "وصف طريقة العرض",
+          "minLength": 2,
+          "maxLength": 255
         }
+      ],
+      "required": true,
+      "minLength": 1,
+      "maxLength": 3
+    }
+  ]
+}
     ],
     "support_url": null,
     "description": {

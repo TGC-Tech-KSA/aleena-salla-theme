@@ -29,6 +29,7 @@ class App extends AppHelpers {
     initTootTip();
     this.loadModalImgOnclick();
     this.speedAnimate();
+    this.twesy()
     salla.comment.event.onAdded(() => window.location.reload());
 
     this.status = 'ready';
@@ -438,6 +439,49 @@ class App extends AppHelpers {
     setTimeout(() => {
       ScrollTrigger.refresh(true);
     }, 100);
+  }
+  twesy(){
+
+    let wrapElem = app.element("#how-to-activate");
+
+    if (wrapElem) {
+        try {
+            let res = await salla.api.request("component/list", { params: { paths: ["home.cards-view"] } });
+            let block = res.data[0]?.component;
+
+            let is_in_cat = salla.config.get("page.slug") === "product.index" && block?.show_in_category;
+            let is_in_thankyou = salla.config.get("page.slug") === "thank-you" && block?.show_in_thankyou;
+
+            if (is_in_cat || is_in_thankyou) {
+                wrapElem.innerHTML = `
+                    <section class="s-block s-block--features cards-view container !mt-0 mb-10 lg:mb-16">
+                        ${is_in_cat ? `
+                            <div class="s-block__title">
+                                <div class="right-side">
+                                    <h2>${block.title}</h2>
+                                    ${block.sub_title ? `<p>${block.sub_title}</p>` : ""}
+                                </div>
+                            </div>
+                        ` : ""}
+
+                        <div class="flex flex-col lg:flex-row gap-6 items-center justify-center">
+                            ${block.items ? block.items.map(item => `
+                                <div class="s-block--features__item flex flex-col items-center">
+                                    <img class="h-20 w-20 object-cover rounded-full mb-4" src="${item.image}" alt="${item.name}" />
+                                    <h2 class="text-xl">${item.name}</h2>
+                                    <p class="text-lg">${item.sub_title}</p>
+                                </div>
+                            `).join("") : ""}
+                        </div>
+                    </section>
+                `;
+            }
+        } catch (error) {
+            console.error("Error fetching component:", error);
+        }
+    }
+
+
   }
 }
 
