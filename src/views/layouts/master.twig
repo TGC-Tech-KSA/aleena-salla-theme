@@ -27,7 +27,7 @@
 | store.settings.rating_enabled                      | bool     | Is one of: store_enabled or shipping_enabled or products_enabled                                         |
 | store.settings.arabic_numbers_enabled              | bool     | Does the merchant wants the numbers to be shown as Arabic format                                         |
 | store.settings.is_multilingual                     | bool     |                                                                                                          |
-| store.settings.currencies_enabled                  | bool     |     
+| store.settings.currencies_enabled                  | bool     |
 | theme                                              | Theme    |                                                                                                          |
 | theme.id                                           | int      |                                                                                                          |
 | theme.name                                         | string   |                                                                                                          |
@@ -70,15 +70,24 @@
         window.header_is_sticky = "{{theme.settings.get('header_is_sticky', 'Default Value')}}"
         window.imageZoom = "{{theme.settings.get('imageZoom')}}"
         window.can_access_wallet = {{ user.can_access_wallet | json_encode }}
+        window.productcard_show_3d_icon = "{{theme.settings.get('productcard_show_3d_icon', 1)}}"
+        window.product_images_layout = "{{theme.settings.get('product_images_layout')}}"
+        window.productcard_images_limit = "{{theme.settings.get('productcard_images_limit', 2)}}"
+        window.productcard_autoplay = "{{theme.settings.get('productcard_autoplay')}}"
+        window.productcard_options = "{{theme.settings.get('productcard_options')}}"
+        window.productcard_metadata = "{{theme.settings.get('productcard_metadata')}}"
+        window.productcard_metadata_title = "{{theme.settings.get('productcard_metadata_title')}}"
+        window.show_singleOption = "{{theme.settings.get('show_singleOption', true)}}"
+        window.show_multipleOption = "{{theme.settings.get('show_multipleOption', true)}}"
     </script>
-    
+
     {% hook 'head:start' %}
     {% hook head %}
     {% block styles %}{% endblock %}
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
     <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
-    
+
     <style>
         :root {
             --font-main: '{{theme.font.name}}';
@@ -96,6 +105,28 @@
   {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
   ">
+
+
+ {% set includes_features = [] %}
+        {% set has_images = theme.settings.get('product_images_layout', 'one-image') in ['slider', 'change-with-hover'] %}
+
+        {% if has_images %}
+          {% set includes_features = includes_features|merge(["images"]) %}
+        {% endif %}
+
+        {% if theme.settings.get('productcard_options', 0) %}
+          {% set includes_features = includes_features|merge(["options"]) %}
+        {% endif %}
+
+        {% if theme.settings.get('productcard_metadata', 0) %}
+          {% set includes_features = includes_features|merge(["metadata"]) %}
+        {% endif %}
+
+        {{ theme.settings.set('includes_features', includes_features) }}
+
+
+
+
   <div class="loader-init"></div>
 <noscript>
     To get full functionality of this site you need to enable JavaScript. Here is how
