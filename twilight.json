@@ -883,7 +883,35 @@
             "title": "بنر ثنائي",
             "icon": "sicon-album-photo",
             "path": "home.binary_banner",
-            "fields": []
+            "fields": [
+                {
+                    "id": "binary_banner",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "بنر",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "binary_banner.image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صوره البنر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": "6"
+                }
+            ]
         }
     ],
     "support_url": null,
