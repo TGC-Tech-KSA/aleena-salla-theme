@@ -1,6 +1,6 @@
 {% set dir = user.language.dir %}
 <section class="s-block s-block--binary-banner aleena-block-animate {{ component.binary_margin ?'!my-0':''}}">
-    <div class="grid grid-cols-2">
+    <div class="aleena-anime-item">
       {% for slide in component.binary_banner %}
         <a href="{{ slide.url }}" class="binary-banner aleena-anime-item" aria-label="Banner {{ image.alt }}">
           {% if dir =='rtl' %}
