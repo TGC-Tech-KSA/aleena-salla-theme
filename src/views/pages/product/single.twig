@@ -216,9 +216,9 @@
                       <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
                   </div>
                   <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                      {% if product.starting_price %} 
+                      {% if product.starting_price %}
                           <span class="">{{ trans('pages.products.starting_price') }}</span>
-                      {% endif %} 
+                      {% endif %}
                           <h2 class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
                   </div>
                 </div>
@@ -347,9 +347,9 @@
                                 <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
                               </div>
                               <div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                                {% if product.starting_price %} 
+                                {% if product.starting_price %}
                                   <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
-                                {% endif %} 
+                                {% endif %}
                                 <h2 class="total-price font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
                               </div>
                             </div>
@@ -407,7 +407,10 @@
 
     {# Comments Area #}
     <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
-    
+
+    {% include 'components.product.single.offer_products.twig'%}
+    {# {% component 'product.single.offer_products' %} #}
+
     {# Similar Products Area #}
     <div class="container">
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
