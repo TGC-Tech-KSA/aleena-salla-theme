@@ -912,15 +912,15 @@
                     "type": "string",
                     "format": "image",
                     "label": "صوره البنر في اللغه العربية",
-                    "description": "المقاس المناسب للصورة هو 980×1470 بكسل",
+                    "description": "المقاس المناسب للصورة هو 1920×1080 بكسل",
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
                     "value": null,
                     "required": true,
                     "settings": {
-                      "width": 980,
-                      "height": 1470
+                      "width": 1920,
+                      "height": 1080
                     }
                   },
                   {
@@ -928,15 +928,15 @@
                     "type": "string",
                     "format": "image",
                     "label": "صوره البنر في اللغه الانجليزية",
-                    "description": "المقاس المناسب للصورة هو 980×1470 بكسل",
+                    "description": "المقاس المناسب للصورة هو 1920×1080 بكسل",
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
                     "value": null,
                     "required": true,
                     "settings": {
-                      "width": 980,
-                      "height": 1470
+                      "width": 1920,
+                      "height": 1080
                     }
                   },
                   {
