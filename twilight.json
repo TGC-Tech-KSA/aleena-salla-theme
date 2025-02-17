@@ -877,6 +877,13 @@
                     "source": "brands"
                 }
             ]
+        },
+        {
+            "key": "d10c4264-1b3e-43ee-810c-9da641d0e20e",
+            "title": "بنر ثنائي",
+            "icon": "sicon-album-photo",
+            "path": "home.binary_banner",
+            "fields": []
         }
     ],
     "support_url": null,
