@@ -192,15 +192,7 @@ model-viewer[style*="width"]:before{
 
 .aleena-arrows{
   @apply px-3;
-  salla-slider{
-    @apply w-full;
-    .swiper{
-      @apply w-full px-3;
-    }
-    .s-products-slider-card{
-      @apply lg:max-w-[360px] lg:w-1/5 lg:px-3;
-    }
-  }
+
   .s-slider-block__title-nav {
     @apply flex #{!important};
   }
@@ -218,12 +210,68 @@ model-viewer[style*="width"]:before{
       .s-slider-block__title-nav{
         @apply m-0 justify-between w-full;
         button{
-          @apply m-0 border-none;
+          @apply m-0 border-none bg-transparent;
           svg{
             @apply w-9 fill-black hover:fill-black;
           }
         }
       }
     }
+  }
+  salla-slider{
+    @apply w-full;
+    .swiper{
+      @apply w-full px-3;
+      .swiper-wrapper{
+        @apply px-3;
+      }
+    }
+    .s-products-slider-card{
+      @apply lg:max-w-[360px] w-[calc(100%/2)] lg:w-[calc(100%/5)] lg:ltr:pr-5 lg:rtl:pl-5 lg:m-0;
+      .s-slider-block__title{
+        @apply absolute top-1/2 -translate-y-1/2 z-20 w-full px-3;
+        &-left{
+          @apply relative w-full;
+          .s-slider-block__title-nav{
+            button{
+              @apply m-0 border-none bg-transparent shadow-none;
+              svg{
+                @apply w-9 fill-black hover:fill-black;
+              }
+              &.swiper-button-disabled{
+                @apply opacity-65;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &-6{
+    .s-products-slider-card{
+      @apply lg:max-w-[360px] w-[calc(100%/2)] lg:w-[calc(100%/5)] lg:ltr:pr-5 lg:rtl:pl-5 lg:m-0;
+    }
+  }
+}
+
+.product-slider-fade{
+  .swiper{
+    &:hover {
+      .swiper-slide-active {
+        @apply opacity-0 transition-opacity duration-500 #{!important};
+      }
+      .swiper-slide-next {
+        @apply opacity-100 transition-opacity duration-500 #{!important};
+      }
+    }
+  }
+
+  .s-slider-block__title-nav{
+      @apply opacity-0 transition-opacity duration-500;
+  }
+  &:hover{
+  .s-slider-block__title-nav{
+      @apply opacity-100;
+  }
   }
 }

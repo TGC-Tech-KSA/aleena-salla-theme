@@ -43,21 +43,22 @@ class ProductCard extends HTMLElement {
 
     this.render();
   }
-
+  has3dImage() {
+    return this.product.images?.filter((item) => item.three_d_image_url).length
+      ? true
+      : false;
+  }
   renderImages(images) {
     let limit = productcard_images_limit
       ? productcard_images_limit
       : images.length;
-    this.querySelector('.product-slider').innerHTML = `<salla-slider
-          id="product-slider-${this.product.id}-${this.getRandomInt(1, 10000)}"
-          show-controls="false"
-          pagination
-          auto-play=${productcard_autoplay ? 'true' : 'false'}
-          >
+      let sliderConfig = JSON.stringify({
+        effect: 'fade',
+        speed: 500
+      });
+    this.querySelector('.product-slider').innerHTML = `<salla-slider id="product-slider-${this.product.id}-${this.getRandomInt(1, 10000)}" show-controls="true" auto-play=${productcard_autoplay ? 'true' : 'false'} class="h-full [&_.swiper]:h-full [&_.swiper]:!m-0 [&_.swiper]:!p-0 [&_.swiper-wrapper]:!p-0 product-slider-fade" slider-config='${sliderConfig}' loop>
           <div slot="items">
-            ${images
-              .slice(0, limit)
-              ?.map(
+            ${images.slice(0, limit) ?.map(
                 (image) =>
                   `<img data-src=${image.url} src=${this.placeholder} alt=${image?.alt} class="lazy"/>`
               )}
@@ -180,9 +181,14 @@ class ProductCard extends HTMLElement {
      */
     this.showQuantity = this.hasAttribute('showQuantity');
   }
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   render() {
-    this.classList.add('s-product-card-entry');
+    this.classList.add('s-product-card-entry', '!rounded-none');
     this.setAttribute('id', this.product.id);
     !this.horizontal && !this.fullImage && !this.minimal
       ? this.classList.add('s-product-card-vertical')
@@ -204,58 +210,76 @@ class ProductCard extends HTMLElement {
     this.isInWishlist =
       !salla.config.isGuest() &&
       salla.storage.get('salla::wishlist', []).includes(this.product.id);
+    const hasOptions = productcard_options && this.product.options?.length;
+    const hasImagesSlider =
+      product_images_layout == 'slider' && this.product.images?.length > 1;
+    const hasMetadata = productcard_metadata && this.product.metadata;
     this.innerHTML = `
-        <div class="${
+        <div class="h-full !rounded-none ${
           !this.fullImage ? 's-product-card-image' : 's-product-card-image-full'
         }">
-           <a href="${this.product?.url}" class="relative">
-        ${product_images_layout == 'slider' && this.product.images?.length > 1 && !this.fullImage ?
-        `<div class="product-slider"></div>` :
-        `<img class="s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)
-          ? 'contain'
-          : this.fitImageHeight
-            ? this.fitImageHeight
-            : 'cover'} lazy"
+          <a href="${this.product?.url}" class="relative h-full block">
+        ${
+          product_images_layout == 'slider' &&
+          this.product.images?.length > 1 &&
+          !this.fullImage
+            ? `<div class="product-slider h-full hidden md:flex"></div>
+              <img class="flex md:hidden s-product-card-image-${
+                salla.url.is_placeholder(this.product?.image?.url)
+                  ? 'contain'
+                  : this.fitImageHeight
+                  ? this.fitImageHeight
+                  : 'cover'
+              } lazy"
                 src=${this.placeholder}
                 alt=${this.product?.image?.alt}
                 data-src=${this.product?.image?.url || this.product?.thumbnail}
               />
-              ${product_images_layout == 'change-with-hover' && this.product.images?.length > 1 ?
-          `<img alt=${this.product?.name} src=${this.placeholder} data-src=${this.product.images[1].url} class="!absolute top-0 left-0 transition-opacity duration-300 !opacity-0 group-hover:!opacity-100 s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)
-            ? 'contain'
-            : this.fitImageHeight
-              ? this.fitImageHeight
-              : 'cover'} lazy"/>` : ``}
+
+
+            `
+            : `<img class="s-product-card-image-${
+                salla.url.is_placeholder(this.product?.image?.url)
+                  ? 'contain'
+                  : this.fitImageHeight
+                  ? this.fitImageHeight
+                  : 'cover'
+              } lazy"
+                src=${this.placeholder}
+                alt=${this.product?.image?.alt}
+                data-src=${this.product?.image?.url || this.product?.thumbnail}
+              />
+              ${
+                product_images_layout == 'change-with-hover' &&
+                this.product.images?.length > 1
+                  ? `<img alt=${this.product?.name} src=${
+                      this.placeholder
+                    } data-src=${
+                      this.product.images[1].url
+                    } class="!absolute top-0 left-0 transition-opacity duration-300 !opacity-0 group-hover:!opacity-100 s-product-card-image-${
+                      salla.url.is_placeholder(this.product?.image?.url)
+                        ? 'contain'
+                        : this.fitImageHeight
+                        ? this.fitImageHeight
+                        : 'cover'
+                    } lazy"/>`
+                  : ``
+              }
               `
-            }
+        }
 
             ${!this.fullImage && !this.minimal ? this.getProductBadge() : ''}
 
-            ${this.has3dImage() && productcard_show_3d_icon ? '<span class="sicon-d-rotate s-product-card-3d-icon"></span>' : ''}
+            ${
+              this.has3dImage() && productcard_show_3d_icon
+                ? '<span class="sicon-d-rotate s-product-card-3d-icon"></span>'
+                : ''
+            }
           </a>
           ${
             this.fullImage
               ? `<a href="${this.product?.url}" aria-label=${this.product.name} class="s-product-card-overlay"></a>`
               : ''
-          }
-          ${
-            !this.horizontal && !this.fullImage
-              ? `<salla-button
-              shape="icon"
-              fill="outline"
-              color="light"
-              name="product-name-${this.product.id}"
-              aria-label="Add or remove to wishlist"
-              class="s-product-card-wishlist-btn animated ${
-                this.isInWishlist
-                  ? 's-product-card-wishlist-added pulse-anime'
-                  : 'not-added un-favorited'
-              }"
-              onclick="salla.wishlist.toggle(${this.product.id})"
-              data-id="${this.product.id}">
-              <i class="sicon-heart"></i>
-            </salla-button>`
-              : ``
           }
         </div>
         <div class="s-product-card-content">
@@ -277,7 +301,7 @@ class ProductCard extends HTMLElement {
           <div class="s-product-card-content-main ${
             this.isSpecial ? 's-product-card-content-extra-padding' : ''
           }">
-            <h3 class="s-product-card-content-title">
+            <h3 class="s-product-card-content-title line-clamp-1 md:line-clamp-2">
               <a href="${this.product?.url}">${this.product?.name}</a>
             </h3>
 
@@ -335,53 +359,6 @@ class ProductCard extends HTMLElement {
               labeled=${true} />`
               : ``
           }
-
-
-          ${
-            !this.hideAddBtn
-              ? `<div class="s-product-card-content-footer gap-2">
-              <salla-add-product-button fill="outline" width="wide"
-                product-id="${this.product.id}"
-                product-status="${this.product.status}"
-                product-type="${this.product.type}">
-                ${
-                  this.product.status == 'sale'
-                    ? `<i class="text-base sicon-${
-                        this.product.type == 'booking'
-                          ? 'calendar-time'
-                          : 'shopping-bag'
-                      }"></i>`
-                    : ``
-                }
-                <span>${
-                  this.product.add_to_cart_label
-                    ? this.product.add_to_cart_label
-                    : this.getAddButtonLabel()
-                }</span>
-              </salla-add-product-button>
-
-              ${
-                this.horizontal || this.fullImage
-                  ? `<salla-button
-                  shape="icon"
-                  fill="outline"
-                  color="light"
-                  id="card-wishlist-btn-${this.product.id}-horizontal"
-                  aria-label="Add or remove to wishlist"
-                  class="s-product-card-wishlist-btn animated ${
-                    this.isInWishlist
-                      ? 's-product-card-wishlist-added pulse-anime'
-                      : 'not-added un-favorited'
-                  }"
-                  onclick="salla.wishlist.toggle(${this.product.id})"
-                  data-id="${this.product.id}">
-                  <i class="sicon-heart"></i>
-                </salla-button>`
-                  : ``
-              }
-            </div>`
-              : ``
-          }
         </div>
       `;
 
@@ -396,8 +373,18 @@ class ProductCard extends HTMLElement {
 
     document.lazyLoadInstance?.update(this.querySelectorAll('.lazy'));
     // Render Images
-    if (this.querySelector('.product-slider')) {
+    if (hasImagesSlider && this.querySelector('.product-slider')) {
       this.renderImages(this.product.images);
+    }
+
+    // Render Options
+    if (hasOptions && this.querySelector('.product-options')) {
+      this.renderOptions(this.product.options);
+    }
+
+    // Render Metadata
+    if (hasMetadata && this.querySelector('.product-metadata')) {
+      this.renderMetadata(this.product.metadata);
     }
     if (this.product?.quantity && this.isSpecial) {
       this.initCircleBar();

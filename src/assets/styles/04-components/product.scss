@@ -1,7 +1,7 @@
-  
+
 // Wishlist Product entry
 .product-entry {
-  @apply h-full transition-shadow duration-300 bg-white hover:shadow-default rounded-lg justify-between flex relative;
+  @apply h-full transition-shadow duration-300 bg-white hover:shadow-default justify-between flex relative;
 
   &--wishlist {
     @apply justify-between p-4 flex-col sm:flex-row;
@@ -48,7 +48,7 @@
 }
 
 // Digital Rating(SVG)---------------------------
-.s-product-card-content-pie-svg-base{ 
+.s-product-card-content-pie-svg-base{
   transition: stroke-dashoffset 1s linear;
   stroke: #E8EDF2;
   stroke-width: 2px;
@@ -70,7 +70,7 @@
 
     &-starting-price{
       @apply w-auto;
-  } 
+  }
   }
 
 .pie-wrapper {
@@ -194,10 +194,6 @@
 
 .switcher-3d-view {
   @apply absolute top-5 rtl:left-4 ltr:right-4;
-
-  // .has-calories-badge &{
-  //   @apply top-auto bottom-5;
-  // }
 }
 
 .model-viewer {
@@ -252,20 +248,20 @@
 .s-product{
     &-card{
       &-full-image salla-add-product-button {
-        @apply bg-white rounded;
+        @apply bg-white;
       }
-    
+
       &-wishlist-added i {
         @apply text-red-500
       }
       &-fit-height.s-product-card-vertical .s-product-card-image {
-        @apply flex-none sm:flex-1;
+        @apply flex-none h-64 lg:h-100 lg:max-h-100;
       }
     }
-    
+
     &-options-colors-wrapper{
       @apply flex flex-wrap gap-4;
-      
+
       .s-product-options-colors-item{
         @apply m-0 rtl:m-0 ltr:m-0 w-auto;
     }
@@ -313,7 +309,7 @@
 		transform: scale(1);
 		transition-delay: 0.3s;
 	  }
-	} 
+	}
 }
 
 
@@ -372,7 +368,7 @@
   @apply bg-white border-dashed border border-gray-400 rounded-md;
   salla-product-options {
     @apply mb-0 pt-0;
-  
+
     .s-product-options-option:not(div.s-product-options-option-booking) {
       @apply block #{!important};
     }
@@ -390,7 +386,7 @@
 
       .s-product-options-multiple-options-wrapper {
         @apply block #{!important};
-      
+
     }
   }
 }
