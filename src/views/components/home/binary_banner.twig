@@ -1,0 +1,16 @@
+{% set dir = user.language.dir %}
+<section class="s-block s-block--binary-banner">
+    <div class="grid grid-cols-2">
+      {% for slide in component.binary_banner %}
+        <a href="{{ slide.url }}" class="binary-banner" aria-label="Banner {{ image.alt }}">
+          {% if dir =='rtl' %}
+            <img width="980" height="1470" src=" " data-src="{{ slide.image }}" loading="lazy" class="lazy" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+          {% else %}
+            <img width="980" height="1470" src=" " data-src="{{ slide.image_en }}" loading="lazy" class="lazy" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+          {% endif %}
+
+
+        </a>
+      {% endfor %}
+    </div>
+</section>
