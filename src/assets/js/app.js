@@ -399,7 +399,7 @@ class App extends AppHelpers {
             gsap.to(elements, {
               opacity: 1,
               y: 0,
-              stagger: 0.3,
+              stagger: 0.05,
               duration: 0.4,
               ease: 'power2.out'
             });
