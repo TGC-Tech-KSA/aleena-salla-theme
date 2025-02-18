@@ -29,9 +29,7 @@ class App extends AppHelpers {
     initTootTip();
     this.loadModalImgOnclick();
     this.speedAnimate();
-    this.twesy()
     salla.comment.event.onAdded(() => window.location.reload());
-
     this.status = 'ready';
     document.dispatchEvent(new CustomEvent('theme::ready'));
     this.log('Theme Loaded 🎉');
