@@ -493,7 +493,7 @@
                       {
                         "type": "string",
                         "icon": "sicon-image",
-                        "value": " ",
+                        "value":null,
                         "label": "صورة الخلفية",
                         "id": "links.image_icone",
                         "format": "image",
