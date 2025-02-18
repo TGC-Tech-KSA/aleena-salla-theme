@@ -487,14 +487,18 @@
                         {
                             "links.title": "حجوزات",
                             "links.url__type": "offers_link"
-                        }
+                        },
+                         {
+                           "links.title": "حجوزات",
+                           "links.url__type": "offers_link"
+                         }
                     ],
                     "fields": [
                       {
                         "type": "string",
                         "icon": "sicon-image",
-                        "value":null,
-                        "label": "صورة الخلفية",
+                        "value":"https://lh7-rt.googleusercontent.com/docsz/AD_4nXckjU0QKl2yYSmsnqyoAPvAoyeRng3CyCMufqXU98Vui3z1aEkb1vbCFTJuQB-0qkddBhO3X5BtAZ3RvAEtVu0luz27K0Dl6sgDNUy4k2-U8HhcGa-PEDRH7YijKeQhKh-1FbX3kx2nLZK6c39-3gt9m7bf?key=U7wKCr2LoOFGAE6u_yW0Zg",
+                        "label": "صورة التصنيف",
                         "id": "links.image_icone",
                         "format": "image",
                         "required": true,
