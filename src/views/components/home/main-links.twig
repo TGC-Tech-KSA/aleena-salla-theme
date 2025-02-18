@@ -10,15 +10,14 @@
 | component.links[].url              | string   |                                                                              |
 | position                           | int      | Sorting number start from zero                                               |
 #}
-<section class="s-block s-block--categories {{ component.merge_with_top_component and position ?'merge-with-top-component' : '' }} {{ not component.title and component.merge_with_top_component ? 'merged-has-no-title' : '' }}">
-    <div class="container">
-      <salla-slider  
-        type="carousel"
+<section class="s-block s-block--categories p-3 {{ component.merge_with_top_component and position ?'merge-with-top-component' : '' }} {{ not component.title and component.merge_with_top_component ? 'merged-has-no-title' : '' }}">
+    <div class=" ">
+      <salla-slider type="carousel"
         {% if(component.title) or (component.merge_with_top_component) %}
             block-title="{{ component.title }}"
         {% endif %}
         controls-outer
-        show-controls="{{ component.show_controls ? 'true' : 'false'}}" 
+        show-controls="{{ component.show_controls ? 'true' : 'false'}}"
         id="main-links-{{ position }}">
           <div slot="items">
               {% if component.show_cats %}
@@ -30,17 +29,17 @@
                             {% else %}
                               <i class="{{ cat.icon }}"></i>
                             {% endif %}
-                            <h2>{{ cat.name }}</h2>
+                            <h2 class="font-bold text-sm">{{ cat.name }}</h2>
                         </a>
                     </div>
                 {% endfor %}
               {% else %}
                 {% for link in component.links %}
                   {% if link.title %}
-                    <div class="swiper-slide slide--one-sixth">
-                        <a href="{{ link.url }}" class="slide--cat-entry">
-                            <i class="{{ link.icon }}"></i>
-                            <h2>{{ link.title }}</h2>
+                    <div class="swiper-slide w-[calc(100%/2)] lg:w-[calc(100%/8)]">
+                        <a href="{{ link.url }}" class="slide--cat-entry text-center">
+                            <img width="224" height="137" src=" " data-src="{{ link.image_icone }}" loading="lazy" class="lazy aleena-anime-item w-full h-32 object-cover" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+                            <h2 class="font-bold text-sm mt-3">{{ link.title }}</h2>
                         </a>
                     </div>
                   {% endif %}
@@ -49,4 +48,4 @@
           </div>
       </salla-slider>
     </div>
-</section> 
+</section>
