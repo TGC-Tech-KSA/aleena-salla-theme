@@ -12,6 +12,7 @@ module.exports = {
         home    : asset('js/home.js'),
         'product-card' : asset('js/partials/product-card.js'),
         'main-menu' : asset('js/partials/main-menu.js'),
+        'navigation-cart' : asset('js/partials/navigation-cart.js'),
         'wishlist-card': asset('js/partials/wishlist-card.js'),
         checkout: [asset('js/cart.js'), asset('js/thankyou.js')],
         pages   : [asset('js/loyalty.js'), asset('js/brands.js'),],

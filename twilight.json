@@ -674,36 +674,36 @@
                     "item_label": "رابط ",
                     "value": [
                         {
-                            "links.title": "منتج جاهز",
-                            "links.url__type": "offers_link"
+                            "circular_links.title": "منتج جاهز",
+                            "circular_links.url__type": "offers_link"
                         },
                         {
-                            "links.title": "خدمة حسب الطلب",
-                            "links.url__type": "offers_link"
+                            "circular_links.title": "خدمة حسب الطلب",
+                            "circular_links.url__type": "offers_link"
                         },
                         {
-                            "links.title": "أكل ومشروبات",
-                            "links.url__type": "offers_link"
+                            "circular_links.title": "أكل ومشروبات",
+                            "circular_links.url__type": "offers_link"
                         },
                         {
-                            "links.title": "منتج رقمي",
-                            "links.url__type": "offers_link"
+                            "circular_links.title": "منتج رقمي",
+                            "circular_links.url__type": "offers_link"
                         },
                         {
-                            "links.title": "بطاقة رقمية",
-                            "links.url__type": "offers_link"
+                            "circular_links.title": "بطاقة رقمية",
+                            "circular_links.url__type": "offers_link"
                         },
                         {
-                            "links.title": "مجموعة منتجات",
-                            "links.url__type": "offers_link"
+                            "circular_links.title": "مجموعة منتجات",
+                            "circular_links.url__type": "offers_link"
                         },
                         {
-                            "links.title": "حجوزات",
-                            "links.url__type": "offers_link"
+                            "circular_links.title": "حجوزات",
+                            "circular_links.url__type": "offers_link"
                         },
                         {
-                            "links.title": "حجوزات",
-                            "links.url__type": "offers_link"
+                            "circular_links.title": "حجوزات",
+                            "circular_links.url__type": "offers_link"
                         }
                     ],
                     "fields": [
