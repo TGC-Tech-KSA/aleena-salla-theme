@@ -622,11 +622,11 @@
                     "required": false,
                     "value": true,
                     "selected": false,
-                      "conditions": [
+                    "conditions": [
                         {
                             "id": "circular_slider",
                             "operation": "=",
-                            "value": false
+                            "value": true
                         }
                     ]
                 },
@@ -728,7 +728,7 @@
                         {
                             "type": "string",
                             "icon": "sicon-image",
-                            "value": "https://github.com/Ashaheen892/Videos/blob/main/aleena/icon/1.png?raw=true",
+                            "value": "https://lh7-rt.googleusercontent.com/docsz/AD_4nXckjU0QKl2yYSmsnqyoAPvAoyeRng3CyCMufqXU98Vui3z1aEkb1vbCFTJuQB-0qkddBhO3X5BtAZ3RvAEtVu0luz27K0Dl6sgDNUy4k2-U8HhcGa-PEDRH7YijKeQhKh-1FbX3kx2nLZK6c39-3gt9m7bf?key=U7wKCr2LoOFGAE6u_yW0Zg",
                             "label": "صورة التصنيف",
                             "id": "circular_links.image_icone",
                             "format": "image",
