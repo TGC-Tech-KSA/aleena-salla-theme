@@ -72,9 +72,18 @@
                             <i class="header-btn__icon sicon-user-circle"></i>
                           </button>
                       {% endif %}
-                      <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
+                      {# <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
                         <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
-                      </salla-cart-summary>
+                      </salla-cart-summary> #}
+
+                           {% if is_page('cart') %}
+                      {% else %}
+                        <button class="relative" onclick="document.querySelector('.neyam-cart-aside').classList.add('show')">
+                        <salla-cart-summary class="pointer-events-none [&_.s-cart-summary-content]:!hidden">
+                          <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
+                        </salla-cart-summary>
+                      </button>
+                      {% endif %}
                   </div>
               </div>
           </div>

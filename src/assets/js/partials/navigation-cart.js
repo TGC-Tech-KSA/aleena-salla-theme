@@ -64,7 +64,12 @@ class NavCartMenu extends HTMLElement {
             'cart.checkout': {
                 ar: 'الدفع',
                 en: 'Checkout'
+            },
+            'cart.mayLike': {
+                ar: 'قد يعجبك',
+                en: 'You may like'
             }
+
         };
 
         Object.entries(translations).forEach(([key, value]) => {
@@ -309,9 +314,11 @@ class NavCartMenu extends HTMLElement {
 
                 return `
                     <div class="relative mb-4">
-                        <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-${item.id}">
+                        <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-${item.id}" class="p-4">
                             <section class="cart-item border border-gray-200 bg-[var(--store-product-bg)] p-2 rounded-md relative">
-                                <input type="hidden" name="id" value="${item.id}">
+                                <input type="hidden" name="id" value="${
+                                  item.id
+                                }">
                                 <div class="flex flex-col space-y-4">
                                     <div class="flex rtl:space-x-reverse space-x-4">
                                         <a href="${item.url}" class="shrink-0">
@@ -320,35 +327,49 @@ class NavCartMenu extends HTMLElement {
                                                  class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                         </a>
                                         <div class="flex-1 space-y-1">
-                                            <h1 class="text-gray-900 leading-6 text-lg">
+                                            <div class="text-gray-900 leading-6 text-xs flex justify-between items-center">
                                                 <a href="${item.url}" class="text-base">${item.product_name}</a>
-                                            </h1>
-                                            <span class="text-sm text-gray-500 line-through item-regular-price ${item.special_price ? '' : 'hidden'}">${formatPrice(item.product_price)}</span>
-                                            <span class="item-price ${item.special_price ? 'text-red-800' : 'text-sm text-gray-500'}">${formatPrice(item.price)}</span>
-
+                                                <div>
+                                                  <span class="text-sm text-gray-500 line-through item-regular-price ${item.special_price ? '' : 'hidden'}">${formatPrice(item.product_price)}</span>
+                                                  <span class="item-price ${item.special_price? 'text-red-800': 'text-sm text-gray-500'}">${formatPrice(item.price)}</span>
+                                                </div>
+                                            </div>
                                             <!-- Product Options -->
-                                            ${options ? `
+                                            ${
+                                              options
+                                                ? `
                                                 <div class="mt-2 space-y-1 border-t pt-2">
                                                     ${options}
                                                 </div>
-                                            ` : ''}
+                                            `
+                                                : ''
+                                            }
 
-                                            ${item.weight_label ? `
+                                            ${
+                                              item.weight_label
+                                                ? `
                                                 <p class="text-sm text-gray-500">
-                                                    ${salla.lang.get('common.weight')}
-                                                    <span>${item.weight_label}</span>
+                                                    ${salla.lang.get(
+                                                      'common.weight'
+                                                    )}
+                                                    <span>${
+                                                      item.weight_label
+                                                    }</span>
                                                 </p>
-                                            ` : ''}
+                                            `
+                                                : ''
+                                            }
                                         </div>
                                     </div>
 
                                     <div class="flex justify-between items-center border-t pt-4">
-                                        ${item.type === 'donating' ?
-                                            '<span></span>' :
-                                            item.is_hidden_quantity ?
-                                                `<input type="hidden" value="${item.quantity}" name="quantity" aria-label="Quantity"/>
-                                                 <span class="w-10 text-center">${item.quantity}</span>` :
-                                                `<div class="flex items-center">
+                                        ${
+                                          item.type === 'donating'
+                                            ? '<span></span>'
+                                            : item.is_hidden_quantity
+                                            ? `<input type="hidden" value="${item.quantity}" name="quantity" aria-label="Quantity"/>
+                                                 <span class="w-10 text-center">${item.quantity}</span>`
+                                            : `<div class="flex items-center">
                                                     ${optionsInputs}
                                                     <salla-quantity-input cart-item-id="${item.id}"
                                                         max="${item.max_quantity}"
@@ -361,8 +382,16 @@ class NavCartMenu extends HTMLElement {
                                         }
 
                                         <p class="text-darker flex-none font-bold text-sm">
-                                            <span>${salla.lang.get('common.total')}:</span>
-                                            <span class="inline-block item-total">${item.is_available ? formatPrice(item.total) : salla.lang.get('common.out_of_stock')}</span>
+                                            <span>${salla.lang.get(
+                                              'common.total'
+                                            )}:</span>
+                                            <span class="inline-block item-total">${
+                                              item.is_available
+                                                ? formatPrice(item.total)
+                                                : salla.lang.get(
+                                                    'common.out_of_stock'
+                                                  )
+                                            }</span>
                                         </p>
                                     </div>
                                 </div>
@@ -370,7 +399,9 @@ class NavCartMenu extends HTMLElement {
                                     <button type="button"
                                             class="btn--delete inline-flex justify-center items-center w-8 h-8 rounded-full bg-red-400 transition-all duration-200"
                                             aria-label="Remove from the cart"
-                                            onclick="event.preventDefault(); salla.cart.deleteItem(${item.id})">
+                                            onclick="event.preventDefault(); salla.cart.deleteItem(${
+                                              item.id
+                                            })">
                                         <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5.96057 3.36421C6.2098 2.67157 6.88232 2.17676 7.67094 2.17676C8.45957 2.17676 9.13209 2.67157 9.38132 3.36421C9.49257 3.67338 9.83791 3.83543 10.1527 3.72615C10.4674 3.61687 10.6324 3.27765 10.5211 2.96848C10.1065 1.81622 8.98783 0.989258 7.67094 0.989258C6.35406 0.989258 5.23535 1.81622 4.82074 2.96848C4.70949 3.27765 4.87446 3.61687 5.18922 3.72615C5.50398 3.83543 5.84932 3.67338 5.96057 3.36421Z" fill="#fff"/>
                                             <path d="M0.21582 4.74967C0.21582 4.42176 0.48645 4.15592 0.820288 4.15592H14.5216C14.8555 4.15592 15.1261 4.42176 15.1261 4.74967C15.1261 5.07759 14.8555 5.34342 14.5216 5.34342H0.820288C0.48645 5.34342 0.21582 5.07759 0.21582 4.74967Z" fill="#fff"/>
@@ -380,19 +411,26 @@ class NavCartMenu extends HTMLElement {
                                 </span>
                             </section>
                         </form>
-                    </div>
                 `;
             }).join('');
 
+
             // Add cart footer with total and actions
             const cartFooter = `
-                <div class="fixed md:bottom-0 bottom-16 left-0 right-0 bg-[var(--header-bg)] border-t p-4 space-y-4">
+
+                <div class="fixed md:bottom-0 bottom-16 left-0 right-0 bg-white border-t p-4 space-y-4 z-20">
                     <!-- Coupon Section -->
                     <div class="space-y-2">
-                        ${cart.discount ? `
+                        ${
+                          cart.discount
+                            ? `
                             <div class="flex justify-between items-center text-sm">
-                                <span class="text-gray-600">${salla.lang.get('common.discount')}:</span>
-                                <span class="text-green-600">- ${salla.money(cart.discount)}</span>
+                                <span class="text-gray-600">${salla.lang.get(
+                                  'common.discount'
+                                )}:</span>
+                                <span class="text-green-600">- ${salla.money(
+                                  cart.discount
+                                )}</span>
                             </div>
                             <div class="flex gap-2">
                                 <salla-button
@@ -404,34 +442,28 @@ class NavCartMenu extends HTMLElement {
                                     ${salla.lang.get('cart.remove_coupon')}
                                 </salla-button>
                             </div>
-                        ` : `
-                            <p class="text-sm text-gray-600">${salla.lang.get('cart.have_coupon')}</p>
-                            <div class="flex gap-2">
-                                <input type="text"
-                                       id="coupon-input"
-                                       placeholder="${salla.lang.get('cart.coupon_placeholder')}"
-                                       class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                                />
-                                <salla-button
-                                    onclick="salla.cart.addCoupon(document.getElementById('coupon-input').value)"
-                                    width="wide"
-                                    fill="solid"
-                                    color="primary"
-                                    loader-position="center">
-                                    ${salla.lang.get('cart.apply_coupon')}
-                                </salla-button>
+                        `
+                            : `
+                            <div class="flex gap-2 relative">
+                                <input type="text" id="coupon-input" placeholder="${salla.lang.get('cart.coupon_placeholder')}"class="flex-1 px-4 py-4 border focus:outline-none focus:ring-2 focus:ring-primary"/>
+                                <salla-button class="absolute !w-auto rtl:left-2 top-1 !rounded-none" onclick="salla.cart.addCoupon(document.getElementById('coupon-input').value)" width="wide" fill="solid" color="primary" loader-position="center">${salla.lang.get('cart.apply_coupon')}</salla-button>
                             </div>
-                        `}
+                        `
+                        }
                         <p id="coupon-error" class="text-sm text-red-500"></p>
                     </div>
 
                     <!-- Subtotal -->
-                    ${cart.discount ? `
+                    ${
+                      cart.discount
+                        ? `
                         <div class="flex justify-between items-center text-sm text-gray-600">
                             <span>${salla.lang.get('common.subtotal')}:</span>
                             <span>${salla.money(cart.sub_total)}</span>
                         </div>
-                    ` : ''}
+                    `
+                        : ''
+                    }
 
                     <!-- Total -->
                     <div class="flex justify-between items-center text-lg font-bold">
@@ -465,6 +497,10 @@ class NavCartMenu extends HTMLElement {
             cartContainer.innerHTML = `
                 <div class="pb-64">
                     ${itemsTemplate}
+                    <div class="!bg-[#fcfaf3]">
+                      <salla-products-slider source="related" source-value="${cart.items.length ? cart.items[0].id : ''}" block-title="${salla.lang.get('cart.mayLike')}" includes='${includes_features}' display-all-url class="!my-4 aleena-arrows-2 products-cart !bg-[#fcfaf3]"></salla-products-slider>
+                      </div>
+                    </div>
                 </div>
                 ${cartFooter}
             `;

@@ -227,7 +227,7 @@ model-viewer[style*="width"]:before{
       }
     }
     .s-products-slider-card{
-      @apply lg:max-w-[360px] w-[calc(100%/2)] lg:w-[calc(100%/5)] lg:ltr:pr-5 lg:rtl:pl-5 lg:m-0;
+      // @apply lg:max-w-[360px] w-[calc(100%/2)] lg:w-[calc(100%/5)] lg:ltr:pr-5 lg:rtl:pl-5 lg:m-0;
       .s-slider-block__title{
         @apply absolute top-1/2 -translate-y-1/2 z-20 w-full px-3;
         &-left{
@@ -247,10 +247,45 @@ model-viewer[style*="width"]:before{
       }
     }
   }
-  &-6{
+  &-5{
     .s-products-slider-card{
-      @apply lg:max-w-[360px] w-[calc(100%/2)] lg:w-[calc(100%/5)] lg:ltr:pr-5 lg:rtl:pl-5 lg:m-0;
+      @apply lg:max-w-[380px] w-[calc(100%/2)] lg:w-[calc(100%/5)] lg:ltr:pr-5 lg:rtl:pl-5 lg:m-0;
     }
+  }
+  &-2 {
+    .s-products-slider-card {
+      @apply lg:max-w-[380px] w-[calc(100%/2)] lg:ltr:pr-5 lg:rtl:pl-5 lg:m-0;
+      .s-slider-block__title {
+          @apply m-0 p-0 #{!important};
+        }
+      custom-salla-product-card{
+        @apply bg-transparent #{!important};
+      }
+    }
+    .s-slider-block__title {
+      @apply my-4 p-3;
+      &-right{
+          @apply p-0;
+        h2{
+          @apply p-0;
+        }
+      }
+    &-left{
+      .s-slider-block__title-nav{
+        button{
+          @apply m-0 border-none bg-transparent shadow-none;
+          svg{
+            @apply w-9 fill-black hover:fill-black;
+          }
+        }
+      }
+    }
+  }
+  }
+}
+.products-cart{
+  .s-product-card-image {
+      @apply flex-none h-52 lg:h-60 lg:max-h-60 #{!important};
   }
 }
 

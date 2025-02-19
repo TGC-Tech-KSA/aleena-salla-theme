@@ -62,8 +62,28 @@
 
     <script defer data-cfasync="false" src="{{ 'product-card.js'|asset }}"></script>
     <script defer src="{{ 'main-menu.js'|asset }}"></script>
+    <script defer src="{{ 'navigation-cart.js'|asset }}"></script>
+
 
     {% block head_scripts %}{% endblock %}
+
+   {% set includes_features = [] %}
+        {% set has_images = theme.settings.get('product_images_layout', 'one-image') in ['slider', 'change-with-hover'] %}
+
+        {% if has_images %}
+          {% set includes_features = includes_features|merge(["images"]) %}
+        {% endif %}
+
+        {% if theme.settings.get('productcard_options', 0) %}
+          {% set includes_features = includes_features|merge(["options"]) %}
+        {% endif %}
+
+        {% if theme.settings.get('productcard_metadata', 0) %}
+          {% set includes_features = includes_features|merge(["metadata"]) %}
+        {% endif %}
+
+        {{ theme.settings.set('includes_features', includes_features) }}
+
 
 
     <script data-cfasync="false">
@@ -79,6 +99,8 @@
         window.productcard_metadata_title = "{{theme.settings.get('productcard_metadata_title')}}"
         window.show_singleOption = "{{theme.settings.get('show_singleOption', true)}}"
         window.show_multipleOption = "{{theme.settings.get('show_multipleOption', true)}}"
+        window.includes_features = "{{theme.settings.get('includes_features')|json_encode}}"
+
     </script>
 
     {% hook 'head:start' %}
@@ -105,24 +127,6 @@
   {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
   ">
-
-
- {% set includes_features = [] %}
-        {% set has_images = theme.settings.get('product_images_layout', 'one-image') in ['slider', 'change-with-hover'] %}
-
-        {% if has_images %}
-          {% set includes_features = includes_features|merge(["images"]) %}
-        {% endif %}
-
-        {% if theme.settings.get('productcard_options', 0) %}
-          {% set includes_features = includes_features|merge(["options"]) %}
-        {% endif %}
-
-        {% if theme.settings.get('productcard_metadata', 0) %}
-          {% set includes_features = includes_features|merge(["metadata"]) %}
-        {% endif %}
-
-        {{ theme.settings.set('includes_features', includes_features) }}
 
 
 

@@ -9,6 +9,6 @@
 
 <section id="best-offers-{{ position }}-slider" class="s-block s-block--best-offers overflow-hidden">
   {% if products|length %}
-    <salla-products-slider source="selected" limit="{{ limit }}" autoplay="false" source-value="[{{ products|map((product) => product.id)|join(',') }}]" block-title="{{ title }}" block-subTitle="{{ sub_title|raw }}" slider-id="slider-with-bg-{{ position }}" class="aleena-arrows aleena-arrows-6"  includes='{{theme.settings.get('includes_features')|json_encode}}'></salla-products-slider>
+    <salla-products-slider source="selected" limit="{{ limit }}" autoplay="false" source-value="[{{ products|map((product) => product.id)|join(',') }}]" block-title="{{ title }}" block-subTitle="{{ sub_title|raw }}" slider-id="slider-with-bg-{{ position }}" class="aleena-arrows aleena-arrows-5" includes='{{theme.settings.get('includes_features')|json_encode}}'></salla-products-slider>
   {% endif %}
 </section>
