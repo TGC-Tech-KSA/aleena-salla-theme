@@ -12,28 +12,42 @@
 #}
 <section class="s-block s-block--categories p-3 aleena-block-animate" style="--data-bg-cat:{{component.circular_bgcolor}}; --data-color:{{component.circular_textcolor}};">
     <div class=" ">
-      <salla-slider type="carousel"
-        show-controls="{{ component.circular_show_controls ? 'true' : 'false'}}"
-        id="main-links-{{ position }}">
+      <salla-slider type="carousel" show-controls="{{ component.circular_show_controls ? 'true' : 'false'}}" id="main-links-{{ position }}">
           <div slot="items">
               {% if component.circular_show_cats %}
                 {% for cat in component.circular_categories %}
-                    <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/8)]">
+                    <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)] hidden md:block">
                         <a href="{{ cat.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
-                            <div class="w-full h-16 md:h-32 overflow-hidden">
+                            <div class="w-20 lg:w-36 xl:w-40 h-20 lg:h-36 xl:h-40 rounded-full overflow-hidden mx-auto mb-2">
                               <img src=""
-                              data-src="{{ cat.image ? cat.image : store.logo }}" class="lazy w-full h-16 md:h-32 object-cover group-hover:scale-105 transition-all aleena-anime-item {{ cat.image ? '' : 'has-placeholder'}}" width="64" height="64" alt="{{ menu.title }}"/>
+                              data-src="{{ cat.image ? cat.image : store.logo }}" class="lazy w-full h-full object-cover group-hover:scale-105 transition-all aleena-anime-item {{ cat.image ? '' : 'has-placeholder'}}" width="64" height="64" alt="{{ menu.title }}"/>
                             </div>
                             <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ cat.name }}</h2>
                         </a>
                     </div>
                 {% endfor %}
+                    {% set at_group = component.circular_categories|batch(3) %}
+              {% for cat_group in at_group %}
+                  {% for cat in cat_group %}
+                    <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)] block md:hidden">
+                        <a href="{{ cat.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
+                            <div class="w-20 lg:w-36 xl:w-40 h-20 lg:h-36 xl:h-40 rounded-full overflow-hidden mx-auto mb-2">
+                              <img src=""
+                              data-src="{{ cat.image ? cat.image : store.logo }}" class="lazy w-full h-full object-cover group-hover:scale-105 transition-all aleena-anime-item {{ cat.image ? '' : 'has-placeholder'}}" width="64" height="64" alt="{{ menu.title }}"/>
+                            </div>
+                            <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ cat.name }}</h2>
+                        </a>
+                    </div>
+                {% endfor %}
+              {% endfor %}
+
+
               {% else %}
                 {% for link in component.circular_links %}
                   {% if link.title %}
-                    <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/8)]">
+                    <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)] hidden md:block">
                         <a href="{{ link.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
-                          <div class="w-full h-full rounded-full mx-auto overflow-hidden">
+                          <div class="w-20 lg:w-36 xl:w-40 h-20 lg:h-36 xl:h-40 rounded-full overflow-hidden mx-auto mb-2">
                             <img width="224" height="224" src=" " data-src="{{ link.image_icone }}" loading="lazy" class="lazy w-full h-full object-cover group-hover:scale-105 transition-all aleena-anime-item" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
                           </div>
                           <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ link.title }}</h2>
@@ -41,6 +55,20 @@
                     </div>
                   {% endif %}
                 {% endfor %}
+                {% for links_group in component.circular_links|batch(3) %}
+                <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)] block md:hidden">
+                    {% for link in links_group %}
+                        {% if link.title %}
+                            <a href="{{ link.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
+                                <div class="w-20 lg:w-36 xl:w-40 h-20 lg:h-36 xl:h-40 rounded-full overflow-hidden mx-auto mb-2 my-3">
+                                    <img width="224" height="224" src=" " data-src="{{ link.image_icone }}" loading="lazy" class="lazy w-full h-full object-cover group-hover:scale-105 transition-all aleena-anime-item" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+                                </div>
+                                <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ link.title }}</h2>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+              {% endfor %}
               {% endif %}
           </div>
       </salla-slider>

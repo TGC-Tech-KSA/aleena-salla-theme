@@ -604,31 +604,13 @@
                 {
                     "type": "boolean",
                     "icon": "sicon-toggle-off",
-                    "label": "عرض الروابط في سلايدر متحرك",
-                    "description": "",
-                    "id": "circular_slider",
-                    "format": "switch",
-                    "required": false,
-                    "value": true,
-                    "selected": false
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
                     "label": "عرض أسهم التحرك",
                     "description": "",
                     "id": "circular_show_controls",
                     "format": "switch",
                     "required": false,
                     "value": true,
-                    "selected": false,
-                    "conditions": [
-                        {
-                            "id": "circular_slider",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
+                    "selected": false
                 },
                 {
                     "type": "string",
