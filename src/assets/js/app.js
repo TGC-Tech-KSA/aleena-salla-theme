@@ -375,6 +375,10 @@ class App extends AppHelpers {
       document
         .querySelectorAll('[data-cart-count]')
         .forEach((el) => (el.innerText = salla.helpers.number(summary.count)));
+        salla.cart.event.onItemAdded((response, prodId) => {
+          const cartAside = document.querySelector('.neyam-cart-aside');
+          cartAside.classList.add('show');
+        });
     });
 
     salla.cart.event.onItemAdded((response, prodId) => {

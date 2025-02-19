@@ -299,7 +299,7 @@ class NavCartMenu extends HTMLElement {
                     // Find the selected detail
                     const selectedDetail = option.details?.find(detail => detail.is_selected);
                     return `
-                        <div class="flex justify-between text-sm text-gray-500">
+                        <div class="flex text-sm text-gray-500 gap-2">
                             <span>${option.name}:</span>
                             <span>${selectedDetail?.name || ''}</span>
                         </div>
@@ -327,20 +327,15 @@ class NavCartMenu extends HTMLElement {
                                                  class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                         </a>
                                         <div class="flex-1 space-y-1">
-                                            <div class="text-gray-900 leading-6 text-xs flex justify-between items-center">
-                                                <a href="${item.url}" class="text-base">${item.product_name}</a>
+                                            <div class="text-gray-900 leading-6 text-xs flex justify-between items-center gap-3">
+                                                <a href="${item.url}" class="text-xs">${item.product_name}</a>
                                                 <div>
                                                   <span class="text-sm text-gray-500 line-through item-regular-price ${item.special_price ? '' : 'hidden'}">${formatPrice(item.product_price)}</span>
                                                   <span class="item-price ${item.special_price? 'text-red-800': 'text-sm text-gray-500'}">${formatPrice(item.price)}</span>
                                                 </div>
                                             </div>
                                             <!-- Product Options -->
-                                            ${
-                                              options
-                                                ? `
-                                                <div class="mt-2 space-y-1 border-t pt-2">
-                                                    ${options}
-                                                </div>
+                                            ${options ? `<div class="mt-2 space-y-1"> ${options}</div>
                                             `
                                                 : ''
                                             }
@@ -362,13 +357,9 @@ class NavCartMenu extends HTMLElement {
                                         </div>
                                     </div>
 
-                                    <div class="flex justify-between items-center border-t pt-4">
-                                        ${
-                                          item.type === 'donating'
-                                            ? '<span></span>'
-                                            : item.is_hidden_quantity
-                                            ? `<input type="hidden" value="${item.quantity}" name="quantity" aria-label="Quantity"/>
-                                                 <span class="w-10 text-center">${item.quantity}</span>`
+                                    <div class="flex justify-between items-center">
+                                        ${ item.type === 'donating' ? '<span></span>': item.is_hidden_quantity ? `<input type="hidden" value="${item.quantity}" name="quantity" aria-label="Quantity"/>
+                                          <span class="w-10 text-center">${item.quantity}</span>`
                                             : `<div class="flex items-center">
                                                     ${optionsInputs}
                                                     <salla-quantity-input cart-item-id="${item.id}"
@@ -418,7 +409,7 @@ class NavCartMenu extends HTMLElement {
             // Add cart footer with total and actions
             const cartFooter = `
 
-                <div class="fixed md:bottom-0 bottom-16 left-0 right-0 bg-white border-t p-4 space-y-4 z-20">
+                <div class="fixed bottom-0 left-0 right-0 bg-white border-t p-4 space-y-4 z-20">
                     <!-- Coupon Section -->
                     <div class="space-y-2">
                         ${

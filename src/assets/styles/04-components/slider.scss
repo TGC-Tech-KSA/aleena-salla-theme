@@ -272,6 +272,7 @@ model-viewer[style*="width"]:before{
       }
     &-left{
       .s-slider-block__title-nav{
+        @apply block #{!important};
         button{
           @apply m-0 border-none bg-transparent shadow-none;
           svg{
