@@ -10,14 +10,14 @@
 | component.links[].url              | string   |                                                                              |
 | position                           | int      | Sorting number start from zero                                               |
 #}
-<section class="s-block s-block--categories p-3 aleena-block-animate" style="--data-bg-cat:{{component.links_bgcolor}}; --data-color:{{component.links_textcolor}};">
+<section class="s-block s-block--categories p-3 aleena-block-animate" style="--data-bg-cat:{{component.circular_bgcolor}}; --data-color:{{component.circular_textcolor}};">
     <div class=" ">
       <salla-slider type="carousel"
-        show-controls="{{ component.show_controls ? 'true' : 'false'}}"
+        show-controls="{{ component.circular_show_controls ? 'true' : 'false'}}"
         id="main-links-{{ position }}">
           <div slot="items">
-              {% if component.show_cats %}
-                {% for cat in component.categories %}
+              {% if component.circular_show_cats %}
+                {% for cat in component.circular_categories %}
                     <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/8)]">
                         <a href="{{ cat.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
                             <div class="w-full h-16 md:h-32 overflow-hidden">
@@ -29,12 +29,12 @@
                     </div>
                 {% endfor %}
               {% else %}
-                {% for link in component.links %}
+                {% for link in component.circular_links %}
                   {% if link.title %}
                     <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/8)]">
                         <a href="{{ link.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
-                          <div class="w-full h-16 md:h-32 overflow-hidden">
-                            <img width="224" height="137" src=" " data-src="{{ link.image_icone }}" loading="lazy" class="lazy w-full h-16 md:h-32 object-cover group-hover:scale-105 transition-all aleena-anime-item" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+                          <div class="w-full h-full rounded-full mx-auto overflow-hidden">
+                            <img width="224" height="224" src=" " data-src="{{ link.image_icone }}" loading="lazy" class="lazy w-full h-full object-cover group-hover:scale-105 transition-all aleena-anime-item" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
                           </div>
                           <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ link.title }}</h2>
                         </a>
