@@ -27,7 +27,7 @@
                  class="lazy w-full h-full object-cover">
         </a>
 
-        <div id="video-{{ loop.index | default(0) }}">
+        <div id="video-{{ loop.index | default(0) }}" class="relative hidden">
             <video playsinline width="400" autoplay controls muted loop class="w-full h-auto object-cover object-center lazy">
                 <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/mp4">
                 <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/ogg">
@@ -38,15 +38,19 @@
             </video>
 
 
-
-  {% for product in banner.products|slice(0,3) %}
-                <custom-salla-product-card product="{{product}}" minimal></custom-salla-product-card>
-            {% endfor %}
-
-         </div>
-        {% endfor %}
+          <salla-products-list minimal
+            {% if banner.products|length %}
+              source="selected"
+              source-value="[{{ banner.products[0]}}]"
+            {% endif %}
+            slider-id="slider-with-bg-{{ position }}" class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 absolute bottom-20 w-4/5"
+        ></salla-products-list>
     </div>
+    {% endfor %}
     {% else %}
     <p class="text-center text-gray-500">لا توجد فيديوهات متاحة حاليًا.</p>
     {% endif %}
 </section>
+<style>
+    .fslightbox-source{display: block !important;}
+</style>

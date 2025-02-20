@@ -169,7 +169,7 @@ class ProductCard extends HTMLElement {
     /**
      *  Minimal card.
      */
-    this.minimal = this.hasAttribute('minimal');
+    this.minimal = this.hasAttribute('minimal')|| this.closest('[minimal]') !== null;
 
     /**
      *  Special card.

@@ -501,6 +501,8 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .top-24{top:6rem}
 .top-4{top:1rem}
 .top-full{top:100%}
+.bottom-5{bottom:1.25rem}
+.bottom-20{bottom:5rem}
 .-z-1{z-index:-1}
 .z-1{z-index:1}
 .z-10{z-index:10}
@@ -616,6 +618,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .w-\[calc\(100\%\/3\)\]{width:calc(100% / 3)}
 .w-fit{width:-moz-fit-content;width:fit-content}
 .w-full{width:100%}
+.w-4\/5{width:80%}
 .min-w-0{min-width:0px}
 .min-w-full{min-width:100%}
 .max-w-16{max-width:4rem}
@@ -6719,6 +6722,8 @@ lite-youtube.lyt-activated > .lty-playbtn {
 @media (min-width: 480px){
 .rtl\:xs\:left-5:where([dir="rtl"], [dir="rtl"] *){left:1.25rem}}
 .\[\&_\.s-cart-summary-content\]\:\!hidden .s-cart-summary-content{display:none !important}
+.\[\&_\.s-products-list-vertical-cards\]\:\!m-0 .s-products-list-vertical-cards{margin:0px !important}
+.\[\&_\.s-products-list-vertical-cards\]\:\!grid-cols-1 .s-products-list-vertical-cards{grid-template-columns:repeat(1, minmax(0, 1fr)) !important}
 .\[\&_\.swiper-pagination-bullets\]\:\!bottom-4 .swiper-pagination-bullets{bottom:1rem !important}
 .\[\&_\.swiper-pagination\]\:\!flex .swiper-pagination{display:flex !important}
 .\[\&_\.swiper-pagination\]\:items-center .swiper-pagination{align-items:center}

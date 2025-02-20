@@ -1295,10 +1295,10 @@
                         "format": "image",
                         "required": true,
                         "placeholder": "",
-                        "description": "* المقاس المناسب للصورة هو 270×270 بكسل",
+                        "description": "* المقاس المناسب للصورة هو 250×500 بكسل",
                         "settings": {
-                          "height": 270,
-                          "width": 270,
+                          "height": 500,
+                          "width": 250,
                           "quality": 80
                         }
                       },
