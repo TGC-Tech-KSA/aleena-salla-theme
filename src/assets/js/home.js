@@ -75,28 +75,28 @@ class Home extends BasePage {
 
 
 // //////
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.hotspot__btn').forEach(function (button) {
-    button.addEventListener('click', function () {
-      let hotspot = this.closest('.hotspot');
-      let hotspotCard = hotspot.querySelector('.hotspot__card');
+document.addEventListener('click', function (event) {
+  let button = event.target.closest('.hotspot__btn');
+  if (!button) return;
 
-      // التبديل بين الفتح والإغلاق
-      let isOpen = hotspotCard.classList.contains('active');
+  let hotspot = button.closest('.hotspot');
+  let hotspotCard = hotspot.querySelector('.hotspot__card');
 
-      // إغلاق جميع البطاقات الأخرى قبل فتح الجديدة
-      document.querySelectorAll('.hotspot__card').forEach((card) => {
-        card.classList.remove('active');
-        card.setAttribute('aria-hidden', 'true');
-      });
+  // التبديل بين الفتح والإغلاق
+  let isOpen = hotspotCard.classList.contains('active');
 
-      if (!isOpen) {
-        hotspotCard.classList.add('active');
-        hotspotCard.setAttribute('aria-hidden', 'false');
-      }
-    });
+  // إغلاق جميع البطاقات الأخرى قبل فتح الجديدة
+  document.querySelectorAll('.hotspot__card').forEach((card) => {
+    card.classList.remove('active');
+    card.setAttribute('aria-hidden', 'true');
   });
+
+  if (!isOpen) {
+    hotspotCard.classList.add('active');
+    hotspotCard.setAttribute('aria-hidden', 'false');
+  }
 });
+
 
 
 // ///////

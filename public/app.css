@@ -495,6 +495,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .bottom-20{bottom:5rem}
 .left-0{left:0px}
 .left-3{left:0.75rem}
+.left-\[var\(--data-hotspot-left\)\]{left:var(--data-hotspot-left)}
 .right-0{right:0px}
 .right-3{right:0.75rem}
 .top-0{top:0px}
@@ -504,6 +505,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .top-24{top:6rem}
 .top-3{top:0.75rem}
 .top-4{top:1rem}
+.top-\[var\(--data-hotspot-top\)\]{top:var(--data-hotspot-top)}
 .top-full{top:100%}
 .-z-1{z-index:-1}
 .z-1{z-index:1}
@@ -741,6 +743,7 @@ to{transform:rotate(360deg)}}
 .bg-primary{background-color:#414042;background-color:var(--color-primary)}
 .bg-red-400{--tw-bg-opacity:1;background-color:rgba(248, 113, 113, 1);background-color:rgba(248, 113, 113, var(--tw-bg-opacity, 1))}
 .bg-white{--tw-bg-opacity:1;background-color:rgba(255, 255, 255, 1);background-color:rgba(255, 255, 255, var(--tw-bg-opacity, 1))}
+.bg-darker{--tw-bg-opacity:1;background-color:rgba(14, 15, 15, 1);background-color:rgba(14, 15, 15, var(--tw-bg-opacity, 1))}
 .bg-cover{background-size:cover}
 .bg-center{background-position:center}
 .bg-no-repeat{background-repeat:no-repeat}
@@ -4366,13 +4369,11 @@ input[type=radio].sr-only:checked ~ div.s-app-install-banner-cancel-button {
   }
 }
 .hotspot__card {
-  display: none;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .hotspot__card.active {
-  display: block;
   opacity: 1;
   transform: translateY(0);
 }

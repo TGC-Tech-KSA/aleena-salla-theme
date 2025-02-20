@@ -1,0 +1,29 @@
+<section class="s-block s-block--slider-with-bg s-block--full-bg relative">
+    <div class="h-full w-full relative">
+        <img class="advanced-image w-full object-cover object-center lazy h-full" src="" data-src="{{ component.background_image }}" loading="lazy" height="950" width="1920" alt="{{ store.name }} image-slider-{{ index }}">
+    </div>
+
+
+    {% for item in component.hotspot_one %}
+      <div class="hotspot hotspot-{{ loop.index }} hotspot--outer-pulse hotspot--on-right cc-animate-init cc-animate-in absolute top-[var(--data-hotspot-top)] left-[var(--data-hotspot-left)] " data-cc-animate="" data-cc-animate-delay="0.3s" style="animation-delay: 0.3s; --data-hotspot-top:{{item.section_top}}%; --data-hotspot-left:{{item.section_left}}%;">
+    <button type="button" class="hotspot__btn hotspot__btn--number relative tap-target no-js-hidden bg-darker text-white rounded-full w-10 h-10" aria-expanded="false">
+      {# <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-plus" aria-hidden="true" focusable="false" role="presentation">
+        <path d="M12 5v14M5 12h14"></path>
+      </svg> #}
+      <span class="hotspot__btn-number">{{ loop.index }}</span>
+    </button>
+    <div class="hotspot__card no-js-hidden has-motion" aria-hidden="true">
+      <div class="whole-set-wrapper">
+{# {% for product in item.products %}
+    <custom-salla-product-card product="{{product}}" minimal class="product-block product-block--landscape max-w-[365px]" data-product-id="{{ product.id }}"></custom-salla-product-card>
+{% endfor %} #}
+<salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0]}}]" {% endif %} slider-id="slider-with-bg-{{ position }}" class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 "></salla-products-list>
+
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+
+
+
+    </section>

@@ -153,14 +153,14 @@
 }
 
 .hotspot__card {
-  display: none;
+  // display: none;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .hotspot__card.active {
-  display: block;
+  // display: block;
   opacity: 1;
   transform: translateY(0);
 }
