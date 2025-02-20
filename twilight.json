@@ -1332,7 +1332,7 @@
                         "multichoice": true,
                         "source": "products",
                         "searchable": true,
-                        "maxLength": 8,
+                        "maxLength": 1,
                         "minLength": 1,
                         "value": [],
                         "key": "5adda9de-e0d7-4a36-a26a-e9fcd704fe2e"
