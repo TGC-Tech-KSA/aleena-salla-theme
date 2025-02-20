@@ -1,0 +1,45 @@
+{% set time = component.image_time %}
+{% set speed = component.speed_animation %}
+<section class="{{component.distance_container ? ' ' : 's-block'}} home-main-slider {{ is_repeated ? 'repeated-block' : '' }}">
+  <div class="{{component.full_container ? ' ' : 'container'}}">
+  {% if component.slider_title %}
+  <h2 class="text-center my-4">{{component.slider_title}}</h2>
+  {% endif %}
+  <salla-slider type="fullwidth" slider-config="{&quot;effect&quot;: &quot;{{component.influence}}&quot;,&quot;slidesPerView&quot;:1,&quot;speed&quot;:{{speed ? speed: '2'}}000,{% if component.main_slider|length > 1 %}&quot;autoplay&quot;: {&quot;delay&quot;:{{time ? time: '5'}}000},{% endif %}&quot;allowTouchMove&quot;: true}" class="slider-h-advanced main-slider [&_.swiper-pagination-bullets]:!bottom-12 [&_.swiper-pagination-bullets]:md:!bottom-20 [&_.swiper-slide-active]:z-2" auto-play id="main-{{ position }}-slider" {% if component.hidden_arrw %} show-controls="false" {% else %} show-controls="true"{% endif %} {{component.hidden_bullets ? ' ' : 'pagination'}} >
+    <div slot="items">
+      {% for item in component.main_slider %}
+        <div class="swiper-slide transition-all duration-[2s] bg-[var(--store-background)]">
+          <a href="{{item.url}}">
+
+
+              {% if item.viwe_type == 'viwe_photo' %}
+                <img class="advanced-image w-full object-cover object-center lazy {{component.full_container ? 'h-[460px] md:h-[760px] ' : 'h-[460px] md:h-[660px]'}}" src="" data-src="{{item.alsort}}" loading="lazy" height="300" width="1200" alt="{{store.name}} image-slider-{{index}}" >
+              {% endif %}
+              {% if item.viwe_type == 'viwe_youtube' %}
+              <div class="slider relative w-full  {{component.full_container ? 'h-[460px] md:h-[760px] ' : 'h-[460px] md:h-[660px]'}} overflow-hidden">
+              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden;"></div>
+              {% set video_url = item.youtube_url %}
+              {% set video_id = video_url | split('v=')[1] %}
+              {% set embed_url = 'https://www.youtube.com/embed/' ~ video_id ~ '?autoplay=1&loop=1&mute=1&controls=0&playlist=' ~ video_id %}
+                <div class="video-container scale-105 relative" style=" width: 100%; height: 100%; z-index: -1; overflow: hidden;">
+                <iframe src="{{ embed_url }}" frameborder="0" allow="autoplay; loop; fullscreen" allowfullscreen style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;" class="youtube-video scale-y-[3.4] scale-x-150 md:scale-150">
+                </iframe>
+                </div>
+                </div>
+              {% endif %}
+
+
+            {% if item.slider_description %}
+            <p class="text-center my-2 md:my-4 text-sm md:text-xl bg-[var(--store-background)] uppercase ">{{item.slider_description}}</p>
+            {% endif %}
+            </a>
+        </div>
+      {% endfor %}
+    </div>
+  </salla-slider>
+  <div class="flex items-center justify-center">
+    <a href="{{component.slider_buttonUrl}}" class="py-2 px-4 underline uppercase bg-transparent hover:bg-[var(--store-btn-bg)] text-[var(--store-btn-color)] transition-all">{{component.slider_buttonText}}</a>
+  </div>
+  </div>
+</section>
+
