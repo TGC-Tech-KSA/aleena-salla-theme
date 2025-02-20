@@ -7,6 +7,7 @@ class Home extends BasePage {
     onReady() {
         this.initFeaturedTabs();
         this.circleBullets();
+        this.playVideos();
     }
 
     /**
@@ -71,6 +72,52 @@ class Home extends BasePage {
     observerAll.observe(document.body, { childList: true, subtree: true });
     document.addEventListener('DOMContentLoaded', initializeAutoplayRestart);
     }
+     playVideos() {
+    document.addEventListener('DOMContentLoaded', function () {
+  function playVideos() {
+    var videos = document.querySelectorAll('.autoplay-video');
+    if (videos.length > 0) {
+      videos.forEach(video => {
+        if (!video.playing) {
+          video.play().catch(error => console.error("خطأ في تشغيل الفيديو:", error));
+        }
+      });
+    }
+  }
+
+  // خاصية لمعرفة إذا كان الفيديو قيد التشغيل
+  Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
+    get: function () {
+      return !!(
+        this.currentTime > 0 &&
+        !this.paused &&
+        !this.ended &&
+        this.readyState > 2
+      );
+    }
+  });
+
+  // تشغيل الفيديو عند تحميل الصفحة تلقائيًا
+  playVideos();
+
+  // تشغيل الفيديو عند الضغط على أي عنصر `<a>` يحتوي على `.instagram-play`
+  document.querySelectorAll('a.instagram-play').forEach(link => {
+    link.addEventListener('click', function (event) {
+      event.preventDefault(); // منع السلوك الافتراضي للرابط
+      playVideos();
+    });
+  });
+
+  // تأكيد تشغيل الفيديوهات على الهواتف
+  var mobileVideos = document.getElementsByClassName('autoplay-video');
+  for (var i = 0; i < mobileVideos.length; i++) {
+    mobileVideos[i].setAttribute('playsinline', '');
+    mobileVideos[i].setAttribute('muted', '');
+  }
+});
+
+  }
+
 }
 
 Home.initiateWhenReady(['index']);

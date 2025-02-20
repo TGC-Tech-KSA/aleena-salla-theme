@@ -16,11 +16,8 @@
            data-infinite="true" data-type="youtube"
            href="#video-{{ loop.index | default(0) }}"
            aria-label="{{ banner.name | default('Instagram Video') }}"
-           class="swiper-slide magnify-wrapper model-entry group">
-
-            <div class="has-overlay absolute w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all left-0 top-0">
-                <i class="sicon-instagram text-white text-lg relative z-1"></i>
-            </div>
+           class="swiper-slide magnify-wrapper model-entry group instagram-play">
+            <i class="sicon-play text-white text-2xl z-1 absolute left-3 top-3"></i>
             <img loading="lazy" src="{{ banner.image | default('fallback.jpg') }}"
                  data-src="{{ banner.image }}"
                  alt="{{ banner.image.alt | default('Instagram Video') }}"
@@ -28,7 +25,7 @@
         </a>
 
         <div id="video-{{ loop.index | default(0) }}" class="relative hidden">
-            <video playsinline width="400" autoplay controls muted loop class="w-full h-auto object-cover object-center lazy">
+            <video playsinline width="400" autoplay="autoplay" muted="muted" controls loop class="w-full h-auto object-cover object-center lazy autoplay-video">
                 <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/mp4">
                 <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/ogg">
                 <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/avi">

@@ -1336,7 +1336,22 @@
                         "minLength": 1,
                         "value": [],
                         "key": "5adda9de-e0d7-4a36-a26a-e9fcd704fe2e"
-                      }
+                      },
+                        {
+                            "id": "instagram.video_owner",
+                            "type": "string",
+                            "format": "text",
+                            "label": "اسم صاحب الفيديو",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "العنوان الرئيسي ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": "@raghadiii",
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "0",
+                            "maxLength": "80"
+                        }
                     ]
                 }
             ]
