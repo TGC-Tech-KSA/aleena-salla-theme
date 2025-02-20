@@ -165,6 +165,7 @@ class ProductCard extends HTMLElement {
      *  Full image card.
      */
     this.fullImage = this.hasAttribute('fullImage');
+    this.noImage = this.hasAttribute('noImage');
 
     /**
      *  Minimal card.
@@ -222,7 +223,7 @@ class ProductCard extends HTMLElement {
         ${
           product_images_layout == 'slider' &&
           this.product.images?.length > 1 &&
-          !this.fullImage
+          !this.fullImage && !this.noImage
             ? `<div class="product-slider h-full hidden md:flex"></div>
               <img class="flex md:hidden s-product-card-image-${
                 salla.url.is_placeholder(this.product?.image?.url)

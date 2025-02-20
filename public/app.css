@@ -504,6 +504,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .top-3{top:0.75rem}
 .top-4{top:1rem}
 .top-full{top:100%}
+.right-3{right:0.75rem}
 .-z-1{z-index:-1}
 .z-1{z-index:1}
 .z-10{z-index:10}
@@ -525,6 +526,9 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .mx-auto{margin-left:auto;margin-right:auto}
 .my-2{margin-top:0.5rem;margin-bottom:0.5rem}
 .my-3{margin-top:0.75rem;margin-bottom:0.75rem}
+.my-4{margin-top:1rem;margin-bottom:1rem}
+.my-5{margin-top:1.25rem;margin-bottom:1.25rem}
+.my-6{margin-top:1.5rem;margin-bottom:1.5rem}
 .-mb-52{margin-bottom:-13rem}
 .-mt-62{margin-top:-248px}
 .mb-1{margin-bottom:0.25rem}
@@ -597,6 +601,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .max-h-8{max-height:2rem}
 .max-h-\[300px\]{max-height:300px}
 .max-h-full{max-height:100%}
+.max-h-100{max-height:28rem}
 .min-h-7{min-height:1.75rem}
 .min-h-\[300px\]{min-height:300px}
 .min-h-\[34px\]{min-height:34px}
@@ -620,6 +625,8 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .w-\[calc\(100\%\/3\)\]{width:calc(100% / 3)}
 .w-fit{width:-moz-fit-content;width:fit-content}
 .w-full{width:100%}
+.w-\[calc\(100\%\/6\)\]{width:calc(100% / 6)}
+.w-\[calc\(100\%\/2\)\]{width:calc(100% / 2)}
 .min-w-0{min-width:0px}
 .min-w-full{min-width:100%}
 .max-w-16{max-width:4rem}
@@ -772,6 +779,7 @@ to{transform:rotate(360deg)}}
 .py-4{padding-top:1rem;padding-bottom:1rem}
 .py-5{padding-top:1.25rem;padding-bottom:1.25rem}
 .py-8{padding-top:2rem;padding-bottom:2rem}
+.px-7{padding-left:1.75rem;padding-right:1.75rem}
 .\!pt-1{padding-top:0.25rem !important}
 .pb-1{padding-bottom:0.25rem}
 .pb-10{padding-bottom:2.5rem}
@@ -6538,6 +6546,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .md\:w-96{width:24rem}
 .md\:w-\[34rem\]{width:34rem}
 .md\:w-auto{width:auto}
+.md\:w-\[calc\(100\%\/4\)\]{width:calc(100% / 4)}
 .md\:scale-150{--tw-scale-x:1.5;--tw-scale-y:1.5;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(1.5) scaleY(1.5);transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
 .md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}
 .md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}
@@ -6565,6 +6574,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .md\:text-base{font-size:1rem;line-height:1.5rem}
 .md\:text-sm{font-size:0.875rem;line-height:1.25rem}
 .md\:text-xl{font-size:1.25rem;line-height:1.75rem}
+.md\:text-lg{font-size:1.125rem;line-height:1.75rem}
 .md\:first\:pt-24:first-child{padding-top:6rem}}
 @media (min-width: 1024px){
 .lg\:not-sr-only{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal}
@@ -6572,6 +6582,8 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .lg\:top-20{top:5rem}
 .lg\:col-span-2{grid-column:span 2 / span 2}
 .lg\:col-span-6{grid-column:span 6 / span 6}
+.lg\:my-8{margin-top:2rem;margin-bottom:2rem}
+.lg\:my-10{margin-top:2.5rem;margin-bottom:2.5rem}
 .lg\:-mt-28{margin-top:-7rem}
 .lg\:mb-24{margin-bottom:6rem}
 .lg\:mb-8{margin-bottom:2rem}
@@ -6604,6 +6616,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .lg\:bg-white{--tw-bg-opacity:1;background-color:rgba(255, 255, 255, 1);background-color:rgba(255, 255, 255, var(--tw-bg-opacity, 1))}
 .lg\:p-8{padding:2rem}
 .lg\:px-0{padding-left:0px;padding-right:0px}
+.lg\:px-12{padding-left:3rem;padding-right:3rem}
 .lg\:pb-11{padding-bottom:2.75rem}
 .lg\:pb-2{padding-bottom:0.5rem}
 .lg\:pb-20{padding-bottom:5rem}
@@ -6615,6 +6628,10 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .xl\:h-40{height:10rem}
 .xl\:w-40{width:10rem}
 .xl\:w-\[calc\(100\%\/8\)\]{width:calc(100% / 8)}
+.xl\:w-\[calc\(100\%\/6\)\]{width:calc(100% / 6)}
+.xl\:\!w-\[calc\(100\%\/6\)\]{width:calc(100% / 6) !important}
+.xl\:w-\[calc\(100\%\/5\)\]{width:calc(100% / 5)}
+.xl\:w-\[calc\(100\%\/4\)\]{width:calc(100% / 4)}
 .xl\:gap-8{gap:2rem}
 .xl\:px-0{padding-left:0px;padding-right:0px}}
 @media (min-width: 480px){
@@ -6722,6 +6739,11 @@ lite-youtube.lyt-activated > .lty-playbtn {
 @media (min-width: 480px){
 .rtl\:xs\:left-5:where([dir="rtl"], [dir="rtl"] *){left:1.25rem}}
 .\[\&_\.s-cart-summary-content\]\:\!hidden .s-cart-summary-content{display:none !important}
+@media (min-width: 768px){
+.\[\&_\.s-product-card-image\]\:md\:\!h-32 .s-product-card-image{height:8rem !important}}
+@media (min-width: 1024px){
+.\[\&_\.s-product-card-image\]\:lg\:\!h-48 .s-product-card-image{height:12rem !important}
+.\[\&_\.s-product-card-image\]\:lg\:\!h-52 .s-product-card-image{height:13rem !important}}
 .\[\&_\.s-products-list-vertical-cards\]\:\!m-0 .s-products-list-vertical-cards{margin:0px !important}
 .\[\&_\.s-products-list-vertical-cards\]\:\!grid-cols-1 .s-products-list-vertical-cards{grid-template-columns:repeat(1, minmax(0, 1fr)) !important}
 .\[\&_\.swiper-pagination-bullets\]\:\!bottom-4 .swiper-pagination-bullets{bottom:1rem !important}
@@ -6733,4 +6755,5 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .\[\&_\.swiper\]\:\!m-0 .swiper{margin:0px !important}
 .\[\&_\.swiper\]\:\!h-full .swiper{height:100% !important}
 .\[\&_\.swiper\]\:h-full .swiper{height:100%}
+.\[\&_\.swiper\]\:\!overflow-visible .swiper{overflow:visible !important}
 .\[\&_\.swiper\]\:\!p-0 .swiper{padding:0px !important}
