@@ -4,21 +4,47 @@
     </div>
     <div class="grid grid-cols-5 grid-flow-row gap-2 sm:gap-6" slot="items">
         {% for index, banner in component.instagram %}
-        <a data-fslightbox="{{ component.position }}" data-img-id="{{loop.index }}" data-slid-index="{{ loop.index-1 }}" data-caption="{{ image.alt }}" data-infinite="true" data-type="image" href="{{banner.image}}" aria-label="{{ product.name }}" class="swiper-slide magnify-wrapper model-entry group">
+        <a data-fslightbox="{{ component.position }}" data-img-id="video-{{loop.index }}" data-slid-index="{{ loop.index-1 }}" data-caption="{{ image.alt }}"
+        data-video-src="{{banner.slider_bg_video}}?raw=true"
+        data-infinite="true" data-type="youtube" href="#video-{{loop.index }}" aria-label="{{ product.name }}" class="swiper-slide magnify-wrapper model-entry group">
             <div class="has-overlay absolute w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all left-0 top-0">
             <i class="sicon-instagram text-white text-lg relative z-1"></i>
             </div>
-            <img id="{{ loop.index }}" loading="lazy" src="" data-src="{{banner.image}}" alt="{{ image.alt }}" class="lazy w-full h-full object-cover">
+            <img loading="lazy" src="" data-src="{{banner.image}}" alt="{{ image.alt }}" class="lazy w-full h-full object-cover">
+
+
         </a>
-        {% set post = banner.insta_post_url  %}
-        {% set rest = post|replace({"https://www.instagram.com/":""})|striptags %}
-        {% set parts = rest | split('/') %}
-        {% set post_id = parts[0] %}
-        {% set post_x = parts[1] %}
-        <iframe src="" data-src="https://www.instagram.com/{{post_id}}/{{post_x}}/embed" id="instagram-media-{{index}}" loading="lazy" class="hidden w-auto h-[600px] overflow-hidden lazy"></iframe>
+        <div id="video-{{loop.index }}">
+            <video  playsinline width="400" autoplay="autoplay" controls muted loop="loop" data-src="{{banner.slider_bg_video}}?raw=true" class="w-full h-auto object-cover object-center lazy"><source src="" data-src="{{banner.slider_bg_video}}?raw=true" type="video/mp4" class="lazy"><source src="" data-src="{{banner.slider_bg_video}}?raw=true" type="video/ogg" class="lazy">
+          <source src="" data-src="{{banner.slider_bg_video}}?raw=true" type="video/avi" class="lazy">
+          <source src="" data-src="{{banner.slider_bg_video}}?raw=true" type="video/webm" class="lazy">
+          <track src="captions_en.vtt" kind="captions" srclang="en" label="english_captions"><track src="captions_es.vtt" kind="captions" srclang="es" label="spanish_captions"></video>
+
+            {# {% for product in banner.slider_products %} #}
+
+            {# {% set products_data = banner.slider_products %}
+
+             {% for product in banner.slider_products %} #}
+             {# {% set products_data = banner.slider_products[0] %}
+             {% if products_data %}
+
+                <custom-salla-product-card  shadow-on-hover product="{{products_data}}"></custom-salla-product-card>
+
+              {% endif %} #}
+                {# {% if banner.slider_products %}
+                  <custom-salla-product-card shadow-on-hover product="{{banner.slider_products}}" fullImage></custom-salla-product-card>
+                  {% endif %} #}
+             {# {% endfor %} #}
+             {# {% set products_data = banner.slider_products %}
+             {% if products_data|length %}
+                    {% for product in products_data %}
+                        <custom-salla-product-card shadow-on-hover product="{{product}}" minimal></custom-salla-product-card>
+                      {% endfor %}
+{% endif %} #}
+
+<custom-salla-product-card shadow-on-hover product="{{banner.slider_products}}" fullImage></custom-salla-product-card>
+
+
         {% endfor %}
     </div>
 </section>
-<style>
-    iframe.fslightbox-source{display: block !important;}
-</style>

@@ -1320,20 +1320,24 @@
                         "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
                       },
                       {
-                        "id": "instagram.slider_products",
-                        "icon": "sicon-keyboard_arrow_down",
                         "type": "items",
-                        "label": "المنتجات المختارة",
-                        "format": "dropdown-list",
-                        "source": "products",
-                        "options": [],
-                        "required": true,
-                        "selected": [],
-                        "maxLength": 24,
-                        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                        "searchable": true,
+                        "icon": "sicon-link",
+                        "label": "اختر المنتج",
+                        "id": "instagram.slider_products",
+                        "value": null,
                         "description": null,
-                        "multichoice": false
+                        "required": false,
+                        "format": "variable-list",
+                        "searchable": true,
+                        "source": "products",
+                        "sources": [
+                          {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                          }
+                        ],
+                        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
                       }
                     ]
                 }
