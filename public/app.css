@@ -518,8 +518,8 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .mx-1\.5{margin-left:0.375rem;margin-right:0.375rem}
 .mx-2{margin-left:0.5rem;margin-right:0.5rem}
 .mx-auto{margin-left:auto;margin-right:auto}
-.my-3{margin-top:0.75rem;margin-bottom:0.75rem}
 .my-2{margin-top:0.5rem;margin-bottom:0.5rem}
+.my-3{margin-top:0.75rem;margin-bottom:0.75rem}
 .my-4{margin-top:1rem;margin-bottom:1rem}
 .-mb-52{margin-bottom:-13rem}
 .-mt-62{margin-top:-248px}
@@ -582,13 +582,13 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .h-80{height:20rem}
 .h-\[300px\]{height:300px}
 .h-\[34px\]{height:34px}
+.h-\[460px\]{height:460px}
 .h-auto{height:auto}
 .h-banner{height:200px}
 .h-full{height:100%}
 .h-lg-banner{height:428px}
 .h-px{height:1px}
 .h-screen{height:100vh}
-.h-\[460px\]{height:460px}
 .max-h-0{max-height:0px}
 .max-h-8{max-height:2rem}
 .max-h-\[300px\]{max-height:300px}
@@ -715,6 +715,7 @@ to{transform:rotate(360deg)}}
 .border-transparent{border-color:transparent}
 .\!bg-\[\#fcfaf3\]{--tw-bg-opacity:1 !important;background-color:rgba(252, 250, 243, 1) !important;background-color:rgba(252, 250, 243, var(--tw-bg-opacity, 1)) !important}
 .bg-\[var\(--data-bg-cat\)\]{background-color:var(--data-bg-cat)}
+.bg-\[var\(--store-background\)\]{background-color:var(--store-background)}
 .bg-\[var\(--store-product-bg\)\]{background-color:var(--store-product-bg)}
 .bg-black{--tw-bg-opacity:1;background-color:rgba(0, 0, 0, 1);background-color:rgba(0, 0, 0, var(--tw-bg-opacity, 1))}
 .bg-black\/50{background-color:rgba(0, 0, 0, 0.5)}
@@ -727,9 +728,8 @@ to{transform:rotate(360deg)}}
 .bg-inherit{background-color:inherit}
 .bg-primary{background-color:#414042;background-color:var(--color-primary)}
 .bg-red-400{--tw-bg-opacity:1;background-color:rgba(248, 113, 113, 1);background-color:rgba(248, 113, 113, var(--tw-bg-opacity, 1))}
-.bg-white{--tw-bg-opacity:1;background-color:rgba(255, 255, 255, 1);background-color:rgba(255, 255, 255, var(--tw-bg-opacity, 1))}
-.bg-\[var\(--store-background\)\]{background-color:var(--store-background)}
 .bg-transparent{background-color:transparent}
+.bg-white{--tw-bg-opacity:1;background-color:rgba(255, 255, 255, 1);background-color:rgba(255, 255, 255, var(--tw-bg-opacity, 1))}
 .bg-cover{background-size:cover}
 .bg-center{background-position:center}
 .bg-no-repeat{background-repeat:no-repeat}
@@ -819,6 +819,7 @@ to{transform:rotate(360deg)}}
 .\!text-red-800{--tw-text-opacity:1 !important;color:rgba(153, 27, 27, 1) !important;color:rgba(153, 27, 27, var(--tw-text-opacity, 1)) !important}
 .\!text-white{--tw-text-opacity:1 !important;color:rgba(255, 255, 255, 1) !important;color:rgba(255, 255, 255, var(--tw-text-opacity, 1)) !important}
 .text-\[var\(--data-color\)\]{color:var(--data-color)}
+.text-\[var\(--store-btn-color\)\]{color:var(--store-btn-color)}
 .text-amber-400{--tw-text-opacity:1;color:rgba(251, 191, 36, 1);color:rgba(251, 191, 36, var(--tw-text-opacity, 1))}
 .text-blue-500{--tw-text-opacity:1;color:rgba(59, 130, 246, 1);color:rgba(59, 130, 246, var(--tw-text-opacity, 1))}
 .text-danger{--tw-text-opacity:1;color:rgba(174, 10, 10, 1);color:rgba(174, 10, 10, var(--tw-text-opacity, 1))}
@@ -839,7 +840,6 @@ to{transform:rotate(360deg)}}
 .text-red-700{--tw-text-opacity:1;color:rgba(185, 28, 28, 1);color:rgba(185, 28, 28, var(--tw-text-opacity, 1))}
 .text-red-800{--tw-text-opacity:1;color:rgba(153, 27, 27, 1);color:rgba(153, 27, 27, var(--tw-text-opacity, 1))}
 .text-white{--tw-text-opacity:1;color:rgba(255, 255, 255, 1);color:rgba(255, 255, 255, var(--tw-text-opacity, 1))}
-.text-\[var\(--store-btn-color\)\]{color:var(--store-btn-color)}
 .underline{text-decoration-line:underline}
 .line-through{text-decoration-line:line-through}
 .\!opacity-0{opacity:0 !important}
@@ -6542,6 +6542,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .lg\:flex{display:flex}
 .lg\:hidden{display:none}
 .lg\:h-36{height:9rem}
+.lg\:h-\[960px\]{height:960px}
 .lg\:min-h-\[528px\]{min-height:528px}
 .lg\:w-10\/12{width:83.333333%}
 .lg\:w-24{width:6rem}

@@ -259,7 +259,7 @@
         }
     ],
     "components": [
-         {
+        {
             "key": "1d6609d2-c2bf-4892-868c-3ce00851b75b",
             "title": "سلايدر متقدم (ألينا)",
             "icon": "sicon-computer",
@@ -397,102 +397,6 @@
                     "maximum": "20"
                 },
                 {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان",
-                    "multilanguage": true,
-                    "id": "slider_title",
-                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                    "value": null,
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": "أدخل العنوان هنا...",
-                    "minLength": 0,
-                    "maxLength": 200
-                },
-                {
-                    "id": "slider_buttonText",
-                    "type": "string",
-                    "format": "text",
-                    "label": "اضافة زر يظهر اسفل السلايدر",
-                    "description": "لإخفاء الزر اترك الحقل فارغاً",
-                    "labelHTML": null,
-                    "placeholder": "اكتشف المزيد",
-                    "icon": "sicon-format-text-alt",
-                    "value": " ",
-                    "multilanguage": true,
-                    "required": false,
-                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                    "minLength": 0,
-                    "maxLength": 40
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-link",
-                    "label": "رابط الزر",
-                    "id": "slider_buttonUrl",
-                    "value": null,
-                    "description": null,
-                    "required": false,
-                    "format": "variable-list",
-                    "searchable": true,
-                    "source": "offers_link",
-                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                    "sources": [
-                        {
-                            "label": "منتج",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "تصنيف",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "ماركة تجارية",
-                            "key": "brands",
-                            "value": "brands"
-                        },
-                        {
-                            "label": "صفحة تعريفية",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "مقالة",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        },
-                        {
-                            "label": "تصنيف ضمن المدونة",
-                            "key": "blog_categories",
-                            "value": "blog_categories"
-                        },
-                        {
-                            "label": "التخفيضات",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "الماركات التجارية",
-                            "key": "brands_link",
-                            "value": "brands_link"
-                        },
-                        {
-                            "label": "المدونة",
-                            "key": "blog_link",
-                            "value": "blog_link"
-                        },
-                        {
-                            "label": "رابط خارجي",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
-                },
-                {
                     "id": "main_slider",
                     "type": "collection",
                     "format": "collection",
@@ -559,7 +463,7 @@
                             "id": "alsort",
                             "type": "string",
                             "format": "image",
-                            "label": "الصورة",
+                            "label": "الصورة في اللغة العربية",
                             "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
@@ -567,7 +471,35 @@
                             "value": null,
                             "required": false,
                             "settings": {
-                                "quality": 80
+                                "quality": 80,
+                                "height": 1080,
+                                "width": 1920
+                            },
+                            "conditions": [
+                                {
+                                    "id": "viwe_type",
+                                    "operation": "=",
+                                    "value": "viwe_photo",
+                                    "collection_id": "main_slider",
+                                    "value_index": "."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "alsort_en",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الصورة في اللغة الانجليزية",
+                            "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false,
+                            "settings": {
+                                "quality": 80,
+                                "height": 1080,
+                                "width": 1920
                             },
                             "conditions": [
                                 {
