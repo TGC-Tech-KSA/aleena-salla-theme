@@ -1148,7 +1148,7 @@
                 }
             ]
         },
-         {
+        {
             "key": "b7d60a26-e94b-4611-a170-3717bcc0f871",
             "title": "انستقرام",
             "icon": "sicon-image",
@@ -1270,73 +1270,82 @@
                     "item_label": "صورة ",
                     "value": [
                         {
-                            "instagram.image": "https://cdn.salla.sa/mQgZlG/pzOCEw10wCfXeVSpKnL0Ifd1O9ZkTfnZ17RkE14R.jpg"
+                            "instagram.image": "https://cdn.salla.sa/mQgZlG/pzOCEw10wCfXeVSpKnL0Ifd1O9ZkTfnZ17RkE14R.jpg",
+                            "instagram.video_owner": "@raghadiii"
                         },
                         {
-                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg"
+                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "instagram.video_owner": "@raghadiii"
                         },
                         {
-                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg"
+                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "instagram.video_owner": "@raghadiii"
                         },
                         {
-                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg"
+                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "instagram.video_owner": "@raghadiii"
                         },
                         {
-                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg"
+                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "instagram.video_owner": "@raghadiii"
+                        },
+                        {
+                            "instagram.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "instagram.video_owner": "@raghadiii"
                         }
                     ],
                     "fields": [
-                      {
-                        "type": "string",
-                        "icon": "sicon-image",
-                        "value": null,
-                        "label": "صورة العرض",
-                        "id": "instagram.image",
-                        "format": "image",
-                        "required": true,
-                        "placeholder": "",
-                        "description": "* المقاس المناسب للصورة هو 250×500 بكسل",
-                        "settings": {
-                          "height": 500,
-                          "width": 250,
-                          "quality": 80
-                        }
-                      },
-                      {
-                        "id": "instagram.slider_bg_video",
-                        "key": "7d7b79fe-63d2-4662-a576-2a184f5f3f5c",
-                        "type": "string",
-                        "format": "url",
-                        "inputType": "url",
-                        "label": "فيديو خلفية المساحة الثابتة",
-                        "labelHTML": "يمكنك استخدام خدمة مثل <a href='https://top4top.io/' target='_blank' style='display: block;color: #2c34ff;padding: 5px;font-size: 14px;'>top4top </a>",
-                        "description": null,
-                        "placeholder": "e.g. https://salla.sa",
-                        "icon": "sicon-link",
-                        "value": null,
-                        "required": false,
-                        "minLength": 2,
-                        "maxLength": "250",
-                        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
-                      },
-                      {
-                        "type": "items",
-                        "icon": "sicon-keyboard_arrow_down",
-                        "label": "اختر المنتج",
-                        "id": "instagram.products",
-                        "format": "dropdown-list",
-                        "description": null,
-                        "selected": [],
-                        "options": [],
-                        "required": true,
-                        "multichoice": true,
-                        "source": "products",
-                        "searchable": true,
-                        "maxLength": 1,
-                        "minLength": 1,
-                        "value": [],
-                        "key": "5adda9de-e0d7-4a36-a26a-e9fcd704fe2e"
-                      },
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "label": "صورة العرض",
+                            "id": "instagram.image",
+                            "format": "image",
+                            "required": true,
+                            "placeholder": "",
+                            "description": "* المقاس المناسب للصورة هو 250×500 بكسل",
+                            "settings": {
+                                "height": 500,
+                                "width": 250,
+                                "quality": 80
+                            }
+                        },
+                        {
+                            "id": "instagram.slider_bg_video",
+                            "key": "7d7b79fe-63d2-4662-a576-2a184f5f3f5c",
+                            "type": "string",
+                            "format": "url",
+                            "inputType": "url",
+                            "label": "فيديو خلفية المساحة الثابتة",
+                            "labelHTML": "يمكنك استخدام خدمة مثل <a href='https://top4top.io/' target='_blank' style='display: block;color: #2c34ff;padding: 5px;font-size: 14px;'>top4top </a>",
+                            "description": null,
+                            "placeholder": "e.g. https://salla.sa",
+                            "icon": "sicon-link",
+                            "value": null,
+                            "required": false,
+                            "minLength": 2,
+                            "maxLength": "250",
+                            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-keyboard_arrow_down",
+                            "label": "اختر المنتج",
+                            "id": "instagram.products",
+                            "format": "dropdown-list",
+                            "description": null,
+                            "selected": [],
+                            "options": [],
+                            "required": true,
+                            "multichoice": true,
+                            "source": "products",
+                            "searchable": true,
+                            "maxLength": 1,
+                            "minLength": 1,
+                            "value": [],
+                            "key": "5adda9de-e0d7-4a36-a26a-e9fcd704fe2e"
+                        },
                         {
                             "id": "instagram.video_owner",
                             "type": "string",
@@ -1344,7 +1353,7 @@
                             "label": "اسم صاحب الفيديو",
                             "description": null,
                             "labelHTML": null,
-                            "placeholder": "العنوان الرئيسي ..",
+                            "placeholder": "@raghadiii",
                             "icon": "sicon-format-text-alt",
                             "value": "@raghadiii",
                             "multilanguage": true,
