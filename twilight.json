@@ -1334,7 +1334,8 @@
                         "searchable": true,
                         "maxLength": 8,
                         "minLength": 1,
-                        "value": []
+                        "value": [],
+                        "key": "5adda9de-e0d7-4a36-a26a-e9fcd704fe2e"
                       }
                     ]
                 }

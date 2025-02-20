@@ -37,13 +37,11 @@
                 <track src="captions_es.vtt" kind="captions" srclang="es" label="Spanish captions">
             </video>
 
-  <custom-salla-product-card special-single-product="true" shadow-on-hover product="{{ banner.products[0] }}" minimal></custom-salla-product-card>
-      {% if banner.products is not empty %}
-    {% for product in banner.products %}
-        <p>{{ product.name }}</p>
-        <custom-salla-product-card shadow-on-hover product="{{ product }}" minimal></custom-salla-product-card>
-    {% endfor %}
-{% endif %}
+
+
+  {% for product in banner.products|slice(0,3) %}
+                <custom-salla-product-card product="{{product}}" minimal></custom-salla-product-card>
+            {% endfor %}
 
          </div>
         {% endfor %}
