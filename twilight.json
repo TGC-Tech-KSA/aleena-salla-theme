@@ -1538,6 +1538,85 @@
         ]
       },
       {
+        "key": "125643a6-ff65-4094-b94f-89e30a834b30",
+        "title": "معرض المنتجات الديناميكي (ألينا)",
+        "icon": "sicon-list-play",
+        "path": "home.dynamic_product_gallery",
+        "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1",
+        "fields": [
+          {
+            "type": "static",
+            "format": "description",
+            "id": "with-bg",
+            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #ebebeb;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1'></div>"
+          },
+          {
+            "type": "string",
+            "icon": "sicon-image",
+            "value": "https://cdn.salla.sa/form-builder/D7bG3pgSit43TheOejBOZV7LIfG1y1Cj0hWLmgIh.jpg",
+            "label": "صورة المنتج",
+            "id": "background_image",
+            "format": "image",
+            "required": true,
+            "placeholder": null,
+            "description": "* المقاس المناسب للصورة هو 1233×500 بكسل",
+            "settings": {
+              "height": 580,
+              "width": 1400
+            }
+          },
+          {
+            "type": "items",
+            "icon": "sicon-keyboard_arrow_down",
+            "label": "منتجات",
+            "id": "cards_products",
+            "format": "dropdown-list",
+            "description": null,
+            "selected": [],
+            "options": [],
+            "required": true,
+            "multichoice": true,
+            "source": "products",
+            "searchable": true,
+            "maxLength": 1,
+            "minLength": 1,
+            "value": []
+          },
+          {
+            "id": "section_top",
+            "type": "number",
+            "format": "units",
+            "label": "موقع المنتج على الصورة من الاعلى",
+            "description": "موقع المنتج من أعلى الصورة بحيث ١ تعني اعلى الصورة و ١٠٠ هي اقصى اسفل الصورة",
+            "labelHTML": null,
+            "placeholder": "0",
+            "icon": "sicon-percentage",
+            "value": 40,
+            "required": false,
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-2 ",
+            "unit": "%",
+            "minimum": 0,
+            "maximum": 100
+          },
+           {
+             "id": "section_left",
+             "type": "number",
+             "format": "units",
+             "label": "موقع المنتج على الصورة من اليسار",
+             "description": "موقع المنتج من يسار الصورة بحيث ١ تعني اقصى يسار الصورة و ١٠٠ هو اقصى يمين الصورة",
+             "labelHTML": null,
+             "placeholder": "0",
+             "icon": "sicon-percentage",
+             "value": 40,
+             "required": false,
+             "class": "rounded-lg text-primary border hover:bg-gray-50 p-2 ",
+             "unit": "%",
+             "minimum": 0,
+             "maximum": 100
+           }
+        ]
+      },
+      {
         "key": "b89edc4a-ce0b-468f-8323-2da48147bb32",
         "title": "صور مربعة (محسنة)",
         "icon": "sicon-image",

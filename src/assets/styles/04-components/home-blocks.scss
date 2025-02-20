@@ -382,3 +382,15 @@
 .s-block--tabs-produtcs + .s-block--tabs-produtcs {
   padding-top: 2em;
 }
+
+.video-slider{
+.s-slider-block__title-nav{
+  @apply static transform-none justify-end mb-4 #{!important};
+    button{
+      @apply rounded-none shadow-none opacity-50;
+      &:hover{
+        @apply opacity-100;
+      }
+    }
+}
+}

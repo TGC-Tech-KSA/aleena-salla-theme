@@ -8,45 +8,54 @@
 | component.products    | Product[] *Collection | @see views/pages/product.twig                                                |
 | position              | int                   | Sorting number start from zero                                               |
 #}
-<section class="s-block s-block--slider-with-bg s-block--full-bg">
-    <div class="slider-bg" style="background-image: url('{{ component.background }}');">
-        <div class="container pt-8 sm:pt-20 relative">
-            <div>
-                <h3 class="text-lg font-bold leading-12">
-                    {{ component.title }}
-                </h3>
-                <p class="text-sm mb-8 line-clamp-2 max-w-lg">
-                    {{ component.description }}
-                </p>
+<section class="s-block s-block--slider-with-bg s-block--full-bg relative">
+    <div class="md:absolute md:top-1/2 md:-translate-y-1/2 h-[460px] p-3 md:p-0 md:h-full w-full">
+          <video playsinline width="400" autoplay="autoplay" muted="muted" loop class="w-full h-full object-cover object-center lazy autoplay-video">
+              <source src="{{ component.background_video | default('') }}?raw=true" data-src="{{ component.background_video }}?raw=true" type="video/mp4">
+              <source src="{{ component.background_video | default('') }}?raw=true" data-src="{{ component.background_video }}?raw=true" type="video/ogg">
+              <source src="{{ component.background_video | default('') }}?raw=true" data-src="{{ component.background_video }}?raw=true" type="video/avi">
+              <source src="{{ component.background_video | default('') }}?raw=true" data-src="{{ component.background_video }}?raw=true" type="video/webm">
+              <track src="captions_en.vtt" kind="captions" srclang="en" label="English captions">
+              <track src="captions_es.vtt" kind="captions" srclang="es" label="Spanish captions">
+          </video>
+    </div>
+
+    {% set display_all = component.display_all_url %}
+    <div class="md:h-[600px] flex items-center md:w-4/5 mx-auto">
+      <div class="video-slider-data px-7 w-full hidden md:block">
+      <salla-slider type="fullwidth" class="video-slider md:w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] [&_.swiper]:!overflow-visible my-6" loop id="photos-{{ position }}-instagram" slider-config="{&quot;effect&quot;:&quot;cards&quot;,&quot;slidesPerView&quot;:1, &quot;allowTouchMove&quot;: true,&quot;grabCursor&quot:true}">
+          <div slot="items">
+            {% for product in component.cards_products %}
+            <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] p-3 bg-white [&_.s-product-card-promotion-title]:hidden ">
+              <custom-salla-product-card product="{{product}}" noImage class="[&_.s-product-card-image]:md:!h-52 [&_.s-product-card-image]:lg:!h-64"></custom-salla-product-card>
             </div>
-        </div>
-    </div>
+            {% endfor %}
+          </div>
+        </salla-slider>
 
-    {% set display_all = component.display_all_url  %}
-    <div class="container -mt-62 relative overflow-hidden">
-        <salla-products-slider
-            {% if component.products|length %}
-              source="selected"
-              source-value="[{{ component.products|map((product) => product.id)|join(',') }}]"
-            {% endif %}
-            {% if display_all != '' and  display_all != '#' %}
-                display-all-url="{{display_all}}"
-            {% endif %}
-            block-title=" "
-            slider-id="slider-with-bg-{{ position }}"
-        ></salla-products-slider>
-<div class="instagram-slider-data px-7">
-<salla-slider type="fullwidth" class="instagram-slider xl:w-[calc(100%/6)] [&_.swiper]:!overflow-visible my-6" loop id="photos-{{ position }}-instagram" slider-config="{&quot;effect&quot;:&quot;cards&quot;,&quot;slidesPerView&quot;:1, &quot;allowTouchMove&quot;: true,&quot;grabCursor&quot:true}">
-    <div slot="items">
-      {% for product in component.products %}
-      <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] p-3 bg-white">
-        <custom-salla-product-card product="{{product}}" noImage class="[&_.s-product-card-image]:md:!h-32 [&_.s-product-card-image]:lg:!h-52"></custom-salla-product-card>
       </div>
-      {% endfor %}
+      <div class="block md:hidden w-full p-3">
+        <salla-products-slider source="selected" limit="{{ limit }}" autoplay="false" source-value="[{{ component.cards_products|map((product) => product.id)|join(',') }}]" block-title="{{ title }}" block-subTitle="{{ sub_title|raw }}" slider-id="slider-with-bg-{{ position }}" class="w-full [&_.s-products-slider-card]:max-w-none" minimal></salla-products-slider>
+      </div>
     </div>
-  </salla-slider>
 
-</div>
+
+    {% for product in component.cards_products %}
+  <div class="hotspot hotspot-{{ loop.index }} hotspot--outer-pulse hotspot--on-right cc-animate-init cc-animate-in" data-cc-animate="" data-cc-animate-delay="0.3s" style="animation-delay: 0.3s;">
+    <button type="button" class="hotspot__btn hotspot__btn--number relative tap-target no-js-hidden" aria-expanded="false">
+      <span class="visually-hidden">عرض التفاصيل</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-plus" aria-hidden="true" focusable="false" role="presentation">
+        <path d="M12 5v14M5 12h14"></path>
+      </svg>
+      <span class="hotspot__btn-number">{{ loop.index }}</span>
+    </button>
+    <div class="hotspot__card no-js-hidden has-motion" aria-hidden="true">
+      <div class="whole-set-wrapper">
+           <custom-salla-product-card product="{{product}}" minimal class="product-block product-block--landscape max-w-[365px]" data-product-id="{{ product.id }}"></custom-salla-product-card>
+      </div>
     </div>
+  </div>
+{% endfor %}
+
 </section>
 

@@ -65,7 +65,7 @@
 
 .s-product-card{
     &-content-sub{
-      @apply justify-start gap-3;
+      @apply justify-start gap-3 m-0;
     }
 
     &-starting-price{

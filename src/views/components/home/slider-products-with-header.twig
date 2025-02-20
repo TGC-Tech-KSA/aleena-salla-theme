@@ -35,18 +35,6 @@
             block-title=" "
             slider-id="slider-with-bg-{{ position }}"
         ></salla-products-slider>
-<div class="instagram-slider-data px-7">
-<salla-slider type="fullwidth" class="instagram-slider xl:w-[calc(100%/6)] [&_.swiper]:!overflow-visible my-6" loop id="photos-{{ position }}-instagram" slider-config="{&quot;effect&quot;:&quot;cards&quot;,&quot;slidesPerView&quot;:1, &quot;allowTouchMove&quot;: true,&quot;grabCursor&quot:true}">
-    <div slot="items">
-      {% for product in component.products %}
-      <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] p-3 bg-white">
-        <custom-salla-product-card product="{{product}}" noImage class="[&_.s-product-card-image]:md:!h-32 [&_.s-product-card-image]:lg:!h-52"></custom-salla-product-card>
-      </div>
-      {% endfor %}
-    </div>
-  </salla-slider>
-
-</div>
     </div>
 </section>
 

@@ -71,6 +71,35 @@ class Home extends BasePage {
     });
     observerAll.observe(document.body, { childList: true, subtree: true });
     document.addEventListener('DOMContentLoaded', initializeAutoplayRestart);
+
+
+
+// //////
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.hotspot__btn').forEach(function (button) {
+    button.addEventListener('click', function () {
+      let hotspot = this.closest('.hotspot');
+      let hotspotCard = hotspot.querySelector('.hotspot__card');
+
+      // التبديل بين الفتح والإغلاق
+      let isOpen = hotspotCard.classList.contains('active');
+
+      // إغلاق جميع البطاقات الأخرى قبل فتح الجديدة
+      document.querySelectorAll('.hotspot__card').forEach((card) => {
+        card.classList.remove('active');
+        card.setAttribute('aria-hidden', 'true');
+      });
+
+      if (!isOpen) {
+        hotspotCard.classList.add('active');
+        hotspotCard.setAttribute('aria-hidden', 'false');
+      }
+    });
+  });
+});
+
+
+// ///////
     }
      playVideos() {
     document.addEventListener('DOMContentLoaded', function () {
