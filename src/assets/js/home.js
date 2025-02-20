@@ -6,6 +6,7 @@ window.fslightbox = Lightbox;
 class Home extends BasePage {
     onReady() {
         this.initFeaturedTabs();
+        this.circleBullets();
     }
 
     /**
@@ -24,6 +25,51 @@ class Home extends BasePage {
             })
         });
         document.querySelectorAll('.s-block-tabs').forEach(block => block.classList.add('tabs-initialized'));
+    }
+
+    circleBullets(){
+    function addSVGToBullets() {
+    document.querySelectorAll(".home-main-slider .swiper-pagination-bullet").forEach(function (bullet) {
+        if (!bullet.querySelector("svg")) {
+            bullet.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="18" cy="18" r="16" fill="none" stroke="#fff" stroke-width="2"></circle>
+                    <circle class="progress-ring" cx="18" cy="18" r="16" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="100" stroke-dashoffset="100"></circle>
+                </svg>
+            `;
+        }
+    });
+    }
+    const observer = new MutationObserver(addSVGToBullets);
+    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener("DOMContentLoaded", addSVGToBullets);
+    // restartAutoplayOnClick
+    function restartAutoplayOnClick(swiperInstance, sliderElement) {
+        sliderElement.querySelectorAll('.swiper-pagination-bullet ,.s-slider-nav-arrow').forEach((bullet) => {
+            bullet.addEventListener('click', function () {
+                setTimeout(() => {
+                if (swiperInstance && swiperInstance.autoplay) {
+                    swiperInstance.autoplay.start();
+                }
+                }, 500);
+            });
+        });
+    }
+
+    function initializeAutoplayRestart() {
+        document.querySelectorAll('.home-main-slider').forEach((sliderElement) => {
+            let swiperInstance = sliderElement.querySelector('.swiper')?.swiper;
+            if (swiperInstance) {
+            restartAutoplayOnClick(swiperInstance, sliderElement);
+            }
+        });
+    }
+
+    const observerAll = new MutationObserver(() => {
+    initializeAutoplayRestart();
+    });
+    observerAll.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener('DOMContentLoaded', initializeAutoplayRestart);
     }
 }
 

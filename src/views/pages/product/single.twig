@@ -407,10 +407,6 @@
 
     {# Comments Area #}
     <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
-
-    {% include 'components.product.single.offer_products' with {is_root_menu :true} %}
-    {# {% component 'product.single.offer_products' %} #}
-
     {# Similar Products Area #}
     <div class="container">
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>

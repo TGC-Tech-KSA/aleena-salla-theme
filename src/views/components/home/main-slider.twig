@@ -1,17 +1,26 @@
 {% set time = component.image_time %}
 {% set speed = component.speed_animation %}
-<section class="{{component.distance_container ? ' ' : 's-block'}} home-main-slider {{ is_repeated ? 'repeated-block' : '' }} lg:h-[960px]">
-  <div class="{{component.full_container ? ' ' : 'container'}}">
-  <salla-slider type="fullwidth" slider-config="{&quot;effect&quot;: &quot;{{component.influence}}&quot;,&quot;slidesPerView&quot;:1,&quot;speed&quot;:{{speed ? speed: '2'}}000,{% if component.main_slider|length > 1 %}&quot;autoplay&quot;: {&quot;delay&quot;:{{time ? time: '5'}}000},{% endif %}&quot;allowTouchMove&quot;: true}" class="slider-h-advanced main-slider h-full [&_.swiper-pagination-bullets]:!bottom-12 [&_.swiper-pagination-bullets]:md:!bottom-20 [&_.swiper-slide-active]:z-2" auto-play id="main-{{ position }}-slider" {% if component.hidden_arrw %} show-controls="false" {% else %} show-controls="true"{% endif %} {{component.hidden_bullets ? ' ' : 'pagination'}} >
+{% set dir = user.language.dir %}
+<section id="home-main-slider-{{ position }}" class="{{component.distance_container ? ' ' : 's-block'}} home-main-slider {{ is_repeated ? 'repeated-block' : '' }} h-[430px] lg:h-[960px]">
+  <div class="{{component.full_container ? ' ' : 'container'}} h-full">
+  <salla-slider type="fullwidth" slider-config="{&quot;effect&quot;: &quot;{{component.influence}}&quot;,&quot;slidesPerView&quot;:1,&quot;speed&quot;:{{speed ? speed: '2'}}000,{% if component.main_slider|length > 1 %}&quot;autoplay&quot;: {&quot;delay&quot;:{{time ? time: '5'}}000},{% endif %}&quot;allowTouchMove&quot;: true}"
+     class="slider-h-advanced main-slider h-full [&_.swiper]:!h-full [&_.swiper-pagination]:!flex [&_.swiper-pagination]:justify-center [&_.swiper-pagination]:items-center [&_.swiper-pagination-bullets]:!bottom-4 [&_.swiper-slide-active]:z-2" auto-play id="main-{{ position }}-slider" {% if component.hidden_arrw %} show-controls="false" {% else %} show-controls="true"{% endif %} {{component.hidden_bullets ? ' ' : 'pagination'}} >
     <div slot="items">
       {% for item in component.main_slider %}
         <div class="swiper-slide transition-all duration-[2s] bg-[var(--store-background)]">
           <a href="{{item.url}}">
               {% if item.viwe_type == 'viwe_photo' %}
-                <img class="advanced-image w-full object-cover object-center lazy {{component.full_container ? 'h-[460px] md:h-[760px] ' : 'h-[460px] md:h-[660px]'}}" src="" data-src="{{item.alsort}}" loading="lazy" height="300" width="1200" alt="{{store.name}} image-slider-{{index}}" >
+                {% set image_src = item.alsort %}
+                {% if dir == 'ltr' and item.alsort_en != '' %}
+                    {% set image_src = item.alsort_en %}
+                {% endif %}
+                {% if dir == 'rtl' and item.alsort == '' %}
+                    {% set image_src = item.alsort_en %}
+                {% endif %}
+                <img class="advanced-image w-full object-cover object-center lazy h-full" src="" data-src="{{ image_src }}" loading="lazy" height="950" width="1920"alt="{{ store.name }} image-slider-{{ index }}">
               {% endif %}
               {% if item.viwe_type == 'viwe_youtube' %}
-              <div class="slider relative w-full  {{component.full_container ? 'h-[460px] md:h-[760px] ' : 'h-[460px] md:h-[660px]'}} overflow-hidden">
+              <div class="slider relative w-full h-full overflow-hidden">
               <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden;"></div>
               {% set video_url = item.youtube_url %}
               {% set video_id = video_url | split('v=')[1] %}
@@ -35,3 +44,1410 @@
   </div>
 </section>
 
+
+<style>
+  #home-main-slider-{{ position }} .swiper-pagination-bullet-active svg circle {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: fillCircle {{time}}s linear forwards;
+  }
+</style>
+
+
+
+
+
+
+
+<div class="section-id-template--17254870122688__story_feed_video_g88Gjq story-feed">
+  <div class="container container--not-mobile container--no-max">
+    <h2 class="hometitle h4 align-center has-paging">
+      #WearingAleena
+
+    </h2>
+
+      <div class="story-feed__item-wrapper" id="posts" style="display: flex;">
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-1')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_135716.png?height=500&amp;v=1736938655" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_135716.png?height=500&amp;v=1736938655&amp;width=344 344w" width="344" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-2')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_37.png?height=500&amp;v=1732816010" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_37.png?height=500&amp;v=1732816010&amp;width=252 252w" width="252" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-3')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_140626.png?height=500&amp;v=1736939269" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_140626.png?height=500&amp;v=1736939269&amp;width=339 339w" width="339" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-4')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_142510.png?height=500&amp;v=1736940328" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_142510.png?height=500&amp;v=1736940328&amp;width=346 346w" width="346" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-5')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_140242.png?height=500&amp;v=1736938979" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_140242.png?height=500&amp;v=1736938979&amp;width=342 342w" width="342" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-6')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_134428.png?height=500&amp;v=1736937887" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_2025-01-15_134428.png?height=500&amp;v=1736937887&amp;width=344 344w" width="344" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-7')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_43.png?height=500&amp;v=1732818695" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_43.png?height=500&amp;v=1732818695&amp;width=307 307w" width="307" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-8')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_46.png?height=500&amp;v=1732819692" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_46.png?height=500&amp;v=1732819692&amp;width=233 233w" width="233" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-9')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_44.png?height=500&amp;v=1732818897" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_44.png?height=500&amp;v=1732818897&amp;width=315 315w" width="315" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-10')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_39.png?height=500&amp;v=1732816113" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_39.png?height=500&amp;v=1732816113&amp;width=298 298w" width="298" height="500" loading="lazy">
+
+                </div>
+
+            <div class="story-feed__item" onclick="scrollTotargetVideo('video-11')">
+                <svg class="video-post__svg " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+                </svg>
+
+                    <img src="//shopaleena.com/cdn/shop/files/Screenshot_45.png?height=500&amp;v=1732819692" alt="" srcset="//shopaleena.com/cdn/shop/files/Screenshot_45.png?height=500&amp;v=1732819692&amp;width=318 318w" width="318" height="500" loading="lazy">
+
+                </div>
+
+      </div>
+
+  </div>
+</div>
+<div id="reals" class="app__videos" reals="" style="display: none;">
+
+        <div id="video-1" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/186eb4d394a04ef19c2e86f824cba40b/186eb4d394a04ef19c2e86f824cba40b.HD-720p-1.6Mbps-41023465.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@themarwa1</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+
+            <video class="video__player" playsinline="" src="//shopaleena.com/cdn/shop/videos/c/vp/186eb4d394a04ef19c2e86f824cba40b/186eb4d394a04ef19c2e86f824cba40b.HD-720p-1.6Mbps-41023465.mp4?v=0"></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8112001319104">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image image-cont--same-aspect-ratio">
+            <a class="product-link" href="/ar/products/purple-velvet-bodycon-maxi-dress" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="32467491586240"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-761401.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=1337" alt="Purple Velvet Bodycon Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-761401.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=340 340w, //shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-761401.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=480 480w, //shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-761401.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover" data-media-id="32467491356864" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-184531.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=1337" alt="Purple Velvet Bodycon Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-184531.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=340 340w, //shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-184531.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=480 480w, //shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-184531.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32467491455168" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-347218.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=1337" alt="Purple Velvet Bodycon Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-347218.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=340 340w, //shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-347218.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=480 480w, //shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-347218.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32467491520704" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-253655.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=1337" alt="Purple Velvet Bodycon Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-253655.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=340 340w, //shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-253655.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=480 480w, //shopaleena.com/cdn/shop/files/purple-velvet-bodycon-maxi-dressshopaleena-253655.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1739263040&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--meta">
+      <span>Best Seller</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/purple-velvet-bodycon-maxi-dress"><div class="product-block__title">فستان بنفسجي مخمل ضيق بأكمام طويلة</div><div class="product-price product-price--block">
+<div class="
+    price">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="686">686 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-2" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/b7af40f0cee7494eace855cc932e8476/b7af40f0cee7494eace855cc932e8476.HD-1080p-4.8Mbps-38906806.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@amaldaily</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+
+            <video class="video__player" playsinline="" src="//shopaleena.com/cdn/shop/videos/c/vp/b7af40f0cee7494eace855cc932e8476/b7af40f0cee7494eace855cc932e8476.HD-1080p-4.8Mbps-38906806.mp4?v=0"></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8116797833408">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image ">
+            <a class="product-link" href="/ar/products/black-cape-sleeve-twist-waist-velvet-dress" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="32646447825088"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-484415.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=2048" alt="Black Cape Sleeve Twist - Waist Velvet Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-484415.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=340 340w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-484415.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=480 480w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-484415.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=740 740w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-484415.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=980 980w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-484415.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-484415.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover" data-media-id="32646447956160" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-212224.jpg?crop=region&amp;crop_height=2048&amp;crop_left=306&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=2047" alt="Black Cape Sleeve Twist - Waist Velvet Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-212224.jpg?crop=region&amp;crop_height=2048&amp;crop_left=306&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=340 340w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-212224.jpg?crop=region&amp;crop_height=2048&amp;crop_left=306&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=480 480w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-212224.jpg?crop=region&amp;crop_height=2048&amp;crop_left=306&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=740 740w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-212224.jpg?crop=region&amp;crop_height=2048&amp;crop_left=306&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=980 980w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-212224.jpg?crop=region&amp;crop_height=2048&amp;crop_left=306&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-212224.jpg?crop=region&amp;crop_height=2048&amp;crop_left=306&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32646447857856" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-807419.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=2048" alt="Black Cape Sleeve Twist - Waist Velvet Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-807419.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=340 340w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-807419.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=480 480w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-807419.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=740 740w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-807419.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=980 980w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-807419.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-807419.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32646447890624" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-587029.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=2048" alt="Black Cape Sleeve Twist - Waist Velvet Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-587029.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=340 340w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-587029.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=480 480w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-587029.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=740 740w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-587029.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=980 980w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-587029.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-587029.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736153461&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32646447923392" data-image-index="4"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-198708.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1732596506&amp;width=2048" alt="Black Cape Sleeve Twist - Waist Velvet Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-198708.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1732596506&amp;width=340 340w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-198708.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1732596506&amp;width=480 480w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-198708.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1732596506&amp;width=740 740w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-198708.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1732596506&amp;width=980 980w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-198708.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1732596506&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/black-cape-sleeve-twist-waist-velvet-dressshopaleena-198708.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1732596506&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--new-in">
+      <span>وصول جديد</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/black-cape-sleeve-twist-waist-velvet-dress"><div class="product-block__title">فستان مخمل أسود بأكمام طويلة وخصر ملتف</div><div class="product-price product-price--block">
+<div class="
+    price">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="486">486 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-3" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/baaf84f9bbf74c89af1873f5d3aef910/baaf84f9bbf74c89af1873f5d3aef910.HD-720p-1.6Mbps-41023851.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@hva.22</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+
+            <video class="video__player" playsinline="" src="//shopaleena.com/cdn/shop/videos/c/vp/baaf84f9bbf74c89af1873f5d3aef910/baaf84f9bbf74c89af1873f5d3aef910.HD-720p-1.6Mbps-41023851.mp4?v=0"></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8111928770752">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image image-cont--same-aspect-ratio">
+            <a class="product-link" href="/ar/products/pleated-skirt-crepe-maxi-dress" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="32348107210944"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-388056.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=1337" alt="Pleated Skirt Crepe Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-388056.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=340 340w, //shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-388056.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=480 480w, //shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-388056.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover" data-media-id="32348107243712" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-477463.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=1337" alt="Pleated Skirt Crepe Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-477463.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=340 340w, //shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-477463.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=480 480w, //shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-477463.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32348107276480" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-264628.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=1337" alt="Pleated Skirt Crepe Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-264628.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=340 340w, //shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-264628.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=480 480w, //shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-264628.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32348107309248" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-335892.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=1337" alt="Pleated Skirt Crepe Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-335892.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=340 340w, //shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-335892.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=480 480w, //shopaleena.com/cdn/shop/files/pleated-skirt-crepe-maxi-dressshopaleena-335892.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--meta">
+      <span>Best Seller</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/pleated-skirt-crepe-maxi-dress"><div class="product-block__title">فستان كريب ماكسي أكمام طويلة مع كسرات</div><div class="product-price product-price--block">
+<div class="
+    price price--sold-out">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="582">582 SAR</span>
+</span>
+    </div>
+
+
+
+      <span class="price-label price-label--sold-out">نفذ من المخزون</span>
+
+
+
+
+
+
+</div>
+
+</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-4" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/9097b7ee5fce4915896a2f3cc13aa2e6/9097b7ee5fce4915896a2f3cc13aa2e6.HD-720p-1.6Mbps-41024765.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@raghadiii</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+
+            <video class="video__player" playsinline="" src="//shopaleena.com/cdn/shop/videos/c/vp/9097b7ee5fce4915896a2f3cc13aa2e6/9097b7ee5fce4915896a2f3cc13aa2e6.HD-720p-1.6Mbps-41024765.mp4?v=0"></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8129650917568">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image image-cont--same-aspect-ratio">
+            <a class="product-link" href="/ar/products/navy-sweater-with-contrast-cuffs" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="32857271075008"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-787083.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=1337" alt="Navy Sweater with Contrast Cuffs - shopaleena" srcset="//shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-787083.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=340 340w, //shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-787083.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=480 480w, //shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-787083.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover" data-media-id="32857271107776" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-735052.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=1337" alt="Navy Sweater with Contrast Cuffs - shopaleena" srcset="//shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-735052.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=340 340w, //shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-735052.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=480 480w, //shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-735052.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32857271140544" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-859860.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=1337" alt="Navy Sweater with Contrast Cuffs - shopaleena" srcset="//shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-859860.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=340 340w, //shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-859860.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=480 480w, //shopaleena.com/cdn/shop/files/navy-sweater-with-contrast-cuffsshopaleena-859860.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1734005254&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--new-in">
+      <span>وصول جديد</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/navy-sweater-with-contrast-cuffs"><div class="product-block__title">بلوزة كحلي كم طويل بأساور بيضاء</div><div class="product-price product-price--block">
+<div class="
+    price">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="243">243 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-5" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/166e96a9f5d34e14aba503b45d9f7d94/166e96a9f5d34e14aba503b45d9f7d94.HD-720p-1.6Mbps-41023657.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@alyakhalil7</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+
+            <video class="video__player" playsinline="" src="//shopaleena.com/cdn/shop/videos/c/vp/166e96a9f5d34e14aba503b45d9f7d94/166e96a9f5d34e14aba503b45d9f7d94.HD-720p-1.6Mbps-41023657.mp4?v=0"></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8094813126848">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image image-cont--same-aspect-ratio">
+            <a class="product-link" href="/ar/products/crepe-taffeta-contrast-gown" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="32481271414976"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-636333.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=1337" alt="Crepe - Taffeta Contrast Gown - shopaleena" srcset="//shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-636333.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=340 340w, //shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-636333.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=480 480w, //shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-636333.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover" data-media-id="32481271447744" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-593859.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=1337" alt="Crepe - Taffeta Contrast Gown - shopaleena" srcset="//shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-593859.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=340 340w, //shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-593859.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=480 480w, //shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-593859.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32481271480512" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-416248.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=1337" alt="Crepe - Taffeta Contrast Gown - shopaleena" srcset="//shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-416248.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=340 340w, //shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-416248.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=480 480w, //shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-416248.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32481271513280" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-795063.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=1337" alt="Crepe - Taffeta Contrast Gown - shopaleena" srcset="//shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-795063.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=340 340w, //shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-795063.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=480 480w, //shopaleena.com/cdn/shop/files/crepe-taffeta-contrast-gownshopaleena-795063.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731519305&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--new-in">
+      <span>وصول جديد</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/crepe-taffeta-contrast-gown"><div class="product-block__title">فستان ماكسي كريب وتفته أبيض وأسود</div><div class="product-price product-price--block">
+<div class="
+    price">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="1251">1,251 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-6" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/14cac99262f04432898c7281d84d8435/14cac99262f04432898c7281d84d8435.HD-720p-1.6Mbps-41022728.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@flairandthecity</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+
+            <video class="video__player" playsinline="" src="//shopaleena.com/cdn/shop/videos/c/vp/14cac99262f04432898c7281d84d8435/14cac99262f04432898c7281d84d8435.HD-720p-1.6Mbps-41022728.mp4?v=0"></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8094813323456">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image ">
+            <a class="product-link" href="/ar/products/asymmetric-neck-bodycon-maxi-dress" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="32348083093696"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-584587.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=1337" alt="Asymmetric Neck Bodycon Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-584587.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=340 340w, //shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-584587.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=480 480w, //shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-584587.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover" data-media-id="32348083159232" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-306928.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=1337" alt="Asymmetric Neck Bodycon Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-306928.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=340 340w, //shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-306928.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=480 480w, //shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-306928.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32348083257536" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-739743.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=1337" alt="Asymmetric Neck Bodycon Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-739743.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=340 340w, //shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-739743.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=480 480w, //shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-739743.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32348083192000" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-443663.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=1337" alt="Asymmetric Neck Bodycon Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-443663.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=340 340w, //shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-443663.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=480 480w, //shopaleena.com/cdn/shop/files/asymmetric-neck-bodycon-maxi-dressshopaleena-443663.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690637&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--new-in">
+      <span>وصول جديد</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/asymmetric-neck-bodycon-maxi-dress"><div class="product-block__title">فستان ماكسي ضيق برقبة غير متماثلة</div><div class="product-price product-price--block">
+<div class="
+    price">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="416">416 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-7" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/fbca09de7ddd4e5d81619e236e2fd439/fbca09de7ddd4e5d81619e236e2fd439.HD-720p-1.6Mbps-38908834.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@life.alanoud</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+
+            <video class="video__player" playsinline="" src="//shopaleena.com/cdn/shop/videos/c/vp/fbca09de7ddd4e5d81619e236e2fd439/fbca09de7ddd4e5d81619e236e2fd439.HD-720p-1.6Mbps-38908834.mp4?v=0"></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="7972200644800">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image image-cont--same-aspect-ratio">
+            <a class="product-link" href="/ar/products/bare-shoulder-crepe-maxi-dress-red" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="30492225831104"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-535297.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1718095970&amp;width=2048" alt="Bare shoulder Crepe maxi dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-535297.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1718095970&amp;width=340 340w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-535297.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1718095970&amp;width=480 480w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-535297.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1718095970&amp;width=740 740w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-535297.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1718095970&amp;width=980 980w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-535297.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1718095970&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-535297.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1718095970&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover" data-media-id="30492226060480" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-451229.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=2048" alt="Bare shoulder Crepe maxi dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-451229.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=340 340w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-451229.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=480 480w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-451229.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=740 740w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-451229.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=980 980w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-451229.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-451229.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="30492225962176" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-649391.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=2048" alt="Bare shoulder Crepe maxi dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-649391.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=340 340w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-649391.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=480 480w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-649391.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=740 740w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-649391.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=980 980w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-649391.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-649391.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="30492226027712" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-914685.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=2048" alt="Bare shoulder Crepe maxi dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-914685.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=340 340w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-914685.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=480 480w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-914685.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=740 740w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-914685.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=980 980w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-914685.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/bare-shoulder-crepe-maxi-dressshopaleena-914685.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1736924054&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--new-in">
+      <span>وصول جديد</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/bare-shoulder-crepe-maxi-dress-red"><div class="product-block__title">فستان احمرماكسي كريب طويل الكم مكشوف الكتف</div><div class="product-price product-price--block">
+<div class="
+    price">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="677">677 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-8" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/431940ef811c43c4be154c8a5c8eaa0f/431940ef811c43c4be154c8a5c8eaa0f.HD-720p-1.6Mbps-38908836.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@naya</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+            <div class="placeholder video__placeholder">
+                <span class="text-gray-500">Loading...</span>
+            </div>
+            <video class="video__player hidden" playsinline=""></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8051063750848">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image image-cont--same-aspect-ratio">
+            <a class="product-link" href="/ar/products/long-sleeve-a-line-maxi-dress" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="31190750789824"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-203982.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=2048" alt="Long Sleeve A - line Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-203982.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=340 340w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-203982.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=480 480w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-203982.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=740 740w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-203982.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=980 980w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-203982.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-203982.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover product-block__image--inactivated" data-media-id="31190750855360" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-214909.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=2048" alt="Long Sleeve A - line Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-214909.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=340 340w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-214909.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=480 480w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-214909.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=740 740w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-214909.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=980 980w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-214909.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-214909.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190750888128" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-986801.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=2048" alt="فستان ماكسي أسود وأبيض بأكمام طويلة وقصة A - shopaleena" srcset="//shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-986801.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=340 340w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-986801.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=480 480w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-986801.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=740 740w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-986801.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=980 980w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-986801.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-986801.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190750920896" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-784580.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=2048" alt="Long Sleeve A - line Maxi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-784580.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=340 340w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-784580.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=480 480w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-784580.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=740 740w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-784580.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=980 980w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-784580.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/long-sleeve-a-line-maxi-dressshopaleena-784580.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233375&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/long-sleeve-a-line-maxi-dress"><div class="product-block__title">فستان ماكسي أسود وأبيض بأكمام طويلة وقصة A</div><div class="product-price product-price--block">
+<div class="
+    price">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="432">432 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a><div class="product-block-options product-block-options--swatch" data-option-name="Color">
+                      <div class="product-block-options__inner"><span class="product-block-options__item" data-option-item="Black &amp; White" data-media="31190750789824" data-swatch="black &amp; white">
+                              <span class="product-block-options__item__text">Black &amp; White</span>
+
+                            </span></div>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-9" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/8aad48bd97be4dfdbcf3b64da4297b29/8aad48bd97be4dfdbcf3b64da4297b29.HD-720p-1.6Mbps-38908835.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@remasal4</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+            <div class="placeholder video__placeholder">
+                <span class="text-gray-500">Loading...</span>
+            </div>
+            <video class="video__player hidden" playsinline=""></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8110857257152">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image ">
+            <a class="product-link" href="/ar/products/off-shoulder-gathered-waist-midi-dress" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="32348106260672"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-369463.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=1337" alt="Off Shoulder Gathered Waist Midi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-369463.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=340 340w, //shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-369463.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=480 480w, //shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-369463.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover product-block__image--inactivated" data-media-id="32348106358976" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-826368.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=1337" alt="Off Shoulder Gathered Waist Midi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-826368.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=340 340w, //shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-826368.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=480 480w, //shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-826368.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32348106555584" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-492994.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=1337" alt="Off Shoulder Gathered Waist Midi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-492994.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=340 340w, //shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-492994.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=480 480w, //shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-492994.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32348106653888" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-505900.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=1337" alt="Off Shoulder Gathered Waist Midi Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-505900.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=340 340w, //shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-505900.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=480 480w, //shopaleena.com/cdn/shop/files/off-shoulder-gathered-waist-midi-dressshopaleena-505900.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1730690768&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--new-in">
+      <span>وصول جديد</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/off-shoulder-gathered-waist-midi-dress"><div class="product-block__title">فستان ميدي تول بأكتاف مكشوفة</div><div class="product-price product-price--block">
+<div class="
+    price price--sold-out">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="434">434 SAR</span>
+</span>
+    </div>
+
+
+
+      <span class="price-label price-label--sold-out">نفذ من المخزون</span>
+
+
+
+
+
+
+</div>
+
+</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-10" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/6dacf8b90eb9464b802afa2a515043a5/6dacf8b90eb9464b802afa2a515043a5.HD-720p-1.6Mbps-38906805.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@hva.22</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+            <div class="placeholder video__placeholder">
+                <span class="text-gray-500">Loading...</span>
+            </div>
+            <video class="video__player hidden" playsinline=""></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8114959614144">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image image-cont--same-aspect-ratio">
+            <a class="product-link" href="/ar/products/cold-shoulder-maxi-dress-with-sleeves" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="32454937116864"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-130533.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1736153137&amp;width=1337" alt="Cold Shoulder Maxi Dress with Sleeves - shopaleena" srcset="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-130533.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1736153137&amp;width=340 340w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-130533.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1736153137&amp;width=480 480w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-130533.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1736153137&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover product-block__image--inactivated" data-media-id="32454937084096" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-172051.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1736153137&amp;width=1337" alt="Cold Shoulder Maxi Dress with Sleeves - shopaleena" srcset="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-172051.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1736153137&amp;width=340 340w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-172051.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1736153137&amp;width=480 480w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-172051.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1736153137&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32454937182400" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-321087.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=1337" alt="Cold Shoulder Maxi Dress with Sleeves - shopaleena" srcset="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-321087.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=340 340w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-321087.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=480 480w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-321087.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32454937149632" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-471878.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=1337" alt="Cold Shoulder Maxi Dress with Sleeves - shopaleena" srcset="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-471878.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=340 340w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-471878.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=480 480w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-471878.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32454937051328" data-image-index="4"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-619241.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=1337" alt="Cold Shoulder Maxi Dress with Sleeves - shopaleena" srcset="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-619241.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=340 340w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-619241.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=480 480w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-619241.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32454936953024" data-image-index="5"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-567107.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=1337" alt="Cold Shoulder Maxi Dress with Sleeves - shopaleena" srcset="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-567107.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=340 340w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-567107.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=480 480w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-567107.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32454936985792" data-image-index="6"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-782398.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=1337" alt="Cold Shoulder Maxi Dress with Sleeves - shopaleena" srcset="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-782398.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=340 340w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-782398.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=480 480w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-782398.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="32454937018560" data-image-index="7"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-247340.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=1337" alt="Cold Shoulder Maxi Dress with Sleeves - shopaleena" srcset="//shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-247340.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=340 340w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-247340.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=480 480w, //shopaleena.com/cdn/shop/files/cold-shoulder-maxi-dress-with-sleevesshopaleena-247340.jpg?crop=region&amp;crop_height=1337&amp;crop_left=200&amp;crop_top=0&amp;crop_width=935&amp;v=1731353683&amp;width=740 740w" width="935" height="1337" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--new-in">
+      <span>وصول جديد</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/cold-shoulder-maxi-dress-with-sleeves"><div class="product-block__title">فستان ماكسي بأكتاف مفتوحه وأكمام</div><div class="product-price product-price--block">
+<div class="
+    price price--sold-out">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="486">486 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a><div class="product-block-options product-block-options--swatch" data-option-name="Color">
+                      <div class="product-block-options__inner"><span class="product-block-options__item" data-option-item="Plum" data-media="32454936985792" data-swatch="plum">
+                              <span class="product-block-options__item__text">Plum</span>
+
+                            </span><span class="product-block-options__item" data-option-item="Burgundy" data-media="32454937149632" data-swatch="burgundy">
+                              <span class="product-block-options__item__text">Burgundy</span>
+
+                            </span></div>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+        <div id="video-11" class="video relative" data-video="//shopaleena.com/cdn/shop/videos/c/vp/de03d3bee2e44c6a8c771e602f7caaf0/de03d3bee2e44c6a8c771e602f7caaf0.HD-720p-1.6Mbps-38908838.mp4?v=0">
+            <div class="videoHeader ">
+                <section class="videoHeader__left-section">
+
+                    <h3>@leensk</h3>
+
+                </section>
+                <svg onclick="closeModal(event)" class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+
+                    <g id="SVGRepo_iconCarrier">
+
+                        <defs>
+
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #ffffff;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    stroke-width: 2px;
+                                }
+                            </style>
+
+                        </defs>
+
+                        <title></title>
+
+                        <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+
+                        <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+
+                        <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+
+                    </g>
+
+                </svg>
+            </div>
+            <div class="placeholder video__placeholder">
+                <span class="text-gray-500">Loading...</span>
+            </div>
+            <video class="video__player hidden" playsinline=""></video>
+            <button class="video__pause-btn ">
+                <span class="material-icons text-6xl">play_arrow</span>
+            </button>
+
+
+  <product-block class="product-block product-block--landscape" data-product-id="8050991562944">
+    <div class="block-inner">
+      <div class="block-inner-inner">
+
+<div class="image-cont image-cont--with-secondary-image image-cont--same-aspect-ratio">
+            <a class="product-link" href="/ar/products/sleeveless-crepe-pleated-dress" aria-hidden="true" tabindex="-1">
+              <div class="image-label-wrap">
+                <div><div class="product-block__image product-block__image--primary product-block__image--active" data-media-id="31190777168064"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-838152.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-838152.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-838152.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-838152.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-838152.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-838152.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-838152.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--show-on-hover product-block__image--inactivated" data-media-id="31190777200832" data-image-index="1"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-940474.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-940474.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-940474.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-940474.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-940474.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-940474.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-940474.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777233600" data-image-index="2"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-509946.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-509946.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-509946.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-509946.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-509946.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-509946.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-509946.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777266368" data-image-index="3"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-319984.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-319984.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-319984.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-319984.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-319984.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-319984.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-319984.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777331904" data-image-index="4"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-676593.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-676593.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-676593.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-676593.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-676593.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-676593.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-676593.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777397440" data-image-index="5"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-992699.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-992699.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-992699.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-992699.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-992699.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-992699.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-992699.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777299136" data-image-index="6"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-199461.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-199461.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-199461.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-199461.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-199461.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-199461.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-199461.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777364672" data-image-index="7"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-883981.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-883981.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-883981.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-883981.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-883981.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-883981.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-883981.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777430208" data-image-index="8"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-648447.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-648447.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-648447.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-648447.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-648447.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-648447.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-648447.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777462976" data-image-index="9"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-854799.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-854799.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-854799.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-854799.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-854799.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-854799.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-854799.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777495744" data-image-index="10"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-726067.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-726067.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-726067.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-726067.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-726067.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-726067.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-726067.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div><div class="product-block__image product-block__image--secondary product-block__image--inactivated" data-media-id="31190777528512" data-image-index="11"><div class="img-ar img-ar--cover" style="--aspect-ratio: 0.7">
+<img src="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-105551.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=2048" alt="Sleeveless Crepe Pleated Dress - shopaleena" srcset="//shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-105551.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=340 340w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-105551.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=480 480w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-105551.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=740 740w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-105551.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=980 980w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-105551.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1200 1200w, //shopaleena.com/cdn/shop/files/sleeveless-crepe-pleated-dressshopaleena-105551.jpg?crop=region&amp;crop_height=2048&amp;crop_left=307&amp;crop_top=0&amp;crop_width=1433&amp;v=1723233555&amp;width=1400 1400w" width="1433" height="2048" loading="lazy" sizes="100vw" class="theme-img"></div>
+</div></div><div class="product-block__image-dots" aria-hidden="true">
+                      <div class="product-block__image-dot product-block__image-dot--active"></div>
+                      <div class="product-block__image-dot"></div><div class="product-block__image-dot product-block__image-dot--more"></div></div><div class="product-label-container"><span class="product-label product-label--new-in">
+      <span>وصول جديد</span>
+    </span></div></div>
+            </a><a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="السابق" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"></path></svg></a>
+              <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="التالي" tabindex="-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false" role="presentation"><path d="m9 18 6-6-6-6"></path></svg></a></div>
+
+
+        <div class="product-block__detail align-ltr-left">
+          <div class="inner">
+            <div class="innerer">
+              <a class="product-link" href="/ar/products/sleeveless-crepe-pleated-dress"><div class="product-block__title">فستان كريب بكسرات بدون أكمام</div><div class="product-price product-price--block">
+<div class="
+    price">
+  <div class="price__default">
+    <span class="price__current"><span class="money conversion-bear-money" data-amount="260">260 SAR</span>
+</span>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</div></a><div class="product-block-options product-block-options--swatch" data-option-name="Color">
+                      <div class="product-block-options__inner"><span class="product-block-options__item" data-option-item="Black" data-media="31190777168064" data-swatch="black">
+                              <span class="product-block-options__item__text">Black</span>
+
+                            </span><span class="product-block-options__item" data-option-item="White" data-media="31190777430208" data-swatch="white">
+                              <span class="product-block-options__item__text">White</span>
+
+                            </span><span class="product-block-options__item product-block-options__item--unavailable" data-option-item="Beige" data-media="31190777331904" data-swatch="beige">
+                              <span class="product-block-options__item__text">Beige</span>
+
+                            </span></div>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></product-block>
+
+
+
+        </div>
+
+</div>
+   <script>
+    // ======================= scroll to video ======================
+    const posts = document.getElementById("posts");
+    const reals = document.getElementById("reals");
+    reals.style.display = "none"; // hide reals initially
+
+    function scrollTotargetVideo(video) {
+        const targetVideo = document.getElementById(video);
+        posts.style.display = "none";
+        reals.style.display = "block";
+        targetVideo.scrollIntoView({ behavior: "auto" });
+    }
+
+    // ======================= close modal ======================
+    function closeModal(event) {
+        event.stopPropagation();
+        reals.style.display = "none";
+        posts.style.display = "flex";
+    }
+    // ======================= intersection observer for lazy loading videos ======================
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const container = entry.target;
+            const videoElement = container.querySelector('.video__player');
+            const placeholder = container.querySelector('.placeholder');
+            const videoSrc = container.dataset.video;
+
+            if (entry.isIntersecting) {
+                if (!videoElement.src) {
+                    videoElement.src = videoSrc;
+                    videoElement.classList.remove('hidden'); // Show video
+                    placeholder?.remove(); // Remove placeholder if it exists
+                }
+                videoElement.play();
+                videoElement.muted = false; // Unmute the video
+            } else {
+                videoElement.pause();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // Observing videos for lazy loading
+    document.querySelectorAll('.video').forEach(video => observer.observe(video));
+    // ======================= observer to pause first video on scroll out of view ======================
+    const firstVideoContainer = document.getElementById('video-1');
+    const firstVideo = firstVideoContainer.querySelector('.video__player');
+
+    const pauseFirstVideoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                firstVideo.pause();
+            }
+        });
+    }, { threshold: 0.1 }); // Adjust threshold to detect when it's barely out of view
+
+    pauseFirstVideoObserver.observe(firstVideoContainer);
+
+    // ======================= pause/play on click ======================
+    document.querySelectorAll('.video__player').forEach((video) => {
+
+        const pauseBtn = video.nextElementSibling;
+
+        video.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                video.muted = false; // Ensure video is unmuted when playing
+                pauseBtn.style.display = "none";
+            } else {
+                video.pause();
+                pauseBtn.style.display = "flex";
+            }
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                pauseBtn.style.display = "none";
+            } else {
+                video.pause();
+                pauseBtn.style.display = "flex";
+            }
+        });
+    });
+
+
+</script>

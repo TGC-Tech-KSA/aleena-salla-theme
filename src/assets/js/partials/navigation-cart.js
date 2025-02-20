@@ -489,8 +489,8 @@ class NavCartMenu extends HTMLElement {
                 <div class="pb-64">
                     ${itemsTemplate}
                     <div class="!bg-[#fcfaf3]">
-                      <salla-products-slider source="related" source-value="${cart.items.length ? cart.items[0].id : ''}" block-title="${salla.lang.get('cart.mayLike')}" includes='${includes_features}' display-all-url class="!my-4 aleena-arrows-2 products-cart !bg-[#fcfaf3]"></salla-products-slider>
-                      </div>
+                        <salla-products-slider source="related" source-value="${cart.items.length ? cart.items[0].id : ''}" block-title="${salla.lang.get('cart.mayLike')}" includes='${includes_features}' display-all-url class="!my-4 aleena-arrows-2 products-cart !bg-[#fcfaf3]" limit="6"></salla-products-slider>
+                    </div>
                     </div>
                 </div>
                 ${cartFooter}

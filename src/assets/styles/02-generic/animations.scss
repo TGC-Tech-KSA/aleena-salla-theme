@@ -107,3 +107,47 @@
   animation-fill-mode: both;
   animation-iteration-count: 1;
 }
+/* تصميم الدوتس الأساسية */
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  background: #fff !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1 !important;
+}
+
+/* إزالة الخلفية عند تفعيل الدوت */
+.swiper-pagination-bullet-active {
+  background: transparent !important;
+}
+
+/* إضافة المؤقت الدائري داخل كل دوت */
+.swiper-pagination-bullet::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: none;
+}
+
+// /* SVG الدائرة المتحركة */
+// .swiper-pagination-bullet-active svg circle {
+//   stroke-dasharray: 100;
+//   stroke-dashoffset: 100;
+//   animation: fillCircle 5s linear forwards;
+// }
+
+/* أنيميشن تعبئة الدائرة */
+@keyframes fillCircle {
+  0% {
+    stroke-dashoffset: 100;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

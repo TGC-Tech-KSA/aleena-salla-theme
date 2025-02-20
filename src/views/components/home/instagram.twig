@@ -1,0 +1,24 @@
+<section class="s-block s-block--instagram container">
+    <div class="pb-4 md:pb-8 border-b border-darker/20 mb-3 md:mb-4 flex justify-between md:justify-start gap-3"><h2 class="uppercase text-sm md:text-base font-bold">{{component.instagram_title}}</h2>
+    <a href="{{component.instagram_url}}" aria-label= "{{component.instagram_title}}" class="uppercase hover:underline relative text-xs md:text-sm">{{component.instagram_btn}}</a>
+    </div>
+    <div class="grid grid-cols-5 grid-flow-row gap-2 sm:gap-6" slot="items">
+        {% for index, banner in component.instagram %}
+        <a data-fslightbox="{{ component.position }}" data-img-id="{{loop.index }}" data-slid-index="{{ loop.index-1 }}" data-caption="{{ image.alt }}" data-infinite="true" data-type="image" href="{{banner.image}}" aria-label="{{ product.name }}" class="swiper-slide magnify-wrapper model-entry group">
+            <div class="has-overlay absolute w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all left-0 top-0">
+            <i class="sicon-instagram text-white text-lg relative z-1"></i>
+            </div>
+            <img id="{{ loop.index }}" loading="lazy" src="" data-src="{{banner.image}}" alt="{{ image.alt }}" class="lazy w-full h-full object-cover">
+        </a>
+        {% set post = banner.insta_post_url  %}
+        {% set rest = post|replace({"https://www.instagram.com/":""})|striptags %}
+        {% set parts = rest | split('/') %}
+        {% set post_id = parts[0] %}
+        {% set post_x = parts[1] %}
+        <iframe src="" data-src="https://www.instagram.com/{{post_id}}/{{post_x}}/embed" id="instagram-media-{{index}}" loading="lazy" class="hidden w-auto h-[600px] overflow-hidden lazy"></iframe>
+        {% endfor %}
+    </div>
+</section>
+<style>
+    iframe.fslightbox-source{display: block !important;}
+</style>
