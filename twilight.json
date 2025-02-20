@@ -1321,23 +1321,20 @@
                       },
                       {
                         "type": "items",
-                        "icon": "sicon-link",
+                        "icon": "sicon-keyboard_arrow_down",
                         "label": "اختر المنتج",
                         "id": "instagram.products",
-                        "value": null,
+                        "format": "dropdown-list",
                         "description": null,
-                        "required": false,
-                        "format": "variable-list",
-                        "searchable": true,
+                        "selected": [],
+                        "options": [],
+                        "required": true,
+                        "multichoice": true,
                         "source": "products",
-                        "sources": [
-                          {
-                            "label": "منتج",
-                            "key": "products",
-                            "value": "products"
-                          }
-                        ],
-                        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+                        "searchable": true,
+                        "maxLength": 8,
+                        "minLength": 1,
+                        "value": []
                       }
                     ]
                 }
