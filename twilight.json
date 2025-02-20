@@ -1323,7 +1323,7 @@
                         "type": "items",
                         "icon": "sicon-link",
                         "label": "اختر المنتج",
-                        "id": "instagram.slider_products",
+                        "id": "instagram.products",
                         "value": null,
                         "description": null,
                         "required": false,

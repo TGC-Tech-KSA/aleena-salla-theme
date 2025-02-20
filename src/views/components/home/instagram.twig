@@ -1,50 +1,53 @@
 <section class="s-block s-block--instagram container">
-    <div class="pb-4 md:pb-8 border-b border-darker/20 mb-3 md:mb-4 flex justify-between md:justify-start gap-3"><h2 class="uppercase text-sm md:text-base font-bold">{{component.instagram_title}}</h2>
-    <a href="{{component.instagram_url}}" aria-label= "{{component.instagram_title}}" class="uppercase hover:underline relative text-xs md:text-sm">{{component.instagram_btn}}</a>
-    </div>
-    <div class="grid grid-cols-5 grid-flow-row gap-2 sm:gap-6" slot="items">
-        {% for index, banner in component.instagram %}
-        <a data-fslightbox="{{ component.position }}" data-img-id="video-{{loop.index }}" data-slid-index="{{ loop.index-1 }}" data-caption="{{ image.alt }}"
-        data-video-src="{{banner.slider_bg_video}}?raw=true"
-        data-infinite="true" data-type="youtube" href="#video-{{loop.index }}" aria-label="{{ product.name }}" class="swiper-slide magnify-wrapper model-entry group">
-            <div class="has-overlay absolute w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all left-0 top-0">
-            <i class="sicon-instagram text-white text-lg relative z-1"></i>
-            </div>
-            <img loading="lazy" src="" data-src="{{banner.image}}" alt="{{ image.alt }}" class="lazy w-full h-full object-cover">
-
-
+    <div class="pb-4 md:pb-8 border-b border-darker/20 mb-3 md:mb-4 flex justify-between md:justify-start gap-3">
+        <h2 class="uppercase text-sm md:text-base font-bold">{{ component.instagram_title }}</h2>
+        <a href="{{ component.instagram_url }}" aria-label="{{ component.instagram_title }}" class="uppercase hover:underline relative text-xs md:text-sm">
+            {{ component.instagram_btn }}
         </a>
-        <div id="video-{{loop.index }}">
-            <video  playsinline width="400" autoplay="autoplay" controls muted loop="loop" data-src="{{banner.slider_bg_video}}?raw=true" class="w-full h-auto object-cover object-center lazy"><source src="" data-src="{{banner.slider_bg_video}}?raw=true" type="video/mp4" class="lazy"><source src="" data-src="{{banner.slider_bg_video}}?raw=true" type="video/ogg" class="lazy">
-          <source src="" data-src="{{banner.slider_bg_video}}?raw=true" type="video/avi" class="lazy">
-          <source src="" data-src="{{banner.slider_bg_video}}?raw=true" type="video/webm" class="lazy">
-          <track src="captions_en.vtt" kind="captions" srclang="en" label="english_captions"><track src="captions_es.vtt" kind="captions" srclang="es" label="spanish_captions"></video>
+    </div>
 
-            {# {% for product in banner.slider_products %} #}
+    {% if component.instagram is not empty %}
+    <div class="grid grid-cols-5 grid-flow-row gap-2 sm:gap-6" slot="items">
+        {% for banner in component.instagram %}
+        <a data-fslightbox="{{ component.position }}" data-img-id="video-{{ loop.index | default(0) }}"
+           data-slid-index="{{ loop.index - 1 }}"
+           data-caption="{{ banner.image.alt | default('Instagram Video') }}"
+           data-video-src="{{ banner.slider_bg_video }}?raw=true"
+           data-infinite="true" data-type="youtube"
+           href="#video-{{ loop.index | default(0) }}"
+           aria-label="{{ banner.name | default('Instagram Video') }}"
+           class="swiper-slide magnify-wrapper model-entry group">
 
-            {# {% set products_data = banner.slider_products %}
+            <div class="has-overlay absolute w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all left-0 top-0">
+                <i class="sicon-instagram text-white text-lg relative z-1"></i>
+            </div>
+            <img loading="lazy" src="{{ banner.image | default('fallback.jpg') }}"
+                 data-src="{{ banner.image }}"
+                 alt="{{ banner.image.alt | default('Instagram Video') }}"
+                 class="lazy w-full h-full object-cover">
+        </a>
 
-             {% for product in banner.slider_products %} #}
-             {# {% set products_data = banner.slider_products[0] %}
-             {% if products_data %}
+        <div id="video-{{ loop.index | default(0) }}">
+            <video playsinline width="400" autoplay controls muted loop class="w-full h-auto object-cover object-center lazy">
+                <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/mp4">
+                <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/ogg">
+                <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/avi">
+                <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/webm">
+                <track src="captions_en.vtt" kind="captions" srclang="en" label="English captions">
+                <track src="captions_es.vtt" kind="captions" srclang="es" label="Spanish captions">
+            </video>
 
-                <custom-salla-product-card  shadow-on-hover product="{{products_data}}"></custom-salla-product-card>
-
-              {% endif %} #}
-                {# {% if banner.slider_products %}
-                  <custom-salla-product-card shadow-on-hover product="{{banner.slider_products}}" fullImage></custom-salla-product-card>
-                  {% endif %} #}
-             {# {% endfor %} #}
-             {# {% set products_data = banner.slider_products %}
-             {% if products_data|length %}
-                    {% for product in products_data %}
-                        <custom-salla-product-card shadow-on-hover product="{{product}}" minimal></custom-salla-product-card>
-                      {% endfor %}
-{% endif %} #}
-
-<custom-salla-product-card shadow-on-hover product="{{banner.slider_products}}" fullImage></custom-salla-product-card>
+            {% set products_data = banner.slider_products %}
+            {# {% for product in products_data %} #}
+            {{products_data.name}}
+                <custom-salla-product-card shadow-on-hover product="{{products_data}}" minimal></custom-salla-product-card>
 
 
+            {# {% endfor %} #}
+        </div>
         {% endfor %}
     </div>
+    {% else %}
+    <p class="text-center text-gray-500">لا توجد فيديوهات متاحة حاليًا.</p>
+    {% endif %}
 </section>
