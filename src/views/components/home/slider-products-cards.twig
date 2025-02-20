@@ -38,24 +38,5 @@
         <salla-products-slider source="selected" limit="{{ limit }}" autoplay="false" source-value="[{{ component.cards_products|map((product) => product.id)|join(',') }}]" block-title="{{ title }}" block-subTitle="{{ sub_title|raw }}" slider-id="slider-with-bg-{{ position }}" class="w-full [&_.s-products-slider-card]:max-w-none" minimal></salla-products-slider>
       </div>
     </div>
-
-
-    {% for product in component.cards_products %}
-  <div class="hotspot hotspot-{{ loop.index }} hotspot--outer-pulse hotspot--on-right cc-animate-init cc-animate-in" data-cc-animate="" data-cc-animate-delay="0.3s" style="animation-delay: 0.3s;">
-    <button type="button" class="hotspot__btn hotspot__btn--number relative tap-target no-js-hidden" aria-expanded="false">
-      <span class="visually-hidden">عرض التفاصيل</span>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-plus" aria-hidden="true" focusable="false" role="presentation">
-        <path d="M12 5v14M5 12h14"></path>
-      </svg>
-      <span class="hotspot__btn-number">{{ loop.index }}</span>
-    </button>
-    <div class="hotspot__card no-js-hidden has-motion" aria-hidden="true">
-      <div class="whole-set-wrapper">
-           <custom-salla-product-card product="{{product}}" minimal class="product-block product-block--landscape max-w-[365px]" data-product-id="{{ product.id }}"></custom-salla-product-card>
-      </div>
-    </div>
-  </div>
-{% endfor %}
-
 </section>
 
