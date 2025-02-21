@@ -28,9 +28,34 @@
 | product.options[].details[].is_selected         | bool                       | Does current option selected? (useful in cart page)                                                         |
 | product.options[].details[].is_out              | bool                       | Does current option out of stock?                                                                           |
 #}
-{% if product.options|length %}
+{# {% if product.options|length %}
     <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}"></salla-product-options>
+{% endif %} #}
+
+
+{% if product.options|length > 0 %}
+    {# {% set show_single_option = theme.settings.get('show_singleOption', true) %}
+    {% set show_multiple_option = theme.settings.get('show_multipleOption', true) %} #}
+
+    {# {% set config = {} %}
+    {% if show_single_option %} #}
+        {% set config = {} %}
+        {% set config = config|merge({'single-option': { 'type': 'button' }}) %}
+         {# {% set config = config|merge({'multiple-option': { 'type': 'button' }}) %} #}
+    {# {% endif %}
+    {% if show_multiple_option %}
+        {% set config = config|merge({'multiple-option': { 'type': 'button' }}) %}
+    {% endif %} #}
+
+    <salla-product-options
+        options="{{ product.options }}"
+        product-id="{{ product.id }}"
+        config="{{ config|json_encode }}">
+    </salla-product-options>
 {% endif %}
+
+
+
 
 {% if product.weight or product.has_size_guide %}
     <section class="bg-white p-5 rounded-md mb-5">

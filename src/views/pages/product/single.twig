@@ -410,7 +410,17 @@
     {# Similar Products Area #}
 
 {# {% block content %} #}
-{% component 'home' with product %}{# {% endblock %} #}
+
+{% include 'pages.index' %}
+
+{# {% include 'components.home.product.wide-banner' with { 'btn_theme_toggle': true, 'banner_data': prosingle.wide_banner } %} #}
+{# {% component 'components.home.product.wide-banner' with { btn_theme_toggle:true } %} #}
+
+{# {% component home with { btn_theme_toggle:true }%} #}
+{# {% component home with { show_wide_banner: true } %}
+{% component 'components.home.product.wide-banner' with { btn_theme_toggle:true } %} #}
+
+{# {% endblock %} #}
 <div class="container">
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
     </div>
