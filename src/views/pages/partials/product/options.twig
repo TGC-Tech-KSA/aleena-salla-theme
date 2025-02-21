@@ -28,34 +28,11 @@
 | product.options[].details[].is_selected         | bool                       | Does current option selected? (useful in cart page)                                                         |
 | product.options[].details[].is_out              | bool                       | Does current option out of stock?                                                                           |
 #}
-{# {% if product.options|length %}
-    <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}"></salla-product-options>
-{% endif %} #}
-
-
 {% if product.options|length > 0 %}
-    {# {% set show_single_option = theme.settings.get('show_singleOption', true) %}
-    {% set show_multiple_option = theme.settings.get('show_multipleOption', true) %} #}
-
-    {# {% set config = {} %}
-    {% if show_single_option %} #}
-        {% set config = {} %}
-        {% set config = config|merge({'single-option': { 'type': 'button' }}) %}
-         {# {% set config = config|merge({'multiple-option': { 'type': 'button' }}) %} #}
-    {# {% endif %}
-    {% if show_multiple_option %}
-        {% set config = config|merge({'multiple-option': { 'type': 'button' }}) %}
-    {% endif %} #}
-
-    <salla-product-options
-        options="{{ product.options }}"
-        product-id="{{ product.id }}"
-        config="{{ config|json_encode }}">
-    </salla-product-options>
+    {% set config = {} %}
+    {% set config = config|merge({'single-option': { 'type': 'button' }}) %}
+    <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}" config="{{ config|json_encode }}"></salla-product-options>
 {% endif %}
-
-
-
 
 {% if product.weight or product.has_size_guide %}
     <section class="bg-white p-5 rounded-md mb-5">
@@ -72,18 +49,13 @@
                     <i class="sicon-pencil-ruler"></i>
                     <span> {{ trans('pages.products.size_guides') }} </span>
                 </b>
-
-                <salla-button shape="link" color="primary" class="!p-0 text-sm with-arrow"
-                              onclick="salla.event.dispatch('size-guide::open', '{{ product.id }}')">
-                    {{ trans('pages.products.show_size_guides') }} <i class="sicon-keyboard_arrow_left"></i>
+                <salla-button shape="link" color="primary" class="!p-0 text-sm with-arrow" onclick="salla.event.dispatch('size-guide::open', '{{ product.id }}')">{{ trans('pages.products.show_size_guides') }} <i class="sicon-keyboard_arrow_left"></i>
                 </salla-button>
-
             </div>
             <salla-product-size-guide></salla-product-size-guide>
         {% endif %}
     </section>
 {% endif %}
-
 
 {% if product.can_add_note or product.can_upload_file %}
     <section class="bg-white p-5 rounded-md mb-5">
@@ -104,9 +76,7 @@
                         </button>
                     {% endif %}
                     {% if product.can_upload_file %}
-                        <button class="btn-tab btn--collapse"
-                                data-show="file_{{ product.id }}"
-                                type="button">
+                        <button class="btn-tab btn--collapse" data-show="file_{{ product.id }}" type="button">
                             <i class="font-medium sicon-paperclip rtl:ml-1.5 ltr:mr-1.5"></i>
                             <span class="fix-align">{{ trans('pages.products.add_file') }}</span>
                         </button>
@@ -116,12 +86,7 @@
                 {% if product.can_add_note %}
                     <div class="h-0 overflow-hidden opacity-0 is-closed" id="note_{{ product.id }}">
                         <div class="pt-4">
-                          <textarea
-                                  class="animated animatedfadeInDown fadeInDown form-input h-16 bg-gray-50 block"
-                                  placeholder="{{ trans('pages.products.notes_placeholder') }}"
-                                  name="notes"
-                                  cols="30"
-                                  rows="10">{{ product.notes }}</textarea>
+                            <textarea class="animated animatedfadeInDown fadeInDown form-input h-16 bg-gray-50 block" placeholder="{{ trans('pages.products.notes_placeholder') }}" name="notes" cols="30" rows="10">{{ product.notes }}</textarea>
                         </div>
                     </div>
                 {% endif %}
@@ -130,13 +95,7 @@
                     {# Notice that "product" is actually cart.items[*], so {product.id} is {item.id} #}
                     <div class="h-0 overflow-hidden opacity-0 is-closed" id="file_{{ product.id }}">
                         <div class="pt-4 px-1">
-                            <salla-file-upload
-                                accept="image/png, image/jpeg, image/jpg, image/gif, video/*, application/pdf"
-                                class="product-option-uploader"
-                                    {% if is_page('cart') %}
-                                        files="{{ product.attachments|json_encode }}"
-                                        cart-item-id="{{ product.id }}"
-                                    {% endif %}>
+                            <salla-file-upload accept="image/png, image/jpeg, image/jpg, image/gif, video/*, application/pdf" class="product-option-uploader" {% if is_page('cart') %}files="{{ product.attachments|json_encode }}"cart-item-id="{{ product.id }}"{% endif %}>
                                 <div class="product-option-uploader-placholder">
                                     <span class="product-option-uploader-placholder-icon">
                                         <i class="sicon-camera"></i>
