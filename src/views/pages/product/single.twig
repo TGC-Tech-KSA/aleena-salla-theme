@@ -408,7 +408,11 @@
     {# Comments Area #}
     <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
     {# Similar Products Area #}
-    <div class="container">
+
+{# {% set component_name = prosingle.wide_banner %}
+{% component component_name %} #}
+{% component 'product.wide-banner' with {prosingle:true} %}
+<div class="container">
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
     </div>
 {% endblock %}

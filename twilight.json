@@ -2035,7 +2035,7 @@
             "key": "723ed8a4-2d09-47b9-89db-afa0b8a9230b",
             "title": "بانر عريض ألينا صفحة المنتج",
             "icon": "sicon-album-photo",
-            "path": "product.wide_banner",
+            "path": "product.wide-banner",
             "fields": [
                 {
                     "type": "boolean",
