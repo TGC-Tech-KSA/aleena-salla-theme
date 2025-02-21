@@ -1909,7 +1909,7 @@ input[type=radio].sr-only:checked ~ div.s-map-my-location-button {
 .s-menu-topnav-item:last-child:where([dir="rtl"], [dir="rtl"] *){border-width:0px;padding-left:0px}
 .s-metadata-box{margin-bottom:1.25rem;display:block;border-radius:0.375rem;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, 1);background-color:rgba(255, 255, 255, var(--tw-bg-opacity, 1));padding:1.25rem}
 .s-metadata-box-header{margin-bottom:0.75rem;display:flex;align-items:center;-moz-column-gap:0.5rem;column-gap:0.5rem;border-bottom-width:1px;--tw-border-opacity:1;border-color:rgba(229, 231, 235, 1);border-color:rgba(229, 231, 235, var(--tw-border-opacity, 1));padding-bottom:0.75rem;font-size:1rem;line-height:1.5rem;font-weight:700}
-.s-metadata-row{margin-bottom:0.75rem;display:flex;flex-direction:row;align-items:center;justify-content:space-between}
+.s-metadata-row{margin-bottom:0.75rem;display:flex;flex-direction:row;justify-content:space-between;gap:0.5rem;line-height:1.25rem}
 .s-metadata-row:last-child{margin-bottom:0px}
 .s-metadata-row-name{font-size:0.875rem;line-height:1.25rem;font-weight:700;--tw-text-opacity:1;color:rgba(55, 65, 81, 1);color:rgba(55, 65, 81, var(--tw-text-opacity, 1))}
 .s-modal-container{position:fixed;top:0px;right:0px;bottom:0px;left:0px;z-index:200;overflow:hidden}
