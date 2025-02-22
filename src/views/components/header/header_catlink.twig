@@ -1,11 +1,11 @@
-{% set header_feature = theme.settings.get('header_feature') %}
-{% set show_header_feature = theme.settings.get('show_header_feature') %}
+{% set header_catlink = theme.settings.get('header_catlink') %}
+{% set show_header_catlink = theme.settings.get('show_header_catlink') %}
 
-{% if show_header_feature and header_feature|length %}
+{% if show_header_catlink and header_catlink|length %}
   <section class="bg-darker text-white">
     <div class="container">
       <div class="header--features grid grid-cols-3 md:py-2">
-        {% for item in header_feature %}
+        {% for item in header_catlink %}
           <div class="header__item flex items-center justify-center gap-1 md:gap-2 py-2 text-xxs sm:text-xs md:text-sm {{loop.index == 2 ? 'border-x border-white/30' : ''}} ">
               {% set item_title = item.title %}
               {% if item_title is iterable %}

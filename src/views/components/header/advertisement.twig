@@ -1,3 +1,17 @@
-<salla-advertisement class="test">
+<div class=" " style="background-color:{{ advertisement.colors.bg }}; color:{{ advertisement.colors.text }}">
+  <div class="container relative">
+<salla-advertisement class="w-full"></salla-advertisement>
+  {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+      <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0 !absolute rtl:left-0 ltr:right-0 top-0 !w-auto !h-full !rounded-none !hidden md:!flex" style="background-color:{{ advertisement.colors.bg }} !important; color:{{ advertisement.colors.text }} !important">
+          <span>{{ user.language.name}}</span>
+          {% if store.settings.currencies_enabled %}
+            <span class="mx-1.5">|</span>
+            <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
+            <span class="mx-1 inline-flex">{{ currency.symbol }}</span>
+          {% endif %}
+      </button>
+      <salla-localization-modal></salla-localization-modal>
+  {% endif %}
+  </div>
 
-</salla-advertisement>
+</div>
