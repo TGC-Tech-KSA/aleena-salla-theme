@@ -6,6 +6,7 @@
 | cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
 #}
 {% set important_links = theme.settings.get('important_links') %}
+{# <salla-advertisement slot="icon"></salla-advertisement> #}
 <header class="store-header">
   {# Top Nav #}
   <div class="top-navbar">
@@ -20,8 +21,11 @@
           <div class="header-buttons">
               {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
                   <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0">
-                      <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
-                      <span class="mx-1.5">|</span> <span>{{ currency.symbol }}</span>
+
+                      <span>{{ user.language.name}}</span>
+                      <span class="mx-1.5">|</span>
+                       <span>{{ currency.symbol }}</span>
+                       <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
                   </button>
                   <salla-localization-modal></salla-localization-modal>
               {% endif %}
@@ -89,6 +93,7 @@
           </div>
       </div>
   </div>
+  {% include 'components.header.header_feature'%}
 </header>
 {% if store.scope %}
     <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
