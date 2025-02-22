@@ -2,21 +2,18 @@
 {% set show_header_catlink = theme.settings.get('show_header_catlink') %}
 
 {% if show_header_catlink and header_catlink|length %}
-  <section class="bg-darker text-white">
-    <div class="container">
-      <div class="header--features grid grid-cols-3 md:py-2">
+      <ul class="hidden md:flex">
         {% for item in header_catlink %}
-          <div class="header__item flex items-center justify-center gap-1 md:gap-2 py-2 text-xxs sm:text-xs md:text-sm {{loop.index == 2 ? 'border-x border-white/30' : ''}} ">
-              {% set item_title = item.title %}
+          <li class="hidden md:flex text-sm font-bold">
+              {% set item_title = item.catlink_text %}
               {% if item_title is iterable %}
                 {% set item_title = item_title[user.language.code]|default(item_title|first) %}
               {% endif %}
-                <i class="{{item.icon}}"></i>
-                <span>{{ item_title }}</span>
-          </div>
-        {% endfor %}
 
-      </div>
-    </div>
-  </section>
+                <a href="{{item.catlink_url}}" class="px-4 py-5">
+                  {{ item_title }}
+                </a>
+          </li>
+        {% endfor %}
+      </ul>
 {% endif %}

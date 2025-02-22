@@ -67,6 +67,8 @@
                           {% endif %}
                       </a>
                       <custom-main-menu></custom-main-menu>
+                     {% include 'components.header.header_catlink'%}
+
                   </div>
                   <div class="flex items-center justify-end">
                       {% if user.type=='user' %}
