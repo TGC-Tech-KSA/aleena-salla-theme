@@ -209,7 +209,7 @@
                     "icon": "sicon-link",
                     "value": null,
                     "required": false,
-                    "minLength": 2,
+                    "minLength": 0,
                     "maxLength": "350"
                 },
                 {
