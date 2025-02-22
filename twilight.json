@@ -160,6 +160,61 @@
             "selected": true
         },
         {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "عرض مميزات اسفل الهيدر",
+            "description": null,
+            "id": "show_header_links",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "id": "header_links",
+            "type": "collection",
+            "format": "collection",
+            "required": false,
+            "minLength": 3,
+            "maxLength": 3,
+            "label": null,
+            "item_label": "الميزة",
+            "value": [],
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان الميزة",
+                    "id": "icon",
+                    "value": "sicon-store",
+                    "required": false,
+                    "format": "icon",
+                    "description": null,
+                    "class": "form--inline"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "أدخل عنوان الميزة هنا...",
+                    "minLength": 0,
+                    "maxLength": 50
+                }
+            ],
+            "conditions": [
+                {
+                    "id": "show_header_links",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
             "type": "static",
             "id": "static-line3",
             "format": "line"
