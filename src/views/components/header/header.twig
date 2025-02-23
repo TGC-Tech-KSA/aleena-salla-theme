@@ -6,7 +6,17 @@
 | cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
 #}
 <header class="store-header">
+   {# {% if store.scope %}
+              <button class="btn--rounded-gray"
+                      onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
+                  <i class="sicon-location rtl:ml-1 ltr:mr-1"></i> {{ store.scope.name }}
+              </button>
+          {% endif %} #}
+          {{ store.scope.name }}
   {# Main Nav #}
+  <salla-scopes search-display-limit="6" selection="optional"></salla-scopes>
+
+
   <div id="mainnav" class="main-nav-container shadow-default bg-white px-4 md:px-12">
       <div class="inner bg-inherit">
           <div class="">

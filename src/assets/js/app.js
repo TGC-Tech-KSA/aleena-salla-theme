@@ -28,7 +28,9 @@ class App extends AppHelpers {
     this.changeMenuDirection();
     initTootTip();
     this.loadModalImgOnclick();
-    this.speedAnimate();
+    if (!stop_animation) {
+      this.speedAnimate();
+    }
     salla.comment.event.onAdded(() => window.location.reload());
     this.status = 'ready';
     document.dispatchEvent(new CustomEvent('theme::ready'));
