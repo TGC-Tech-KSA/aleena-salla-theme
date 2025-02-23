@@ -5,37 +5,9 @@
 | cart.items_count | int     |                                 |
 | cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
 #}
-{% set important_links = theme.settings.get('important_links') %}
-{# <salla-advertisement slot="icon"></salla-advertisement> #}
 <header class="store-header">
-  {# Top Nav #}
-  <div class="top-navbar">
-    <div class="container flex justify-between">
-      <div class="flex-1 flex items-center gap-2">
-          {# Footer Menu #}
-          {% if important_links %}
-            <salla-menu source="footer" topnav></salla-menu>
-          {% endif %}
-          {# Scopes | Branches #}
-          {% if store.scope %}
-              <button class="btn--rounded-gray"
-                      onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
-                  <i class="sicon-location rtl:ml-1 ltr:mr-1"></i> {{ store.scope.name }}
-              </button>
-          {% endif %}
-
-          {# Search bar #}
-          <div class="header-search flex-1">
-            <salla-search inline oval height="36"></salla-search>
-          </div>
-      </div>
-
-      <salla-contacts is-header></salla-contacts>
-    </div>
-  </div>
-
   {# Main Nav #}
-  <div id="mainnav" class="main-nav-container shadow-default bg-white px-12">
+  <div id="mainnav" class="main-nav-container shadow-default bg-white px-4 md:px-12">
       <div class="inner bg-inherit">
           <div class="">
               <div class="flex items-stretch justify-between relative">
@@ -80,7 +52,7 @@
               </div>
             <div class="hidden lg:flex xl:hidden justify-center border-t border-darker">{% include 'components.header.header_catlink'%}</div>
             <div class="header-search flex md:hidden border-t border-darker relative py-2">
-                <salla-search inline height="36" class="w-full z-0"></salla-search>
+                <salla-search inline height="36" class="w-full z-0 [&_input]:!border-darker [&_svg]:fill-darker [&_input]:placeholder:!border-darker"></salla-search>
                 <button onclick="salla.event.dispatch('search::open')" class="flex absolute w-full h-full bg-transparent z-1" title="search" aria-label="search"></button>
             </div>
           </div>

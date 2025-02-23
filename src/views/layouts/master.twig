@@ -100,7 +100,7 @@
         window.show_singleOption = "{{theme.settings.get('show_singleOption', true)}}"
         window.show_multipleOption = "{{theme.settings.get('show_multipleOption', true)}}"
         window.includes_features = "{{theme.settings.get('includes_features')|json_encode}}"
-
+        window.stop_animation = "{{theme.settings.get('stop_animation')}}"
     </script>
 
     {% hook 'head:start' %}

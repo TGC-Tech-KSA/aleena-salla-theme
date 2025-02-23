@@ -1,16 +1,14 @@
 {% set header_catlink = theme.settings.get('header_catlink') %}
 {% set show_header_catlink = theme.settings.get('show_header_catlink') %}
-
 {% if show_header_catlink and header_catlink|length %}
       <ul class="hidden md:flex">
         {% for item in header_catlink %}
-          <li class="hidden md:flex text-sm font-bold">
+          <li class="hidden md:flex text-sm group">
               {% set item_title = item.catlink_text %}
               {% if item_title is iterable %}
                 {% set item_title = item_title[user.language.code]|default(item_title|first) %}
               {% endif %}
-
-                <a href="{{item.catlink_url}}" class="px-4 py-5">
+                <a href="{{item.catlink_url}}" class="px-4 py-5 relative !text-[var(--data-catlink-color)] group-hover:!text-red-400 transition-all duration-[.3s] before:content-[' '] before:h-[2px] before:bg-[var(--data-catlink-color)] before:w-0 before:bottom-0 before:absolute before:left-1/2 before:transition-all before:duration-[.3s] before:scale-x-0 group-hover:before:left-0 group-hover:before:w-full group-hover:before:scale-x-100 group-hover:before:bg-red-400" style="--data-catlink-color:{{item.catlink_text_color}};">
                   {{ item_title }}
                 </a>
           </li>
