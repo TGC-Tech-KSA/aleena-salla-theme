@@ -25,9 +25,9 @@
 
   @media (max-width: 640px) {
     .s-search-results{
-      @apply w-screen max-w-[100vw] rtl:-left-2.5 ltr:-right-2.5; 
+      @apply w-screen max-w-[100vw] rtl:-left-2.5 ltr:-right-2.5;
     }
-  } 
+  }
 
   .topnav-is-dark & {
     @apply bg-dark text-gray-300;
@@ -63,8 +63,6 @@
 
 /* Main Nav */
 .main-nav-container {
-  @apply min-h-[68px] lg:min-h-[84px];
-  
   // Custom background Color
   .has-bg &,
   .has-bg & .sub-menu{

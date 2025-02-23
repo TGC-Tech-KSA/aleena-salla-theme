@@ -1,7 +1,9 @@
 {
   "blocks": {
     "header": {
-      "cart": "Cart"
+      "cart": "Cart",
+      "search": "Search",
+      "account": "Account"
     },
     "appBanner": {
       "download_now": "download now"

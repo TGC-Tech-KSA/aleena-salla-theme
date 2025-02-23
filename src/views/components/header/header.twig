@@ -16,21 +16,6 @@
           {% if important_links %}
             <salla-menu source="footer" topnav></salla-menu>
           {% endif %}
-
-          {# Language & Currency Component #}
-          <div class="header-buttons">
-              {# {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-                  <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0">
-
-                      <span>{{ user.language.name}}</span>
-                      <span class="mx-1.5">|</span>
-                       <span>{{ currency.symbol }}</span>
-                       <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
-                  </button>
-                  <salla-localization-modal></salla-localization-modal>
-              {% endif %} #}
-          </div>
-
           {# Scopes | Branches #}
           {% if store.scope %}
               <button class="btn--rounded-gray"
@@ -50,48 +35,54 @@
   </div>
 
   {# Main Nav #}
-  <div id="mainnav" class="main-nav-container shadow-default bg-white">
+  <div id="mainnav" class="main-nav-container shadow-default bg-white px-12">
       <div class="inner bg-inherit">
-          <div class="container">
+          <div class="">
               <div class="flex items-stretch justify-between relative">
-                  <div class="flex items-center">
+                  <div class="flex items-center logo-area__left flex-1">
                       <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu">
                         <i class="sicon-menu text-primary text-2xl"></i>
                       </a>
-                      <a class="navbar-brand" href="{{ store.url }}">
-                          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
+                      <custom-main-menu class="block lg:hidden"></custom-main-menu>
+                      <div class="hidden xl:flex">{% include 'components.header.header_catlink'%}</div>
+                      <button onclick="salla.event.dispatch('search::open')" class="hidden lg:flex xl:hidden gap-2 search-btn w-auto justify-end after:text-xl after:font-['sallaicons'] after:content-['\ef09'] z-1" title="search" aria-label="search"><span class="uppercase">{{ trans('blocks.header.search') }}</span></button>
+                  </div>
+                  <div class="logo-area__middle mx-4 flex items-center">
+                      <a class="navbar-brand py-4" href="{{ store.url }}">
+                          <img fetchpriority="high" width="452" height="133" loading="lazy" class="lazy !w-20" src="" data-src="{{ store.logo }}" alt="{{ store.name }} logo">
                           {% if is_page('index') %}
                             <h1 class="sr-only">{{ store.name }}</h1>
                           {% else %}
                             <h2 class="sr-only">{{ store.name }}</h2>
                           {% endif %}
                       </a>
-                      <custom-main-menu></custom-main-menu>
-                     {% include 'components.header.header_catlink'%}
-
                   </div>
-                  <div class="flex items-center justify-end">
+                  <div class="flex items-center justify-end logo-area__right flex-1 gap-4">
                       {% if user.type=='user' %}
                         <salla-user-menu avatar-only show-header></salla-user-menu>
                       {% else %}
                           <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
-                            <i class="header-btn__icon sicon-user-circle"></i>
+                          <span class="hidden md:flex">{{ trans('blocks.header.account') }}</span>
+                          <i class="sicon-user flex md:hidden text-xl text-darker"></i>
                           </button>
                       {% endif %}
-                      {# <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-                        <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
-                      </salla-cart-summary> #}
-
-                           {% if is_page('cart') %}
-                      {% else %}
-                        <button class="relative" onclick="document.querySelector('.neyam-cart-aside').classList.add('show')">
-                        <salla-cart-summary class="pointer-events-none [&_.s-cart-summary-content]:!hidden">
-                          <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
+                        <button onclick="salla.event.dispatch('search::open')" class="hidden xl:flex gap-2 search-btn w-auto justify-end after:text-xl after:font-['sallaicons'] after:content-['\ef09'] z-1" title="search" aria-label="search"><span class="uppercase">{{ trans('blocks.header.search') }}</span></button>
+                        {% if is_page('cart') %}
+                        {% else %}
+                        <button class="relative items-center gap-2 flex" onclick="document.querySelector('.neyam-cart-aside').classList.add('show')">
+                        <span class="hidden md:flex">{{ trans('blocks.header.cart') }}</span>
+                        <salla-cart-summary class="relative pointer-events-none [&_.s-cart-summary-content]:!hidden [&_#s-cart-icon]:!hidden [&_.s-cart-summary-wrapper]:absolute [&_.s-cart-summary-wrapper]:-top-1 [&_.s-cart-summary-wrapper]:left-1 [&_.s-cart-summary-count]:bg-darker ">
+                          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5"><path d="M2 9.25h20l-4 12H6z"></path><path stroke-linecap="square" d="M12 9V3"></path></g></svg>
                         </salla-cart-summary>
                       </button>
                       {% endif %}
                   </div>
               </div>
+            <div class="hidden lg:flex xl:hidden justify-center border-t border-darker">{% include 'components.header.header_catlink'%}</div>
+            <div class="header-search flex md:hidden border-t border-darker relative py-2">
+                <salla-search inline height="36" class="w-full z-0"></salla-search>
+                <button onclick="salla.event.dispatch('search::open')" class="flex absolute w-full h-full bg-transparent z-1" title="search" aria-label="search"></button>
+            </div>
           </div>
       </div>
   </div>
