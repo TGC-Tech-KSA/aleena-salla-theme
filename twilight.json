@@ -622,6 +622,7 @@
             ],
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         },
+
           {
             "id": "classification",
             "type": "collection",
