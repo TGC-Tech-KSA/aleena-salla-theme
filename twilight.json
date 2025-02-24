@@ -632,7 +632,14 @@
           "multichoice": true,
           "options": [],
           "required": true,
-          "selected": [],
+          "selected": [
+             {
+               "label": "تصنيف",
+               "key": "categories",
+               "value": "categories"
+             }
+          ],
+
           "searchable": true,
           "description": null,
           "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
