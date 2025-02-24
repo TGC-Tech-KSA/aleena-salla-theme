@@ -629,6 +629,7 @@
           "label": "التصنيف",
           "format": "dropdown-list",
           "source": "categories",
+          "multichoice": true,
           "options": [],
           "required": true,
           "selected": [],
