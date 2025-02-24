@@ -633,7 +633,7 @@
             "value": [],
             "fields": [
                 {
-                    "id": "classification.categories",
+                    "id": "categories",
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "اختر التصنيف",
