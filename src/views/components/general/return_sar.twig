@@ -162,3 +162,29 @@
     text-align-last: auto !important;
 }
 </style>
+
+{% set categories = theme.settings.get('cleaning_instructions_category') %}
+
+{% if categories %}
+    <div class="cleaning_category">
+        {% for category in categories %}
+            {% set cat_name = category.name %}
+            {# {% if cat_name is iterable %}
+                {% set cat_name = cat_name[user.language.code] ?? cat_name|first %}
+            {% endif %} #}
+{{category.name}}
+       {% if cat_name is iterable %}
+                    {% set cat_name = cat_name[user.language.code] | default(cat_name | first) %}
+                {% endif %}
+
+
+
+
+            <p>{{ cat_name }}</p>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>لا توجد تصنيفات تنظيف محددة.</p>
+{% endif %}
+
+
