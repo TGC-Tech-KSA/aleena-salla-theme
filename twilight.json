@@ -629,17 +629,10 @@
           "label": "التصنيف",
           "format": "dropdown-list",
           "source": "Categories",
-          "multichoice": true,
+          "multichoice": false,
           "options": [],
           "required": true,
-          "selected": [
-             {
-               "label": "تصنيف",
-               "key": "categories",
-               "value": "categories"
-             }
-          ],
-
+          "selected": [],
           "searchable": true,
           "description": null,
           "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
