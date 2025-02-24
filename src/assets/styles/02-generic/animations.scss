@@ -152,15 +152,38 @@
   }
 }
 
+.hotspot {
+  position: relative;
+}
+
 .hotspot__card {
-  // display: none;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  min-width: 400px;
+  padding: 0 !important;
+  pointer-events: none;
+  /* يمنع التفاعل عندما يكون مخفيًا */
 }
 
 .hotspot__card.active {
-  // display: block;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(-50%);
+  pointer-events: auto;
+}
+
+@media (max-width: 480px) {
+  .hotspot__card {
+    left: auto;
+    right: 0;
+    width: 90%;
+   transform: translateY(-20%);
+    -webkit-transform: translateY(-20%);
+    -moz-transform: translateY(-20%);
+    -ms-transform: translateY(-20%);
+    -o-transform: translateY(-20%);
+}
 }

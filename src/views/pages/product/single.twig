@@ -222,26 +222,6 @@
                           <h2 class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
                   </div>
                 </div>
-
-                <div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3">
-                    {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
-                    {% if product.has_read_more %}
-                        <article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4"
-                            id="more-content" style="max-height:5.25rem">
-                            {{ product_desc|raw }}
-                        </article>
-
-                        {# Read More Button #}
-                        <a id="btn-show-more" class="link--primary inline-block mt-2 cursor-pointer">
-                            {{ trans('pages.products.read_more') }}
-                        </a>
-                    {% else %}
-                        <article class="article--main pb-1">
-                            {{ product_desc|raw }}
-                        </article>
-                    {% endif %}
-                </div>
-
                 {% if product.tags|length and theme.settings.get('show_tags', true) %}
                     <div class="mb-3">
                         {% for tag in product.tags %}
@@ -322,13 +302,18 @@
                     </section>
                 {% endif %}
 
-                <form class="form product-form" enctype="multipart/form-data" method="post"
+                <form class="form product-form" id="single-product-form" enctype="multipart/form-data" method="post"
                       onsubmit="return salla.form.onSubmit('cart.addItem', event)" >
                     <input type="hidden" name="id" value="{{ product.id }}">
 
 
                     {% hook 'product:single.form.start' %}
-
+  {# show options #}
+                <div id="options-panel-trigger" data-show="product-options-panel" class="relative flex justify-between w-full cursor-pointer group mb-4">
+                  <div class="option-item__label w-full">
+                    <div id="options-menu" class="w-full flex divide-y my-2 [&_div]:border-y-transparent [&_div]:border-primary [&_div]:p-2 [&_div]:relative [&_div]:before:absolute [&_div]:before:content-[''] [&_div]:before:rtl:left-0 [&_div]:before:ltr:right-0 [&_div]:before:w-[1px] [&_div]:before:h-1/2 [&_div]:before:top-1/2 [&_div]:before:bg-gray-200 [&_div]:before:-translate-y-1/2 [&_div]:last:before:hidden [&_div]:first:rtl:pr-0 [&_div]:first:ltr:pl-0 [&_div]:flex-wrap"> {# // show options that is selected here #} </div>
+                  </div>
+                </div>
                     {% include 'pages.partials.product.options' %}
 
                     {% hook 'product:single.form.end' %}
@@ -397,7 +382,18 @@
                         <salla-gifting class="mt-5" widget-subtitle="{{ gifting_intro }}" product-id="{{ product.id }}"></salla-gifting>
                     {% endif %}
                 </form>
-
+                {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
+                <div class="border-y border-darker">
+                    <div class="accordion cursor-pointer group active">
+                        <span class="accordion-title flex justify-start items-center gap-4 py-3">
+                            <i class="sicon-minus icone"></i>
+                            {{ trans('blocks.product.readMore') }}
+                        </span>
+                    </div>
+                    <div class="panel overflow-hidden transition-all duration-700 mb-1 is-opened">
+                        <article class="article--main pb-1">{{ product_desc|raw }}</article>
+                    </div>
+                </div>
                 {% hook 'product:single.description.end' %}
                 <salla-quick-order class="mt-5 md:-mb-2 block"></salla-quick-order>
             </div>

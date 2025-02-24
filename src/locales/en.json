@@ -7,6 +7,9 @@
     },
     "appBanner": {
       "download_now": "download now"
+    },
+    "product": {
+      "readMore": "Description"
     }
   },
   "pages": {
