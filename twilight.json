@@ -622,22 +622,7 @@
             ],
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         },
-        {
-          "id": "cleaning_instructions_category",
-          "icon": "sicon-keyboard_arrow_down",
-          "type": "items",
-          "label": "التصنيف",
-          "format": "dropdown-list",
-          "source": "Categories",
-          "multichoice": false,
-          "options": [],
-          "required": true,
-          "selected": [],
-          "searchable": true,
-          "description": null,
-          "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-          "key": "415fac70-07f5-4ca4-ac1b-871d50081a4d"
-        },
+
           {
             "id": "classification",
             "type": "collection",
@@ -652,7 +637,7 @@
                 "id": "classification.categories",
                 "type": "items",
                 "format": "dropdown-list",
-                "label":null,
+                "label": "اختر التصنيف",
                 "description": null,
                 "labelHTML": null,
                 "icon": "sicon-keyboard_arrow_down",
