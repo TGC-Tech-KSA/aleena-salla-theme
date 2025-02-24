@@ -623,7 +623,7 @@
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         },
         {
-          "id": "Categories",
+          "id": "cleaning_instructions_category",
           "icon": "sicon-keyboard_arrow_down",
           "type": "items",
           "label": "التصنيف",

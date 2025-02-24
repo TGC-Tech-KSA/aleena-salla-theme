@@ -162,7 +162,15 @@
     text-align-last: auto !important;
 }
 </style>
-{% set categories = theme.settings.get('categories') %}
+{% set categories = theme.settings.get('cleaning_instructions_category') %}
+
+      {% set category_name = categories.name %}
+                        {% if category_name is iterable %}
+                            {% set category_name = category_name[user.language.code] | default(category_name | first) %}
+                        {% endif %}
+            <p>{{ category_name }}</p>
+
+
 
      <div class="cleaning_category">
         {% for category in categories %}
