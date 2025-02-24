@@ -453,7 +453,7 @@
             "label": "فروع الاستبدال داخل المملكة العربية",
             "description": null,
             "labelHTML": null,
-            "item_label": null,
+            "item_label": "الفرع",
             "icon": "sicon-list-add",
             "fields": [
                 {
@@ -574,10 +574,10 @@
             "id": "return_theworld_branches",
             "type": "collection",
             "format": "collection",
-            "label": "فروع الاستبدال داخل المملكة العربية",
+            "label": "فروع الاستبدال بقية العالم",
             "description": null,
             "labelHTML": null,
-            "item_label": null,
+            "item_label": "الفرع",
             "icon": "sicon-list-add",
             "fields": [
                 {
