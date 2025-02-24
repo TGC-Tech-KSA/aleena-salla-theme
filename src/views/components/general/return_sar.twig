@@ -162,23 +162,16 @@
     text-align-last: auto !important;
 }
 </style>
-{% set categories = theme.settings.get('cleaning_instructions_category') %}
-
-      {% set category_name = categories.name %}
-                        {% if category_name is iterable %}
-                            {% set category_name = category_name[user.language.code] | default(category_name | first) %}
-                        {% endif %}
-            <p>{{ category_name }}</p>
 
 
+{% set classification = theme.settings.get('classification') %}
+{% set category_id = product.category.id %} {# تحويله إلى نص لتجنب أخطاء المطابقة #}
 
-     <div class="cleaning_category">
-        {% for category in categories %}
-
-                  {% set category_name = category.name %}
-                        {% if category_name is iterable %}
-                            {% set category_name = category_name[user.language.code] | default(category_name | first) %}
-                        {% endif %}
-            <p>{{ category_name }}</p>
+ {% for sob in classification %}
+          {% for cat in sob.categories %}
+             {% if cat.value == category_id %}
+                <p>✅ التصنيف المطابق: {{cat.value}} (ID: {{ category_id }})</p>
+            {% endif %}
         {% endfor %}
-    </div>
+
+{% endfor %}
