@@ -627,15 +627,14 @@
             "type": "collection",
             "format": "collection",
             "required": false,
+            "minLength": 1,
             "maxLength": 1,
             "label": "عرض فيديو/ صورة شبكي",
             "item_label": "فيديو/ صورة",
             "value": [],
-
             "fields": [
                 {
                     "id": "classification.cleaning_categories",
-                    "key": "415fac70-07f5-4ca4-ac1b-871d50081a4d",
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "اختر التصنيف",
