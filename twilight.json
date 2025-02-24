@@ -644,8 +644,8 @@
             "format": "collection",
             "required": false,
             "maxLength": 1,
-            "label": "اختر التصنيف",
-            "item_label": "",
+            "label": "عرض فيديو/ صورة شبكي",
+            "item_label": "فيديو/ صورة",
             "value": [],
             "fields": [
               {
