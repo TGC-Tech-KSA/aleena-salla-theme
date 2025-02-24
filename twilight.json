@@ -621,36 +621,9 @@
                 }
             ],
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
-        },
+        }
 
-          {
-            "id": "classification",
-            "type": "collection",
-            "format": "collection",
-            "required": false,
-            "maxLength": 1,
-            "label": null,
-            "item_label": "اختر التصنيف",
-            "value": [],
-            "fields": [
-              {
-                "id": "classification.categories",
-                "type": "items",
-                "format": "dropdown-list",
-                "label":null,
-                "description": null,
-                "labelHTML": null,
-                "icon": "sicon-keyboard_arrow_down",
-                "selected": [],
-                "options": [],
-                "source": "Categories",
-                "multichoice": true,
-                "searchable": true,
-                "required": false,
-                "value": []
-              }
-            ]
-          }
+
     ],
     "components": [
         {
