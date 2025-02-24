@@ -628,7 +628,7 @@
           "type": "items",
           "label": "التصنيف",
           "format": "dropdown-list",
-          "source": "categories",
+          "source": "Categories",
           "multichoice": true,
           "options": [],
           "required": true,
