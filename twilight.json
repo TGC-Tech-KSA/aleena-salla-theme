@@ -634,7 +634,7 @@
 
             "fields": [
                 {
-                    "id": "classification.categories",
+                    "id": "classification.cleaning_categories",
                     "key": "415fac70-07f5-4ca4-ac1b-871d50081a4d",
                     "type": "items",
                     "format": "dropdown-list",
