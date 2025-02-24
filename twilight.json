@@ -373,7 +373,277 @@
             "required": false,
             "value": false,
             "selected": false
-        }
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "خيارات استبدال وإرجاع المملكة العربية السعودية",
+            "description": null,
+            "id": "return_sar",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+         {
+           "id": "return_sar_points",
+           "type": "collection",
+           "format": "collection",
+           "label": "النقاط التعريفية",
+           "description": null,
+           "labelHTML": null,
+           "item_label": null,
+           "icon": "sicon-list-add",
+           "fields": [
+             {
+               "type": "string",
+               "icon": "sicon-format-text-alt",
+               "label": "عنوان النقاط التعريفية",
+               "multilanguage": true,
+               "id": "points_title",
+               "value": null,
+               "required": false,
+               "format": "text",
+               "description": null,
+               "placeholder": "يمكنك إضافة عنوان النقاط التعريفية هنا...",
+               "hide": false,
+               "minLength": 0,
+               "maxLength": 250
+             }
+           ],
+           "value": [],
+           "minLength": 1,
+           "maxLength": 10,
+           "conditions": [
+             {
+               "id": "return_sar",
+               "operation": "=",
+               "value": true
+             }
+           ]
+         },
+          {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "نص توضيحي",
+            "multilanguage": true,
+            "id": "return_sar_description",
+            "value": null,
+            "description": "نص توضيحي يظهر اسفل النقاط التعريفية",
+            "format": "textarea",
+            "required": false,
+            "placeholder": "يمكنك إضافة نص توضيحي هنا...",
+            "minLength": 0,
+            "maxLength": "256",
+            "conditions": [
+              {
+                "id": "return_sar",
+                "operation": "=",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "return_sar_branches",
+            "type": "collection",
+            "format": "collection",
+            "label": "فروع الاستبدال داخل المملكة العربية",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+              {
+                "type": "string",
+                "icon": "sicon-format-text-alt",
+                "label": "الفرع",
+                "multilanguage": true,
+                "id": "branches_title",
+                "value": null,
+                "required": false,
+                "format": "text",
+                "description": null,
+                "placeholder": "يمكنك إضافة عنوان الفرع هنا...",
+                "hide": false,
+                "minLength": 0,
+                "maxLength": 80
+              },
+              {
+                "type": "string",
+                "icon": "sicon-typography",
+                "label": "نص توضيحي",
+                "multilanguage": true,
+                "id": "branches_description",
+                "value": null,
+                "description": "مواعيد الفرع",
+                "format": "textarea",
+                "required": false,
+                "placeholder": "يمكنك إضافة مواعيد الفرع هنا...",
+                "minLength": 0,
+                "maxLength": "256"
+              }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 10,
+            "conditions": [
+              {
+                "id": "return_sar",
+                "operation": "=",
+                "value": true
+              }
+            ]
+          },
+
+
+
+
+
+
+
+
+
+
+
+  {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "خيارات استبدال وإرجاع بقية العالم",
+            "description": null,
+            "id": "return_theworld",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+         {
+           "id": "return_theworld_points",
+           "type": "collection",
+           "format": "collection",
+           "label": "النقاط التعريفية",
+           "description": null,
+           "labelHTML": null,
+           "item_label": null,
+           "icon": "sicon-list-add",
+           "fields": [
+             {
+               "type": "string",
+               "icon": "sicon-format-text-alt",
+               "label": "عنوان النقاط التعريفية",
+               "multilanguage": true,
+               "id": "return_theworld_title",
+               "value": null,
+               "required": false,
+               "format": "text",
+               "description": null,
+               "placeholder": "يمكنك إضافة عنوان النقاط التعريفية هنا...",
+               "hide": false,
+               "minLength": 0,
+               "maxLength": 250
+             }
+           ],
+           "value": [],
+           "minLength": 1,
+           "maxLength": 10,
+           "conditions": [
+             {
+               "id": "return_theworld",
+               "operation": "=",
+               "value": true
+             }
+           ]
+         },
+          {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "نص توضيحي",
+            "multilanguage": true,
+            "id": "return_theworld_description",
+            "value": null,
+            "description": "نص توضيحي يظهر اسفل النقاط التعريفية",
+            "format": "textarea",
+            "required": false,
+            "placeholder": "يمكنك إضافة نص توضيحي هنا...",
+            "minLength": 0,
+            "maxLength": "256",
+            "conditions": [
+              {
+                "id": "return_theworld",
+                "operation": "=",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "return_theworld_branches",
+            "type": "collection",
+            "format": "collection",
+            "label": "فروع الاستبدال داخل المملكة العربية",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+              {
+                "type": "string",
+                "icon": "sicon-format-text-alt",
+                "label": "الفرع",
+                "multilanguage": true,
+                "id": "return_theworld_branches_title",
+                "value": null,
+                "required": false,
+                "format": "text",
+                "description": null,
+                "placeholder": "يمكنك إضافة عنوان الفرع هنا...",
+                "hide": false,
+                "minLength": 0,
+                "maxLength": 80
+              },
+              {
+                "type": "string",
+                "icon": "sicon-typography",
+                "label": "نص توضيحي",
+                "multilanguage": true,
+                "id": "return_theworld_description",
+                "value": null,
+                "description": "مواعيد الفرع",
+                "format": "textarea",
+                "required": false,
+                "placeholder": "يمكنك إضافة مواعيد الفرع هنا...",
+                "minLength": 0,
+                "maxLength": "256"
+              }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 10,
+            "conditions": [
+              {
+                "id": "return_theworld",
+                "operation": "=",
+                "value": true
+              }
+            ]
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ],
     "components": [
         {
