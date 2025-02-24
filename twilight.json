@@ -631,9 +631,10 @@
             "label": "عرض فيديو/ صورة شبكي",
             "item_label": "فيديو/ صورة",
             "value": [],
+            "key": "415fac70-07f5-4ca4-ac1b-871d50081a4d",
             "fields": [
                 {
-                    "id": "categories",
+                    "id": "classification.categories",
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "اختر التصنيف",
