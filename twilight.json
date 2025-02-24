@@ -621,6 +621,20 @@
                 }
             ],
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
+          "id": "cleaning_instructions_category",
+          "icon": "sicon-keyboard_arrow_down",
+          "type": "items",
+          "label": "التصنيف",
+          "format": "dropdown-list",
+          "source": "categories",
+          "options": [],
+          "required": true,
+          "selected": [],
+          "searchable": true,
+          "description": null,
+          "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         }
     ],
     "components": [

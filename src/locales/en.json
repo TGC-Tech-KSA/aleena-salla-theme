@@ -9,7 +9,10 @@
       "download_now": "download now"
     },
     "product": {
-      "readMore": "Description"
+      "readMore": "Description",
+      "returnSar": "Within Saudi Arabia",
+      "returnTheworld": "Rest of the world",
+      "exchangeReturn": "Free replacement and return"
     }
   },
   "pages": {

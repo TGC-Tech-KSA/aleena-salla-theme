@@ -1,0 +1,164 @@
+{% set component_id='return_sar_theworld' ~ position %}
+{% set return_sar = theme.settings.get('return_sar') %}
+{% set branches = theme.settings.get('return_sar_branches') %}
+{% set sar_points = theme.settings.get('return_sar_points') %}
+{% set sar_description = theme.settings.get('return_sar_description') %}
+{# theworld #}
+{% set return_theworld = theme.settings.get('return_theworld') %}
+{% set theworld_branches = theme.settings.get('return_theworld_branches') %}
+{% set theworld_points = theme.settings.get('return_theworld_points') %}
+{% set theworld_description = theme.settings.get('return_theworld_description') %}
+
+
+
+{{product.category.name}}
+
+{% if return_sar or return_theworld %}
+<div class="border-b border-darker">
+   <div class="accordion cursor-pointer group">
+      <span class="accordion-title flex justify-start items-center gap-4 py-3">
+          <i class="sicon-minus icone"></i>
+          {{ trans('blocks.product.exchangeReturn') }}
+      </span>
+  </div>
+  <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
+    <div class="s-block-tabs my-5" id="{{ component_id }}">
+
+      <div class="tabs hide-scroll">
+          {% if return_sar %}
+          <salla-button class="tab-trigger is-active" data-target="return_sar_data" data-component-id="{{ component_id }}"fill="outline">{{ trans('blocks.product.returnSar') }}</salla-button>
+          {% endif %}
+          {% if return_theworld %}
+          <salla-button class="tab-trigger" data-target="return_theworld_data" data-component-id="{{ component_id }}" fill="outline">{{ trans('blocks.product.returnTheworld') }}</salla-button>
+          {% endif %}
+      </div>
+
+      <div class="tabs-wrapper py-4">
+        {% if return_sar %}
+            <div id="return_sar_data" class="tabs__item is-active">
+                 <ul class="data_list mb-4" style="margin-inline-start: 2em;">
+              {% for point in sar_points %}
+                {% set points_title = point.points_title %}
+                {% if points_title is iterable %}
+                    {% set points_title = points_title[user.language.code] | default(points_title | first) %}
+                {% endif %}
+                <li>{{points_title}}</li>
+              {% endfor %}
+              </ul>
+                {% if sar_description is iterable %}
+                {% set sar_description = sar_description[user.language.code] | default(sar_description | first) %}
+                {% endif %}
+              {% if sar_description %}
+                <p class="mb-4">{{sar_description}}</p>
+              {% endif %}
+              <div class="table-container">
+                <table class="table text-[12px]">
+                    <tbody>
+                    {% for item in branches %}
+                        {% set item_title = item.branches_title %}
+                        {% if item_title is iterable %}
+                            {% set item_title = item_title[user.language.code] | default(item_title | first) %}
+                        {% endif %}
+                        {% set item_description = item.branches_description %}
+                        {% if item_description is iterable %}
+                        {% set item_description = item_description[user.language.code] | default(item_description | first) %}
+                        {% endif %}
+                        <tr>
+                            <th class="font-bold">{{ item_title }}</th>
+                            <td>{{ item_description }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+        {% endif %}
+
+        {% if return_theworld %}
+            <div id="return_theworld_data" class="tabs__item">
+              <ul class="data_list mb-4" style="margin-inline-start: 2em;">
+              {% for point in theworld_points %}
+                {% set pointtheworld_title = point.return_theworld_title %}
+                {% if pointtheworld_title is iterable %}
+                    {% set pointtheworld_title = pointtheworld_title[user.language.code] | default(pointtheworld_title | first) %}
+                {% endif %}
+                <li>{{pointtheworld_title}}</li>
+              {% endfor %}
+              </ul>
+                {% if theworld_description is iterable %}
+                    {% set theworld_description = theworld_description[user.language.code] | default(theworld_description | first) %}
+                {% endif %}
+              {% if theworld_description %}
+                <p class="mb-4">{{theworld_description}}</p>
+              {% endif %}
+              <div class="table-container">
+                  <table class="table text-[12px]">
+                      <tbody>
+                        {% for item in theworld_branches %}
+                          {% set theworld_title = item.return_theworld_branches_title %}
+                          {% if theworld_title is iterable %}
+                          {% set theworld_title = theworld_title[user.language.code] | default(theworld_title | first) %}
+                          {% endif %}
+                          {% set theworld_description = item.return_theworld_description %}
+                          {% if theworld_description is iterable %}
+                          {% set theworld_description = theworld_description[user.language.code] | default(theworld_description | first) %}
+                          {% endif %}
+                          <tr>
+                              <th class="font-bold">{{ theworld_title }}</th>
+                              <td>{{ theworld_description }}</td>
+                          </tr>
+                      {% endfor %}
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<style>
+  .table-container {
+    width: 100%;
+    overflow-x: auto; /* يسمح بتمرير الجدول أفقياً على الجوال */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 400px; /* يضمن أن الجدول لا ينكمش تمامًا */
+}
+
+.table td ,.table tr ,.table th{
+    border: 1px inset #be7f7f;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table-container th {
+    width: 30%;
+}
+.table-container th,.table-container td{
+  padding: .7em;
+}
+.table-container tr:hover {
+    background-color: rgb(235, 235, 235);
+}
+.data_list li::marker {
+    color: #be7f7f;
+}
+.data_list li {
+    list-style: disc outside;
+}
+::marker {
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0px !important;
+    text-align: start !important;
+    text-align-last: auto !important;
+}
+</style>

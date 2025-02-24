@@ -9,7 +9,10 @@
       "download_now": "حمله الان"
     },
     "product": {
-      "readMore": "الوصف"
+      "readMore": "الوصف",
+      "returnSar": "المملكة العربية السعودية",
+      "returnTheworld": "بقية العالم",
+      "exchangeReturn": "استبدال وإرجاع مجاني"
     }
   },
   "pages": {
