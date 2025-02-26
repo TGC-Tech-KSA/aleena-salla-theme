@@ -621,38 +621,6 @@
           }
         ],
         "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
-      },
-      {
-        "id": "cleaning_cat",
-        "type": "collection",
-        "format": "collection",
-        "label": "تعليمات التنظيف",
-        "description": null,
-        "labelHTML": null,
-        "item_label": "تعليمات التنظيف",
-        "icon": "sicon-list-add",
-        "fields": [
-         {
-           "id": "categories",
-           "type": "items",
-           "format": "dropdown-list",
-           "label": "اختر التصنيف",
-           "description": null,
-           "labelHTML": null,
-           "icon": "sicon-keyboard_arrow_down",
-           "selected": [],
-           "options": [],
-           "source": "categories",
-           "multichoice": true,
-           "searchable": true,
-           "required": false,
-           "value": []
-         }
-        ],
-        "value": [],
-        "minLength": 1,
-        "maxLength": 1,
-        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
       }
     ],
     "components": [

@@ -277,6 +277,8 @@
 
                 {# Installment Methods #}
                 <salla-installment price="{{ product.price }}"></salla-installment>
+                <salla-metadata entity-id="{{ product.id }}">
+</salla-metadata>
                 {% if product.has_metadata %}
                 <salla-metadata></salla-metadata>
                 {% endif %}

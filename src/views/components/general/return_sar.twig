@@ -9,10 +9,6 @@
 {% set theworld_points = theme.settings.get('return_theworld_points') %}
 {% set theworld_description = theme.settings.get('return_theworld_description') %}
 
-
-
-{{product.category.name}}
-
 {% if return_sar or return_theworld %}
 <div class="border-b border-darker">
    <div class="accordion cursor-pointer group">
@@ -162,22 +158,3 @@
     text-align-last: auto !important;
 }
 </style>
-
-
-{% set classification = theme.settings.get('cleaning_cat') %}
-{% set category_id = product.category.id %} {# تحويله إلى نص لتجنب أخطاء المطابقة #}
-
- {% for sob in classification %}
-      {% set categories = sob.cleaning_categories %}
-          {% for cat in categories %}
-             {% if cat.value == category_id %}
-                <p>✅ التصنيف المطابق: {{cat.value}} (ID: {{ category_id }})</p>
-                {% else %}
-                <p>✅ غير المطابق: </p>
-                <p>✅ التصنيف المطابق: {{cat.value}} (ID: {{ category_id }})</p>
-
-
-            {% endif %}
-        {% endfor %}
-
-{% endfor %}
