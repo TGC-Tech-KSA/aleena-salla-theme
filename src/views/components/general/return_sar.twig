@@ -164,13 +164,19 @@
 </style>
 
 
-{% set classification = theme.settings.get('classification') %}
+{% set classification = theme.settings.get('cleaning_cat') %}
 {% set category_id = product.category.id %} {# تحويله إلى نص لتجنب أخطاء المطابقة #}
 
  {% for sob in classification %}
-          {% for cat in sob.categories %}
+      {% set categories = sob.cleaning_categories %}
+          {% for cat in categories %}
              {% if cat.value == category_id %}
                 <p>✅ التصنيف المطابق: {{cat.value}} (ID: {{ category_id }})</p>
+                {% else %}
+                <p>✅ غير المطابق: </p>
+                <p>✅ التصنيف المطابق: {{cat.value}} (ID: {{ category_id }})</p>
+
+
             {% endif %}
         {% endfor %}
 

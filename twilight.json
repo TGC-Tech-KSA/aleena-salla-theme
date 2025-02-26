@@ -629,11 +629,11 @@
         "label": "تعليمات التنظيف",
         "description": null,
         "labelHTML": null,
-        "item_label": "الفرع",
+        "item_label": "تعليمات التنظيف",
         "icon": "sicon-list-add",
         "fields": [
          {
-           "id": "cleaning_categories",
+           "id": "categories",
            "type": "items",
            "format": "dropdown-list",
            "label": "اختر التصنيف",
