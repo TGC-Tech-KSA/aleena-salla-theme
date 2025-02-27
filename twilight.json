@@ -621,6 +621,40 @@
           }
         ],
         "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+      },
+      {
+        "type": "boolean",
+        "icon": "sicon-toggle-off",
+        "label": "خيارات تقديم طلب إرجاع داخل السعودية",
+        "description": null,
+        "id": "delivery_details",
+        "format": "switch",
+        "required": false,
+        "value": true,
+        "selected": false,
+        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+      },
+      {
+        "type": "string",
+        "icon": "sicon-format-text-alt",
+        "label": "الفرع",
+        "multilanguage": true,
+        "id": "delivery_details_title",
+        "value": null,
+        "required": false,
+        "format": "text",
+        "description": null,
+        "placeholder": "يمكنك إضافة عنوان الفرع هنا...",
+        "hide": false,
+        "minLength": 0,
+        "maxLength": 80,
+        "conditions": [
+          {
+            "id": "delivery_details",
+            "operation": "=",
+            "value": true
+          }
+        ]
       }
     ],
     "components": [

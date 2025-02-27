@@ -11,13 +11,14 @@ class Product extends BasePage {
       beforePrice: '.before-price',
       startingPriceTitle: '.starting-price-title'
     });
+    this.selectBranches();
     this.initProductOptionValidations();
     this.displayProductOptions();
     this.tabAccordion();
     this.initFeaturedTabs();
     this.goToProductByArrows();
     this.generalEffectOnHover();
-    this.metaData();
+
 
     if (imageZoom) {
       // call the function when the page is ready
@@ -347,71 +348,64 @@ class Product extends BasePage {
       source_value: [cat_id]
     };
 
-    // Call the fetch method
     salla.product
       .fetch(queryParams)
       .then((response) => {
-        // Do something with the response data
         const products = response.data;
+
+        if (!products || products.length <= 1) {
+          document.querySelector('.go-to-product-by-arrows').style.display =
+            'none';
+          return;
+        }
+
         products.forEach((product, index) => {
           if (product.id == product_id) {
-            let prev_product =
-              index == 0 ? products[products.length - 1] : products[index - 1];
+            let prev_product = index > 0 ? products[index - 1] : null;
             let next_product =
-              index == products.length - 1 ? products[0] : products[index + 1];
-
-            // inject data for Next Product
-
+              index < products.length - 1 ? products[index + 1] : null;
             const prevElement = document.querySelector(
               '.go-to-product-by-arrows .prev-product'
             );
             const nextElement = document.querySelector(
               '.go-to-product-by-arrows .next-product'
             );
-
-            document
-              .querySelectorAll('.go-to-product-by-arrows .prev-product a')
-              .forEach((link) => {
-                link.setAttribute('href', prev_product.url);
-              });
-
-            document
-              .querySelectorAll('.go-to-product-by-arrows .next-product a')
-              .forEach((link) => {
-                link.setAttribute('href', next_product.url);
-              });
-
-            document.querySelector(
-              '.go-to-product-by-arrows .next-product .product-image'
-            ).src = next_product.image.url;
-            document.querySelector(
-              '.go-to-product-by-arrows .next-product .product-name'
-            ).innerHTML = next_product.name;
-            document.querySelector(
-              '.go-to-product-by-arrows .next-product .product-price'
-            ).innerHTML = salla.money(next_product.price);
-
-            // inject data for previous product
-            prevElement.querySelectorAll('a').forEach((link) => {
-              link.setAttribute('href', prev_product.url);
-            });
-            document.querySelector(
-              '.go-to-product-by-arrows .prev-product .product-image'
-            ).src = prev_product.image.url;
-            document.querySelector(
-              '.go-to-product-by-arrows .prev-product .product-name'
-            ).innerHTML = prev_product.name;
-            document.querySelector(
-              '.go-to-product-by-arrows .prev-product .product-price'
-            ).innerHTML = salla.money(prev_product.price);
+            if (prev_product) {
+              prevElement.style.display = 'block';
+              prevElement
+                .querySelector('a')
+                .setAttribute('href', prev_product.url);
+              prevElement.querySelector('.product-image').src =
+                prev_product.image.url;
+              prevElement.querySelector('.product-name').innerHTML =
+                prev_product.name;
+              prevElement.querySelector('.product-price').innerHTML =
+                salla.money(prev_product.price);
+            } else {
+              prevElement.style.display = 'none';
+            }
+            if (next_product) {
+              nextElement.style.display = 'block';
+              nextElement
+                .querySelector('a')
+                .setAttribute('href', next_product.url);
+              nextElement.querySelector('.product-image').src =
+                next_product.image.url;
+              nextElement.querySelector('.product-name').innerHTML =
+                next_product.name;
+              nextElement.querySelector('.product-price').innerHTML =
+                salla.money(next_product.price);
+            } else {
+              nextElement.style.display = 'none';
+            }
           }
         });
       })
       .catch((error) => {
-        // Handle any errors that occur
-        console.error(error);
+        console.error('❌ خطأ في جلب المنتجات:', error);
       });
   }
+
   generalEffectOnHover() {
     document.querySelectorAll('.general-effect').forEach((item) => {
       let item_event_in = item.dataset.eventIn;
@@ -433,49 +427,11 @@ class Product extends BasePage {
       });
     });
   }
-  metaData() {
- document.addEventListener('DOMContentLoaded', function () {
-   setTimeout(() => {
-     let metadataContainer = document.getElementById('metadata-name');
-     let productElement = document.getElementById('product-data');
+  selectBranches() {
 
-     if (!productElement) {
-       console.error('🚨 لم يتم العثور على العنصر الذي يحتوي على ID المنتج.');
-       return;
-     }
 
-     let productId = productElement.dataset.productId;
 
-     if (!productId) {
-       console.error('🚨 لا يوجد ID للمنتج في dataset.');
-       return;
-     }
 
-     salla.metadata.api
-       .fetchValues('product', [productId])
-       .then((response) => {
-         console.log('📌 بيانات الميتا المسترجعة من API:', response);
-
-         if (!response || response.length === 0) {
-           metadataContainer.innerHTML = `<p>⚠️ لا توجد بيانات ميتا.</p>`;
-           return;
-         }
-
-         metadataContainer.innerHTML = response
-           .map(
-             (meta) =>
-               `<p><strong>اسم الميتا:</strong> ${
-                 meta.metadata_name || 'غير متاح'
-               }</p>`
-           )
-           .join('');
-       })
-       .catch((error) => {
-         console.error('❌ خطأ في جلب بيانات الميتا:', error);
-         metadataContainer.innerHTML = `<p>🚨 حدث خطأ أثناء جلب البيانات.</p>`;
-       });
-   }, 3000);
- });
 
 
   }

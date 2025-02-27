@@ -2,12 +2,16 @@ salla-slider{
   @apply block;
 
   &.details-slider{
+    @apply md:h-[666px];
+    .swiper{
+      @apply h-full;
+    }
     .s-slider-container{
-      @apply bg-white border-[1px] rounded-md;
+      @apply bg-white border-[1px] ;
     }
 
     .swiper-slide{
-      @apply relative rounded-md bg-white ring-1 ring-inset ring-gray-100;
+      @apply relative rounded-md bg-white ring-1 ring-inset ring-gray-100 h-full;
     }
 
     salla-button.btn--wishlist{
@@ -15,7 +19,16 @@ salla-slider{
     }
 
     .s-slider-block__title-nav{
-      @apply sm:flex;
+      @apply sm:flex w-full;
+      button{
+        @apply rounded-none shadow-none opacity-60;
+        &:hover{
+          @apply opacity-100;
+        }
+        &.swiper-button-disabled{
+          @apply opacity-0;
+        }
+      }
     }
   }
 

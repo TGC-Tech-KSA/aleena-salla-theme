@@ -9,6 +9,47 @@
 {% set theworld_points = theme.settings.get('return_theworld_points') %}
 {% set theworld_description = theme.settings.get('return_theworld_description') %}
 
+{% if is_select_branches %}
+<div class="s-block-select flex items-center gap-3 rounded bg-white mb-4">
+    <i class="sicon-shipping-fast text-xl font-bold text-dark"></i>
+    <div class="select-wrapper w-3/4">
+        {% for item in branches %}
+            {% set item_description = item.branches_description %}
+            {% if item_description is iterable %}
+                {% set item_description = item_description[user.language.code] | default(item_description | first) %}
+            {% endif %}
+            <div id="tab-{{ loop.index }}" class="select__item text-sm {{ loop.first ? 'is-active' : '' }}">
+                {{ item_description }}
+            </div>
+        {% endfor %}
+        {% for item in theworld_branches %}
+            {% set theworld_description = item.return_theworld_description %}
+            {% if theworld_description is iterable %}
+                {% set theworld_description = theworld_description[user.language.code] | default(theworld_description | first) %}
+            {% endif %}
+            <div id="tab-{{ loop.index + branches|length }}" class="select__item text-sm">
+                {{ theworld_description }}
+            </div>
+        {% endfor %}
+    </div>
+    <select id="select-branches" class="p-2 rounded-2xl min-w-32 !shadow-none focus:!shadow-none focus:!ring-0 text-sm">
+        {% for item in branches %}
+            {% set item_title = item.branches_title %}
+            {% if item_title is iterable %}
+                {% set item_title = item_title[user.language.code] | default(item_title | first) %}
+            {% endif %}
+            <option value="tab-{{ loop.index }}" {{ loop.first ? 'selected' : '' }}>{{ item_title }}</option>
+        {% endfor %}
+        {% for item in theworld_branches %}
+            {% set theworld_title = item.return_theworld_branches_title %}
+            {% if theworld_title is iterable %}
+                {% set theworld_title = theworld_title[user.language.code] | default(theworld_title | first) %}
+            {% endif %}
+            <option value="tab-{{ loop.index + branches|length }}">{{ theworld_title }}</option>
+        {% endfor %}
+    </select>
+</div>
+{% else %}
 {% if return_sar or return_theworld %}
 <div class="border-b border-darker">
    <div class="accordion cursor-pointer group">
@@ -114,6 +155,10 @@
   </div>
 </div>
 {% endif %}
+
+{% endif %}
+
+
 
 <style>
   .table-container {

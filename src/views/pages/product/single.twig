@@ -87,7 +87,9 @@
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         <nav class="breadcrumbs w-full py-5 flex justify-between items-center">
             <salla-breadcrumb></salla-breadcrumb>
-              <div catId="{{ product.category.id }}" productId="{{product.id}}" class="go-to-product-by-arrows flex items-center gap-3 text-xl relative">
+
+
+                <div catId="{{ product.category.id }}" productId="{{product.id}}" class="go-to-product-by-arrows flex items-center gap-3 text-xl relative">
                                 {% for n in 0..1 %}
                                     <div class="{{loop.index == 1 ? 'prev' : 'next'}}-product group">
                                         {% if user.language.dir == 'ltr'%}
@@ -125,7 +127,7 @@
                             <div>
         </nav>
         <div class="flex flex-col items-start md:flex-row md:justify-center md:gap-8" id="product-{{ product.id }}">
-            <div class="sidebar md:sticky top-24 w-full md:!w-[45%] pb-8 md:pb-16 overflow-hidden shrink-0">
+            <div class="sidebar w-full md:!w-[45%] pb-8 md:pb-16 overflow-hidden shrink-0">
                 {% set has_many_images = product.images|length > 1 %}
                 <salla-slider
                         id="details-slider-{{ product.id }}"
@@ -221,69 +223,26 @@
                 {% if product.brand.name %}
                     <div class="product-brand mb-5 w-12">
                         <a class="brand-logo" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
-                            <img width="100%" height="100%" class="max-h-full object-contain"
-                                 src="{{ product.brand.logo }}"
-                                 title="{{ product.brand.name }}"
-                                 alt="{{ product.brand.name }}">
+                            <img width="100%" height="100%" class="max-h-full object-contain" src="{{ product.brand.logo }}" title="{{ product.brand.name }}" alt="{{ product.brand.name }}">
                         </a>
                     </div>
                 {% endif %}
-
-                <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
-
-                {% if product.subtitle %}
-                    <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
-                        {{ product.subtitle }}
-                    </h2>
-                {% endif %}
-
-                {% if product.rating %}
-                    <salla-rating-stars value="{{ product.rating.stars }}"
-                                        reviews="{{ product.rating.count }}"></salla-rating-stars>
-                {% endif %}
-
-                {% if product.is_taxable %}
-                    <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
-                {% endif %}
-                {# Price #}
-                <div class="flex whitespace-nowrap gap-4 items-center">
-                  <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                      <h4 class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h4>
-                      <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
-                  </div>
-                  <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                      {% if product.starting_price %}
-                          <span class="">{{ trans('pages.products.starting_price') }}</span>
-                      {% endif %}
-                          <h2 class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
-                  </div>
+                <div class="flex justify-between items-center gap-3 mb-6">
+                <h1 class="text-sm md:text-base leading-10 text-dark">{{ product.name }}</h1>
+                <div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
+                              <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
+                                <h2 class="total-price text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
+                                <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
+                              </div>
+                              <div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+                                {% if product.starting_price %}
+                                  <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
+                                {% endif %}
+                                <h2 class="total-price font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
+                              </div>
                 </div>
-                {% if product.tags|length and theme.settings.get('show_tags', true) %}
-                    <div class="mb-3">
-                        {% for tag in product.tags %}
-                            <a href="{{ tag.url }}"
-                               class="rtl:ml-2 ltr:mr-2 inline-flex  text-gray-500 hover:text-primary underline text-sm mb-1">{{ tag.name }}
-                                ,</a>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
-                <div class="flex rtl:space-x-reverse space-x-3">
-                    <salla-social-share class="inline-flex mb-5" aria-label="social share"></salla-social-share>
-
-                    <salla-button
-                            class="btn--wishlist animated hidden sm:inline-flex"
-                            data-id="{{ product.id }}"
-                            onclick="salla.wishlist.toggle({{ product.id }})"
-                            shape="icon"
-                            fill="outline"
-                            color="light"
-							aria-label="add to wishlist">
-                        <i class="sicon-heart"></i>
-                    </salla-button>
                 </div>
-
-                {% if product.sold_quantity or product.can_show_remained_quantity %}
+                    {% if product.sold_quantity or product.can_show_remained_quantity %}
                     <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm">
                         {% if product.sold_quantity %}
                             <div class="px-4 !text-red-800">
@@ -300,8 +259,44 @@
                         {% endif %}
                     </div>
                 {% endif %}
+                {% include 'components.general.return_sar' with {is_select_branches:true} %}
+                <div class="flex items-center gap-4 bg-[#f8e8e5] rounded-2xl p-4">
+                    <i class="sicon-tag text-xl font-bold text-dark"></i>
+                    <salla-advertisement slot="icon" class="[&_.s-advertisement-action]:hidden !bg-transparent [&_.s-advertisement-action]:!text-dark [&_.s-advertisement]:!text-dark [&_.s-advertisement]:!bg-transparent "></salla-advertisement>
+                </div>
+
+                {% if product.subtitle %}
+                    <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
+                        {{ product.subtitle }}
+                    </h2>
+                {% endif %}
+
+                {% if product.rating %}
+                    <salla-rating-stars value="{{ product.rating.stars }}" reviews="{{ product.rating.count }}"></salla-rating-stars>
+                {% endif %}
+
+                {% if product.is_taxable %}
+                    <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
+                {% endif %}
+
+                {% if product.tags|length and theme.settings.get('show_tags', true) %}
+                    <div class="mb-3">
+                        {% for tag in product.tags %}
+                        <a href="{{ tag.url }}" class="rtl:ml-2 ltr:mr-2 inline-flex text-gray-500 hover:text-primary underline text-sm mb-1">{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {# <div class="flex rtl:space-x-reverse space-x-3">
+                    <salla-social-share class="inline-flex mb-5" aria-label="social share"></salla-social-share>
+                    <salla-button class="btn--wishlist animated hidden sm:inline-flex" data-id="{{ product.id }}" onclick="salla.wishlist.toggle({{ product.id }})" shape="icon" fill="outline" color="light" aria-label="add to wishlist">
+                        <i class="sicon-heart"></i>
+                    </salla-button>
+                </div> #}
+
+
                 {% if product.sku %}
-                    <div class="mb-4 flex justify-between sm:grid sm:grid-cols-3 bg-white rounded-md px-4 py-2">
+                    <div class="mb-4 flex justify-between x-4 py-2">
                         <div class="flex items-center">
                             <i class="sicon-barcode mx-1"></i>
                             {{ trans('pages.products.sku') }}
@@ -322,9 +317,7 @@
                             </label>
                             <div class="mt-1 sm:mt-0 sm:col-span-2 text-end">
                                 <div class="flex rtl:space-x-reverse space-x-3">
-                                    <a href="#!"
-                                       onclick="salla.event.dispatch('scopes::open', {mode: 'availability', product_id: {{ product.id }} })"
-                                       class="group text-primary flex items-center justify-center">
+                                    <a href="#!" onclick="salla.event.dispatch('scopes::open', {mode: 'availability', product_id: {{ product.id }} })" class="group text-primary flex items-center justify-center">
                                         <span>{{ trans('pages.products.select_branch') }}</span>
                                         <span class="sicon-keyboard_arrow_left mr-2 transition-all group-hover:-translate-x-1"></span>
                                     </a>
@@ -334,13 +327,10 @@
                     </section>
                 {% endif %}
 
-                <form class="form product-form" id="single-product-form" enctype="multipart/form-data" method="post"
-                      onsubmit="return salla.form.onSubmit('cart.addItem', event)" >
+                <form class="form product-form" id="single-product-form" enctype="multipart/form-data" method="post" onsubmit="return salla.form.onSubmit('cart.addItem', event)" >
                     <input type="hidden" name="id" value="{{ product.id }}">
-
-
                     {% hook 'product:single.form.start' %}
-  {# show options #}
+                    {# show options #}
                 <div id="options-panel-trigger" data-show="product-options-panel" class="relative flex justify-between w-full cursor-pointer group mb-4">
                   <div class="option-item__label w-full">
                     <div id="options-menu" class="w-full flex divide-y my-2 [&_div]:border-y-transparent [&_div]:border-primary [&_div]:p-2 [&_div]:relative [&_div]:before:absolute [&_div]:before:content-[''] [&_div]:before:rtl:left-0 [&_div]:before:ltr:right-0 [&_div]:before:w-[1px] [&_div]:before:h-1/2 [&_div]:before:top-1/2 [&_div]:before:bg-gray-200 [&_div]:before:-translate-y-1/2 [&_div]:last:before:hidden [&_div]:first:rtl:pr-0 [&_div]:first:ltr:pl-0 [&_div]:flex-wrap"> {# // show options that is selected here #} </div>
@@ -352,13 +342,7 @@
 
                     <section class="flex bg-white p-5 sm:pb-0 rounded-md rounded-b-none">
                         <div class="center-between w-full">
-                            <label class="form-label">
-                                <b class="block">
-                                    {{ trans('pages.products.price') }}
-                                </b>
-                            </label>
-
-                            <div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
+                            {# <div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
                               <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
                                 <h2 class="total-price text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
                                 <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
@@ -369,7 +353,7 @@
                                 {% endif %}
                                 <h2 class="total-price font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
                               </div>
-                            </div>
+                            </div> #}
 
                             <div class="out-of-stock min-h-7 leading-7 hidden text-base text-red-600 !opacity-50 font-bold">{{ trans('pages.products.out_of_stock')}}</div>
                         </div>
@@ -383,23 +367,11 @@
                                 <label class="form-label font-bold">
                                     {{ trans('pages.products.quantity') }}
                                 </label>
-                                <salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity"
-                                  class="border-gray-200 flex justify-end"></salla-quantity-input>
+                                <salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity" class="border-gray-200 flex justify-end"></salla-quantity-input>
                             </div>
                         {% endif %}
                         {# Add to cart #}
-                        <salla-add-product-button
-                                quick-buy
-                                {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}}
-                                {{product.is_require_shipping ? 'required-shipping' : ''}}
-                                amount="{{ product.base_currency_price }}"
-                                class="mt-5 w-full sticky-product-bar__btn"
-                                product-status="{{ product.status }}"
-                                product-type="{{ product.type }}"
-                                product-id="{{ product.id }}"
-                                loader-position="end"
-                                type="submit"
-                                width="wide"
+                        <salla-add-product-button quick-buy {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} {{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="mt-5 !w-full sticky-product-bar__btn add-product-page !flex-col [&_.s-add-product-button-main]:!flex-col [&_.s-add-product-button-main]:gap-4 [&_salla-button]:!w-full [&_button]:!w-full [&_salla-mini-checkout-widget]:!w-full" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="normal" fill="outline"
                                 {# Notify availability props#}
                                 {% if product.notify_availability %}
                                     {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }}
@@ -446,9 +418,15 @@
     <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
     {# Similar Products Area #}
 
-<div class="container">
-        <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
-    </div>
+    <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" class="aleena-arrows aleena-arrows-5" limit="5" includes='{{theme.settings.get('includes_features')|json_encode}}' display-all-url></salla-products-slider>
+<style>
+    .add-product-page salla-button ,.add-product-page button{
+        width:100% !important ;
+    }
+    .s-add-product-button-main:not(.w-full) > salla-button {
+        width: 100% !important;
+    }
+</style>
 {% endblock %}
 
 {% block scripts %}
@@ -457,8 +435,36 @@
         <script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     {% endif %}
     <script>
-    let productId = {{ product.id }};
-    </script>
+        document.addEventListener("DOMContentLoaded", function () {
+        let selectElement = document.getElementById("select-branches");
+        if (!selectElement) return;
 
+        let tabsItems = document.querySelectorAll(".select__item");
+
+        tabsItems.forEach((item) => {
+            item.classList.remove("is-active");
+            item.style.display = "none";
+        });
+        let firstOptionValue = selectElement.value;
+        let firstActiveTab = document.getElementById(firstOptionValue);
+        if (firstActiveTab) {
+            firstActiveTab.style.display = "block";
+            firstActiveTab.classList.add("is-active");
+        }
+
+        selectElement.addEventListener("change", function () {
+            let selectedValue = this.value;
+            tabsItems.forEach((item) => {
+                item.classList.remove("is-active");
+                item.style.display = "none";
+            });
+            let activeTab = document.getElementById(selectedValue);
+            if (activeTab) {
+                activeTab.classList.add("is-active");
+                activeTab.style.display = "block";
+            }
+        });
+    });
+    </script>
 {% endblock %}
 
