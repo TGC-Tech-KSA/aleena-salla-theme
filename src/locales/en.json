@@ -8,6 +8,10 @@
     "appBanner": {
       "download_now": "download now"
     },
+    "common": {
+      "cancelAtAnyTime": "Please enter your email address to be the first to know about a new product launch",
+      "subscribeNow": "Subscribe"
+    },
     "product": {
       "readMore": "Description",
       "returnSar": "Within Saudi Arabia",

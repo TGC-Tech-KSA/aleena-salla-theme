@@ -5,6 +5,10 @@
       "search": "بحث",
       "account": "الحساب"
     },
+    "common": {
+      "cancelAtAnyTime": "الرجاء إدخال عنوان بريدك الإلكتروني لتكون أول من يعرف عن إطلاق منتج جديد",
+      "subscribeNow": "اشترك"
+    },
     "appBanner": {
       "download_now": "حمله الان"
     },

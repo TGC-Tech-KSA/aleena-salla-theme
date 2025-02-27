@@ -1,22 +1,25 @@
+{% set newsletter = theme.settings.get('footer_show_newsletter') %}
+{% set newsletter_action = theme.settings.get('footer_newsletter_form_action') %}
+{% set newsletter_is_active = newsletter and newsletter_action %}
 <footer class="store-footer">
 	<div aria-label="footer" class="store-footer__inner">
 		<div class="container grid grid-col-1 lg:grid-cols-6 gap-8 lg:gap-6">
 			<div class="lg:col-span-2 rtl:lg:pl-20 ltr:lg:pr-20">
-				<a href="{{ link('/') }}" class="flex items-center m-0">
+				{# <a href="{{ link('/') }}" class="flex items-center m-0">
 					<h3>{{store.name}}</h3>
 				</a>
 				{% if store.description %}
 					<p class="max-w-sm leading-6 mb-6">
 						{{ store.description|raw }}
 					</p>
-				{% endif %}
+				{% endif %} #}
 
-				<div class="hidden lg:block">
+				{# <div class="hidden lg:block">
 					<salla-social class="mb-6"></salla-social>
-				</div>
+				</div> #}
 
           {# vat #}
-          {% if store.settings.tax.number %}
+          {# {% if store.settings.tax.number %}
             <div class="flex rtl:space-x-reverse space-x-2 items-end">
               {% if store.settings.tax.certificate %}
                 <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
@@ -39,12 +42,33 @@
                 </div>
               </salla-modal>
             {% endif %}
+          {% endif %} #}
+          {% if newsletter_is_active %}
+            <div class="newsletter-block py-6 z-1 footer-b-after">
+                <div class="newsletter-block__inner flex flex-col gap-3">
+                    <div><h2 class="font-medium text-xs md:text-xl mb-4">{{ theme.settings.get('newsletter_title') }} </h2>
+                    <p class="text-xs md:text-sm mb-2.5 lg:mb-3.5 font-medium"> {{ trans('blocks.common.cancelAtAnyTime') }} </p></div>
+                    <form action="{{ newsletter_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate class="w-full validate ">
+                      <div class="flex flex-col w-full justify-center gap-4">
+                        <input type="email" value="" name="EMAIL" class="required email form-input !bg-transparent border !h-[50px] w-full md:rtl:ml-2.5 mx-0 md:ltr:mr-2.5 p-4 text-sm mb-2.5 md:mb-0 !rounded-none placeholder:text-[16px]" placeholder="{{ trans('common.elements.email') }}" required name="email" />
+                        <salla-button type="submit" loader-position="center" class="!h-[50px]">
+                          <span class="btn__text">{{trans('blocks.common.subscribeNow')}}</span>
+                        </salla-button>
+                      </div>
+                      <div id="mce-responses" class="clear foot relative text-center">
+                        <div class="response text-red-400 mt-2 text-sm" id="mce-error-response" style="display:none"></div>
+                        <div class="response mt-2 text-sm text-[var(--footer-color)] dark:text-[var(--footer-color-dark)]" id="mce-success-response" style="display:none"></div>
+                      </div>
+                    </form>
+                </div>
+            </div>
           {% endif %}
         </div>
 
 			<div>
 				<h3>{{ trans('blocks.footer.pages_links') }}</h3>
 				<salla-menu source="footer"></salla-menu>
+        {% component 'footer.menu' %}
 			</div>
 
 			<div>
