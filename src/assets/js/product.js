@@ -15,6 +15,8 @@ class Product extends BasePage {
     this.displayProductOptions();
     this.tabAccordion();
     this.initFeaturedTabs();
+    this.goToProductByArrows();
+    this.generalEffectOnHover();
 
     if (imageZoom) {
       // call the function when the page is ready
@@ -296,18 +298,139 @@ class Product extends BasePage {
     }
   }
   initFeaturedTabs() {
-      app.all('.tab-trigger', el => {
-          el.addEventListener('click', ({ currentTarget: btn }) => {
-              let id = btn.dataset.componentId;
-              // btn.setAttribute('fill', 'solid');
-              app.toggleClassIf(`#${id} .tabs-wrapper>div`, 'is-active opacity-0 translate-y-3', 'inactive', tab => tab.id == btn.dataset.target)
-                  .toggleClassIf(`#${id} .tab-trigger`, 'is-active', 'inactive', tabBtn => tabBtn == btn);
+    app.all('.tab-trigger', (el) => {
+      el.addEventListener('click', ({ currentTarget: btn }) => {
+        let id = btn.dataset.componentId;
+        // btn.setAttribute('fill', 'solid');
+        app
+          .toggleClassIf(
+            `#${id} .tabs-wrapper>div`,
+            'is-active opacity-0 translate-y-3',
+            'inactive',
+            (tab) => tab.id == btn.dataset.target
+          )
+          .toggleClassIf(
+            `#${id} .tab-trigger`,
+            'is-active',
+            'inactive',
+            (tabBtn) => tabBtn == btn
+          );
 
-              // fadeIn active tabe
-              setTimeout(() => app.toggleClassIf(`#${id} .tabs-wrapper>div`, 'opacity-100 translate-y-0', 'opacity-0 translate-y-3', tab => tab.id == btn.dataset.target), 100);
-          })
+        // fadeIn active tabe
+        setTimeout(
+          () =>
+            app.toggleClassIf(
+              `#${id} .tabs-wrapper>div`,
+              'opacity-100 translate-y-0',
+              'opacity-0 translate-y-3',
+              (tab) => tab.id == btn.dataset.target
+            ),
+          100
+        );
       });
-      document.querySelectorAll('.s-block-tabs').forEach(block => block.classList.add('tabs-initialized'));
+    });
+    document
+      .querySelectorAll('.s-block-tabs')
+      .forEach((block) => block.classList.add('tabs-initialized'));
+  }
+  goToProductByArrows() {
+    let cat_id = document
+      .querySelector('.go-to-product-by-arrows')
+      .getAttribute('catId');
+    let product_id = document
+      .querySelector('.go-to-product-by-arrows')
+      .getAttribute('productId');
+
+    const queryParams = {
+      source: 'categories',
+      source_value: [cat_id]
+    };
+
+    // Call the fetch method
+    salla.product
+      .fetch(queryParams)
+      .then((response) => {
+        // Do something with the response data
+        const products = response.data;
+        products.forEach((product, index) => {
+          if (product.id == product_id) {
+            let prev_product =
+              index == 0 ? products[products.length - 1] : products[index - 1];
+            let next_product =
+              index == products.length - 1 ? products[0] : products[index + 1];
+
+            // inject data for Next Product
+
+            const prevElement = document.querySelector(
+              '.go-to-product-by-arrows .prev-product'
+            );
+            const nextElement = document.querySelector(
+              '.go-to-product-by-arrows .next-product'
+            );
+
+            document
+              .querySelectorAll('.go-to-product-by-arrows .prev-product a')
+              .forEach((link) => {
+                link.setAttribute('href', prev_product.url);
+              });
+
+            document
+              .querySelectorAll('.go-to-product-by-arrows .next-product a')
+              .forEach((link) => {
+                link.setAttribute('href', next_product.url);
+              });
+
+            document.querySelector(
+              '.go-to-product-by-arrows .next-product .product-image'
+            ).src = next_product.image.url;
+            document.querySelector(
+              '.go-to-product-by-arrows .next-product .product-name'
+            ).innerHTML = next_product.name;
+            document.querySelector(
+              '.go-to-product-by-arrows .next-product .product-price'
+            ).innerHTML = salla.money(next_product.price);
+
+            // inject data for previous product
+            prevElement.querySelectorAll('a').forEach((link) => {
+              link.setAttribute('href', prev_product.url);
+            });
+            document.querySelector(
+              '.go-to-product-by-arrows .prev-product .product-image'
+            ).src = prev_product.image.url;
+            document.querySelector(
+              '.go-to-product-by-arrows .prev-product .product-name'
+            ).innerHTML = prev_product.name;
+            document.querySelector(
+              '.go-to-product-by-arrows .prev-product .product-price'
+            ).innerHTML = salla.money(prev_product.price);
+          }
+        });
+      })
+      .catch((error) => {
+        // Handle any errors that occur
+        console.error(error);
+      });
+  }
+  generalEffectOnHover() {
+    document.querySelectorAll('.general-effect').forEach((item) => {
+      let item_event_in = item.dataset.eventIn;
+      let item_event_leave = item.dataset.eventLeave;
+      let item_target = item.dataset.target;
+      let targetElement = document.querySelector('#' + item_target);
+
+      if (!targetElement) {
+        console.warn(`Element with ID '${item_target}' not found.`);
+        return;
+      }
+
+      item.addEventListener(item_event_in, () => {
+        targetElement.classList.remove('opacity-0', 'translate-y-3');
+      });
+
+      item.addEventListener(item_event_leave, () => {
+        targetElement.classList.add('opacity-0', 'translate-y-3');
+      });
+    });
   }
 }
 

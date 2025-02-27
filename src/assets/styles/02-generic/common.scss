@@ -16,7 +16,7 @@ input[type="file"] {
 }
 
 body{
-  @apply bg-gray-50;
+  @apply bg-white;
   [type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select{
     @apply focus:ring-0;
   }
@@ -344,7 +344,7 @@ salla-modal {
   @apply flex ltr:flex-wrap justify-between items-center -mx-[5px] gap-2.5;
 
   > *{
-    @apply grow mx-[5px]; 
+    @apply grow mx-[5px];
   }
 }
 
@@ -395,9 +395,9 @@ salla-modal {
   }
   ul li{
     list-style: disc;
-  } 
+  }
 
   ol li{
     list-style: auto;
-  } 
+  }
 }
