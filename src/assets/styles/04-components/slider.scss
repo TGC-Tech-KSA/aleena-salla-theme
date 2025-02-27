@@ -2,7 +2,9 @@ salla-slider{
   @apply block;
 
   &.details-slider{
-    @apply md:h-[666px];
+    .s-slider-container{
+      @apply md:h-[666px];
+    }
     .swiper{
       @apply h-full;
     }

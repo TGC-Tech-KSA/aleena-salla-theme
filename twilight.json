@@ -300,6 +300,57 @@
         "selected": false
       },
       {
+        "type": "boolean",
+        "icon": "sicon-toggle-off",
+        "label": "عرض النشرة البريدية",
+        "description": null,
+        "id": "footer_show_newsletter",
+        "format": "switch",
+        "required": false,
+        "value": true,
+        "selected": false,
+        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+      },
+      {
+        "type": "string",
+        "icon": "sicon-format-text-alt",
+        "label": "عنوان النشرة البريدية",
+        "multilanguage": true,
+        "id": "newsletter_title",
+        "value": "اشترك في النشرة البريدية الآن واحصل على خصومات رائعة",
+        "required": false,
+        "format": "text",
+        "description": null,
+        "placeholder": "أدخل العنوان هنا...",
+        "conditions": [
+          {
+            "id": "footer_show_newsletter",
+            "operation": "=",
+            "value": true
+          }
+        ],
+        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+      },
+      {
+        "type": "string",
+        "icon": "sicon-format-text-alt",
+        "label": "رابط نموذج النشرة البريدية",
+        "id": "footer_newsletter_form_action",
+        "value": null,
+        "required": false,
+        "format": "url",
+        "description": "من خدمة النشرة البريدة لديك، قم بتصدير كود نموذج الإشتراك، ثم انسخ قيمة الخاصية action في نموذج تضمين النشرة البريدية والصقه هنا، في حالة تركه فارغاً لن يظهر نموذج النشرة البريدية",
+        "placeholder": "https://salla.us20.list-manage.com/subscribe/post?u=98955d67929660f6f219b47a2&amp;id=2263e991fa&amp;f_id=009afbe6f0",
+        "conditions": [
+          {
+            "id": "footer_show_newsletter",
+            "operation": "=",
+            "value": true
+          }
+        ],
+        "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+      },
+      {
         "type": "static",
         "id": "static-line5",
         "format": "line"
@@ -637,14 +688,14 @@
       {
         "type": "string",
         "icon": "sicon-format-text-alt",
-        "label": "الفرع",
+        "label": "طلب إرجاع",
         "multilanguage": true,
         "id": "delivery_details_title",
         "value": null,
         "required": false,
         "format": "text",
         "description": null,
-        "placeholder": "يمكنك إضافة عنوان الفرع هنا...",
+        "placeholder": "يمكنك إضافة عنوان طلب إرجاع هنا...",
         "hide": false,
         "minLength": 0,
         "maxLength": 80,
