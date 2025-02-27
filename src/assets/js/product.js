@@ -17,6 +17,7 @@ class Product extends BasePage {
     this.initFeaturedTabs();
     this.goToProductByArrows();
     this.generalEffectOnHover();
+    this.metaData();
 
     if (imageZoom) {
       // call the function when the page is ready
@@ -431,6 +432,52 @@ class Product extends BasePage {
         targetElement.classList.add('opacity-0', 'translate-y-3');
       });
     });
+  }
+  metaData() {
+ document.addEventListener('DOMContentLoaded', function () {
+   setTimeout(() => {
+     let metadataContainer = document.getElementById('metadata-name');
+     let productElement = document.getElementById('product-data');
+
+     if (!productElement) {
+       console.error('🚨 لم يتم العثور على العنصر الذي يحتوي على ID المنتج.');
+       return;
+     }
+
+     let productId = productElement.dataset.productId;
+
+     if (!productId) {
+       console.error('🚨 لا يوجد ID للمنتج في dataset.');
+       return;
+     }
+
+     salla.metadata.api
+       .fetchValues('product', [productId])
+       .then((response) => {
+         console.log('📌 بيانات الميتا المسترجعة من API:', response);
+
+         if (!response || response.length === 0) {
+           metadataContainer.innerHTML = `<p>⚠️ لا توجد بيانات ميتا.</p>`;
+           return;
+         }
+
+         metadataContainer.innerHTML = response
+           .map(
+             (meta) =>
+               `<p><strong>اسم الميتا:</strong> ${
+                 meta.metadata_name || 'غير متاح'
+               }</p>`
+           )
+           .join('');
+       })
+       .catch((error) => {
+         console.error('❌ خطأ في جلب بيانات الميتا:', error);
+         metadataContainer.innerHTML = `<p>🚨 حدث خطأ أثناء جلب البيانات.</p>`;
+       });
+   }, 3000);
+ });
+
+
   }
 }
 

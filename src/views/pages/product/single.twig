@@ -313,10 +313,6 @@
 
                 {# Installment Methods #}
                 <salla-installment price="{{ product.price }}"></salla-installment>
-                {% if product.has_metadata %}
-                <salla-metadata></salla-metadata>
-                {% endif %}
-
                 {% if product.show_availability %}
                     <section class="bg-white p-5 rounded-md mb-5 last:mb-0">
                         <div class="center-between">
@@ -430,6 +426,14 @@
                         <article class="article--main pb-1">{{ product_desc|raw }}</article>
                     </div>
                 </div>
+                <div class="hhhh">
+                  <div id="product-data" data-product-id="{{ product.id }}"></div>
+<div id="metadata-name"></div>
+
+                 </div>
+                {% if product.has_metadata %}
+                    <salla-metadata></salla-metadata>
+                {% endif %}
                 {% include 'components.general.return_sar'%}
                 {% hook 'product:single.description.end' %}
                 <salla-quick-order class="mt-5 md:-mb-2 block"></salla-quick-order>
@@ -452,5 +456,9 @@
     {% if product.has_3d_image %}
         <script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     {% endif %}
+    <script>
+    let productId = {{ product.id }};
+    </script>
+
 {% endblock %}
 

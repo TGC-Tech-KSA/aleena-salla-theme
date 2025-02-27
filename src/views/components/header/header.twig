@@ -30,7 +30,7 @@
                   </div>
                   <div class="flex items-center justify-end logo-area__right flex-1 gap-4">
                       {% if user.type=='user' %}
-                        <salla-user-menu avatar-only show-header></salla-user-menu>
+                        <salla-user-menu relative-dropdown ></salla-user-menu>
                       {% else %}
                           <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
                           <span class="hidden md:flex">{{ trans('blocks.header.account') }}</span>
