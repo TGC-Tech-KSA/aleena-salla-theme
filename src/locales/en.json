@@ -8,6 +8,10 @@
     "appBanner": {
       "download_now": "download now"
     },
+    "footer": {
+      "menuTitle_one": "Policies",
+      "menuTitle_two": "Learn"
+    },
     "common": {
       "cancelAtAnyTime": "Please enter your email address to be the first to know about a new product launch",
       "subscribeNow": "Subscribe"

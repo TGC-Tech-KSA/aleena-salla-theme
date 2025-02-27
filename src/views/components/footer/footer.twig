@@ -66,13 +66,18 @@
         </div>
 
 			<div>
-				<h3>{{ trans('blocks.footer.pages_links') }}</h3>
-				<salla-menu source="footer"></salla-menu>
+				{# <h3>{{ trans('blocks.footer.menuTitle_one') }}</h3> #}
+				{# <salla-menu source="footer"></salla-menu> #}
         {% component 'footer.menu' %}
 			</div>
 
 			<div>
+        <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
+          <span class="hidden md:flex">{{ trans('blocks.header.account') }}</span>
+          <i class="sicon-user flex md:hidden text-xl text-darker"></i>
+        </button>
 				<salla-contacts></salla-contacts>
+         {% component 'footer.menu' with {learn:true} %}
 
 				<div class="lg:hidden contact-social">
 					<salla-social></salla-social>

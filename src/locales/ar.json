@@ -12,6 +12,10 @@
     "appBanner": {
       "download_now": "حمله الان"
     },
+    "footer": {
+      "menuTitle_one": "السياسات",
+      "menuTitle_two": "تعرف على المزيد"
+    },
     "product": {
       "readMore": "الوصف",
       "returnSar": "المملكة العربية السعودية",
