@@ -854,6 +854,7 @@ to{transform:rotate(360deg)}}
 .text-xl{font-size:1.25rem;line-height:1.75rem}
 .text-xs{font-size:0.75rem;line-height:1rem}
 .text-xxs{font-size:10px}
+.text-\[22px\]{font-size:22px}
 .font-bold{font-weight:700}
 .font-medium{font-weight:500}
 .font-normal{font-weight:400}
@@ -6690,6 +6691,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .md\:flex-row{flex-direction:row}
 .md\:items-start{align-items:flex-start}
 .md\:items-center{align-items:center}
+.md\:justify-start{justify-content:flex-start}
 .md\:justify-center{justify-content:center}
 .md\:gap-2{gap:0.5rem}
 .md\:gap-8{gap:2rem}

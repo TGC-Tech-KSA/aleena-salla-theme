@@ -1,16 +1,31 @@
 {% if learn %}
-<div class="w-full text-center md:rtl:text-right md:ltr:text-left">
+<div class="w-full text-center md:rtl:text-right md:ltr:text-left hidden md:block">
     <strong class="footer-title mb-4 block text-base">{{ trans('blocks.footer.menuTitle_two') }}</strong>
     <div class="footer-list w-full grid gap-3 mb-2.5 md:mb-4">
       {% for item in items|slice(4,) %}
         <a href="{{ item.url }}" aria-label="{{ item.title }}" name="link {{ item.title }}" role="link" class="block mb-0 text-[14px] lg:text-sm leading-[normal] saji-anime-item">{{ item.title }}</a>
       {% endfor %}
     </div>
-  </div>
+</div>
+<div class="block md:hidden">
+    <div class="accordion cursor-pointer group">
+        <span class="accordion-title flex justify-start items-center gap-4 py-3">
+            <i class="sicon-minus icone"></i>
+            <strong class="block text-base">{{ trans('blocks.footer.menuTitle_two') }}</strong>
+        </span>
+    </div>
+    <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
+        <div class="footer-list w-full grid gap-3 mb-2.5 md:mb-4">
+        {% for item in items|slice(4,) %}
+          <a href="{{ item.url }}" aria-label="{{ item.title }}" name="link {{ item.title }}" role="link" class="block mb-0 text-[14px] lg:text-sm leading-[normal] saji-anime-item">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+</div>
 
 {% else %}
 
-<div class="w-full text-center md:rtl:text-right md:ltr:text-left">
+<div class="w-full text-center md:rtl:text-right md:ltr:text-left hidden md:block">
     <strong class="footer-title mb-4 block text-base">{{ trans('blocks.footer.menuTitle_one') }}</strong>
     <div class="footer-list w-full grid gap-3 mb-2.5 md:mb-4">
       {% for item in items|slice(0,4) %}
@@ -18,4 +33,21 @@
       {% endfor %}
     </div>
   </div>
+
+<div class="block md:hidden">
+    <div class="accordion cursor-pointer group">
+        <span class="accordion-title flex justify-start items-center gap-4 py-3">
+            <i class="sicon-minus icone"></i>
+            <strong class="footer-title mb-4 block text-base">{{ trans('blocks.footer.menuTitle_one') }}</strong>
+        </span>
+    </div>
+    <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
+        <div class="footer-list w-full grid gap-3 mb-2.5 md:mb-4">
+        {% for item in items|slice(0,4) %}
+          <a href="{{ item.url }}" aria-label="{{ item.title }}" name="link {{ item.title }}" role="link" class="block mb-0 text-[14px] lg:text-sm leading-[normal] saji-anime-item">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
 {% endif %}

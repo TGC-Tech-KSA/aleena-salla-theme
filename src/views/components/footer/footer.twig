@@ -66,22 +66,29 @@
         </div>
 
 			<div>
-				{# <h3>{{ trans('blocks.footer.menuTitle_one') }}</h3> #}
-				{# <salla-menu source="footer"></salla-menu> #}
         {% component 'footer.menu' %}
 			</div>
 
 			<div>
-        <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
-          <span class="hidden md:flex">{{ trans('blocks.header.account') }}</span>
-          <i class="sicon-user flex md:hidden text-xl text-darker"></i>
-        </button>
-				<salla-contacts></salla-contacts>
-         {% component 'footer.menu' with {learn:true} %}
 
-				<div class="lg:hidden contact-social">
+
+        {% if user.type == 'user' %}{# Account Links #}
+          <div class="mb-2.5 text-center md:rtl:text-right md:ltr:text-left flex items-center md:items-start justify-center md:justify-start flex-col">
+            <strong class="footer-title mb-4 block font-bold text-[22px] text-[var(--footer-color)] dark:text-[var(--footer-color-dark)]">{{ trans('common.titles.profile') }}</strong>
+            <salla-user-menu inline class="relative footer-user-menu !w-full"></salla-user-menu>
+          </div>
+          {% else %}
+          <button class="header-btn mb-2.5" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
+          <strong class="flex text-base">{{ trans('blocks.header.account') }}</strong>
+          <i class="sicon-user flex md:hidden text-xl text-darker"></i>
+          </button>
+          {% endif %}
+				{# <salla-contacts></salla-contacts> #}
+        {% component 'footer.menu' with {learn:true} %}
+
+				{# <div class="lg:hidden contact-social">
 					<salla-social></salla-social>
-				</div>
+				</div> #}
 			</div>
 
 			<salla-apps-icons class="lg:col-span-2 rtl:lg:pr-20 ltr:lg:pl-20"></salla-apps-icons>

@@ -26,7 +26,10 @@ class App extends AppHelpers {
     this.initiateCollapse();
     this.initAttachWishlistListeners();
     this.changeMenuDirection();
-    this.tabAccordion();
+    if (document.body.classList.contains('product-single')) {
+    } else {
+      this.tabAccordion();
+    }
     initTootTip();
     this.loadModalImgOnclick();
     if (!stop_animation) {

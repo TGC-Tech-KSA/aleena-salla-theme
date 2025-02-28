@@ -400,10 +400,10 @@
                         <article class="article--main pb-1">{{ product_desc|raw }}</article>
                     </div>
                 </div>
-                {% if product.has_metadata %}
+                {# {% if product.has_metadata %} #}
                     <div id="metadata-name"></div>
                     {# <salla-metadata></salla-metadata> #}
-                {% endif %}
+                {# {% endif %} #}
                 {% include 'components.general.return_sar'%}
                 {% hook 'product:single.description.end' %}
                 <salla-quick-order class="mt-5 md:-mb-2 block"></salla-quick-order>
