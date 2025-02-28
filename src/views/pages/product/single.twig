@@ -400,13 +400,9 @@
                         <article class="article--main pb-1">{{ product_desc|raw }}</article>
                     </div>
                 </div>
-                <div class="hhhh">
-                  <div id="product-data" data-product-id="{{ product.id }}"></div>
-<div id="metadata-name"></div>
-
-                 </div>
                 {% if product.has_metadata %}
-                    <salla-metadata></salla-metadata>
+                    <div id="metadata-name"></div>
+                    {# <salla-metadata></salla-metadata> #}
                 {% endif %}
                 {% include 'components.general.return_sar'%}
                 {% hook 'product:single.description.end' %}

@@ -11,14 +11,13 @@ class Product extends BasePage {
       beforePrice: '.before-price',
       startingPriceTitle: '.starting-price-title'
     });
-    this.selectBranches();
+
     this.initProductOptionValidations();
     this.displayProductOptions();
-    this.tabAccordion();
     this.initFeaturedTabs();
     this.goToProductByArrows();
     this.generalEffectOnHover();
-
+    this.accordionMetadata();
 
     if (imageZoom) {
       // call the function when the page is ready
@@ -265,40 +264,6 @@ class Product extends BasePage {
         }
       });
   }
-  tabAccordion() {
-    document.querySelectorAll('.accordion').forEach((accordion) => {
-      accordion.addEventListener('click', function () {
-        const activeAccordion = document.querySelector('.accordion.active');
-        if (activeAccordion && activeAccordion !== this) {
-          togglePanel(activeAccordion, false);
-        }
-        const isActive = this.classList.toggle('active');
-        togglePanel(this, isActive);
-      });
-    });
-
-    function togglePanel(accordion, open) {
-      const panel = accordion.nextElementSibling;
-      const icon = accordion.querySelector('.icone');
-      if (!panel) return;
-      if (open) {
-        panel.style.display = 'block';
-        let height = panel.scrollHeight;
-        panel.style.maxHeight = height + 'px';
-        panel.classList.add('is-opened');
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          panel.style.maxHeight = '0';
-          panel.classList.remove('is-opened');
-        });
-      }
-      if (icon) {
-        icon.classList.toggle('sicon-minus', open);
-        icon.classList.toggle('sicon-add', !open);
-      }
-    }
-  }
   initFeaturedTabs() {
     app.all('.tab-trigger', (el) => {
       el.addEventListener('click', ({ currentTarget: btn }) => {
@@ -427,14 +392,102 @@ class Product extends BasePage {
       });
     });
   }
-  selectBranches() {
+   accordionMetadata() {
+     Salla.onReady(function () {
+       if (!salla.url.is_page('product.single')) {
+         return salla.logger.error(
+           'This feature is not supported on this page!'
+         );
+       }
 
+       const metadataContainer = document.getElementById('metadata-name');
+       const productId = salla.config.get('page.id');
 
+       if (!metadataContainer || !productId) {
+         return salla.logger.error(
+           'DOM element with ID `metadata-name` or product ID is missing',
+           metadataContainer,
+           productId
+         );
+       }
 
+       salla.metadata.api
+         .fetchValues('product', [productId])
+         .then(({ data }) => {
+           metadataContainer.innerHTML = data
+             .map((meta) =>
+               meta.sections
+                 .map(
+                   (section) => `
+                 <div class="border-b border-darker">
+                     <div class="accordion cursor-pointer group">
+                       <span class="accordion-title flex justify-start items-center gap-4 py-3">
+                        <i class="icone sicon-add"></i>
+                        ${section.name}
+                       </span>
+                     </div>
+                     <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
+                       ${section.fields
+                         .map(
+                           (field) => `
+                             <div class="field">
+                               <strong>${field.name}:</strong>
+                               ${
+                                 field.type === 'file'
+                                   ? `<img src="${field.value}" alt="${field.name}" class="field-image"/>`
+                                   : `<span>${field.value}</span>`
+                               }
+                             </div>
+                           `
+                         )
+                         .join('')}
+                     </div>
+                 </div>
+                 `
+                 )
+                 .join('')
+             )
+             .join('');
+              document.querySelectorAll('.accordion').forEach((accordion) => {
+                accordion.addEventListener('click', function () {
+                  const activeAccordion =
+                    document.querySelector('.accordion.active');
+                  if (activeAccordion && activeAccordion !== this) {
+                    togglePanel(activeAccordion, false);
+                  }
+                  const isActive = this.classList.toggle('active');
+                  togglePanel(this, isActive);
+                });
+              });
 
-
-
-  }
+              function togglePanel(accordion, open) {
+                const panel = accordion.nextElementSibling;
+                const icon = accordion.querySelector('.icone');
+                if (!panel) return;
+                if (open) {
+                  panel.style.display = 'block';
+                  let height = panel.scrollHeight;
+                  panel.style.maxHeight = height + 'px';
+                  panel.classList.add('is-opened');
+                } else {
+                  panel.style.maxHeight = panel.scrollHeight + 'px';
+                  requestAnimationFrame(() => {
+                    panel.style.maxHeight = '0';
+                    panel.classList.remove('is-opened');
+                  });
+                }
+                if (icon) {
+                  icon.classList.toggle('sicon-minus', open);
+                  icon.classList.toggle('sicon-add', !open);
+                }
+              }
+          })
+         .catch((error) => {
+           salla.logger.error('❌ خطأ في جلب بيانات الميتا:', error);
+           metadataContainer.innerHTML = '<p>تعذر تحميل البيانات.</p>';
+         });
+     });
+   }
 }
 
 Product.initiateWhenReady(['product.single']);

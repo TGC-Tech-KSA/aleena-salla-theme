@@ -26,6 +26,7 @@ class App extends AppHelpers {
     this.initiateCollapse();
     this.initAttachWishlistListeners();
     this.changeMenuDirection();
+    this.tabAccordion();
     initTootTip();
     this.loadModalImgOnclick();
     if (!stop_animation) {
@@ -377,10 +378,10 @@ class App extends AppHelpers {
       document
         .querySelectorAll('[data-cart-count]')
         .forEach((el) => (el.innerText = salla.helpers.number(summary.count)));
-        salla.cart.event.onItemAdded((response, prodId) => {
-          const cartAside = document.querySelector('.neyam-cart-aside');
-          cartAside.classList.add('show');
-        });
+      salla.cart.event.onItemAdded((response, prodId) => {
+        const cartAside = document.querySelector('.neyam-cart-aside');
+        cartAside.classList.add('show');
+      });
     });
 
     salla.cart.event.onItemAdded((response, prodId) => {
@@ -444,7 +445,40 @@ class App extends AppHelpers {
       ScrollTrigger.refresh(true);
     }, 100);
   }
+  tabAccordion() {
+    document.querySelectorAll('.accordion').forEach((accordion) => {
+      accordion.addEventListener('click', function () {
+        const activeAccordion = document.querySelector('.accordion.active');
+        if (activeAccordion && activeAccordion !== this) {
+          togglePanel(activeAccordion, false);
+        }
+        const isActive = this.classList.toggle('active');
+        togglePanel(this, isActive);
+      });
+    });
 
+    function togglePanel(accordion, open) {
+      const panel = accordion.nextElementSibling;
+      const icon = accordion.querySelector('.icone');
+      if (!panel) return;
+      if (open) {
+        panel.style.display = 'block';
+        let height = panel.scrollHeight;
+        panel.style.maxHeight = height + 'px';
+        panel.classList.add('is-opened');
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          panel.style.maxHeight = '0';
+          panel.classList.remove('is-opened');
+        });
+      }
+      if (icon) {
+        icon.classList.toggle('sicon-minus', open);
+        icon.classList.toggle('sicon-add', !open);
+      }
+    }
+  }
 }
 
 salla.onReady(() => new App().loadTheApp());
