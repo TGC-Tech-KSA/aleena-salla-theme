@@ -1,5 +1,5 @@
-<div class=" " style="background-color:{{ advertisement.colors.bg }}; color:{{ advertisement.colors.text }}">
-  <div class="relative">
+<div class="" style="background-color:{{ advertisement.colors.bg }}; color:{{ advertisement.colors.text }}">
+<div class="relative container">
 <salla-advertisement class="w-full [&_.s-advertisement-action]:!hidden"></salla-advertisement>
   {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
       <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0 !absolute rtl:left-0 ltr:right-0 top-0 !w-auto !h-full !rounded-none !hidden md:!flex" style="background-color:{{ advertisement.colors.bg }} !important; color:{{ advertisement.colors.text }} !important">
@@ -13,5 +13,4 @@
       <salla-localization-modal></salla-localization-modal>
   {% endif %}
   </div>
-
 </div>

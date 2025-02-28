@@ -267,7 +267,7 @@ model-viewer[style*="width"]:before{
       }
     &-left{
       .s-slider-block__title-nav{
-        @apply block #{!important};
+        @apply flex #{!important};
         button{
           @apply m-0 border-none bg-transparent shadow-none;
           svg{
@@ -284,6 +284,7 @@ model-viewer[style*="width"]:before{
       &-left{
         @apply relative w-full;
         .s-slider-block__title-nav{
+          @apply flex #{!important};
           button{
             @apply m-0 border-none bg-transparent shadow-none #{!important};
             svg{
