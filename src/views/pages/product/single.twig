@@ -152,31 +152,14 @@
                     <div slot="items">
                         {% for image in product.images %}
                             {% if image.three_d_image_url %}
-                                <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full"
-                                    loading="eager" camera-controls
-                                    touch-action="pan-y" auto-rotate
-                                    poster="{{ image.url }}"
-                                    src="{{ image.three_d_image_url }}"
-                                    shadow-intensity="1" alt="{{ image.alt }}">
+                                <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}">
                                 </model-viewer>
                             {% else %}
-                                <a data-fslightbox="product_{{ product.id }}"
-                                   data-img-id="{{ image.id }}"
-                                   data-slid-index="{{ loop.index-1 }}"{% if image.video_url %} data-video-src="{{ image.video_url }}"{% endif %}
-                                   data-caption="{{ image.alt }}"
-                                   data-infinite="false"
-                                   data-type="{{ image.video_url?'youtube':'image' }}"
-                                   href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}"
-                                   aria-label="{{ product.name }}"
-                                   class="swiper-slide magnify-wrapper homeslider__slide {{ image.video_url?'video-entry':'' }}">
+                                <a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}"{% if image.video_url %} data-video-src="{{ image.video_url }}"{% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" class="swiper-slide magnify-wrapper homeslider__slide {{ image.video_url?'video-entry':'' }}">
                                     {% if loop.first %}
-                                        <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}"
-                                             alt="{{ image.alt }}"
-                                             class="h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                        <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                     {% else %}
-                                        <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}"
-                                             alt="{{ image.alt }}"
-                                             class="lazy h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                        <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="lazy h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                     {% endif %}
                                 </a>
                             {% endif %}
@@ -243,22 +226,24 @@
                     </div>
                 {% endif %}
                     <hr>
-                    <div class="p-3 bg-[#ededed] flex flex-col items-center gap-3 mb-3 rounded m-2">
+                    {% set return_sar = theme.settings.get('return_sar') %}
+                    {% set return_theworld = theme.settings.get('return_theworld') %}
+                    <div class="{{ delivery_details or return_theworld or return_sar ? 'p-3 bg-[#ededed] flex flex-col items-center gap-3 mb-3 rounded m-2' :'' }}">
                         {% include 'components.general.return_sar' with {is_select_branches:true} %}
                         {% if delivery_details %}
                         <div class="flex items-center gap-3 rounded bg-white p-3 w-full">
-                         <svg width="35" height="35" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="35" height="35" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_d_356_351)">
                             <path d="M5.65337 8.875C6.41685 11.2704 8.60348 13 11.1818 13C14.3951 13 17 10.3137 17 7C17 3.68629 14.3951 1 11.1818 1C9.02827 1 7.148 2.2066 6.14201 4M7.90909 4.75H5V1.75" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
                             </g>
                         </svg>
                         <span class="text-sm">{{delivery_details_title}}</span>
                         </div>
+                        {% endif %}
                     </div>
-                    {% endif %}
 
 
-                <div class="flex items-center gap-4 bg-[#f8e8e5] rounded-2xl p-4">
+                <div class="flex items-center gap-4 bg-[#f8e8e5] rounded-2xl p-4 w-full m-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"></path>
@@ -308,7 +293,6 @@
                 {% hook 'product:single.description' %}
 
                 {# Installment Methods #}
-                <salla-installment price="{{ product.price }}"></salla-installment>
                 {% if product.show_availability %}
                     <section class="bg-white p-5 rounded-md mb-5 last:mb-0">
                         <div class="center-between">
@@ -328,7 +312,7 @@
                     </section>
                 {% endif %}
 
-                <form class="form product-form" id="single-product-form" enctype="multipart/form-data" method="post" onsubmit="return salla.form.onSubmit('cart.addItem', event)" >
+                <form class="form product-form w-full" id="single-product-form" enctype="multipart/form-data" method="post" onsubmit="return salla.form.onSubmit('cart.addItem', event)" >
                     <input type="hidden" name="id" value="{{ product.id }}">
                     {% hook 'product:single.form.start' %}
                     {# show options #}
@@ -409,6 +393,7 @@
                 {# {% endif %} #}
                 {% include 'components.general.return_sar'%}
                 {% hook 'product:single.description.end' %}
+                <salla-installment price="{{ product.price }}"></salla-installment>
                 <salla-quick-order class="mt-5 md:-mb-2 block"></salla-quick-order>
             </div>
         </div>
