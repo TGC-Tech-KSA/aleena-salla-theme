@@ -2593,7 +2593,7 @@
                     "format": "text",
                     "description": "",
                     "placeholder": "أدخل العنوان هنا...",
-                    "minLength": 0,
+                    "minLength": 2,
                     "maxLength": 200,
                     "value": {
                         "ar": "تصفح من خلال العلامات التجارية",
