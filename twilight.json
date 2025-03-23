@@ -1692,6 +1692,171 @@
                 }
             ]
         },
+         {
+            "key": "522e17c3-33de-423b-a123-53af589e043c",
+            "title": "صور مستطيلة",
+            "icon": "sicon-image",
+            "path": "home.rectangular-images",
+            "image": "https://github.com/Ashaheen892/Videos/blob/main/aleena-photo/4.jpg?raw=true",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "with-bg-instagram-2",
+                    "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #ebebeb;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://github.com/Ashaheen892/Videos/blob/main/aleena-photo/4.jpg?raw=true'></div>"
+                },
+                {
+                    "id": "rectangular_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "العنوان الرئيسي ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "0",
+                    "maxLength": "80",
+                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+                },
+                {
+                    "id": "rectangular",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 10,
+                    "label": "قائمة الصور",
+                    "item_label": "صورة ",
+                    "value": [
+                        {
+                            "rectangular.image": "https://cdn.salla.sa/mQgZlG/pzOCEw10wCfXeVSpKnL0Ifd1O9ZkTfnZ17RkE14R.jpg",
+                            "rectangular.video_owner": "@raghadiii"
+                        },
+                        {
+                            "rectangular.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "rectangular.video_owner": "@raghadiii"
+                        },
+                        {
+                            "rectangular.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "rectangular.video_owner": "@raghadiii"
+                        },
+                        {
+                            "rectangular.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "rectangular.video_owner": "@raghadiii"
+                        },
+                        {
+                            "rectangular.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "rectangular.video_owner": "@raghadiii"
+                        },
+                        {
+                            "rectangular.image": "https://cdn.salla.sa/mQgZlG/lkyDjYwvWJNmAQoGnLALLcUkm66rCCDbTyVlSGdH.jpg",
+                            "rectangular.video_owner": "@raghadiii"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "label": "صورة العرض",
+                            "id": "rectangular.image",
+                            "format": "image",
+                            "required": true,
+                            "placeholder": "",
+                            "description": "* المقاس المناسب للصورة هو 250×500 بكسل",
+                            "settings": {
+                                "quality": 80
+                            }
+                        },
+
+
+                        {
+                            "id": "rectangular.video_owner",
+                            "type": "string",
+                            "format": "text",
+                            "label": "اسم صورة العرض",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "@raghadiii",
+                            "icon": "sicon-format-text-alt",
+                            "value": "@raghadiii",
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "0",
+                            "maxLength": "80"
+                        },
+                          {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط صورة العرض",
+                            "id": "rectangular.url",
+                            "value": [],
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "offers_link",
+                            "sources": [
+                              {
+                                "label": "منتج",
+                                "key": "products",
+                                "value": "products"
+                              },
+                              {
+                                "label": "تصنيف",
+                                "key": "categories",
+                                "value": "categories"
+                              },
+                              {
+                                "label": "ماركة تجارية",
+                                "key": "brands",
+                                "value": "brands"
+                              },
+                              {
+                                "label": "صفحة تعريفية",
+                                "key": "pages",
+                                "value": "pages"
+                              },
+                              {
+                                "label": "مقالة",
+                                "key": "blog_articles",
+                                "value": "blog_articles"
+                              },
+                              {
+                                "label": "تصنيف ضمن المدونة",
+                                "key": "blog_categories",
+                                "value": "blog_categories"
+                              },
+                              {
+                                "label": "التخفيضات",
+                                "key": "offers_link",
+                                "value": "offers_link"
+                              },
+                              {
+                                "label": "الماركات التجارية",
+                                "key": "brands_link",
+                                "value": "brands_link"
+                              },
+                              {
+                                "label": "المدونة",
+                                "key": "blog_link",
+                                "value": "blog_link"
+                              },
+                              {
+                                "label": "رابط خارجي",
+                                "key": "custom",
+                                "value": "custom"
+                              }
+                            ]
+                          }
+                    ]
+                }
+            ]
+        },
         {
             "key": "125643a6-ff65-4094-b94f-89e30a834b30",
             "title": "منتجات متحركة مع فيديو",
