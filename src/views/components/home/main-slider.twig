@@ -1,7 +1,10 @@
+{% set height = component.banner_height %}
+{% set height_min = component.banner_height_min %}
+{% set height_max = component.height_automatically %}
 {% set time = component.image_time %}
 {% set speed = component.speed_animation %}
 {% set dir = user.language.dir %}
-<section id="home-main-slider-{{ position }}" class="{{component.distance_container ? ' ' : 's-block'}} home-main-slider {{ is_repeated ? 'repeated-block' : '' }} h-[430px] lg:h-[960px]">
+<section id="home-main-slider-{{ position }}" class="{{component.distance_container ? ' ' : 's-block'}} home-main-slider {{ is_repeated ? 'repeated-block' : '' }} {{height_max ? 'h-auto' : '!h-[var(--data-height)] lg:!h-[var(--data-height-lg)]'}}" style=" --data-height-lg:{{height}}vh; --data-height:{{height_min}}vh ; --data-margin-lg:{{component.higher_distance}}px;">
   <div class="{{component.full_container ? ' ' : 'container'}} h-full">
   <salla-slider type="fullwidth" slider-config="{&quot;effect&quot;: &quot;{{component.influence}}&quot;,&quot;slidesPerView&quot;:1,&quot;speed&quot;:{{speed ? speed: '2'}}000,{% if component.main_slider|length > 1 %}&quot;autoplay&quot;: {&quot;delay&quot;:{{time ? time: '5'}}000},{% endif %}&quot;allowTouchMove&quot;: false}" class="slider-h-advanced main-slider h-full [&_.swiper]:!h-full [&_.swiper-pagination]:!flex [&_.swiper-pagination]:justify-center [&_.swiper-pagination]:items-center [&_.swiper-pagination-bullets]:!bottom-4 [&_.swiper-slide-active]:z-2" auto-play id="main-{{ position }}-slider" {% if component.hidden_arrw %} show-controls="false" {% else %} show-controls="true"{% endif %} {{component.hidden_bullets ? ' ' : 'pagination'}} >
     <div slot="items">
@@ -30,11 +33,6 @@
                 </div>
                 </div>
               {% endif %}
-
-
-            {% if item.slider_description %}
-            <p class="text-center my-2 md:my-4 text-sm md:text-xl bg-[var(--store-background)] uppercase ">{{item.slider_description}}</p>
-            {% endif %}
             </a>
         </div>
       {% endfor %}

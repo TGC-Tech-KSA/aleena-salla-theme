@@ -6764,9 +6764,11 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .xl\:flex{display:flex}
 .xl\:hidden{display:none}
 .xl\:h-40{height:10rem}
+.xl\:h-\[224px\]{height:224px}
 .xl\:w-40{width:10rem}
 .xl\:w-\[calc\(100\%\/6\)\]{width:calc(100% / 6)}
 .xl\:w-\[calc\(100\%\/8\)\]{width:calc(100% / 8)}
+.xl\:w-\[224px\]{width:224px}
 .xl\:gap-8{gap:2rem}
 .xl\:px-0{padding-left:0px;padding-right:0px}}
 @media (min-width: 480px){

@@ -716,335 +716,384 @@
             "path": "home.main-slider",
             "image": "https://github.com/Ashaheen892/Videos/blob/main/aleena-photo/1.jpg?raw=true",
             "fields": [
-                {
-                    "id": "full_container",
-                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "عرض السلايدر كامل بمساحة الصفحة",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "distance_container",
-                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "اخفاء المسافة اعلي السلايدر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "hidden_arrw",
-                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "اخفاء اسهم التمرير",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "hidden_bullets",
-                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "اخفاء نقاط التمرير",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "influence",
+              {
+                "id": "full_container",
+                "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+                "type": "boolean",
+                "format": "switch",
+                "label": "عرض السلايدر كامل بمساحة الصفحة",
+                "description": null,
+                "labelHTML": null,
+                "icon": "sicon-toggle-off",
+                "value": true,
+                "selected": false,
+                "required": false
+              },
+              {
+                "id": "distance_container",
+                "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+                "type": "boolean",
+                "format": "switch",
+                "label": "اخفاء المسافة اعلي السلايدر",
+                "description": null,
+                "labelHTML": null,
+                "icon": "sicon-toggle-off",
+                "value": true,
+                "selected": false,
+                "required": false
+              },
+              {
+                "id": "hidden_arrw",
+                "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+                "type": "boolean",
+                "format": "switch",
+                "label": "اخفاء اسهم التمرير",
+                "description": null,
+                "labelHTML": null,
+                "icon": "sicon-toggle-off",
+                "value": true,
+                "selected": true,
+                "required": false
+              },
+              {
+                "id": "hidden_bullets",
+                "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+                "type": "boolean",
+                "format": "switch",
+                "label": "اخفاء نقاط التمرير",
+                "description": null,
+                "labelHTML": null,
+                "icon": "sicon-toggle-off",
+                "value": true,
+                "selected": false,
+                "required": false
+              },
+              {
+                "id": "influence",
+                "type": "items",
+                "format": "dropdown-list",
+                "label": "تأثير الانتقال بين الصور",
+                "description": null,
+                "labelHTML": null,
+                "icon": "sicon-keyboard_arrow_down",
+                "selected": [
+                  {
+                    "label": "تأثير الاختفاء ( Fade )",
+                    "value": "fade"
+                  }
+                ],
+                "options": [
+                  {
+                    "label": "تأثير الاختفاء ( Fade )",
+                    "value": "fade"
+                  },
+                  {
+                    "label": "تأثير الانزلاق ( Slide )",
+                    "value": "slide"
+                  },
+                  {
+                    "label": "تأثير الانعكاس ( Flip )",
+                    "value": "flip"
+                  },
+                  {
+                    "label": "تأثير السحب ( Coverflow )",
+                    "value": "coverflow"
+                  },
+                  {
+                    "label": "تأثير المكعب ( Cube )",
+                    "value": "cube"
+                  },
+                  {
+                    "label": "تأثير إبداعي ( Creative )",
+                    "value": "creative"
+                  },
+                  {
+                    "label": "تأثير بطاقات ( Cards )",
+                    "value": "cards"
+                  }
+                ],
+                "source": "Manual",
+                "multichoice": false,
+                "searchable": false,
+                "required": false
+              },
+              {
+                "type": "static",
+                "format": "title",
+                "id": "top-page-title-6",
+                "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'>ارتفاع البانر</h6> </div>"
+              },
+              {
+                "id": "height_automatically",
+                "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+                "type": "boolean",
+                "format": "switch",
+                "label": "تحديد ارتفاع البانر تلقائياً",
+                "description": "",
+                "labelHTML": "<span style='color: #e41f39;font-size: 10px;'>سيتم تحديد ارتفاع العنصر تلقائياً بناءً على ارتفاع الصورة او المقطع الحالي</span>",
+                "icon": "sicon-toggle-off",
+                "value": true,
+                "selected": false,
+                "required": false
+              },
+              {
+                "id": "banner_height",
+                "type": "number",
+                "format": "integer",
+                "inputType": "number",
+                "label": "شاشات الديسك توب و اللاب توب",
+                "description": null,
+                "labelHTML": "يتم احتساب القيمة من طول شاشة العرض اصغر قيمة هي 50 وهي نصف مساحه الشاشة و 100 هي ارتفاع الشاشة كامة",
+                "placeholder": "100",
+                "icon": "sicon-hashtag",
+                "value": 100,
+                "required": false,
+                "minimum": "50",
+                "maximum": "100",
+                "conditions": [
+                  {
+                    "id": "height_automatically",
+                    "operation": "=",
+                    "value": false
+                  }
+                ]
+              },
+              {
+                "id": "banner_height_min",
+                "type": "number",
+                "format": "integer",
+                "inputType": "number",
+                "label": "الجوال",
+                "description": null,
+                "labelHTML": "يتم احتساب القيمة من طول شاشة العرض اصغر قيمة هي 50 وهي نصف مساحه الشاشة و 100 هي ارتفاع الشاشة كامة",
+                "placeholder": "100",
+                "icon": "sicon-hashtag",
+                "value": 65,
+                "required": false,
+                "minimum": "30",
+                "maximum": "100",
+                "conditions": [
+                  {
+                    "id": "height_automatically",
+                    "operation": "=",
+                    "value": false
+                  }
+                ]
+              },
+              {
+                "id": "image_time",
+                "type": "number",
+                "format": "integer",
+                "inputType": "number",
+                "label": "مدة التنقل بين الصور",
+                "description": null,
+                "labelHTML": "<span style='color: #e41f39;font-size: 10px;'> القيمة بالثواني, المدة الافتراضية هي 5 ثواني</span>",
+                "placeholder": "100",
+                "icon": "sicon-hashtag",
+                "value": 5,
+                "required": false,
+                "minimum": "1",
+                "maximum": "20"
+              },
+              {
+                "id": "speed_animation",
+                "type": "number",
+                "format": "integer",
+                "inputType": "number",
+                "label": "سرعة تنفيذ الانيميشن بين الصور",
+                "description": null,
+                "labelHTML": "<span style='color: #e41f39;font-size: 10px;'> القيمة بالثواني, المدة الافتراضية هي 2 ثواني</span>",
+                "placeholder": "100",
+                "icon": "sicon-hashtag",
+                "value": 2,
+                "required": false,
+                "minimum": "1",
+                "maximum": "20"
+              },
+              {
+                "id": "main_slider",
+                "type": "collection",
+                "format": "collection",
+                "label": "سلايدر متقدم",
+                "description": null,
+                "labelHTML": null,
+                "item_label": null,
+                "icon": "sicon-list-add",
+                "fields": [
+                  {
+                    "id": "viwe_type",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": "تأثير الانتقال بين الصور",
+                    "label": "اختار نوع الخلفية",
                     "description": null,
-                    "labelHTML": null,
+                    "labelHTML": "<span style='color: #e41f39;font-size: 10px;'>ننصح بان تكون الصور او الفيديو متساوية في العرض والارتفاع للحفاظ علي الشكل الجمالي</span>",
                     "icon": "sicon-keyboard_arrow_down",
                     "selected": [
-                        {
-                            "label": "تأثير الاختفاء ( Fade )",
-                            "value": "fade"
-                        }
+                      {
+                        "label": "صورة",
+                        "value": "viwe_photo"
+                      }
                     ],
                     "options": [
-                        {
-                            "label": "تأثير الاختفاء ( Fade )",
-                            "value": "fade"
-                        },
-                        {
-                            "label": "تأثير الانزلاق ( Slide )",
-                            "value": "slide"
-                        },
-                        {
-                            "label": "تأثير الانعكاس ( Flip )",
-                            "value": "flip"
-                        },
-                        {
-                            "label": "تأثير السحب ( Coverflow )",
-                            "value": "coverflow"
-                        },
-                        {
-                            "label": "تأثير المكعب ( Cube )",
-                            "value": "cube"
-                        },
-                        {
-                            "label": "تأثير إبداعي ( Creative )",
-                            "value": "creative"
-                        },
-                        {
-                            "label": "تأثير بطاقات ( Cards )",
-                            "value": "cards"
-                        }
+                      {
+                        "label": "صورة",
+                        "value": "viwe_photo"
+                      },
+                      {
+                        "label": "فيديو يوتيوب",
+                        "value": "viwe_youtube"
+                      }
                     ],
                     "source": "Manual",
                     "multichoice": false,
                     "searchable": false,
                     "required": false
-                },
-                {
-                    "id": "image_time",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "مدة التنقل بين الصور",
-                    "description": null,
-                    "labelHTML": "<span style='color: #e41f39;font-size: 10px;'> القيمة بالثواني, المدة الافتراضية هي 5 ثواني</span>",
-                    "placeholder": "100",
-                    "icon": "sicon-hashtag",
-                    "value": 5,
-                    "required": false,
-                    "minimum": "1",
-                    "maximum": "20"
-                },
-                {
-                    "id": "speed_animation",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "سرعة تنفيذ الانيميشن بين الصور",
-                    "description": null,
-                    "labelHTML": "<span style='color: #e41f39;font-size: 10px;'> القيمة بالثواني, المدة الافتراضية هي 2 ثواني</span>",
-                    "placeholder": "100",
-                    "icon": "sicon-hashtag",
-                    "value": 2,
-                    "required": false,
-                    "minimum": "1",
-                    "maximum": "20"
-                },
-                {
-                    "id": "main_slider",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "سلايدر متقدم",
-                    "description": null,
+                  },
+                  {
+                    "id": "youtube_url",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "رابط الفيديو على اليوتيوب",
+                    "description": "ينم تشغيل الفيديو تلقائي مع كتم الصوت",
                     "labelHTML": null,
-                    "item_label": null,
-                    "icon": "sicon-list-add",
-                    "fields": [
-                        {
-                            "id": "viwe_type",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "اختار نوع الخلفية",
-                            "description": null,
-                            "labelHTML": "<span style='color: #e41f39;font-size: 10px;'>ننصح بان تكون الصور او الفيديو متساوية في العرض والارتفاع للحفاظ علي الشكل الجمالي</span>",
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [
-                                {
-                                    "label": "صورة",
-                                    "value": "viwe_photo"
-                                }
-                            ],
-                            "options": [
-                                {
-                                    "label": "صورة",
-                                    "value": "viwe_photo"
-                                },
-                                {
-                                    "label": "فيديو يوتيوب",
-                                    "value": "viwe_youtube"
-                                }
-                            ],
-                            "source": "Manual",
-                            "multichoice": false,
-                            "searchable": false,
-                            "required": false
-                        },
-                        {
-                            "id": "youtube_url",
-                            "type": "string",
-                            "format": "url",
-                            "inputType": "url",
-                            "label": "رابط الفيديو على اليوتيوب",
-                            "description": "ينم تشغيل الفيديو تلقائي مع كتم الصوت",
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://salla.sa",
-                            "icon": "sicon-link",
-                            "value": null,
-                            "required": false,
-                            "minLength": 2,
-                            "maxLength": "350",
-                            "conditions": [
-                                {
-                                    "id": "viwe_type",
-                                    "operation": "=",
-                                    "value": "viwe_youtube",
-                                    "collection_id": "main_slider",
-                                    "value_index": "."
-                                }
-                            ]
-                        },
-                        {
-                            "id": "alsort",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الصورة في اللغة العربية",
-                            "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": null,
-                            "required": false,
-                            "settings": {
-                                "quality": 80,
-                                "height": 1080,
-                                "width": 1920
-                            },
-                            "conditions": [
-                                {
-                                    "id": "viwe_type",
-                                    "operation": "=",
-                                    "value": "viwe_photo",
-                                    "collection_id": "main_slider",
-                                    "value_index": "."
-                                }
-                            ]
-                        },
-                        {
-                            "id": "alsort_en",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الصورة في اللغة الانجليزية",
-                            "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": null,
-                            "required": false,
-                            "settings": {
-                                "quality": 80,
-                                "height": 1080,
-                                "width": 1920
-                            },
-                            "conditions": [
-                                {
-                                    "id": "viwe_type",
-                                    "operation": "=",
-                                    "value": "viwe_photo",
-                                    "collection_id": "main_slider",
-                                    "value_index": "."
-                                }
-                            ]
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-typography",
-                            "label": "نص إضافي يظهر اسفل الصورة",
-                            "multilanguage": true,
-                            "id": "main_slider.slider_description",
-                            "value": "No.1: Crafted to Perfection",
-                            "description": null,
-                            "format": "textarea",
-                            "required": true,
-                            "placeholder": "يمكنك إضافة تفاصيل إضافية هنا",
-                            "minLength": 0,
-                            "maxLength": 255
-                        },
-                        {
-                            "type": "items",
-                            "icon": "sicon-link",
-                            "label": "رابط الصورة",
-                            "id": "main_slider.url",
-                            "value": null,
-                            "description": null,
-                            "required": false,
-                            "format": "variable-list",
-                            "searchable": true,
-                            "source": "offers_link",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "key": "blog_articles",
-                                    "value": "blog_articles"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المدونة",
-                                    "key": "blog_categories",
-                                    "value": "blog_categories"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "key": "offers_link",
-                                    "value": "offers_link"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "key": "brands_link",
-                                    "value": "brands_link"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "key": "blog_link",
-                                    "value": "blog_link"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
-                                }
-                            ]
-                        }
-                    ],
-                    "value": [],
-                    "minLength": 1,
-                    "maxLength": "20"
-                }
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 2,
+                    "maxLength": "350",
+                    "conditions": [
+                      {
+                        "id": "viwe_type",
+                        "operation": "=",
+                        "value": "viwe_youtube",
+                        "collection_id": "main_slider",
+                        "value_index": "."
+                      }
+                    ]
+                  },
+                  {
+                    "id": "alsort",
+                    "type": "string",
+                    "format": "image",
+                    "label": "الصورة في اللغة العربية",
+                    "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": null,
+                    "required": false,
+                    "settings": {
+                      "quality": 80,
+                      "height": 1080,
+                      "width": 1920
+                    },
+                    "conditions": [
+                      {
+                        "id": "viwe_type",
+                        "operation": "=",
+                        "value": "viwe_photo",
+                        "collection_id": "main_slider",
+                        "value_index": "."
+                      }
+                    ]
+                  },
+                  {
+                    "id": "alsort_en",
+                    "type": "string",
+                    "format": "image",
+                    "label": "الصورة في اللغة الانجليزية",
+                    "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": null,
+                    "required": false,
+                    "settings": {
+                      "quality": 80,
+                      "height": 1080,
+                      "width": 1920
+                    },
+                    "conditions": [
+                      {
+                        "id": "viwe_type",
+                        "operation": "=",
+                        "value": "viwe_photo",
+                        "collection_id": "main_slider",
+                        "value_index": "."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الصورة",
+                    "id": "main_slider.url",
+                    "value": null,
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "offers_link",
+                    "sources": [
+                      {
+                        "label": "منتج",
+                        "key": "products",
+                        "value": "products"
+                      },
+                      {
+                        "label": "تصنيف",
+                        "key": "categories",
+                        "value": "categories"
+                      },
+                      {
+                        "label": "ماركة تجارية",
+                        "key": "brands",
+                        "value": "brands"
+                      },
+                      {
+                        "label": "صفحة تعريفية",
+                        "key": "pages",
+                        "value": "pages"
+                      },
+                      {
+                        "label": "مقالة",
+                        "key": "blog_articles",
+                        "value": "blog_articles"
+                      },
+                      {
+                        "label": "تصنيف ضمن المدونة",
+                        "key": "blog_categories",
+                        "value": "blog_categories"
+                      },
+                      {
+                        "label": "التخفيضات",
+                        "key": "offers_link",
+                        "value": "offers_link"
+                      },
+                      {
+                        "label": "الماركات التجارية",
+                        "key": "brands_link",
+                        "value": "brands_link"
+                      },
+                      {
+                        "label": "المدونة",
+                        "key": "blog_link",
+                        "value": "blog_link"
+                      },
+                      {
+                        "label": "رابط خارجي",
+                        "key": "custom",
+                        "value": "custom"
+                      }
+                    ]
+                  }
+                ],
+                "value": [],
+                "minLength": 1,
+                "maxLength": "20"
+              }
             ]
         },
         {
@@ -1303,7 +1352,7 @@
                     "type": "static",
                     "format": "description",
                     "id": "without-bg",
-                    "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #ebebeb;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/main-links.png?v=1.1'></div>"
+                    "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #ebebeb;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://github.com/Ashaheen892/Videos/blob/main/aleena-photo/8.jpg?raw=true'></div>"
                 },
                 {
                     "type": "boolean",
@@ -1324,7 +1373,7 @@
                     "id": "circular_bgcolor",
                     "format": "color",
                     "required": false,
-                    "value": "#1D1F1F"
+                    "value": "#ffffff"
                 },
                 {
                     "type": "string",
@@ -1334,7 +1383,7 @@
                     "id": "circular_textcolor",
                     "format": "color",
                     "required": false,
-                    "value": "#ffffff"
+                    "value": "#1D1F1F"
                 },
                 {
                     "type": "boolean",
