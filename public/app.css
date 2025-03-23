@@ -611,6 +611,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .h-lg-banner{height:428px}
 .h-px{height:1px}
 .h-screen{height:100vh}
+.\!h-\[var\(--data-height\)\]{height:var(--data-height) !important}
 .max-h-0{max-height:0px}
 .max-h-100{max-height:28rem}
 .max-h-8{max-height:2rem}
@@ -6731,6 +6732,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .lg\:hidden{display:none}
 .lg\:h-36{height:9rem}
 .lg\:h-\[960px\]{height:960px}
+.lg\:\!h-\[var\(--data-height-lg\)\]{height:var(--data-height-lg) !important}
 .lg\:min-h-\[528px\]{min-height:528px}
 .lg\:w-10\/12{width:83.333333%}
 .lg\:w-24{width:6rem}
