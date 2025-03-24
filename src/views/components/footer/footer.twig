@@ -1,5 +1,13 @@
 {% set newsletter = theme.settings.get('footer_show_newsletter') %}
 {% set newsletter_action = theme.settings.get('footer_newsletter_form_action') %}
+{% set customer = theme.settings.get('customer_service_on') %}
+{% set customer_title = theme.settings.get('customer_title') %}
+{% set customer_points = theme.settings.get('customer_points') %}
+
+
+
+
+{% set commercial = theme.settings.get('commercial_register_on') %}
 {% set newsletter_is_active = newsletter and newsletter_action %}
 <footer class="store-footer">
 	<div aria-label="footer" class="store-footer__inner">
@@ -80,6 +88,23 @@
           {% endif %}
           {% component 'footer.menu' with {learn:true} %}
 			</div>
+      <div>
+        {% if customer or commercial %}
+        <h3>{{customer_title}}</h3>
+        <ul>
+
+<ul>
+    {% for point in customer_points %}
+        <li>{{ point.point_title}}</li>
+    {% endfor %}
+</ul>
+
+        </ul>
+
+        {% endif %}
+
+
+      </div>
 			<salla-apps-icons class="lg:col-span-2 rtl:lg:pr-20 ltr:lg:pl-20"></salla-apps-icons>
 		</div>
 	</div>

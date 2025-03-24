@@ -383,28 +383,6 @@
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         },
         {
-            "type": "string",
-            "icon": "sicon-typography",
-            "label": "نص اضافي التواصل مع فريق خدمة العملاء",
-            "multilanguage": true,
-            "id": "customer_description",
-            "value": null,
-            "description": null,
-            "format": "textarea",
-            "required": false,
-            "placeholder": "يمكنك نص اضافي التواصل مع فريق خدمة العملاء...",
-            "minLength": 0,
-            "maxLength": "256",
-            "conditions": [
-                {
-                    "id": "customer_service_on",
-                    "operation": "=",
-                    "value": true
-                }
-            ],
-            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
-        },
-        {
             "id": "customer_points",
             "type": "collection",
             "format": "collection",
@@ -419,7 +397,7 @@
                     "icon": "sicon-format-text-alt",
                     "label": "عنوان النقاط التعريفية",
                     "multilanguage": true,
-                    "id": "customer__title",
+                    "id": "point_title",
                     "value": null,
                     "required": false,
                     "format": "text",
@@ -459,34 +437,12 @@
             "icon": "sicon-format-text-alt",
             "label": "عنوان السجل التجاري والتسجيل الضريبي",
             "multilanguage": true,
-            "id": "commercial_title",
+            "id": "point_title",
             "value": null,
             "required": false,
             "format": "text",
             "description": null,
             "placeholder": "يمكنك عنوان التواصل مع فريق خدمة العملاء...",
-            "conditions": [
-                {
-                    "id": "commercial_register_on",
-                    "operation": "=",
-                    "value": true
-                }
-            ],
-            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
-        },
-        {
-            "type": "string",
-            "icon": "sicon-typography",
-            "label": "نص اضافي السجل التجاري والتسجيل الضريبي",
-            "multilanguage": true,
-            "id": "commercial_description",
-            "value": null,
-            "description": null,
-            "format": "textarea",
-            "required": false,
-            "placeholder": "يمكنك نص اضافي السجل التجاري والتسجيل الضريبي...",
-            "minLength": 0,
-            "maxLength": "256",
             "conditions": [
                 {
                     "id": "commercial_register_on",
@@ -511,7 +467,7 @@
                     "icon": "sicon-format-text-alt",
                     "label": "عنوان النقاط التعريفية",
                     "multilanguage": true,
-                    "id": "customer_title",
+                    "id": "commercial_title",
                     "value": null,
                     "required": false,
                     "format": "text",
