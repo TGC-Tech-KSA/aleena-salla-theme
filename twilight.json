@@ -351,6 +351,150 @@
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         },
         {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تفعيل خيار التواصل مع فريق خدمة العملاء",
+            "description": null,
+            "id": "customer_service_on",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": false,
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "عنوان التواصل مع فريق خدمة العملاء",
+            "multilanguage": true,
+            "id": "customer_description",
+            "value": null,
+            "description": null,
+            "format": "textarea",
+            "required": false,
+            "placeholder": "يمكنك عنوان التواصل مع فريق خدمة العملاء...",
+            "minLength": 0,
+            "maxLength": "256",
+            "conditions": [
+                {
+                    "id": "customer_service_on",
+                    "operation": "=",
+                    "value": true
+                }
+            ],
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
+            "id": "customer_points",
+            "type": "collection",
+            "format": "collection",
+            "label": "النقاط التعريفية",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان النقاط التعريفية",
+                    "multilanguage": true,
+                    "id": "customer__title",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "يمكنك إضافة عنوان النقاط التعريفية هنا...",
+                    "hide": false,
+                    "minLength": 0,
+                    "maxLength": 250
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 10,
+            "conditions": [
+                {
+                    "id": "customer_service_on",
+                    "operation": "=",
+                    "value": true
+                }
+            ],
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تفعيل خيار السجل التجاري والتسجيل الضريبي",
+            "description": null,
+            "id": "commercial_register_on",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": false,
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "عنوان السجل التجاري والتسجيل الضريبي",
+            "multilanguage": true,
+            "id": "commercial_description",
+            "value": null,
+            "description": null,
+            "format": "textarea",
+            "required": false,
+            "placeholder": "يمكنك عنوان السجل التجاري والتسجيل الضريبي...",
+            "minLength": 0,
+            "maxLength": "256",
+            "conditions": [
+                {
+                    "id": "commercial_register_on",
+                    "operation": "=",
+                    "value": true
+                }
+            ],
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
+            "id": "commercial_points",
+            "type": "collection",
+            "format": "collection",
+            "label": "النقاط التعريفية",
+            "description": null,
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان النقاط التعريفية",
+                    "multilanguage": true,
+                    "id": "customer__title",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "يمكنك إضافة عنوان النقاط التعريفية هنا...",
+                    "hide": false,
+                    "minLength": 0,
+                    "maxLength": 250
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": 10,
+            "conditions": [
+                {
+                    "id": "commercial_register_on",
+                    "operation": "=",
+                    "value": true
+                }
+            ],
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
             "type": "static",
             "id": "static-line5",
             "format": "line"
@@ -426,26 +570,26 @@
             "selected": false
         },
         {
-          "type": "string",
-          "icon": "sicon-format-text-alt",
-          "label": "عنوان اعلان ترويجي في صفحة المنتج",
-          "multilanguage": true,
-          "id": "title_advertisement",
-          "value": null,
-          "required": false,
-          "format": "text",
-          "description": null,
-          "placeholder": "يمكنك إضافة عنوان اعلان ترويجي في صفحة المنتج هنا...",
-          "hide": false,
-          "minLength": 0,
-          "maxLength": 250,
-          "conditions": [
-            {
-              "id": "promotional_advertisement",
-              "operation": "=",
-              "value": true
-            }
-          ]
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "عنوان اعلان ترويجي في صفحة المنتج",
+            "multilanguage": true,
+            "id": "title_advertisement",
+            "value": null,
+            "required": false,
+            "format": "text",
+            "description": null,
+            "placeholder": "يمكنك إضافة عنوان اعلان ترويجي في صفحة المنتج هنا...",
+            "hide": false,
+            "minLength": 0,
+            "maxLength": 250,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
         },
         {
             "type": "boolean",

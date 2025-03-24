@@ -494,6 +494,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .bottom-1{bottom:0.25rem}
 .bottom-2{bottom:0.5rem}
 .bottom-20{bottom:5rem}
+.bottom-8{bottom:2rem}
 .left-0{left:0px}
 .left-3{left:0.75rem}
 .left-\[var\(--data-hotspot-left\)\]{left:var(--data-hotspot-left)}
@@ -508,10 +509,6 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .top-4{top:1rem}
 .top-\[var\(--data-hotspot-top\)\]{top:var(--data-hotspot-top)}
 .top-full{top:100%}
-.bottom-3{bottom:0.75rem}
-.bottom-1\/4{bottom:25%}
-.bottom-7\.5{bottom:30px}
-.bottom-8{bottom:2rem}
 .isolate{isolation:isolate}
 .-z-1{z-index:-1}
 .z-0{z-index:0}
@@ -743,10 +740,6 @@ to{transform:rotate(360deg)}}
 .rounded-xl{border-radius:0.75rem}
 .rounded-b-none{border-bottom-right-radius:0px;border-bottom-left-radius:0px}
 .rounded-t-md{border-top-left-radius:0.375rem;border-top-right-radius:0.375rem}
-.rounded-bl-lg{border-bottom-left-radius:0.5rem}
-.rounded-tl-lg{border-top-left-radius:0.5rem}
-.rounded-bl-2xl{border-bottom-left-radius:1rem}
-.rounded-tl-2xl{border-top-left-radius:1rem}
 .border{border-width:1px}
 .border-x{border-left-width:1px;border-right-width:1px}
 .border-y{border-top-width:1px;border-bottom-width:1px}
@@ -6776,8 +6769,8 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .xl\:h-40{height:10rem}
 .xl\:w-40{width:10rem}
 .xl\:w-\[calc\(100\%\/6\)\]{width:calc(100% / 6)}
-.xl\:w-\[calc\(100\%\/8\)\]{width:calc(100% / 8)}
 .xl\:w-\[calc\(100\%\/6\.5\)\]{width:calc(100% / 6.5)}
+.xl\:w-\[calc\(100\%\/8\)\]{width:calc(100% / 8)}
 .xl\:gap-8{gap:2rem}
 .xl\:px-0{padding-left:0px;padding-right:0px}}
 @media (min-width: 480px){
@@ -6785,12 +6778,12 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .xs\:p-11{padding:2.75rem}
 .xs\:p-7{padding:1.75rem}}
 .ltr\:left-0:where([dir="ltr"], [dir="ltr"] *){left:0px}
+.ltr\:left-3:where([dir="ltr"], [dir="ltr"] *){left:0.75rem}
 .ltr\:right-0:where([dir="ltr"], [dir="ltr"] *){right:0px}
 .ltr\:right-1:where([dir="ltr"], [dir="ltr"] *){right:0.25rem}
 .ltr\:right-1\.5:where([dir="ltr"], [dir="ltr"] *){right:0.375rem}
 .ltr\:right-2:where([dir="ltr"], [dir="ltr"] *){right:0.5rem}
 .ltr\:right-4:where([dir="ltr"], [dir="ltr"] *){right:1rem}
-.ltr\:left-3:where([dir="ltr"], [dir="ltr"] *){left:0.75rem}
 .ltr\:ml-1:where([dir="ltr"], [dir="ltr"] *){margin-left:0.25rem}
 .ltr\:ml-2:where([dir="ltr"], [dir="ltr"] *){margin-left:0.5rem}
 .ltr\:ml-3:where([dir="ltr"], [dir="ltr"] *){margin-left:0.75rem}
