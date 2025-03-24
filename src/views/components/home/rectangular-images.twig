@@ -10,7 +10,7 @@
           {% if item.video_owner %}
           <span class="bg-darker text-white text-sm z-1 absolute rtl:right-3 ltr:left-3 bottom-8 p-2 rtl:rounded-tl-2xl ltr:rounded-tr-2xl rtl:rounded-bl-2xl ltr:rounded-br-2xl">{{item.video_owner}}</span>
           {% endif %}
-          <img loading="lazy" src=" " data-src="{{ item.image }}" alt="{{ item.image.alt | default('rectangular Video') }}" class="lazy w-full h-100 object-cover rounded-xl max-h-100 object-top">
+          <img loading="lazy" src=" " data-src="{{ item.image }}" alt="{{ item.image.alt | default('rectangular Video') }}" class="lazy w-full h-[300px] lg:h-100 object-cover rounded-xl max-h-100 object-top">
         </a>
       </div>
       {% endfor %}

@@ -10,7 +10,8 @@
     },
     "footer": {
       "menuTitle_one": "Policies",
-      "menuTitle_two": "Learn"
+      "menuTitle_two": "Learn",
+      "help": "Do you need help?"
     },
     "common": {
       "cancelAtAnyTime": "Please enter your email address to be the first to know about a new product launch",

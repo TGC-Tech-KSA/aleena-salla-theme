@@ -3,11 +3,9 @@
 {% set customer = theme.settings.get('customer_service_on') %}
 {% set customer_title = theme.settings.get('customer_title') %}
 {% set customer_points = theme.settings.get('customer_points') %}
-
-
-
-
 {% set commercial = theme.settings.get('commercial_register_on') %}
+{% set commercial_point_title = theme.settings.get('commercial_point_title') %}
+{% set commercial_points = theme.settings.get('commercial_points') %}
 {% set newsletter_is_active = newsletter and newsletter_action %}
 <footer class="store-footer">
 	<div aria-label="footer" class="store-footer__inner">
@@ -88,30 +86,89 @@
           {% endif %}
           {% component 'footer.menu' with {learn:true} %}
 			</div>
-      <div>
+      <div class="lg:col-span-2">
         {% if customer or commercial %}
+        <div class="hidden md:block">
+        <strong class="block text-base">{{ trans('blocks.footer.help') }}</strong>
+        {% if customer %}
         <h3>{{customer_title}}</h3>
-        <ul>
-
-<ul>
-    {% for point in customer_points %}
-        <li>{{ point.point_title}}</li>
-    {% endfor %}
-</ul>
-
+        <ul class="data_list mb-4" style="margin-inline-start: 2em;">
+          {% for point in customer_points %}
+            {% set point_title = point.point_title %}
+            {% if point_title is iterable %}
+                {% set point_title = point_title[user.language.code] | default(point_title | first) %}
+            {% endif %}
+              <li style="list-style: disc outside;">{{point_title}}</li>
+          {% endfor %}
         </ul>
-
         {% endif %}
-
-
+        {% if commercial %}
+        <h3>{{commercial_point_title}}</h3>
+        <ul class="data_list mb-4" style="margin-inline-start: 2em;">
+          {% for item in commercial_points %}
+            {% set point_title = item.commercial_title %}
+            {% if point_title is iterable %}
+                {% set point_title = point_title[user.language.code] | default(point_title | first) %}
+            {% endif %}
+              <li style="list-style: disc outside;">{{point_title}}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        </div>
+          <div class="block md:hidden">
+              <div class="accordion cursor-pointer group">
+                  <span class="accordion-title flex justify-start items-center gap-4 py-3">
+                      <i class="sicon-add icone"></i>
+                      <strong class="block text-base">{{ trans('blocks.footer.help') }}</strong>
+                  </span>
+              </div>
+              <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
+                  {% if customer %}
+                  <h3>{{customer_title}}</h3>
+                  <ul class="data_list mb-4" style="margin-inline-start: 2em;">
+                    {% for point in customer_points %}
+                      {% set point_title = point.point_title %}
+                      {% if point_title is iterable %}
+                          {% set point_title = point_title[user.language.code] | default(point_title | first) %}
+                      {% endif %}
+                        <li style="list-style: disc outside;">{{point_title}}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                  {% if commercial %}
+                  <h3>{{commercial_point_title}}</h3>
+                  <ul class="data_list mb-4" style="margin-inline-start: 2em;">
+                    {% for item in commercial_points %}
+                      {% set point_title = item.commercial_title %}
+                      {% if point_title is iterable %}
+                          {% set point_title = point_title[user.language.code] | default(point_title | first) %}
+                      {% endif %}
+                        <li style="list-style: disc outside;">{{point_title}}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+              </div>
+          </div>
+        {% endif %}
+        <div class="mb-2.5"><salla-apps-icons></salla-apps-icons></div>
+        <div class="mb-2.5"><salla-payments class="mb-2.5"></salla-payments></div>
       </div>
-			<salla-apps-icons class="lg:col-span-2 rtl:lg:pr-20 ltr:lg:pl-20"></salla-apps-icons>
 		</div>
 	</div>
 
 	<div class="md:flex items-center justify-between py-4 container text-center">
 		<span class="text-sm copyright-text">{% hook copyright %}</span>
-		<salla-payments></salla-payments>
+      {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+      <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0 !w-auto">
+          <span>{{ user.language.name}}</span>
+          {% if store.settings.currencies_enabled %}
+            <span class="mx-1.5">|</span>
+            <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
+            <span class="mx-1 inline-flex">{{ currency.symbol }}</span>
+          {% endif %}
+      </button>
+      {% endif %}
+
 	</div>
 </div>
 

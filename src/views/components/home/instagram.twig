@@ -8,7 +8,7 @@
       <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)]">
         <a data-fslightbox="{{ component.position }}" data-img-id="video-{{ loop.index | default(0) }}" data-slid-index="{{ loop.index - 1 }}" data-caption="{{ banner.image.alt | default('Instagram Video') }}" data-video-src="{{ banner.slider_bg_video }}?raw=true" data-infinite="true" data-type="youtube" href="#video-{{ loop.index | default(0) }}" aria-label="{{ banner.name | default('Instagram Video') }}" class="group instagram-play rounded-xl overflow-hidden">
             <i class="sicon-play text-white text-2xl z-1 absolute left-3 top-3"></i>
-            <img loading="lazy" src=" " data-src="{{ banner.image }}" alt="{{ banner.image.alt | default('Instagram Video') }}" class="lazy w-full h-100 object-cover rounded-xl max-h-100 object-top">
+            <img loading="lazy" src=" " data-src="{{ banner.image }}" alt="{{ banner.image.alt | default('Instagram Video') }}" class="lazy w-full h-[300px] lg:h-100 object-cover rounded-xl max-h-100 object-top">
         </a>
         <div id="video-{{ loop.index | default(0) }}" class="relative hidden">
           <span class="text-white text-base z-10 absolute right-3 top-3">{{banner.video_owner}}</span>
