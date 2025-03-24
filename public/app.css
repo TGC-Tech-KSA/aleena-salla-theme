@@ -508,6 +508,10 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .top-4{top:1rem}
 .top-\[var\(--data-hotspot-top\)\]{top:var(--data-hotspot-top)}
 .top-full{top:100%}
+.bottom-3{bottom:0.75rem}
+.bottom-1\/4{bottom:25%}
+.bottom-7\.5{bottom:30px}
+.bottom-8{bottom:2rem}
 .isolate{isolation:isolate}
 .-z-1{z-index:-1}
 .z-0{z-index:0}
@@ -587,6 +591,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .\!h-full{height:100% !important}
 .h-0{height:0px}
 .h-10{height:2.5rem}
+.h-100{height:28rem}
 .h-12{height:3rem}
 .h-14{height:3.5rem}
 .h-16{height:4rem}
@@ -604,6 +609,7 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .h-80{height:20rem}
 .h-\[300px\]{height:300px}
 .h-\[34px\]{height:34px}
+.h-\[430px\]{height:430px}
 .h-\[460px\]{height:460px}
 .h-auto{height:auto}
 .h-banner{height:200px}
@@ -611,10 +617,6 @@ select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/
 .h-lg-banner{height:428px}
 .h-px{height:1px}
 .h-screen{height:100vh}
-.h-\[450px\]{height:450px}
-.h-\[430px\]{height:430px}
-.h-100{height:28rem}
-.h-\[505px\]{height:505px}
 .max-h-0{max-height:0px}
 .max-h-100{max-height:28rem}
 .max-h-8{max-height:2rem}
@@ -741,6 +743,10 @@ to{transform:rotate(360deg)}}
 .rounded-xl{border-radius:0.75rem}
 .rounded-b-none{border-bottom-right-radius:0px;border-bottom-left-radius:0px}
 .rounded-t-md{border-top-left-radius:0.375rem;border-top-right-radius:0.375rem}
+.rounded-bl-lg{border-bottom-left-radius:0.5rem}
+.rounded-tl-lg{border-top-left-radius:0.5rem}
+.rounded-bl-2xl{border-bottom-left-radius:1rem}
+.rounded-tl-2xl{border-top-left-radius:1rem}
 .border{border-width:1px}
 .border-x{border-left-width:1px;border-right-width:1px}
 .border-y{border-top-width:1px;border-bottom-width:1px}
@@ -6771,6 +6777,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .xl\:w-40{width:10rem}
 .xl\:w-\[calc\(100\%\/6\)\]{width:calc(100% / 6)}
 .xl\:w-\[calc\(100\%\/8\)\]{width:calc(100% / 8)}
+.xl\:w-\[calc\(100\%\/6\.5\)\]{width:calc(100% / 6.5)}
 .xl\:gap-8{gap:2rem}
 .xl\:px-0{padding-left:0px;padding-right:0px}}
 @media (min-width: 480px){
@@ -6783,6 +6790,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .ltr\:right-1\.5:where([dir="ltr"], [dir="ltr"] *){right:0.375rem}
 .ltr\:right-2:where([dir="ltr"], [dir="ltr"] *){right:0.5rem}
 .ltr\:right-4:where([dir="ltr"], [dir="ltr"] *){right:1rem}
+.ltr\:left-3:where([dir="ltr"], [dir="ltr"] *){left:0.75rem}
 .ltr\:ml-1:where([dir="ltr"], [dir="ltr"] *){margin-left:0.25rem}
 .ltr\:ml-2:where([dir="ltr"], [dir="ltr"] *){margin-left:0.5rem}
 .ltr\:ml-3:where([dir="ltr"], [dir="ltr"] *){margin-left:0.75rem}
@@ -6796,6 +6804,8 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .ltr\:-translate-x-full:where([dir="ltr"], [dir="ltr"] *){--tw-translate-x:-100%;transform:translate(-100%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
 .ltr\:rounded-l-none:where([dir="ltr"], [dir="ltr"] *){border-top-left-radius:0px;border-bottom-left-radius:0px}
 .ltr\:rounded-r-none:where([dir="ltr"], [dir="ltr"] *){border-top-right-radius:0px;border-bottom-right-radius:0px}
+.ltr\:rounded-br-2xl:where([dir="ltr"], [dir="ltr"] *){border-bottom-right-radius:1rem}
+.ltr\:rounded-tr-2xl:where([dir="ltr"], [dir="ltr"] *){border-top-right-radius:1rem}
 .ltr\:border-r:where([dir="ltr"], [dir="ltr"] *){border-right-width:1px}
 .ltr\:border-r-0:where([dir="ltr"], [dir="ltr"] *){border-right-width:0px}
 .ltr\:pl-5:where([dir="ltr"], [dir="ltr"] *){padding-left:1.25rem}
@@ -6832,6 +6842,7 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .rtl\:left-2:where([dir="rtl"], [dir="rtl"] *){left:0.5rem}
 .rtl\:left-4:where([dir="rtl"], [dir="rtl"] *){left:1rem}
 .rtl\:right-0:where([dir="rtl"], [dir="rtl"] *){right:0px}
+.rtl\:right-3:where([dir="rtl"], [dir="rtl"] *){right:0.75rem}
 .rtl\:ml-0:where([dir="rtl"], [dir="rtl"] *){margin-left:0px}
 .rtl\:ml-1:where([dir="rtl"], [dir="rtl"] *){margin-left:0.25rem}
 .rtl\:ml-1\.5:where([dir="rtl"], [dir="rtl"] *){margin-left:0.375rem}
@@ -6847,6 +6858,8 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:1}
 .rtl\:rounded-l-none:where([dir="rtl"], [dir="rtl"] *){border-top-left-radius:0px;border-bottom-left-radius:0px}
 .rtl\:rounded-r-none:where([dir="rtl"], [dir="rtl"] *){border-top-right-radius:0px;border-bottom-right-radius:0px}
+.rtl\:rounded-bl-2xl:where([dir="rtl"], [dir="rtl"] *){border-bottom-left-radius:1rem}
+.rtl\:rounded-tl-2xl:where([dir="rtl"], [dir="rtl"] *){border-top-left-radius:1rem}
 .rtl\:border-l:where([dir="rtl"], [dir="rtl"] *){border-left-width:1px}
 .rtl\:border-l-0:where([dir="rtl"], [dir="rtl"] *){border-left-width:0px}
 .rtl\:pl-1:where([dir="rtl"], [dir="rtl"] *){padding-left:0.25rem}

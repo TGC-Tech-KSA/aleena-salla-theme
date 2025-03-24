@@ -1,32 +1,19 @@
-<section id="instagram-{{ position }}" class="s-block s-block--instagram px-3 lg:px-12 my-5 lg:my-10 overflow-hidden">
+<section id="rectangular-images-{{ position }}" class="s-block s-block--rectangular-images px-3 lg:px-12 my-5 lg:my-10 overflow-hidden">
   <div class="pb-4 md:pb-8 text-center">
-      <h2 class="text-sm md:text-xl font-bold">{{ component.instagram_title }}</h2>
+      <h2 class="text-sm md:text-xl font-bold">{{ component.rectangular_title }}</h2>
   </div>
-  <salla-slider type="carousel" class="instagram-slider" show-controls="false" id="photos-{{ position }}-instagram">
+  <salla-slider type="carousel" class="rectangular-slider" show-controls="false" id="photos-{{ position }}-rectangular">
     <div slot="items">
-      {% for banner in component.instagram %}
-      <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)]">
-        <a data-fslightbox="{{ component.position }}" data-img-id="video-{{ loop.index | default(0) }}" data-slid-index="{{ loop.index - 1 }}" data-caption="{{ banner.image.alt | default('Instagram Video') }}" data-video-src="{{ banner.slider_bg_video }}?raw=true" data-infinite="true" data-type="youtube" href="#video-{{ loop.index | default(0) }}" aria-label="{{ banner.name | default('Instagram Video') }}" class="group instagram-play rounded-xl overflow-hidden">
-            <i class="sicon-play text-white text-2xl z-1 absolute left-3 top-3"></i>
-            <img loading="lazy" src=" " data-src="{{ banner.image }}" alt="{{ banner.image.alt | default('Instagram Video') }}" class="lazy w-full h-100 object-cover rounded-xl max-h-100 object-top">
+      {% for item in component.rectangular %}
+      <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6.5)]">
+        <a href="{{item.url}}">
+          {% if item.video_owner %}
+          <span class="bg-darker text-white text-sm z-1 absolute rtl:right-3 ltr:left-3 bottom-8 p-2 rtl:rounded-tl-2xl ltr:rounded-tr-2xl rtl:rounded-bl-2xl ltr:rounded-br-2xl">{{item.video_owner}}</span>
+          {% endif %}
+          <img loading="lazy" src=" " data-src="{{ item.image }}" alt="{{ item.image.alt | default('rectangular Video') }}" class="lazy w-full h-100 object-cover rounded-xl max-h-100 object-top">
         </a>
-        <div id="video-{{ loop.index | default(0) }}" class="relative hidden">
-          <span class="text-white text-base z-10 absolute right-3 top-3">{{banner.video_owner}}</span>
-          <video playsinline width="400" autoplay="autoplay" muted="muted" controls loop class="w-full h-auto object-cover object-center lazy autoplay-video">
-              <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/mp4">
-              <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/ogg">
-              <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/avi">
-              <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/webm">
-              <track src="captions_en.vtt" kind="captions" srclang="en" label="English captions">
-              <track src="captions_es.vtt" kind="captions" srclang="es" label="Spanish captions">
-          </video>
-          <salla-products-list minimal {% if banner.products|length %} source="selected" source-value="[{{ banner.products[0]}}]" {% endif %} slider-id="slider-with-bg-{{ position }}" class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 absolute bottom-20 w-4/5"></salla-products-list>
-        </div>
       </div>
       {% endfor %}
     </div>
   </salla-slider>
 </section>
-<style>
-    .fslightbox-source{display: block !important;}
-</style>

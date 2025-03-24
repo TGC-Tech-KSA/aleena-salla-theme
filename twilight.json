@@ -134,7 +134,7 @@
             "type": "static",
             "format": "title",
             "id": "static-label2",
-            "value": "خيارات أعلى الصفحة",
+            "value": "<div class='rounded-lg' style='background-color: #0e0f0f; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px; color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أعلى الصفحة </div>",
             "variant": "h6"
         },
         {
@@ -285,7 +285,7 @@
             "type": "static",
             "format": "title",
             "id": "static-label4",
-            "value": "خيارات أسفل الصفحة",
+            "value": "<div class='rounded-lg' style='background-color: #0e0f0f; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px; color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أسفل الصفحة </div>",
             "variant": "h6"
         },
         {
@@ -359,7 +359,7 @@
             "type": "static",
             "format": "title",
             "id": "static-label6",
-            "value": "خيارات صفحة المنتج",
+            "value": "<div class='rounded-lg' style='background-color: #0e0f0f; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px; color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة المنتج </div>",
             "variant": "h6"
         },
         {
@@ -413,6 +413,39 @@
             ],
             "source": "Manual",
             "required": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "اضافة اعلان ترويجي في صفحة المنتج",
+            "description": null,
+            "id": "promotional_advertisement",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "عنوان اعلان ترويجي في صفحة المنتج",
+          "multilanguage": true,
+          "id": "title_advertisement",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": "يمكنك إضافة عنوان اعلان ترويجي في صفحة المنتج هنا...",
+          "hide": false,
+          "minLength": 0,
+          "maxLength": 250,
+          "conditions": [
+            {
+              "id": "promotional_advertisement",
+              "operation": "=",
+              "value": true
+            }
+          ]
         },
         {
             "type": "boolean",
@@ -1692,7 +1725,7 @@
                 }
             ]
         },
-         {
+        {
             "key": "522e17c3-33de-423b-a123-53af589e043c",
             "title": "صور مستطيلة",
             "icon": "sicon-image",
@@ -1772,8 +1805,6 @@
                                 "quality": 80
                             }
                         },
-
-
                         {
                             "id": "rectangular.video_owner",
                             "type": "string",
@@ -1789,7 +1820,7 @@
                             "minLength": "0",
                             "maxLength": "80"
                         },
-                          {
+                        {
                             "type": "items",
                             "icon": "sicon-link",
                             "label": "رابط صورة العرض",
@@ -1801,58 +1832,58 @@
                             "searchable": true,
                             "source": "offers_link",
                             "sources": [
-                              {
-                                "label": "منتج",
-                                "key": "products",
-                                "value": "products"
-                              },
-                              {
-                                "label": "تصنيف",
-                                "key": "categories",
-                                "value": "categories"
-                              },
-                              {
-                                "label": "ماركة تجارية",
-                                "key": "brands",
-                                "value": "brands"
-                              },
-                              {
-                                "label": "صفحة تعريفية",
-                                "key": "pages",
-                                "value": "pages"
-                              },
-                              {
-                                "label": "مقالة",
-                                "key": "blog_articles",
-                                "value": "blog_articles"
-                              },
-                              {
-                                "label": "تصنيف ضمن المدونة",
-                                "key": "blog_categories",
-                                "value": "blog_categories"
-                              },
-                              {
-                                "label": "التخفيضات",
-                                "key": "offers_link",
-                                "value": "offers_link"
-                              },
-                              {
-                                "label": "الماركات التجارية",
-                                "key": "brands_link",
-                                "value": "brands_link"
-                              },
-                              {
-                                "label": "المدونة",
-                                "key": "blog_link",
-                                "value": "blog_link"
-                              },
-                              {
-                                "label": "رابط خارجي",
-                                "key": "custom",
-                                "value": "custom"
-                              }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
-                          }
+                        }
                     ]
                 }
             ]
