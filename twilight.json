@@ -437,7 +437,7 @@
             "icon": "sicon-format-text-alt",
             "label": "عنوان السجل التجاري والتسجيل الضريبي",
             "multilanguage": true,
-            "id": "point_title",
+            "id": "commercial_point_title",
             "value": null,
             "required": false,
             "format": "text",
