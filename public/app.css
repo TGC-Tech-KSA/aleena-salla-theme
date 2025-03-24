@@ -6888,10 +6888,6 @@ lite-youtube.lyt-activated > .lty-playbtn {
 .\[\&_\.s-add-product-button-main\]\:\!flex-col .s-add-product-button-main{flex-direction:column !important}
 .\[\&_\.s-add-product-button-main\]\:gap-4 .s-add-product-button-main{gap:1rem}
 .\[\&_\.s-advertisement-action\]\:\!hidden .s-advertisement-action{display:none !important}
-.\[\&_\.s-advertisement-action\]\:hidden .s-advertisement-action{display:none}
-.\[\&_\.s-advertisement-action\]\:\!text-dark .s-advertisement-action{--tw-text-opacity:1 !important;color:rgba(29, 31, 31, 1) !important;color:rgba(29, 31, 31, var(--tw-text-opacity, 1)) !important}
-.\[\&_\.s-advertisement\]\:\!bg-transparent .s-advertisement{background-color:transparent !important}
-.\[\&_\.s-advertisement\]\:\!text-dark .s-advertisement{--tw-text-opacity:1 !important;color:rgba(29, 31, 31, 1) !important;color:rgba(29, 31, 31, var(--tw-text-opacity, 1)) !important}
 .\[\&_\.s-cart-summary-content\]\:\!hidden .s-cart-summary-content{display:none !important}
 .\[\&_\.s-cart-summary-count\]\:bg-darker .s-cart-summary-count{--tw-bg-opacity:1;background-color:rgba(14, 15, 15, 1);background-color:rgba(14, 15, 15, var(--tw-bg-opacity, 1))}
 .\[\&_\.s-cart-summary-wrapper\]\:absolute .s-cart-summary-wrapper{position:absolute}
