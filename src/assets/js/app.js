@@ -1,5 +1,4 @@
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import WOW from 'wowjs';
 import MobileMenu from 'mmenu-light';
 import Swal from 'sweetalert2';
 import Anime from './partials/anime';
