@@ -217,7 +217,7 @@ class ProductCard extends HTMLElement {
       product_images_layout == 'slider' && this.product.images?.length > 1;
     const hasMetadata = productcard_metadata && this.product.metadata;
     this.innerHTML = `
-        <div class=" !rounded-none ${!this.fullImage ? 's-product-card-image-full h-full' : ''} ${ this.horizonta || this.minimal? 'flex-1' : 'aspect-[0.67]'}">
+        <div class=" !rounded-none ${!this.fullImage ? 's-product-card-image-full h-full' : ''}">
           <a href="${this.product?.url}" class="relative h-full block">
         ${
           product_images_layout == 'slider' &&
@@ -235,6 +235,7 @@ class ProductCard extends HTMLElement {
                 src=${this.placeholder}
                 alt=${this.product?.image?.alt}
                 data-src=${this.product?.image?.url || this.product?.thumbnail}
+                width="500" height="500"
               />
             `
             : `<img class="s-product-card-image-${
@@ -247,6 +248,7 @@ class ProductCard extends HTMLElement {
                 src=${this.placeholder}
                 alt=${this.product?.image?.alt}
                 data-src=${this.product?.image?.url || this.product?.thumbnail}
+                width="500" height="500"
               />
               ${
                 product_images_layout == 'change-with-hover' &&
