@@ -399,3 +399,8 @@ salla-quantity-input[max='1']{
     @apply cursor-not-allowed
   }
 }
+.s-product-card-vertical {
+  .s-product-card-image-full,.s-product-card-image{
+    @apply aspect-[0.67] h-auto max-h-[initial] #{!important}
+  }
+}
