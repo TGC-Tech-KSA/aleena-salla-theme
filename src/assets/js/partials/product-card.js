@@ -56,11 +56,12 @@ class ProductCard extends HTMLElement {
         effect: 'fade',
         speed: 500
       });
-    this.querySelector('.product-slider').innerHTML = `<salla-slider id="product-slider-${this.product.id}-${this.getRandomInt(1, 10000)}" show-controls="true" auto-play=${productcard_autoplay ? 'true' : 'false'} class="h-full [&_.swiper]:h-full [&_.swiper]:!m-0 [&_.swiper]:!p-0 [&_.swiper-wrapper]:!p-0 product-slider-fade" slider-config='${sliderConfig}' loop>
+    this.querySelector('.product-slider').innerHTML = `<salla-slider id="product-slider-${this.product.id}-${this.getRandomInt(1, 10000)}" show-controls="true" auto-play=${productcard_autoplay ? 'true' : 'false'} class="h-full [&_.swiper]:h-full [&_.swiper]:!m-0 [&_.swiper]:!p-0 [&_.swiper-wrapper]:!p-0 product-slider-fade" slider-config='${sliderConfig}'>
           <div slot="items">
-            ${images.slice(0, limit) ?.map(
+            <img class="s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)? 'contain': this.fitImageHeight? this.fitImageHeight: 'cover'} lazy" src=${this.placeholder} alt=${this.product?.image?.alt} data-src=${this.product?.image?.url || this.product?.thumbnail} loading="lazy" width="500" height="500"/>
+            ${images.slice(1, limit) ?.map(
                 (image) =>
-                  `<img data-src=${image.url} src=${this.placeholder} alt=${image?.alt} class="lazy"/>`
+                  `<img data-src=${image.url} src=${this.placeholder} alt=${image?.alt} class="lazy" loading="lazy" width="500" height="500"/>`
               )}
           </div>
         </salla-slider>`;
@@ -216,14 +217,15 @@ class ProductCard extends HTMLElement {
       product_images_layout == 'slider' && this.product.images?.length > 1;
     const hasMetadata = productcard_metadata && this.product.metadata;
     this.innerHTML = `
-        <div class="h-full !rounded-none ${
-          !this.fullImage ? 's-product-card-image' : 's-product-card-image-full'
+        <div class=" !rounded-none ${
+          !this.fullImage ? 'aspect-[0.67]' : 's-product-card-image-full h-full'
         }">
           <a href="${this.product?.url}" class="relative h-full block">
         ${
           product_images_layout == 'slider' &&
           this.product.images?.length > 1 &&
-          !this.fullImage && !this.noImage
+          !this.fullImage &&
+          !this.noImage
             ? `<div class="product-slider h-full hidden md:flex"></div>
               <img class="flex md:hidden s-product-card-image-${
                 salla.url.is_placeholder(this.product?.image?.url)

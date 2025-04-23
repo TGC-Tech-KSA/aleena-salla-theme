@@ -10,7 +10,7 @@
 | component.links[].url              | string   |                                                                              |
 | position                           | int      | Sorting number start from zero                                               |
 #}
-<section class="s-block s-block--categories p-3 aleena-block-animate" style="--data-bg-cat:{{component.links_bgcolor}}; --data-color:{{component.links_textcolor}};">
+<section class="s-block s-block--categories p-3 aleena-block-animate overflow-hidden" style="--data-bg-cat:{{component.links_bgcolor}}; --data-color:{{component.links_textcolor}};">
     <div class=" ">
       <salla-slider type="carousel"
         show-controls="{{ component.show_controls ? 'true' : 'false'}}"
@@ -19,7 +19,7 @@
               {% if component.show_cats %}
                 {% for cat in component.categories %}
                     <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)]">
-                        <a href="{{ cat.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
+                        <a href="{{ cat.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item animate__slideInUp" data-wow-delay="{{ 100 * loop.index + 50 }}ms" data-wow-duration="{{ 100 * loop.index + 50 }}ms">
                             <div class="w-full h-20 md:h-32 overflow-hidden">
                               <img src="" data-src="{{ cat.image ? cat.image : store.logo }}" class="lazy w-full h-20 md:h-32 object-cover object-top group-hover:scale-105 transition-all aleena-anime-item {{ cat.image ? '' : 'has-placeholder'}}" width="64" height="64" alt="{{ menu.title }}"/>
                             </div>
@@ -31,7 +31,7 @@
                 {% for link in component.links %}
                   {% if link.title %}
                     <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)]">
-                        <a href="{{ link.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
+                        <a href="{{ link.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item animate__slideInUp" data-wow-delay="{{ 100 * loop.index + 50 }}ms" data-wow-duration="{{ 100 * loop.index + 50 }}ms">
                           <div class="w-full h-full overflow-hidden">
                             <img width="224" height="137" src=" " data-src="{{ link.image_icone }}" loading="lazy" class="lazy w-full h-full object-cover group-hover:scale-105 transition-all aleena-anime-item" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
                           </div>

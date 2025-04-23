@@ -1,4 +1,4 @@
-import WOW from 'wowjs';
+import { WOW } from 'wowjs';
 import MobileMenu from 'mmenu-light';
 import Swal from 'sweetalert2';
 import Anime from './partials/anime';
@@ -32,7 +32,9 @@ class App extends AppHelpers {
     initTootTip();
     this.loadModalImgOnclick();
     if (!stop_animation) {
-      this.speedAnimate();
+      window.addEventListener('load', () => {
+        this.speedAnimate();
+      });
     }
     salla.comment.event.onAdded(() => window.location.reload());
     this.status = 'ready';
@@ -393,59 +395,20 @@ class App extends AppHelpers {
     });
   }
   speedAnimate() {
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    const blocks = document.querySelectorAll('.aleena-block-animate');
-    if (blocks.length > 0) {
-      blocks.forEach((block) => {
-        const elements = block.querySelectorAll('.aleena-anime-item');
-        gsap.set(elements, { opacity: 0, y: 20 });
-        ScrollTrigger.create({
-          trigger: block,
-          start: 'top 80%',
-          toggleActions: 'play none reverse none',
-          onEnter: () => {
-            gsap.to(elements, {
-              opacity: 1,
-              y: 0,
-              stagger: 0.05,
-              duration: 0.4,
-              ease: 'power2.out'
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(elements, {
-              opacity: 0,
-              y: 20,
-              stagger: 0.02,
-              duration: 0.2,
-              ease: 'power2.in'
-            });
-          }
-        });
-      });
-    }
-
-    const parallaxImages = document.querySelectorAll('.parallax-image');
-    if (parallaxImages.length > 0) {
-      parallaxImages.forEach((image) => {
-        ScrollTrigger.create({
-          trigger: image,
-          start: 'top 80%',
-          toggleActions: 'play none reverse none',
-          onEnter: () => {
-            gsap.to(image, { scale: 1, duration: 0.3, ease: 'power2.out' });
-          },
-          onLeaveBack: () => {
-            gsap.to(image, { scale: 1.25, duration: 0.1, ease: 'power2.in' });
-          }
-        });
-      });
-    }
-
-    setTimeout(() => {
-      ScrollTrigger.refresh(true);
-    }, 100);
+    var wow = new WOW({
+      boxClass: 'aleena-anime-item',
+      scrollContainer: 'aleena-block-animate',
+      offset: 50,
+      mobile: true,
+      // live: true,
+      resetAnimation: true
+    });
+    wow.init();
+    // window.addEventListener('scroll', function () {
+    //   if (window.scrollY === 0) {
+    //     wow.init();
+    //   }
+    // });
   }
   tabAccordion() {
     document.querySelectorAll('.accordion').forEach((accordion) => {

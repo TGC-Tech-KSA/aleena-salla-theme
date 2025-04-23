@@ -254,7 +254,7 @@
         @apply text-red-500
       }
       &-fit-height.s-product-card-vertical .s-product-card-image {
-        @apply flex-none h-64 lg:h-100 lg:max-h-100;
+        @apply aspect-[0.67] h-auto max-h-[auto];
       }
     }
 

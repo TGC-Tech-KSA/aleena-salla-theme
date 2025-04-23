@@ -57,17 +57,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ theme.settings.set('placeholder', 'images/placeholder.png') }}
-
     {% include 'pages.partials.loading-screen-assets' %}
-
     <script defer data-cfasync="false" src="{{ 'product-card.js'|asset }}"></script>
     <script defer src="{{ 'main-menu.js'|asset }}"></script>
     <script defer src="{{ 'navigation-cart.js'|asset }}"></script>
-
-
     {% block head_scripts %}{% endblock %}
-
-   {% set includes_features = [] %}
+    {% set includes_features = [] %}
         {% set has_images = theme.settings.get('product_images_layout', 'one-image') in ['slider', 'change-with-hover'] %}
 
         {% if has_images %}
@@ -106,6 +101,7 @@
     {% hook 'head:start' %}
     {% hook head %}
     {% block styles %}{% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
     <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
