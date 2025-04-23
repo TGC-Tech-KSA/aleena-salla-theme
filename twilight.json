@@ -991,69 +991,6 @@
                     "required": false
                 },
                 {
-                    "type": "static",
-                    "format": "title",
-                    "id": "top-page-title-6",
-                    "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'>ارتفاع البانر</h6> </div>"
-                },
-                {
-                    "id": "height_automatically",
-                    "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تحديد ارتفاع البانر تلقائياً",
-                    "description": "",
-                    "labelHTML": "<span style='color: #e41f39;font-size: 10px;'>سيتم تحديد ارتفاع العنصر تلقائياً بناءً على ارتفاع الصورة او المقطع الحالي</span>",
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "banner_height",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "شاشات الديسك توب و اللاب توب",
-                    "description": null,
-                    "labelHTML": "يتم احتساب القيمة من طول شاشة العرض اصغر قيمة هي 50 وهي نصف مساحه الشاشة و 100 هي ارتفاع الشاشة كامة",
-                    "placeholder": "100",
-                    "icon": "sicon-hashtag",
-                    "value": 100,
-                    "required": false,
-                    "minimum": "50",
-                    "maximum": "100",
-                    "conditions": [
-                        {
-                            "id": "height_automatically",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
-                    "id": "banner_height_min",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "الجوال",
-                    "description": null,
-                    "labelHTML": "يتم احتساب القيمة من طول شاشة العرض اصغر قيمة هي 50 وهي نصف مساحه الشاشة و 100 هي ارتفاع الشاشة كامة",
-                    "placeholder": "100",
-                    "icon": "sicon-hashtag",
-                    "value": 65,
-                    "required": false,
-                    "minimum": "30",
-                    "maximum": "100",
-                    "conditions": [
-                        {
-                            "id": "height_automatically",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
                     "id": "image_time",
                     "type": "number",
                     "format": "integer",

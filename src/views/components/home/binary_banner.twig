@@ -4,9 +4,13 @@
       {% for slide in component.binary_banner %}
         <a href="{{ slide.url }}" class="binary-banner aleena-anime-item" aria-label="Banner {{ image.alt }}">
           {% if dir =='rtl' %}
-            <img width="980" height="1470" src=" " data-src="{{ slide.image }}" loading="lazy" class="lazy aleena-anime-item w-full h-full" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+          <div class="w-full h-full overflow-hidden aspect-[3/4]">
+              <div class="lazy lazy__bg !relative" data-bg="{{ slide.image }}" loading="lazy" ></div>
+          </div>
           {% else %}
-            <img width="980" height="1470" src=" " data-src="{{ slide.image_en }}" loading="lazy aleena-anime-item w-full h-full" class="lazy" alt="{{ image.alt|trim ? image.alt : 'fixed banner' }}"/>
+            <div class="w-full h-full overflow-hidden aspect-[3/4]">
+              <div class="lazy lazy__bg !relative" data-bg="{{ slide.image_en }}" loading="lazy" ></div>
+          </div>
           {% endif %}
         </a>
       {% endfor %}

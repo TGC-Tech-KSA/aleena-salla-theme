@@ -61,7 +61,7 @@ class ProductCard extends HTMLElement {
             <img class="s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)? 'contain': this.fitImageHeight? this.fitImageHeight: 'cover'} lazy" src=${this.placeholder} alt=${this.product?.image?.alt} data-src=${this.product?.image?.url || this.product?.thumbnail} loading="lazy" width="500" height="500"/>
             ${images.slice(1, limit) ?.map(
                 (image) =>
-                  `<img data-src=${image.url} src=${this.placeholder} alt=${image?.alt} class="lazy" loading="lazy" width="500" height="500"/>`
+                  `<img data-src=${image.url} src=${this.placeholder} alt=${image?.alt} class="s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)? 'contain': this.fitImageHeight? this.fitImageHeight: 'cover'} lazy" loading="lazy" width="500" height="500"/>`
               )}
           </div>
         </salla-slider>`;
@@ -217,9 +217,7 @@ class ProductCard extends HTMLElement {
       product_images_layout == 'slider' && this.product.images?.length > 1;
     const hasMetadata = productcard_metadata && this.product.metadata;
     this.innerHTML = `
-        <div class=" !rounded-none ${
-          !this.fullImage ? 'aspect-[0.67]' : 's-product-card-image-full h-full'
-        }">
+        <div class=" !rounded-none ${!this.fullImage ? 's-product-card-image-full h-full' : ''} ${!this.horizonta || !this.minimal? 'aspect-[0.67]' : ' '}">
           <a href="${this.product?.url}" class="relative h-full block">
         ${
           product_images_layout == 'slider' &&
@@ -238,8 +236,6 @@ class ProductCard extends HTMLElement {
                 alt=${this.product?.image?.alt}
                 data-src=${this.product?.image?.url || this.product?.thumbnail}
               />
-
-
             `
             : `<img class="s-product-card-image-${
                 salla.url.is_placeholder(this.product?.image?.url)
@@ -247,7 +243,7 @@ class ProductCard extends HTMLElement {
                   : this.fitImageHeight
                   ? this.fitImageHeight
                   : 'cover'
-              } lazy"
+              } lazy h-full"
                 src=${this.placeholder}
                 alt=${this.product?.image?.alt}
                 data-src=${this.product?.image?.url || this.product?.thumbnail}
