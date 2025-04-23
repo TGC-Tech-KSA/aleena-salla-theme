@@ -120,17 +120,6 @@
             "format": "line"
         },
         {
-            "id": "stop_animation",
-            "label": "ايقاف الانميشن في المتجر كامل",
-            "description": null,
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": false
-        },
-        {
             "type": "static",
             "format": "title",
             "id": "static-label2",

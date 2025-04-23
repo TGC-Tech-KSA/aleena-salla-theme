@@ -31,11 +31,6 @@ class App extends AppHelpers {
     }
     initTootTip();
     this.loadModalImgOnclick();
-    if (!stop_animation) {
-      window.addEventListener('load', () => {
-        this.speedAnimate();
-      });
-    }
     salla.comment.event.onAdded(() => window.location.reload());
     this.status = 'ready';
     document.dispatchEvent(new CustomEvent('theme::ready'));
@@ -393,22 +388,6 @@ class App extends AppHelpers {
         .element('salla-cart-summary')
         .animateToCart(app.element(`#product-${prodId} img`));
     });
-  }
-  speedAnimate() {
-    var wow = new WOW({
-      boxClass: 'aleena-anime-item',
-      scrollContainer: 'aleena-block-animate',
-      offset: 50,
-      mobile: true,
-      // live: true,
-      resetAnimation: true
-    });
-    wow.init();
-    // window.addEventListener('scroll', function () {
-    //   if (window.scrollY === 0) {
-    //     wow.init();
-    //   }
-    // });
   }
   tabAccordion() {
     document.querySelectorAll('.accordion').forEach((accordion) => {
