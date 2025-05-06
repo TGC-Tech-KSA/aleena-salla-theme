@@ -10,13 +10,21 @@
           <a href="{{item.url}}">
               {% if item.viwe_type == 'viwe_photo' %}
                 {% set image_src = item.alsort %}
+                {% set image_src_mob = item.alsort_mob %}
                 {% if dir == 'ltr' and item.alsort_en != '' %}
                     {% set image_src = item.alsort_en %}
+                {% endif %}
+                {% if dir == 'ltr' and item.alsort_en_mob != '' %}
+                    {% set image_src_mob = item.alsort_en_mob %}
                 {% endif %}
                 {% if dir == 'rtl' and item.alsort == '' %}
                     {% set image_src = item.alsort_en %}
                 {% endif %}
-                <div class="lazy lazy__bg !relative" data-bg="{{ image_src }}" loading="lazy" ></div>
+                {% if dir == 'rtl' and item.alsort == '' %}
+                    {% set image_src_mob = item.alsort_mob %}
+                {% endif %}
+                <div class="lazy lazy__bg !relative hidden md:flex" data-bg="{{ image_src }}" loading="lazy" ></div>
+                <div class="lazy lazy__bg !relative flex md:hidden" data-bg="{{ image_src_mob }}" loading="lazy" ></div>
               {% endif %}
               {% if item.viwe_type == 'viwe_youtube' %}
               <div class="slider relative w-full h-full overflow-hidden">

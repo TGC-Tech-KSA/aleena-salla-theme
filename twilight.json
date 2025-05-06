@@ -1096,6 +1096,30 @@
                                 }
                             ]
                         },
+                          {
+                            "id": "alsort_mob",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الصورة في اللغة العربية في الجوال" ,
+                            "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": "https://hostname.com/image.png",
+                            "required": false,
+                            "settings": {
+                                "quality": 80
+                            },
+                            "conditions": [
+                                {
+                                    "id": "viwe_type",
+                                    "operation": "=",
+                                    "value": "viwe_photo",
+                                    "collection_id": "main_slider",
+                                    "value_index": "."
+                                }
+                            ]
+                        },
                         {
                             "id": "alsort_en",
                             "type": "string",
@@ -1106,6 +1130,30 @@
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
                             "value": null,
+                            "required": false,
+                            "settings": {
+                                "quality": 80
+                            },
+                            "conditions": [
+                                {
+                                    "id": "viwe_type",
+                                    "operation": "=",
+                                    "value": "viwe_photo",
+                                    "collection_id": "main_slider",
+                                    "value_index": "."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "alsort_en_mob",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الصورة في اللغة الانجليزية في الجوال",
+                            "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": "https://hostname.com/image.png",
                             "required": false,
                             "settings": {
                                 "quality": 80
