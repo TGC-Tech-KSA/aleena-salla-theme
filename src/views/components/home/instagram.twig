@@ -2,32 +2,64 @@
   <div class="pb-4 md:pb-8 text-center">
       <h2 class="text-sm md:text-xl font-bold">{{ component.instagram_title }}</h2>
   </div>
-  <salla-slider type="carousel" class="instagram-slider" show-controls="false" id="photos-{{ position }}-instagram">
-    <div slot="items">
-      {% for banner in component.instagram %}
+
+
+
+
+
+
+
+<salla-slider type="carousel" class="instagram-slider" show-controls="false" id="photos-{{ position }}-instagram">
+  <div slot="items">
+    {% for banner in component.instagram %}
       <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)]">
-        <a data-fslightbox="{{ component.position }}" data-img-id="video-{{ loop.index | default(0) }}" data-slid-index="{{ loop.index - 1 }}" data-caption="{{ banner.image.alt | default('Instagram Video') }}" data-video-src="{{ banner.slider_bg_video }}?raw=true" data-infinite="true" data-type="youtube" href="#video-{{ loop.index | default(0) }}" aria-label="{{ banner.name | default('Instagram Video') }}" class="group instagram-play  overflow-hidden">
-            <i class="sicon-play text-white text-2xl z-1 absolute left-3 top-3"></i>
-            <div class="w-full h-full overflow-hidden aspect-[9/16] rounded-xl">
-              <div class="lazy lazy__bg !relative" data-bg="{{ banner.image }}" loading="lazy" ></div>
-            </div>
+        <a href="javascript:void(0);" class="open-video-popup block w-full cursor-pointer" data-index="{{ loop.index0 }}">
+          <div class="aspect-[9/16] relative rounded-xl overflow-hidden">
+            <i class="sicon-play absolute left-3 top-3 text-white text-2xl z-10"></i>
+            <div class="lazy lazy__bg !relative" data-bg="{{ banner.image }}" loading="lazy"></div>
+          </div>
         </a>
-        <div id="video-{{ loop.index | default(0) }}" class="relative hidden">
-          <span class="text-white text-base z-10 absolute right-3 top-3">{{banner.video_owner}}</span>
-          <video playsinline width="400" autoplay="autoplay" muted="muted" controls loop class="w-full h-auto object-cover object-center lazy autoplay-video">
-              <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/mp4">
-              <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/ogg">
-              <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/avi">
-              <source src="{{ banner.slider_bg_video | default('') }}?raw=true" data-src="{{ banner.slider_bg_video }}?raw=true" type="video/webm">
-              <track src="captions_en.vtt" kind="captions" srclang="en" label="English captions">
-              <track src="captions_es.vtt" kind="captions" srclang="es" label="Spanish captions">
-          </video>
-          <salla-products-list minimal {% if banner.products|length %} source="selected" source-value="[{{ banner.products[0]}}]" {% endif %} slider-id="slider-with-bg-{{ position }}" class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 absolute bottom-20 w-4/5"></salla-products-list>
-        </div>
       </div>
-      {% endfor %}
-    </div>
-  </salla-slider>
+    {% endfor %}
+  </div>
+</salla-slider>
+<div id="video-popup" class="hidden fixed inset-0 bg-white z-[9999] overflow-y-auto">
+  <button id="close-popup" class="fixed top-4 right-4 text-black text-3xl z-50 font-bold">×</button>
+  <div id="video-list" class="flex flex-col items-center gap-16 py-12">
+    {% for banner in component.instagram %}
+      <div class="video-section relative w-[90vw] max-w-[400px] aspect-[9/16]">
+        <div class="relative w-full h-full overflow-hidden rounded-xl">
+          <span class="text-white text-base z-10 absolute left-3 top-4">{{ banner.video_owner }}</span>
+
+          <video
+            class="story-video w-full h-full object-cover"
+            muted
+            playsinline
+            loop
+            preload="none"
+            controls
+            data-src="{{ banner.slider_bg_video }}"
+          ></video>
+
+          <!-- زر إغلاق فردي اختياري أعلى الفيديو -->
+          <button class="close-video absolute top-2 right-2 text-black bg-white/80 rounded-full px-2 py-1 text-sm z-50">×</button>
+        </div>
+
+        <!-- المنتج المرتبط -->
+        {% if banner.products and banner.products[0] %}
+          <salla-products-list
+            minimal
+            source="selected"
+            source-value="[{{ banner.products[0] }}]"
+            class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 absolute bottom-20 w-4/5"
+          ></salla-products-list>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
 </section>
 <style>
     .fslightbox-source{display: block !important;}

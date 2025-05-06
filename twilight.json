@@ -1105,7 +1105,7 @@
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
-                            "value": "https://hostname.com/image.png",
+                            "value": " ",
                             "required": false,
                             "settings": {
                                 "quality": 80
@@ -1153,7 +1153,7 @@
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
-                            "value": "https://hostname.com/image.png",
+                            "value": " ",
                             "required": false,
                             "settings": {
                                 "quality": 80

@@ -8,24 +8,30 @@
       {% for item in component.main_slider %}
         <div class="swiper-slide !w-full !h-full transition-all duration-[2s] bg-[var(--store-background)]">
           <a href="{{item.url}}">
-              {% if item.viwe_type == 'viwe_photo' %}
-                {% set image_src = item.alsort %}
-                {% set image_src_mob = item.alsort_mob %}
-                {% if dir == 'ltr' and item.alsort_en != '' %}
-                    {% set image_src = item.alsort_en %}
+            {% if item.viwe_type == 'viwe_photo' %}
+              {% set is_ltr = dir == 'ltr' %}
+              {% set is_rtl = dir == 'rtl' %}
+              {% set image_src = item.alsort %}
+              {% set image_src_mob = item.alsort_mob %}
+              {% if is_ltr %}
+                {% if item.alsort_en is not empty %}
+                  {% set image_src = item.alsort_en %}
                 {% endif %}
-                {% if dir == 'ltr' and item.alsort_en_mob != '' %}
-                    {% set image_src_mob = item.alsort_en_mob %}
+                {% if item.alsort_en_mob is not empty %}
+                  {% set image_src_mob = item.alsort_en_mob %}
                 {% endif %}
-                {% if dir == 'rtl' and item.alsort == '' %}
-                    {% set image_src = item.alsort_en %}
+              {% elseif is_rtl %}
+                {% if item.alsort is empty and item.alsort_en is not empty %}
+                  {% set image_src = item.alsort_en %}
                 {% endif %}
-                {% if dir == 'rtl' and item.alsort == '' %}
-                    {% set image_src_mob = item.alsort_mob %}
+                {% if item.alsort_mob is empty and item.alsort_en_mob is not empty %}
+                  {% set image_src_mob = item.alsort_en_mob %}
                 {% endif %}
-                <div class="lazy lazy__bg !relative hidden md:flex" data-bg="{{ image_src }}" loading="lazy" ></div>
-                <div class="lazy lazy__bg !relative flex md:hidden" data-bg="{{ image_src_mob }}" loading="lazy" ></div>
               {% endif %}
+              <div class="lazy lazy__bg !relative hidden md:flex" data-bg="{{ image_src }}"></div>
+              <div class="lazy lazy__bg !relative flex md:hidden" data-bg="{{ image_src_mob }}"></div>
+            {% endif %}
+
               {% if item.viwe_type == 'viwe_youtube' %}
               <div class="slider relative w-full h-full overflow-hidden">
               <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden;"></div>
