@@ -101,27 +101,39 @@ class Home extends BasePage {
     document.addEventListener('DOMContentLoaded', initializeAutoplayRestart);
 
     // //////
-    document.addEventListener('click', function (event) {
-      let button = event.target.closest('.hotspot__btn');
-      if (!button) return;
+document.addEventListener('click', function (event) {
+  let button = event.target.closest('.hotspot__btn');
+  if (!button) return;
 
-      let hotspot = button.closest('.hotspot');
-      let hotspotCard = hotspot.querySelector('.hotspot__card');
+  let hotspot = button.closest('.hotspot');
+  let hotspotCard = hotspot.querySelector('.hotspot__card');
+  let span = button.querySelector('.hotspot__btn-number');
 
-      // التبديل بين الفتح والإغلاق
-      let isOpen = hotspotCard.classList.contains('active');
+  let isOpen = hotspotCard.classList.contains('active');
 
-      // إغلاق جميع البطاقات الأخرى قبل فتح الجديدة
-      document.querySelectorAll('.hotspot__card').forEach((card) => {
-        card.classList.remove('active');
-        card.setAttribute('aria-hidden', 'true');
-      });
+  // إغلاق جميع البطاقات الأخرى وإزالة التنسيقات
+  document.querySelectorAll('.hotspot__card').forEach((card) => {
+    card.classList.remove('active');
+    card.setAttribute('aria-hidden', 'true');
+  });
 
-      if (!isOpen) {
-        hotspotCard.classList.add('active');
-        hotspotCard.setAttribute('aria-hidden', 'false');
-      }
-    });
+  document.querySelectorAll('.hotspot__btn').forEach((btn, index) => {
+    btn.classList.remove('is-open');
+    let el = btn.querySelector('.hotspot__btn-number');
+    el.innerHTML = index + 1;
+  });
+
+  if (!isOpen) {
+    hotspotCard.classList.add('active');
+    hotspotCard.setAttribute('aria-hidden', 'false');
+
+    // تغيير المحتوى والخلفية
+    button.classList.add('is-open');
+    span.innerHTML = '&times;';
+  }
+});
+
+
   }
   testGInsta() {
     const openButtons = document.querySelectorAll('.open-video-popup');

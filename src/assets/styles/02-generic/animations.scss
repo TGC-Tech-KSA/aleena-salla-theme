@@ -134,13 +134,6 @@
   background: none;
 }
 
-// /* SVG الدائرة المتحركة */
-// .swiper-pagination-bullet-active svg circle {
-//   stroke-dasharray: 100;
-//   stroke-dashoffset: 100;
-//   animation: fillCircle 5s linear forwards;
-// }
-
 /* أنيميشن تعبئة الدائرة */
 @keyframes fillCircle {
   0% {
@@ -151,39 +144,32 @@
     stroke-dashoffset: 0;
   }
 }
-
-.hotspot {
-  position: relative;
-}
-
-.hotspot__card {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  position: absolute;
-  left: calc(100% + 10px);
-  top: 50%;
-  min-width: 400px;
-  padding: 0 !important;
-  pointer-events: none;
-  /* يمنع التفاعل عندما يكون مخفيًا */
-}
-
 .hotspot__card.active {
-  opacity: 1;
-  transform: translateY(-50%);
-  pointer-events: auto;
+  @apply opacity-100 z-50;
+}
+@keyframes hotspot-pulse {
+0% {
+  box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 480px) {
-  .hotspot__card {
-    left: auto;
-    right: 0;
-    width: 90%;
-   transform: translateY(-20%);
-    -webkit-transform: translateY(-20%);
-    -moz-transform: translateY(-20%);
-    -ms-transform: translateY(-20%);
-    -o-transform: translateY(-20%);
+50% {
+  box-shadow: 0 0 0 30px rgba(0, 0, 0, 0.3);
 }
+
+70% {
+  box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+}
+
+71% {
+  box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+}
+
+100% {
+  box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.3);
+}
+}
+
+.hotspot__btn.is-open {
+  background-color: white;
+  color: black;
 }

@@ -1,54 +1,33 @@
 {% set component_id='component-' ~ position %}
-<section id="dynamic_product_gallery-{{position}}" class="s-block s-block--slider-with-bg s-block--full-bg relative overflow-hidden">
+<section id="dynamic_product_gallery-{{position}}" class="s-block s-block--slider-with-bg s-block--full-bg relative">
     <div class="h-full w-full relative">
         <img class="advanced-image w-full object-cover object-center lazy h-full" src="" data-src="{{ component.background_image }}" loading="lazy" height="950" width="1920" alt="{{ store.name }} image-slider-{{ index }}">
     </div>
-<div class="hotspot-container absolute top-0 left-0 w-full h-0 pt-[calc(100%/1.627906976744186)]">
+<div class="hotspot-container absolute top-0 left-0 w-full h-full">
     {% for item in component.hotspot_one %}
-    <div class="hotspot hotspot-{{ loop.index }} hotspot--outer-pulse hotspot--on-right cc-animate-init cc-animate-in !absolute top-[var(--data-hotspot-top)] left-[var(--data-hotspot-left)] transform-[translate(-50%,-50%)]"data-cc-animate="" data-cc-animate-delay="0.3s" style="animation-delay: 0.3s; --data-hotspot-top:{{item.section_top}}%; --data-hotspot-left:{{item.section_left}}%;">
-        <button type="button" class="hotspot__btn hotspot__btn--number relative tap-target bg-darker text-white rounded-full w-10 h-10 hidden lg:block" aria-expanded="false">
+    <div class="hotspot relative hotspot-{{ loop.index }} hotspot--outer-pulse hotspot--on-right cc-animate-init cc-animate-in !absolute top-[var(--data-hotspot-top)] left-[var(--data-hotspot-left)] transform-[translate(-50%,-50%)]"data-cc-animate="" data-cc-animate-delay="0.3s" style="animation-delay: 0.3s; --data-hotspot-top:{{item.section_top}}%; --data-hotspot-left:{{item.section_left}}%;">
+        <button type="button" class="hotspot__btn hotspot__btn--number relative tap-target bg-darker text-white rounded-full w-10 h-10" aria-expanded="false" style="animation: hotspot-pulse cubic-bezier(.21,.16,.48,1) 3.5s infinite;">
             <span class="hotspot__btn-number">{{ loop.index }}</span>
         </button>
-        <div class="hotspot__card has-motion hidden lg:block" aria-hidden="true">
+        <div class="hotspot__card -z-1 p-0 min-w-80 absolute opacity-0 transition-all has-motion left-[var(--data-hotspot-left)] -translate-x-[var(--data-hotspot-left)] top-[calc(var(--data-hotspot-top)+50%)] lg:-top-full lg:left-[160%] lg:translate-x-[none] lg:!transform-none" aria-hidden="true">
             <div class="whole-set-wrapper">
                 <salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0] }}]"{% endif %} slider-id="slider-with-bg-{{ loop.index }}"class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0">
                 </salla-products-list>
             </div>
         </div>
-        <button class="relative tap-target !bg-darker !text-white rounded-full !w-10 !h-10 block lg:hidden" onclick="document.querySelector('#hotspot-{{component_id}}-{{loop.index}}').open()"> {{ loop.index }}
-        </button>
-
-        <salla-modal id="hotspot-{{component_id}}-{{loop.index}}" class="hotspotmodal" title="{{ item.name }}" icon="sicon-alert-engine" position="middle" width="lg" is-closable="true">
-            <div class="p-3 h-full">
-                <salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0] }}]"{% endif %} slider-id="slider-with-bg-{{ loop.index }}"class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0">
-                </salla-products-list>
-            </div>
-        </salla-modal>
     </div>
     {% endfor %}
     {% for item in component.hotspot_two %}
-    <div class="hotspot hotspot-{{ loop.index + 1 }} hotspot--outer-pulse hotspot--on-right cc-animate-init cc-animate-in !absolute top-[var(--data-hotspot-top)] left-[var(--data-hotspot-left)] transform-[translate(-50%,-50%)]"data-cc-animate="" data-cc-animate-delay="0.3s" style="animation-delay: 0.3s; --data-hotspot-top:{{item.section_top}}%; --data-hotspot-left:{{item.section_left}}%;">
-        <button type="button" class="hotspot__btn hotspot__btn--number relative tap-target  bg-darker text-white rounded-full w-10 h-10 hidden lg:block" aria-expanded="false">
+    <div class="hotspot relative hotspot-{{ loop.index + 1 }} hotspot--outer-pulse hotspot--on-right cc-animate-init cc-animate-in !absolute top-[var(--data-hotspot-top)] left-[var(--data-hotspot-left)] transform-[translate(-50%,-50%)]"data-cc-animate="" data-cc-animate-delay="0.3s" style="animation-delay: 0.3s; --data-hotspot-top:{{item.section_top}}%; --data-hotspot-left:{{item.section_left}}%;">
+        <button type="button" class="hotspot__btn hotspot__btn--number relative tap-target  bg-darker text-white rounded-full w-10 h-10" aria-expanded="false" style="animation: hotspot-pulse cubic-bezier(.21,.16,.48,1) 3.5s infinite;">
             <span class="hotspot__btn-number">{{ loop.index + 1 }}</span>
         </button>
-        <div class="hotspot__card has-motion hidden lg:block" aria-hidden="true">
+        <div class="hotspot__card -z-1 p-0 min-w-80 absolute opacity-0 transition-all  has-motion left-[var(--data-hotspot-left)] -translate-x-[var(--data-hotspot-left)] top-[calc(var(--data-hotspot-top)+50%)] lg:-top-full lg:left-[160%] lg:translate-x-[none] lg:!transform-none" aria-hidden="true">
             <div class="whole-set-wrapper">
                 <salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0] }}]"{% endif %} slider-id="slider-with-bg-{{ loop.index }}"class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0">
                 </salla-products-list>
             </div>
         </div>
-
-        <button class="relative tap-target !bg-darker !text-white rounded-full !w-10 !h-10 block lg:hidden" onclick="document.querySelector('#hotspot-{{component_id}}-{{loop.index + 1}}').open()"> {{ loop.index + 1 }}
-        </button>
-
-        <salla-modal id="hotspot-{{component_id}}-{{loop.index + 1 }}" class="hotspotmodal" title="{{ item.name }}" icon="sicon-alert-engine" position="middle" width="lg" is-closable="true">
-            <div class="p-3 h-full">
-                <salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0] }}]"{% endif %} slider-id="slider-with-bg-{{ loop.index }}"class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0">
-                </salla-products-list>
-            </div>
-        </salla-modal>
-
-
     </div>
     {% endfor %}
 </div>

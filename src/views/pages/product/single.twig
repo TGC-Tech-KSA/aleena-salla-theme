@@ -155,6 +155,7 @@
                                 <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}">
                                 </model-viewer>
                             {% else %}
+                            <div class="swiper-slide">
                                 <a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}"{% if image.video_url %} data-video-src="{{ image.video_url }}"{% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" class="swiper-slide magnify-wrapper homeslider__slide {{ image.video_url?'video-entry':'' }}">
                                     {% if loop.first %}
                                         <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
@@ -162,6 +163,7 @@
                                         <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="lazy h-full object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                     {% endif %}
                                 </a>
+                            </div>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -169,7 +171,7 @@
                     {% if has_many_images %}
                         <div slot="thumbs">
                             {% for image in product.images %}
-                                <div class="!w-14 !h-auto !mx-1 !rounded-none after:!hidden border-b-[3px] border-transparent {{ image.video_url?'video-entry':'' }} {{ image.three_d_image_url?'model-entry':'' }}">
+                                <div class="!w-14 !h-auto !mx-1 !rounded-none after:!hidden border-b-[3px] border-transparent {{ image.video_url?'video-entry':'' }} {{ image.three_d_image_url?'model-entry':'' }} {% if image.video_url %} data-video-src {% endif %}">
                                     {% if loop.index < 5 %}
                                         <img src="{{ image.url }}" loading="eager" class="object-cover w-full h-full bg-gray-100 overflow-hidden" title="{{ image.alt }}" alt="{{ image.alt }}"/>
                                     {% else %}
@@ -327,25 +329,6 @@
                     {% include 'pages.partials.product.options' %}
 
                     {% hook 'product:single.form.end' %}
-
-                    <section class="flex bg-white p-5 sm:pb-0 rounded-md rounded-b-none">
-                        <div class="center-between w-full">
-                            {# <div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
-                              <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                                <h2 class="total-price text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
-                                <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
-                              </div>
-                              <div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                                {% if product.starting_price %}
-                                  <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
-                                {% endif %}
-                                <h2 class="total-price font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
-                              </div>
-                            </div> #}
-
-
-                        </div>
-                    </section>
                     <section class="sticky-product-bar bg-white p-5 rounded-md rounded-b-none">
                         {# Quantity #}
                         {% if product.is_hidden_quantity or product.type == 'booking' %}
@@ -387,13 +370,7 @@
                         <article class="article--main pb-1">{{ product_desc|raw }}</article>
                     </div>
                 </div>
-                {# {% if product.has_metadata %} #}
-                    <div id="metadata-name"></div>
-                    {# {% if product.has_metadata %}
-                    <salla-metadata></salla-metadata>
-                    {% endif %} #}
-                    {# <salla-metadata></salla-metadata> #}
-                {# {% endif %} #}
+                <div id="metadata-name"></div>
                 {% include 'components.general.return_sar'%}
                 {% hook 'product:single.description.end' %}
                 <salla-installment price="{{ product.price }}"></salla-installment>
@@ -430,37 +407,5 @@
     {% if product.has_3d_image %}
         <script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     {% endif %}
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        let selectElement = document.getElementById("select-branches");
-        if (!selectElement) return;
-
-        let tabsItems = document.querySelectorAll(".select__item");
-
-        tabsItems.forEach((item) => {
-            item.classList.remove("is-active");
-            item.style.display = "none";
-        });
-        let firstOptionValue = selectElement.value;
-        let firstActiveTab = document.getElementById(firstOptionValue);
-        if (firstActiveTab) {
-            firstActiveTab.style.display = "block";
-            firstActiveTab.classList.add("is-active");
-        }
-
-        selectElement.addEventListener("change", function () {
-            let selectedValue = this.value;
-            tabsItems.forEach((item) => {
-                item.classList.remove("is-active");
-                item.style.display = "none";
-            });
-            let activeTab = document.getElementById(selectedValue);
-            if (activeTab) {
-                activeTab.classList.add("is-active");
-                activeTab.style.display = "block";
-            }
-        });
-    });
-    </script>
 {% endblock %}
 

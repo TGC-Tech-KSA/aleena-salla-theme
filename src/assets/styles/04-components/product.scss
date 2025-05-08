@@ -404,3 +404,52 @@ salla-quantity-input[max='1']{
     @apply aspect-[0.67] h-auto max-h-[initial] #{!important}
   }
 }
+// new
+.product-single {
+  .s-product-options-colors-wrapper input[type=radio]+label div {
+      display: none;
+    }
+  .s-product-options-colors-wrapper input[type=radio]+label span:after{
+    @apply aspect-square border-2 border-dark bg-transparent h-10 w-10;
+  }
+    .s-product-options-colors-wrapper input[type=radio]+label span{
+      @apply h-8 w-8 border border-white
+    }
+    input[type=radio]+label:has(> div p) {
+      span{
+      @apply relative before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-1 before:border before:border-solid before:border-gray-500 before:bg-center before:bg-cover before:bg-no-repeat before:rounded-full;
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cline x1='0' y1='0' x2='24' y2='24' stroke='%234b5563' stroke-width='1'/%3E%3C/svg%3E");
+        }
+      }
+    }
+}
+
+#return_sar_theworld {
+  .tabs {
+    @apply flex;
+    salla-button {
+      @apply w-1/2;
+      button {
+        @apply w-full h-[80px] px-[50px] py-[15px] bg-[#ebebeb] text-dark text-lg rounded-[78px] border-none opacity-100;
+        .s-button-text {
+          @apply whitespace-normal;
+        }
+        &:hover {
+          @apply bg-[#e8cece] text-dark opacity-100;
+        }
+      }
+      &:first-child {
+        @apply rtl:-ml-[40px] ltr:-mr-[40px] z-1; // استخدام z-[1] بدل z-1
+        button {
+          @apply border border-dark border-solid;
+        }
+      }
+    }
+    .is-active {
+      button {
+        @apply bg-[#e8cece] text-dark opacity-100;
+      }
+    }
+  }
+}
