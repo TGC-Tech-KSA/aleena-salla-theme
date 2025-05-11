@@ -101,97 +101,146 @@ class Home extends BasePage {
     document.addEventListener('DOMContentLoaded', initializeAutoplayRestart);
 
     // //////
-document.addEventListener('click', function (event) {
-  let button = event.target.closest('.hotspot__btn');
-  if (!button) return;
+    document.addEventListener('click', function (event) {
+      let button = event.target.closest('.hotspot__btn');
+      if (!button) return;
 
-  let hotspot = button.closest('.hotspot');
-  let hotspotCard = hotspot.querySelector('.hotspot__card');
-  let span = button.querySelector('.hotspot__btn-number');
+      let hotspot = button.closest('.hotspot');
+      let hotspotCard = hotspot.querySelector('.hotspot__card');
+      let span = button.querySelector('.hotspot__btn-number');
 
-  let isOpen = hotspotCard.classList.contains('active');
+      let isOpen = hotspotCard.classList.contains('active');
 
-  // إغلاق جميع البطاقات الأخرى وإزالة التنسيقات
-  document.querySelectorAll('.hotspot__card').forEach((card) => {
-    card.classList.remove('active');
-    card.setAttribute('aria-hidden', 'true');
-  });
+      // إغلاق جميع البطاقات الأخرى وإزالة التنسيقات
+      document.querySelectorAll('.hotspot__card').forEach((card) => {
+        card.classList.remove('active');
+        card.setAttribute('aria-hidden', 'true');
+      });
 
-  document.querySelectorAll('.hotspot__btn').forEach((btn, index) => {
-    btn.classList.remove('is-open');
-    let el = btn.querySelector('.hotspot__btn-number');
-    el.innerHTML = index + 1;
-  });
+      document.querySelectorAll('.hotspot__btn').forEach((btn, index) => {
+        btn.classList.remove('is-open');
+        let el = btn.querySelector('.hotspot__btn-number');
+        el.innerHTML = index + 1;
+      });
 
-  if (!isOpen) {
-    hotspotCard.classList.add('active');
-    hotspotCard.setAttribute('aria-hidden', 'false');
+      if (!isOpen) {
+        hotspotCard.classList.add('active');
+        hotspotCard.setAttribute('aria-hidden', 'false');
 
-    // تغيير المحتوى والخلفية
-    button.classList.add('is-open');
-    span.innerHTML = '&times;';
-  }
-});
-
-
+        // تغيير المحتوى والخلفية
+        button.classList.add('is-open');
+        span.innerHTML = '&times;';
+      }
+    });
   }
   testGInsta() {
     const openButtons = document.querySelectorAll('.open-video-popup');
     const popup = document.getElementById('video-popup');
-    const closePopupBtn = document.getElementById('close-popup');
     const videos = document.querySelectorAll('.story-video');
     const ownerTexts = document.querySelectorAll('.story-video + span');
     const closeVideoBtns = document.querySelectorAll('.close-video');
+    let currentIndex = 0;
+
+    function playVideoAt(index) {
+      if (index < 0 || index >= videos.length) return;
+
+      // إيقاف باقي الفيديوهات
+      videos.forEach((v, i) => {
+        v.pause();
+        v.muted = true;
+        v.currentTime = 0;
+        if (ownerTexts[i]) ownerTexts[i].classList.add('hidden');
+      });
+
+      const video = videos[index];
+      const ownerText = ownerTexts[index];
+
+      video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (!video.src) video.src = video.dataset.src;
+      video.muted = false;
+      video.play().catch(() => {});
+      if (ownerText) ownerText.classList.remove('hidden');
+      currentIndex = index;
+    }
+
     openButtons.forEach((btn, index) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         popup.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
-          const target = videos[index];
-          const ownerText = ownerTexts[index];
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            target.src = target.dataset.src;
-            target.play().catch(() => {});
-            target.muted = false;
-            if (ownerText) {
-              ownerText.classList.remove('hidden');
-            }
-          }
+          playVideoAt(index);
         }, 100);
       });
     });
-
-    closePopupBtn.addEventListener('click', () => {
-      popup.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-      videos.forEach((v) => {
-        v.pause();
-        v.muted = true;
-      });
-      ownerTexts.forEach((text) => text.classList.add('hidden'));
-    });
-
     closeVideoBtns.forEach((btn, index) => {
       btn.addEventListener('click', () => {
-        const video = videos[index];
-        video.pause();
-        video.muted = true;
-        video.currentTime = 0;
+        videos[index].pause();
+        videos[index].muted = true;
+        videos[index].currentTime = 0;
         popup.classList.add('hidden');
-        ownerTexts[index].classList.add('hidden');
         document.body.style.overflow = 'auto';
+        ownerTexts[index].classList.add('hidden');
       });
     });
 
+    // الانتقال التلقائي للفيديو التالي أو الرجوع للأول إذا انتهى الأخير
+    videos.forEach((video, index) => {
+      video.addEventListener('ended', () => {
+        if (index + 1 < videos.length) {
+          playVideoAt(index + 1);
+        } else {
+          // إعادة التشغيل من البداية
+          playVideoAt(0);
+        }
+      });
+    });
+
+    // دعم عجلة الماوس للتنقل
+    let lastScrollTime = 0;
+    popup.addEventListener('wheel', (e) => {
+      const now = Date.now();
+      if (now - lastScrollTime < 800) return;
+      lastScrollTime = now;
+
+      if (e.deltaY > 0 && currentIndex + 1 < videos.length) {
+        playVideoAt(currentIndex + 1);
+      } else if (e.deltaY < 0 && currentIndex - 1 >= 0) {
+        playVideoAt(currentIndex - 1);
+      }
+    });
+
+    // دعم السحب على الهواتف
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    popup.addEventListener('touchstart', (e) => {
+      touchStartY = e.changedTouches[0].screenY;
+    });
+
+    popup.addEventListener('touchend', (e) => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const deltaY = touchStartY - touchEndY;
+      if (Math.abs(deltaY) < 50) return;
+
+      if (deltaY > 0 && currentIndex + 1 < videos.length) {
+        playVideoAt(currentIndex + 1);
+      } else if (deltaY < 0 && currentIndex - 1 >= 0) {
+        playVideoAt(currentIndex - 1);
+      }
+    }
+
+    // مراقبة الفيديوهات لتشغيل المناسب عند ظهوره
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
-          const ownerText = document.getElementById(
-            `owner-${video.dataset.index}`
-          );
+          const idx = parseInt(video.dataset.index);
+          const ownerText = document.getElementById(`owner-${idx}`);
           if (entry.isIntersecting) {
             videos.forEach((v) => {
               if (v !== video) {
@@ -203,6 +252,7 @@ document.addEventListener('click', function (event) {
             video.muted = false;
             video.play().catch(() => {});
             if (ownerText) ownerText.classList.remove('hidden');
+            currentIndex = idx;
           } else {
             video.pause();
             video.muted = true;
@@ -215,8 +265,12 @@ document.addEventListener('click', function (event) {
         threshold: 0.8
       }
     );
-    videos.forEach((video) => observer.observe(video));
+
+    videos.forEach((video, i) => {
+      video.dataset.index = i;
+      observer.observe(video);
+    });
   }
-}
+ }
 
 Home.initiateWhenReady(['index']);

@@ -23,43 +23,43 @@
     {% endfor %}
   </div>
 </salla-slider>
-<div id="video-popup" class="hidden fixed inset-0 bg-white z-[9999] overflow-y-auto">
-  <button id="close-popup" class="fixed top-4 right-4 text-black text-3xl z-50 font-bold">×</button>
+<div id="video-popup" class="hidden fixed inset-0 bg-white z-[9999] overflow-y-auto " dir="ltr">
   <div id="video-list" class="flex flex-col items-center gap-16 py-12">
     {% for banner in component.instagram %}
-      <div class="video-section relative w-[90vw] max-w-[400px] aspect-[9/16]">
+      <div class="video-section relative w-screen md:w-[90vw] max-w-[400px] aspect-[9/16] h-screen">
         <div class="relative w-full h-full overflow-hidden rounded-xl">
-          <span class="text-white text-base z-10 absolute left-3 top-4">{{ banner.video_owner }}</span>
-
-          <video
-            class="story-video w-full h-full object-cover"
-            muted
-            playsinline
-            loop
-            preload="none"
-            controls
-            data-src="{{ banner.slider_bg_video }}"
-          ></video>
-
-          <!-- زر إغلاق فردي اختياري أعلى الفيديو -->
-          <button class="close-video absolute top-2 right-2 text-black bg-white/80 rounded-full px-2 py-1 text-sm z-50">×</button>
+        <span class="text-white text-base z-10 absolute left-3 top-4" id="owner-{{ loop.index0 }}">{{ banner.video_owner }}</span>
+        <video class="story-video w-full h-screen object-cover" muted playsinline preload="none" controls data-src="{{ banner.slider_bg_video }}" data-index="{{ loop.index0 }}"></video>
+        <button class="close-video absolute top-2 right-2 z-50">
+          <svg class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <defs>
+                <style>
+                    .cls-1 {
+                        fill: none;
+                        stroke: #ffffff;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 2px;
+                    }
+                </style>
+            </defs>
+            <circle class="cls-1" cx="24" cy="24" r="23"></circle>
+            <line class="cls-1" x1="12" x2="36" y1="12" y2="36"></line>
+            <line class="cls-1" x1="12" x2="36" y1="36" y2="12"></line>
+          </g>
+          </svg>
+        </button>
         </div>
-
-        <!-- المنتج المرتبط -->
         {% if banner.products and banner.products[0] %}
-          <salla-products-list
-            minimal
-            source="selected"
-            source-value="[{{ banner.products[0] }}]"
-            class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 absolute bottom-20 w-4/5"
-          ></salla-products-list>
+          <salla-products-list minimal source="selected" source-value="[{{ banner.products[0] }}]" class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 absolute bottom-20 w-4/5 right-0"></salla-products-list>
         {% endif %}
       </div>
     {% endfor %}
   </div>
 </div>
-
-
 </section>
 <style>
     .fslightbox-source{display: block !important;}
