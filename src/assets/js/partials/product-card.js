@@ -58,10 +58,10 @@ class ProductCard extends HTMLElement {
       });
     this.querySelector('.product-slider').innerHTML = `<salla-slider id="product-slider-${this.product.id}-${this.getRandomInt(1, 10000)}" show-controls="true" auto-play=${productcard_autoplay ? 'true' : 'false'} class="h-full [&_.swiper]:h-full [&_.swiper]:!m-0 [&_.swiper]:!p-0 [&_.swiper-wrapper]:!p-0 product-slider-fade" slider-config='${sliderConfig}'>
           <div slot="items">
-            <img class="s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)? 'contain': this.fitImageHeight? this.fitImageHeight: 'cover'} lazy" src="" alt=${this.product?.image?.alt} data-src=${this.product?.image?.url || this.product?.thumbnail} loading="lazy" width="500" height="500"/>
+            <img class="s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)? 'contain': this.fitImageHeight? this.fitImageHeight: 'cover'} lazy !w-full" src="" alt=${this.product?.image?.alt} data-src=${this.product?.image?.url || this.product?.thumbnail} loading="lazy" width="500" height="500"/>
             ${images.slice(1, limit) ?.map(
                 (image) =>
-                  `<img data-src=${image.url} src="" alt=${image?.alt} class="s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)? 'contain': this.fitImageHeight? this.fitImageHeight: 'cover'} lazy" loading="lazy" width="500" height="500"/>`
+                  `<img data-src=${image.url} src="" alt=${image?.alt} class="s-product-card-image-${salla.url.is_placeholder(this.product?.image?.url)? 'contain': this.fitImageHeight? this.fitImageHeight: 'cover'} lazy !w-full" loading="lazy" width="500" height="500"/>`
               )}
           </div>
         </salla-slider>`;

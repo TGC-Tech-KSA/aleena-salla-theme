@@ -467,37 +467,49 @@ class NavCartMenu extends HTMLElement {
             `;
 
             cartContainer.innerHTML = `
-            <div class="shadow-default bg-white p-5 xs:p-7 rounded-md mb-5 relative ${cart.free_shipping_bar ? '' : 'hidden'
-                }" id="free-shipping">
+            ${cart.free_shipping_bar ? `
+            <div class="shadow-default bg-white p-5 xs:p-7 rounded-md mb-5 relative ${cart.free_shipping_bar ? '' : 'hidden'}" id="free-shipping">
                         <div class="flex rtl:space-x-reverse space-x-3 items-center">
                             <i class="bg-primary text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
                             <div class="flex-1">
                                 <h4 class="shipping-item font-bold text-sm mb-1.5">${freeShipping}</h4>
                                 <p class="shipping-item text-sm font- text-gray-500">
                                         <span id="free-shipping-msg">
-                                        ${cart.free_shipping_bar.has_free_shipping ? salla.lang.get('pages.cart.has_free_shipping')
-                    : salla.lang.get('pages.cart.free_shipping_alert', { amount: salla.money(cart.free_shipping_bar.remaining) })
-                }</span>
-                                    <span class="emoji ${cart.free_shipping_bar.has_free_shipping
-                    ? ''
-                    : 'hidden'
-                }" id="free-shipping-applied">🎉</span>
+                                        ${
+                                          cart.free_shipping_bar
+                                            .has_free_shipping
+                                            ? salla.lang.get(
+                                                'pages.cart.has_free_shipping'
+                                              )
+                                            : salla.lang.get(
+                                                'pages.cart.free_shipping_alert',
+                                                {
+                                                  amount: salla.money(
+                                                    cart.free_shipping_bar
+                                                      .remaining
+                                                  )
+                                                }
+                                              )
+                                        }</span>
+                                    <span class="emoji ${cart.free_shipping_bar.has_free_shipping ? '' : 'hidden'}" id="free-shipping-applied">🎉</span>
                                 </p>
                             </div>
                         </div>
-                        <div class="mt-8 bg-border-color rounded-full ${cart.free_shipping_bar.has_free_shipping ? ' hidden' : ''}" id="free-shipping-bar">
-                            <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end" style="width:${cart.free_shipping_bar.percent}%">
-                                <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
+                        <div class="mt-8 bg-border-color rounded-full ${cart.free_shipping_bar.has_free_shipping? ' hidden': ''}" id="free-shipping-bar">
+                        <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end" style="width:${cart.free_shipping_bar.percent}%">
+                            <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
                             </div>
                         </div>
                     </div>
-                <div class="pb-64">
+                    ` :''}
+                <div class="pb-72 lg:pb-64">
                     ${itemsTemplate}
                     <div class="!bg-[#fcfaf3]">
-                        <salla-products-slider source="related" source-value="${cart.items.length ? cart.items[0].id : ''
-                }" block-title="${salla.lang.get(
-                    'cart.mayLike'
-                )}" includes='${includes_features}' display-all-url class="!my-4 aleena-arrows-2 products-cart !bg-[#fcfaf3]" limit="6"></salla-products-slider>
+                        <salla-products-slider source="related" source-value="${
+                          cart.items.length ? cart.items[0].id : ''
+                        }" block-title="${salla.lang.get(
+              'cart.mayLike'
+            )}" includes='${includes_features}' display-all-url class="!my-4 aleena-arrows-2 products-cart !bg-[#fcfaf3] [&_.s-slider-container]:!w-full" limit="6"></salla-products-slider>
                     </div>
                     </div>
                 </div>
