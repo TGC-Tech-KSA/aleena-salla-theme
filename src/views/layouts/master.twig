@@ -60,7 +60,9 @@
     {% include 'pages.partials.loading-screen-assets' %}
     <script defer data-cfasync="false" src="{{ 'product-card.js'|asset }}"></script>
     <script defer src="{{ 'main-menu.js'|asset }}"></script>
+    {% if not is_page('cart') %}
     <script defer src="{{ 'navigation-cart.js'|asset }}"></script>
+    {% endif %}
     {% block head_scripts %}{% endblock %}
     {% set includes_features = [] %}
         {% set has_images = theme.settings.get('product_images_layout', 'one-image') in ['slider', 'change-with-hover'] %}
@@ -89,6 +91,7 @@
         window.show_singleOption = "{{theme.settings.get('show_singleOption', true)}}"
         window.show_multipleOption = "{{theme.settings.get('show_multipleOption', true)}}"
         window.includes_features = "{{theme.settings.get('includes_features')|json_encode}}"
+        window.freeShipping = "{{ trans('pages.cart.free_shipping') }}"
     </script>
 
     {% hook 'head:start' %}

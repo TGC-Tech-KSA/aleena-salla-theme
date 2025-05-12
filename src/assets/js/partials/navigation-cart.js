@@ -42,8 +42,8 @@ class NavCartMenu extends HTMLElement {
                 en: 'Have a Coupon?'
             },
             'cart.coupon_placeholder': {
-                ar: 'ادخل الكوبون',
-                en: 'Enter Coupon'
+                ar: 'كود الخصم',
+                en: 'Discount code'
             },
             'cart.apply_coupon': {
                 ar: 'تطبيق',
@@ -54,15 +54,15 @@ class NavCartMenu extends HTMLElement {
                 en: 'Remove Coupon'
             },
             'common.discount': {
-                ar: 'الخصم',
-                en: 'Discount'
+                ar: 'لقد وفرت',
+                en: 'You saved'
             },
             'cart.view_cart': {
                 ar: 'عرض السلة',
                 en: 'View Cart'
             },
             'cart.checkout': {
-                ar: 'الدفع',
+                ar: 'إتمام الطلب',
                 en: 'Checkout'
             },
             'cart.mayLike': {
@@ -142,8 +142,8 @@ class NavCartMenu extends HTMLElement {
                 const errorElement = document.getElementById('coupon-error');
                 if (errorElement) {
                     errorElement.textContent = error.response?.data?.error?.message ||
-                                             error.response?.data?.message ||
-                                             'الكوبون غير صالح';
+                        error.response?.data?.message ||
+                        'الكوبون غير صالح';
                 }
             });
 
@@ -191,12 +191,12 @@ class NavCartMenu extends HTMLElement {
         // Add click event to close cart when backdrop is clicked
         backdrop.addEventListener('click', closeCart);
 
-      const closeButtons = document.querySelectorAll('.neyam-cart-aside .close-cart-button');
-      if (closeButtons.length > 0) {
-          closeButtons.forEach(button => {
-              button.addEventListener('click', closeCart);
-          });
-      }
+        const closeButtons = document.querySelectorAll('.neyam-cart-aside .close-cart-button');
+        if (closeButtons.length > 0) {
+            closeButtons.forEach(button => {
+                button.addEventListener('click', closeCart);
+            });
+        }
 
         // Update the cart open logic
         const cartToggles = document.querySelectorAll('[onclick*="neyam-cart-aside"]');
@@ -258,6 +258,7 @@ class NavCartMenu extends HTMLElement {
     }
 
     updateCartItems(cart) {
+        const coupon = document.getElementById('coupon-input')?.value || '';
         const cartContainer = document.querySelector('.neyam-cart-aside .flex-1.overflow-y-auto');
         if (!cartContainer) return;
 
@@ -316,9 +317,8 @@ class NavCartMenu extends HTMLElement {
                     <div class="relative mb-4">
                         <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-${item.id}" class="p-4">
                             <section class="cart-item border border-gray-200 bg-[var(--store-product-bg)] p-2 rounded-md relative">
-                                <input type="hidden" name="id" value="${
-                                  item.id
-                                }">
+                                <input type="hidden" name="id" value="${item.id
+                    }">
                                 <div class="flex flex-col space-y-4">
                                     <div class="flex rtl:space-x-reverse space-x-4">
                                         <a href="${item.url}" class="shrink-0">
@@ -331,36 +331,34 @@ class NavCartMenu extends HTMLElement {
                                                 <a href="${item.url}" class="text-xs">${item.product_name}</a>
                                                 <div>
                                                   <span class="text-sm text-gray-500 line-through item-regular-price ${item.special_price ? '' : 'hidden'}">${formatPrice(item.product_price)}</span>
-                                                  <span class="item-price ${item.special_price? 'text-red-800': 'text-sm text-gray-500'}">${formatPrice(item.price)}</span>
+                                                  <span class="item-price ${item.special_price ? 'text-red-800' : 'text-sm text-gray-500'}">${formatPrice(item.price)}</span>
                                                 </div>
                                             </div>
                                             <!-- Product Options -->
                                             ${options ? `<div class="mt-2 space-y-1"> ${options}</div>
                                             `
-                                                : ''
-                                            }
+                        : ''
+                    }
 
-                                            ${
-                                              item.weight_label
-                                                ? `
+                                            ${item.weight_label
+                        ? `
                                                 <p class="text-sm text-gray-500">
                                                     ${salla.lang.get(
-                                                      'common.weight'
-                                                    )}
-                                                    <span>${
-                                                      item.weight_label
-                                                    }</span>
+                            'common.weight'
+                        )}
+                                                    <span>${item.weight_label
+                        }</span>
                                                 </p>
                                             `
-                                                : ''
-                                            }
+                        : ''
+                    }
                                         </div>
                                     </div>
 
                                     <div class="flex justify-between items-center">
-                                        ${ item.type === 'donating' ? '<span></span>': item.is_hidden_quantity ? `<input type="hidden" value="${item.quantity}" name="quantity" aria-label="Quantity"/>
+                                        ${item.type === 'donating' ? '<span></span>' : item.is_hidden_quantity ? `<input type="hidden" value="${item.quantity}" name="quantity" aria-label="Quantity"/>
                                           <span class="w-10 text-center">${item.quantity}</span>`
-                                            : `<div class="flex items-center">
+                        : `<div class="flex items-center">
                                                     ${optionsInputs}
                                                     <salla-quantity-input cart-item-id="${item.id}"
                                                         max="${item.max_quantity}"
@@ -370,19 +368,18 @@ class NavCartMenu extends HTMLElement {
                                                         name="quantity">
                                                     </salla-quantity-input>
                                                 </div>`
-                                        }
+                    }
 
                                         <p class="text-darker flex-none font-bold text-sm">
                                             <span>${salla.lang.get(
-                                              'common.total'
-                                            )}:</span>
-                                            <span class="inline-block item-total">${
-                                              item.is_available
-                                                ? formatPrice(item.total)
-                                                : salla.lang.get(
-                                                    'common.out_of_stock'
-                                                  )
-                                            }</span>
+                        'common.total'
+                    )}:</span>
+                                            <span class="inline-block item-total">${item.is_available
+                        ? formatPrice(item.total)
+                        : salla.lang.get(
+                            'common.out_of_stock'
+                        )
+                    }</span>
                                         </p>
                                     </div>
                                 </div>
@@ -390,9 +387,8 @@ class NavCartMenu extends HTMLElement {
                                     <button type="button"
                                             class="btn--delete inline-flex justify-center items-center w-8 h-8 rounded-full bg-red-400 transition-all duration-200"
                                             aria-label="Remove from the cart"
-                                            onclick="event.preventDefault(); salla.cart.deleteItem(${
-                                              item.id
-                                            })">
+                                            onclick="event.preventDefault(); salla.cart.deleteItem(${item.id
+                    })">
                                         <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5.96057 3.36421C6.2098 2.67157 6.88232 2.17676 7.67094 2.17676C8.45957 2.17676 9.13209 2.67157 9.38132 3.36421C9.49257 3.67338 9.83791 3.83543 10.1527 3.72615C10.4674 3.61687 10.6324 3.27765 10.5211 2.96848C10.1065 1.81622 8.98783 0.989258 7.67094 0.989258C6.35406 0.989258 5.23535 1.81622 4.82074 2.96848C4.70949 3.27765 4.87446 3.61687 5.18922 3.72615C5.50398 3.83543 5.84932 3.67338 5.96057 3.36421Z" fill="#fff"/>
                                             <path d="M0.21582 4.74967C0.21582 4.42176 0.48645 4.15592 0.820288 4.15592H14.5216C14.8555 4.15592 15.1261 4.42176 15.1261 4.74967C15.1261 5.07759 14.8555 5.34342 14.5216 5.34342H0.820288C0.48645 5.34342 0.21582 5.07759 0.21582 4.74967Z" fill="#fff"/>
@@ -409,52 +405,37 @@ class NavCartMenu extends HTMLElement {
             // Add cart footer with total and actions
             const cartFooter = `
 
-                <div class="fixed bottom-0 left-0 right-0 bg-white border-t p-4 space-y-4 z-20">
+                <div class="fixed bottom-0 left-0 right-0 bg-white border-t p-4 space-y-2 z-20">
                     <!-- Coupon Section -->
                     <div class="space-y-2">
-                        ${
-                          cart.discount
-                            ? `
-                            <div class="flex justify-between items-center text-sm">
-                                <span class="text-gray-600">${salla.lang.get(
-                                  'common.discount'
-                                )}:</span>
-                                <span class="text-green-600">- ${salla.money(
-                                  cart.discount
-                                )}</span>
+                     <div class="flex gap-2 relative">
+                                <input type="text" id="coupon-input" placeholder="${salla.lang.get(
+                'cart.coupon_placeholder'
+            )}"class="flex-1 px-4 py-4 border focus:outline-none focus:ring-2 focus:ring-primary"/>
+                                <salla-button class="absolute !w-auto ltr:right-2 rtl:left-2 top-1 !rounded-none" onclick="salla.cart.addCoupon(document.getElementById('coupon-input').value)" width="wide" fill="solid" color="primary" loader-position="center">${salla.lang.get(
+                'cart.apply_coupon'
+            )}</salla-button>
                             </div>
-                            <div class="flex gap-2">
-                                <salla-button
-                                    onclick="salla.cart.deleteCoupon()"
-                                    width="wide"
-                                    fill="outline"
-                                    color="danger"
-                                    loader-position="center">
-                                    ${salla.lang.get('cart.remove_coupon')}
-                                </salla-button>
-                            </div>
-                        `
-                            : `
-                            <div class="flex gap-2 relative">
-                                <input type="text" id="coupon-input" placeholder="${salla.lang.get('cart.coupon_placeholder')}"class="flex-1 px-4 py-4 border focus:outline-none focus:ring-2 focus:ring-primary"/>
-                                <salla-button class="absolute !w-auto ltr:right-2 rtl:left-2 top-1 !rounded-none" onclick="salla.cart.addCoupon(document.getElementById('coupon-input').value)" width="wide" fill="solid" color="primary" loader-position="center">${salla.lang.get('cart.apply_coupon')}</salla-button>
-                            </div>
-                        `
-                        }
                         <p id="coupon-error" class="text-sm text-red-500"></p>
                     </div>
 
                     <!-- Subtotal -->
-                    ${
-                      cart.discount
-                        ? `
+                    ${cart.discount
+                    ? `
+                    <div class="flex gap-2">
+                        <div onclick="salla.cart.deleteCoupon()" class="bg-[#ddd] rounded-full p-1 flex gap-1 items-center cursor-pointer my-1"><span>X</span>${cart.coupon}</div>
+                        </div>
                         <div class="flex justify-between items-center text-sm text-gray-600">
                             <span>${salla.lang.get('common.subtotal')}:</span>
                             <span>${salla.money(cart.sub_total)}</span>
                         </div>
+                        <div class="flex justify-between items-center text-sm">
+                        <span class="text-[#ff001f] text-sm">${salla.lang.get('common.discount')}:</span>
+                        <span class="text-[#ff001f] text-sm">- ${salla.money(cart.discount)}</span>
+                        </div>
                     `
-                        : ''
-                    }
+                    : ''
+                }
 
                     <!-- Total -->
                     <div class="flex justify-between items-center text-lg font-bold">
@@ -463,7 +444,7 @@ class NavCartMenu extends HTMLElement {
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 !mt-4">
                         <salla-button
                             href="${salla.url.get('cart')}"
                             width="wide"
@@ -486,10 +467,37 @@ class NavCartMenu extends HTMLElement {
             `;
 
             cartContainer.innerHTML = `
+            <div class="shadow-default bg-white p-5 xs:p-7 rounded-md mb-5 relative ${cart.free_shipping_bar ? '' : 'hidden'
+                }" id="free-shipping">
+                        <div class="flex rtl:space-x-reverse space-x-3 items-center">
+                            <i class="bg-primary text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
+                            <div class="flex-1">
+                                <h4 class="shipping-item font-bold text-sm mb-1.5">${freeShipping}</h4>
+                                <p class="shipping-item text-sm font- text-gray-500">
+                                        <span id="free-shipping-msg">
+                                        ${cart.free_shipping_bar.has_free_shipping ? salla.lang.get('pages.cart.has_free_shipping')
+                    : salla.lang.get('pages.cart.free_shipping_alert', { amount: salla.money(cart.free_shipping_bar.remaining) })
+                }</span>
+                                    <span class="emoji ${cart.free_shipping_bar.has_free_shipping
+                    ? ''
+                    : 'hidden'
+                }" id="free-shipping-applied">🎉</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-8 bg-border-color rounded-full ${cart.free_shipping_bar.has_free_shipping ? ' hidden' : ''}" id="free-shipping-bar">
+                            <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end" style="width:${cart.free_shipping_bar.percent}%">
+                                <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
+                            </div>
+                        </div>
+                    </div>
                 <div class="pb-64">
                     ${itemsTemplate}
                     <div class="!bg-[#fcfaf3]">
-                        <salla-products-slider source="related" source-value="${cart.items.length ? cart.items[0].id : ''}" block-title="${salla.lang.get('cart.mayLike')}" includes='${includes_features}' display-all-url class="!my-4 aleena-arrows-2 products-cart !bg-[#fcfaf3]" limit="6"></salla-products-slider>
+                        <salla-products-slider source="related" source-value="${cart.items.length ? cart.items[0].id : ''
+                }" block-title="${salla.lang.get(
+                    'cart.mayLike'
+                )}" includes='${includes_features}' display-all-url class="!my-4 aleena-arrows-2 products-cart !bg-[#fcfaf3]" limit="6"></salla-products-slider>
                     </div>
                     </div>
                 </div>

@@ -206,26 +206,38 @@ class ProductCard extends HTMLElement {
     this.minimal ? this.classList.add('s-product-card-minimal') : '';
     this.product?.donation ? this.classList.add('s-product-card-donation') : '';
     this.shadowOnHover ? this.classList.add('s-product-card-shadow') : '';
-    this.product?.is_out_of_stock
-      ? this.classList.add('s-product-card-out-of-stock')
-      : '';
     this.isInWishlist =
       !salla.config.isGuest() &&
       salla.storage.get('salla::wishlist', []).includes(this.product.id);
     const hasOptions = productcard_options && this.product.options?.length;
-    const hasImagesSlider =
-      product_images_layout == 'slider' && this.product.images?.length > 1;
+    const hasImagesSlider =this.product.images?.length > 1;
     const hasMetadata = productcard_metadata && this.product.metadata;
     this.innerHTML = `
         <div class="h-full !rounded-none ${
           !this.fullImage ? 's-product-card-image' : 's-product-card-image-full'
         }">
           <a href="${this.product?.url}" class="relative h-full block">
+          ${
+            this.product?.is_out_of_stock
+              ? `<strong class="productout-stock w-3/4 md:w-1/2 text-center absolute top-1/2 -translate-y-1/2 left-0 right-0 my-0 mx-auto block uppercase text-base font-semibold leading-4 text-red-500 p-1 md:p-3 border border-solid border-red-500 bg-clip-padding -rotate-45 z-10">${salla.lang.get(
+                  'pages.products.out_of_stock'
+                )}</strong>
+              <img class="flex s-product-card-image-${
+                salla.url.is_placeholder(this.product?.image?.url)
+                  ? 'contain'
+                  : this.fitImageHeight
+                  ? this.fitImageHeight
+                  : 'cover'
+              } lazy"
+                src=""
+                alt=${this.product?.image?.alt}
+                data-src=${this.product?.image?.url || this.product?.thumbnail}
+                width="500" height="500"
+              />
+              `
+              : `
         ${
-          product_images_layout == 'slider' &&
-          this.product.images?.length > 1 &&
-          !this.fullImage &&
-          !this.noImage
+          hasImagesSlider
             ? `<div class="product-slider h-full hidden md:flex"></div>
               <img class="flex md:hidden s-product-card-image-${
                 salla.url.is_placeholder(this.product?.image?.url)
@@ -240,35 +252,21 @@ class ProductCard extends HTMLElement {
                 width="500" height="500"
               />
             `
-            : `<img class="s-product-card-image-${
+            : `<img class="test s-product-card-image-${
                 salla.url.is_placeholder(this.product?.image?.url)
                   ? 'contain'
                   : this.fitImageHeight
                   ? this.fitImageHeight
                   : 'cover'
-              } lazy h-full"
+              } lazy"
                 src=""
                 alt=${this.product?.image?.alt}
                 data-src=${this.product?.image?.url || this.product?.thumbnail}
                 width="500" height="500"
-              />
-              ${
-                product_images_layout == 'change-with-hover' &&
-                this.product.images?.length > 1
-                  ? `<img alt=${this.product?.name} src=" " data-src=${
-                      this.product.images[1].url
-                    } class="!absolute top-0 left-0 transition-opacity duration-300 !opacity-0 group-hover:!opacity-100 s-product-card-image-${
-                      salla.url.is_placeholder(this.product?.image?.url)
-                        ? 'contain'
-                        : this.fitImageHeight
-                        ? this.fitImageHeight
-                        : 'cover'
-                    } lazy"/>`
-                  : ``
-              }
-              `
+              />`
         }
-
+`
+          }
             ${!this.fullImage && !this.minimal ? this.getProductBadge() : ''}
 
             ${
@@ -374,7 +372,7 @@ class ProductCard extends HTMLElement {
 
     document.lazyLoadInstance?.update(this.querySelectorAll('.lazy'));
     // Render Images
-    if (hasImagesSlider && this.querySelector('.product-slider')) {
+    if (this.querySelector('.product-slider')) {
       this.renderImages(this.product.images);
     }
 
