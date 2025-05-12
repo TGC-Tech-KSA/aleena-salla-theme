@@ -26,10 +26,10 @@
 <div id="video-popup" class="hidden fixed inset-0 bg-white z-[9999] overflow-y-auto " dir="ltr">
   <div id="video-list" class="flex flex-col items-center gap-16 py-12">
     {% for banner in component.instagram %}
-      <div class="video-section relative w-screen md:w-[90vw] max-w-[400px] aspect-[9/16] h-screen">
+      <div class="video-section relative w-screen md:w-[90vw] max-w-[400px] aspect-[9/16] h-svh">
         <div class="relative w-full h-full overflow-hidden rounded-xl">
         <span class="text-white text-base z-10 absolute left-3 top-4" id="owner-{{ loop.index0 }}">{{ banner.video_owner }}</span>
-        <video class="story-video w-full h-screen object-cover" muted playsinline preload="none" controls data-src="{{ banner.slider_bg_video }}" data-index="{{ loop.index0 }}"></video>
+        <video class="story-video w-full h-svh object-cover" muted playsinline preload="none" controls data-src="{{ banner.slider_bg_video }}" data-index="{{ loop.index0 }}"></video>
         <button class="close-video absolute top-2 right-2 z-50">
           <svg class="cursor-pointer" width="25px" height="25px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

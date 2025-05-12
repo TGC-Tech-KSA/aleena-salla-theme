@@ -137,7 +137,6 @@ class Home extends BasePage {
     const openButtons = document.querySelectorAll('.open-video-popup');
     const popup = document.getElementById('video-popup');
     const videos = document.querySelectorAll('.story-video');
-    const ownerTexts = document.querySelectorAll('.story-video + span');
     const closeVideoBtns = document.querySelectorAll('.close-video');
     let currentIndex = 0;
 
@@ -149,17 +148,13 @@ class Home extends BasePage {
         v.pause();
         v.muted = true;
         v.currentTime = 0;
-        if (ownerTexts[i]) ownerTexts[i].classList.add('hidden');
       });
 
       const video = videos[index];
-      const ownerText = ownerTexts[index];
-
       video.scrollIntoView({ behavior: 'smooth', block: 'center' });
       if (!video.src) video.src = video.dataset.src;
       video.muted = false;
       video.play().catch(() => {});
-      if (ownerText) ownerText.classList.remove('hidden');
       currentIndex = index;
     }
 
@@ -180,23 +175,19 @@ class Home extends BasePage {
         videos[index].currentTime = 0;
         popup.classList.add('hidden');
         document.body.style.overflow = 'auto';
-        ownerTexts[index].classList.add('hidden');
       });
     });
 
-    // الانتقال التلقائي للفيديو التالي أو الرجوع للأول إذا انتهى الأخير
     videos.forEach((video, index) => {
       video.addEventListener('ended', () => {
         if (index + 1 < videos.length) {
           playVideoAt(index + 1);
         } else {
-          // إعادة التشغيل من البداية
           playVideoAt(0);
         }
       });
     });
 
-    // دعم عجلة الماوس للتنقل
     let lastScrollTime = 0;
     popup.addEventListener('wheel', (e) => {
       const now = Date.now();
@@ -210,10 +201,8 @@ class Home extends BasePage {
       }
     });
 
-    // دعم السحب على الهواتف
     let touchStartY = 0;
     let touchEndY = 0;
-
     popup.addEventListener('touchstart', (e) => {
       touchStartY = e.changedTouches[0].screenY;
     });
@@ -234,13 +223,11 @@ class Home extends BasePage {
       }
     }
 
-    // مراقبة الفيديوهات لتشغيل المناسب عند ظهوره
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
           const idx = parseInt(video.dataset.index);
-          const ownerText = document.getElementById(`owner-${idx}`);
           if (entry.isIntersecting) {
             videos.forEach((v) => {
               if (v !== video) {
@@ -251,12 +238,10 @@ class Home extends BasePage {
             if (!video.src) video.src = video.dataset.src;
             video.muted = false;
             video.play().catch(() => {});
-            if (ownerText) ownerText.classList.remove('hidden');
             currentIndex = idx;
           } else {
             video.pause();
             video.muted = true;
-            if (ownerText) ownerText.classList.add('hidden');
           }
         });
       },
