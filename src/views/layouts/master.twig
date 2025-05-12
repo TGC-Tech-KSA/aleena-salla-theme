@@ -100,7 +100,19 @@
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
     <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
-
+    {% if user.language.dir == 'ltr' %}
+    <style>
+    @font-face {
+      font-family: 'Americana';
+      src: url('https://res.cloudinary.com/dqcgp0fkr/raw/upload/v1747043495/Americana_Font_Regular_wjolzv.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      font-family: 'Americana', serif !important;
+    }
+  </style>
+  {% endif %}
     <style>
         :root {
             --font-main: '{{theme.font.name}}';
