@@ -266,41 +266,37 @@ class Product extends BasePage {
       });
   }
   initFeaturedTabs() {
-    app.all('.tab-trigger', (el) => {
+    document.querySelectorAll('.tab-trigger').forEach((el) => {
       el.addEventListener('click', ({ currentTarget: btn }) => {
-        let id = btn.dataset.componentId;
-        // btn.setAttribute('fill', 'solid');
-        app
-          .toggleClassIf(
-            `#${id} .tabs-wrapper>div`,
-            'is-active opacity-0 translate-y-3',
-            'inactive',
-            (tab) => tab.id == btn.dataset.target
-          )
-          .toggleClassIf(
-            `#${id} .tab-trigger`,
-            'is-active',
-            'inactive',
-            (tabBtn) => tabBtn == btn
-          );
+        const id = btn.dataset.componentId;
+        const targetId = btn.dataset.target;
 
-        // fadeIn active tabe
-        setTimeout(
-          () =>
-            app.toggleClassIf(
-              `#${id} .tabs-wrapper>div`,
-              'opacity-100 translate-y-0',
-              'opacity-0 translate-y-3',
-              (tab) => tab.id == btn.dataset.target
-            ),
-          100
-        );
+        document.querySelectorAll(`#${id} .tabs-wrapper > div`).forEach((tab) => {
+          const isActive = tab.id === targetId;
+          tab.classList.toggle('is-active', isActive);
+          tab.classList.toggle('opacity-0', !isActive);
+          tab.classList.toggle('translate-y-3', !isActive);
+        });
+
+        document.querySelectorAll(`#${id} .tab-trigger`).forEach((tabBtn) => {
+          tabBtn.classList.toggle('is-active', tabBtn === btn);
+        });
+
+        setTimeout(() => {
+          document.querySelectorAll(`#${id} .tabs-wrapper > div`).forEach((tab) => {
+            const isActive = tab.id === targetId;
+            tab.classList.toggle('opacity-100', isActive);
+            tab.classList.toggle('translate-y-0', isActive);
+          });
+        }, 100);
       });
     });
-    document
-      .querySelectorAll('.s-block-tabs')
-      .forEach((block) => block.classList.add('tabs-initialized'));
+
+    document.querySelectorAll('.s-block-tabs').forEach((block) => {
+      block.classList.add('tabs-initialized');
+    });
   }
+
   goToProductByArrows() {
     let cat_id = document
       .querySelector('.go-to-product-by-arrows')

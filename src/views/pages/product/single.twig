@@ -195,39 +195,39 @@
                         </a>
                     </div>
                 {% endif %}
-                <div class="flex justify-between items-center gap-3 mb-6">
-                <h1 class="text-sm md:text-base leading-10 text-dark">{{ product.name }}</h1>
+                <div class="flex justify-between items-start gap-3 mb-6">
+                <h1 class="text-sm md:text-xl leading-[normal] text-dark font-normal ">{{ product.name }}</h1>
                 <div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
-                              <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                                <h2 class="total-price text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
-                                <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
-                              </div>
-                              <div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                                {% if product.starting_price %}
-                                  <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
-                                {% endif %}
-                                <h2 class="total-price font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
-                              </div>
+                <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
+                <h2 class="total-price text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
+                <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
                 </div>
-                </div>
-                    {% if product.sold_quantity or product.can_show_remained_quantity %}
-                    <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm">
-                        {% if product.sold_quantity %}
-                            <div class="px-4 !text-red-800">
-                                <i class="sicon-fire rtl:ml-1.5 ltr:mr-1.5"></i> {{ trans('pages.products.sold') }}
-                                <span>{{ pluralize('pages.products.sold_times', product.sold_quantity)|raw }}</span>
-                            </div>
-                        {% endif %}
-                        {% if product.can_show_remained_quantity %}
-                            <div class="px-4 rtl:even:border-r ltr:even:border-l even:border-gray-200">
-                                <i class="!text-red-800 sicon-box-bankers rtl:ml-1.5 ltr:mr-1.5"></i>
-                                {{ trans('pages.products.remained') }}
-                                <span>{{ product.quantity }}</span>
-                            </div>
-                        {% endif %}
-                    </div>
+                <div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+                {% if product.starting_price %}
+                    <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
                 {% endif %}
-                    <hr>
+                <h2 class="total-price font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
+                </div>
+                </div>
+                </div>
+                {% if product.sold_quantity or product.can_show_remained_quantity %}
+                <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm">
+                    {% if product.sold_quantity %}
+                        <div class="px-4 !text-red-800">
+                            <i class="sicon-fire rtl:ml-1.5 ltr:mr-1.5"></i> {{ trans('pages.products.sold') }}
+                            <span>{{ pluralize('pages.products.sold_times', product.sold_quantity)|raw }}</span>
+                        </div>
+                    {% endif %}
+                    {% if product.can_show_remained_quantity %}
+                        <div class="px-4 rtl:even:border-r ltr:even:border-l even:border-gray-200">
+                            <i class="!text-red-800 sicon-box-bankers rtl:ml-1.5 ltr:mr-1.5"></i>
+                            {{ trans('pages.products.remained') }}
+                            <span>{{ product.quantity }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                <hr class="my-5">
                     {% set return_sar = theme.settings.get('return_sar') %}
                     {% set return_theworld = theme.settings.get('return_theworld') %}
                     <div class="{{ delivery_details or return_theworld or return_sar ? 'p-3 bg-[#ededed] flex flex-col items-center gap-3 mb-3 rounded m-2' :'' }}">
@@ -247,13 +247,13 @@
                 {% set promotional_advertisement = theme.settings.get('promotional_advertisement') %}
                 {% set title_advertisement = theme.settings.get('title_advertisement') %}
                 {% if promotional_advertisement %}
-                <hr class="mb-3">
-                <div class="flex items-center gap-4 bg-[#f8e8e5] rounded-2xl p-4 w-full">
+                <hr class="my-5">
+                <div class="flex items-center gap-4 bg-[#f8e8e5] rounded-2xl p-4 py-5 w-full text-sm my-5">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"></path>
                     </svg>
-                    <strong>{{title_advertisement}}</strong>
+                    <span>{{title_advertisement}}</span>
                 </div>
                 {% endif %}
                 {% if product.subtitle %}

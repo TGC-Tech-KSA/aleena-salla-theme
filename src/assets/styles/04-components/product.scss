@@ -429,9 +429,9 @@ salla-quantity-input[max='1']{
   .tabs {
     @apply flex;
     salla-button {
-      @apply w-1/2;
+      @apply w-full md:w-1/2;
       button {
-        @apply w-full h-[80px] px-[50px] py-[15px] bg-[#ebebeb] text-dark text-lg rounded-[78px] border-none opacity-100;
+        @apply w-full h-auto md:h-[80px] px-2 lg:px-[50px] py-[15px] bg-[#ebebeb] text-dark text-sm md:text-lg rounded-[78px] border-none opacity-100;
         .s-button-text {
           @apply whitespace-normal;
         }
@@ -440,7 +440,7 @@ salla-quantity-input[max='1']{
         }
       }
       &:first-child {
-        @apply rtl:-ml-[40px] ltr:-mr-[40px] z-1; // استخدام z-[1] بدل z-1
+        @apply rtl:-ml-[30px] rtl:md:-ml-[40px] ltr:-mr-[30px] ltr:md:-mr-[40px] z-1;
         button {
           @apply border border-dark border-solid;
         }

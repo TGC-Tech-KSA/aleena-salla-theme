@@ -40,7 +40,7 @@
             {% endfor %}
         {% endif %}
     </div>
-    <select id="select-branches" class="p-2 rounded-2xl min-w-32 !shadow-none focus:!shadow-none focus:!ring-0 text-sm">
+    <select id="select-branches" class="p-1 rounded-2xl w-24 h-8 !shadow-none focus:!shadow-none focus:!ring-0 text-xs">
         {% if return_sar %}
         {% for item in branches %}
             {% set item_title = item.branches_title %}
@@ -74,11 +74,18 @@
 
       <div class="tabs hide-scroll">
           {% if return_sar %}
-          <salla-button class="tab-trigger is-active" data-target="return_sar_data" data-component-id="{{ component_id }}"fill="outline">{{ trans('blocks.product.returnSar') }}</salla-button>
+          <salla-button class="tab-trigger is-active text-sm font-bold" data-target="return_sar_data" data-component-id="{{ component_id }}" fill="outline">
+            {{ trans('blocks.product.returnSar') }}
+          </salla-button>
           {% endif %}
           {% if return_theworld %}
-          <salla-button class="tab-trigger {{return_sar ? '' :'is-active' }}" data-target="return_theworld_data" data-component-id="{{ component_id }}" fill="outline">{{ trans('blocks.product.returnTheworld') }}</salla-button>
+          <salla-button class="tab-trigger {{ return_sar ? '' : 'is-active text-sm font-bold' }}" data-target="return_theworld_data" data-component-id="{{ component_id }}" fill="outline">
+            {{ trans('blocks.product.returnTheworld') }}
+          </salla-button>
           {% endif %}
+
+
+
       </div>
 
       <div class="tabs-wrapper py-4">
@@ -90,14 +97,14 @@
                 {% if points_title is iterable %}
                     {% set points_title = points_title[user.language.code] | default(points_title | first) %}
                 {% endif %}
-                <li>{{points_title}}</li>
+                <li class="text-sm">{{points_title}}</li>
               {% endfor %}
               </ul>
                 {% if sar_description is iterable %}
                 {% set sar_description = sar_description[user.language.code] | default(sar_description | first) %}
                 {% endif %}
               {% if sar_description %}
-                <p class="mb-4">{{sar_description}}</p>
+                <p class="mb-4 text-sm">{{sar_description}}</p>
               {% endif %}
               <div class="table-container">
                 <table class="table text-[12px]">
@@ -113,7 +120,7 @@
                         {% endif %}
                         <tr>
                             <th class="font-bold">{{ item_title }}</th>
-                            <td>{{ item_description }}</td>
+                            <td class="text-sm">{{ item_description }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -281,6 +281,7 @@
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "الوضع الداكن",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
             "description": null,
             "id": "footer_is_dark",
             "format": "switch",
@@ -495,6 +496,7 @@
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "تثبيت زر الإضافة والكمية أسفل شاشة الجوال",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
             "description": null,
             "id": "sticky_add_to_cart",
             "format": "switch",
@@ -506,6 +508,7 @@
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "اظهار الوسوم",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
             "description": null,
             "id": "show_tags",
             "format": "switch",
@@ -518,6 +521,7 @@
             "type": "items",
             "format": "dropdown-list",
             "label": "طريقة عرض الصور في سليدر صور المنتج",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
             "description": null,
             "labelHTML": null,
             "icon": "sicon-list",
@@ -547,6 +551,7 @@
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "اضافة اعلان ترويجي في صفحة المنتج",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
             "description": null,
             "id": "promotional_advertisement",
             "format": "switch",
@@ -558,6 +563,7 @@
             "type": "string",
             "icon": "sicon-format-text-alt",
             "label": "عنوان اعلان ترويجي في صفحة المنتج",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
             "multilanguage": true,
             "id": "title_advertisement",
             "value": null,
@@ -579,13 +585,49 @@
         {
             "type": "boolean",
             "icon": "sicon-toggle-off",
+            "label": "خيارات تقديم طلب إرجاع داخل السعودية",
+            "description": null,
+            "id": "delivery_details",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": false,
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "طلب إرجاع",
+            "multilanguage": true,
+            "id": "delivery_details_title",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+            "value": null,
+            "required": false,
+            "format": "text",
+            "description": null,
+            "placeholder": "يمكنك إضافة عنوان طلب إرجاع هنا...",
+            "hide": false,
+            "minLength": 0,
+            "maxLength": 80,
+            "conditions": [
+                {
+                    "id": "delivery_details",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
             "label": "تكبير الصور في سليدر صور المنتج",
             "description": "هذه الخاصية تمكنك من تكبير الصورة لتسهل رؤية المزيد من التفاصيل بها",
             "id": "imageZoom",
             "format": "switch",
             "required": false,
             "value": false,
-            "selected": false
+            "selected": false,
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         },
         {
             "type": "boolean",
@@ -836,38 +878,33 @@
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         },
         {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "خيارات تقديم طلب إرجاع داخل السعودية",
-            "description": null,
-            "id": "delivery_details",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": false,
-            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
-        },
-        {
             "type": "string",
             "icon": "sicon-format-text-alt",
-            "label": "طلب إرجاع",
+            "label": "رابط للمزيد من المعلومات راجع سياسة الاسترجاع",
             "multilanguage": true,
-            "id": "delivery_details_title",
+            "id": "link_more_information",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
             "value": null,
             "required": false,
             "format": "text",
             "description": null,
-            "placeholder": "يمكنك إضافة عنوان طلب إرجاع هنا...",
+            "placeholder": "",
             "hide": false,
             "minLength": 0,
-            "maxLength": 80,
+            "maxLength": 300,
             "conditions": [
                 {
-                    "id": "delivery_details",
+                    "id": "return_theworld",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "return_sar",
                     "operation": "=",
                     "value": true
                 }
-            ]
+            ],
+            "logic": "OR"
         }
     ],
     "components": [
@@ -1096,11 +1133,11 @@
                                 }
                             ]
                         },
-                          {
+                        {
                             "id": "alsort_mob",
                             "type": "string",
                             "format": "image",
-                            "label": "الصورة في اللغة العربية في الجوال" ,
+                            "label": "الصورة في اللغة العربية في الجوال",
                             "description": "* المقاس المناسب للصورة هو 1920×1080 بكسل",
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
