@@ -878,33 +878,35 @@
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
         },
         {
-            "type": "string",
-            "icon": "sicon-format-text-alt",
-            "label": "رابط للمزيد من المعلومات راجع سياسة الاسترجاع",
-            "multilanguage": true,
-            "id": "link_more_information",
-            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
-            "value": null,
-            "required": false,
-            "format": "text",
-            "description": null,
-            "placeholder": "",
-            "hide": false,
-            "minLength": 0,
-            "maxLength": 300,
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "رابط للمزيد من المعلومات راجع سياسة الاسترجاع",
+          "multilanguage": true,
+          "id": "link_more_information",
+          "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": "",
+          "hide": false,
+          "minLength": 0,
+          "maxLength": 300,
+          "conditions": {
+            "logic": "OR",
             "conditions": [
-                {
-                    "id": "return_theworld",
-                    "operation": "=",
-                    "value": true
-                },
-                {
-                    "id": "return_sar",
-                    "operation": "=",
-                    "value": true
-                }
-            ],
-            "logic": "OR"
+              {
+                "id": "return_theworld",
+                "operation": "=",
+                "value": true
+              },
+              {
+                "id": "return_sar",
+                "operation": "=",
+                "value": true
+              }
+            ]
+          }
         }
     ],
     "components": [
