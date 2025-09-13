@@ -2,21 +2,21 @@
 {% set show_header_feature = theme.settings.get('show_header_feature') %}
 
 {% if show_header_feature and header_feature|length %}
-  <section class="bg-darker text-white">
-    <div class="container">
-      <div class="header--features grid grid-cols-3 md:py-4">
-        {% for item in header_feature %}
-          <div class="header__item flex items-center justify-center gap-1 md:gap-2 text-xxs sm:text-xs md:text-sm {{loop.index == 2 ? 'border-x border-white/20' : ''}} ">
-              {% set item_title = item.title %}
-              {% if item_title is iterable %}
-                {% set item_title = item_title[user.language.code]|default(item_title|first) %}
-              {% endif %}
-                <i class="{{item.icon}}"></i>
-                <span class="font-light">{{ item_title }}</span>
-          </div>
-        {% endfor %}
+  <section class="bg-[#18171b] text-[#c8c8c8]">
+    <div class="container flex py-3.5 md:py-[1.1rem] md:px-12">
+      {% for item in header_feature %}
+        <div class="header__item py-0.5 flex flex-none basis-1/3 items-center justify-center gap-1 md:gap-2 text-xxs sm:text-xs {{loop.index == 2 ? 'border-x border-white/20' : ''}} ">
+            {% set item_title = item.title %}
+            {% if item_title is iterable %}
+              {% set item_title = item_title[user.language.code]|default(item_title|first) %}
+            {% endif %}
+              <i class="{{item.icon}} text-[15px]"></i>
+              <span class="font-light">{{ item_title }}</span>
+        </div>
+      {% endfor %}
+      {# <div class="header--features flex">
 
-      </div>
+      </div> #}
     </div>
   </section>
 {% endif %}
