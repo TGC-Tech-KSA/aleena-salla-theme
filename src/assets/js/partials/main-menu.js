@@ -14,7 +14,7 @@ class NavigationMenu extends HTMLElement {
             });
     }
 
-    /**
+    /** 
     * Check if the menu has children
     * @param {Object} menu
     * @returns {Boolean}
@@ -107,7 +107,7 @@ class NavigationMenu extends HTMLElement {
     getMenus() {
         return this.menus.map((menu) => `
             ${this.getMobileMenu(menu, this.displayAllText)}
-
+            ${this.getDesktopMenu(menu, true)}
         `).join('\n');
     }
 

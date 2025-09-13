@@ -4,15 +4,15 @@
 {% if show_header_feature and header_feature|length %}
   <section class="bg-darker text-white">
     <div class="container">
-      <div class="header--features grid grid-cols-3 md:py-2">
+      <div class="header--features grid grid-cols-3 md:py-4">
         {% for item in header_feature %}
-          <div class="header__item flex items-center justify-center gap-1 md:gap-2 py-2 text-xxs sm:text-xs md:text-sm {{loop.index == 2 ? 'border-x border-white/30' : ''}} ">
+          <div class="header__item flex items-center justify-center gap-1 md:gap-2 text-xxs sm:text-xs md:text-sm {{loop.index == 2 ? 'border-x border-white/20' : ''}} ">
               {% set item_title = item.title %}
               {% if item_title is iterable %}
                 {% set item_title = item_title[user.language.code]|default(item_title|first) %}
               {% endif %}
                 <i class="{{item.icon}}"></i>
-                <span>{{ item_title }}</span>
+                <span class="font-light">{{ item_title }}</span>
           </div>
         {% endfor %}
 

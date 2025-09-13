@@ -63,6 +63,8 @@
 
 /* Main Nav */
 .main-nav-container {
+  @apply min-h-[49px] lg:min-h-[70px];
+
   // Custom background Color
   .has-bg &,
   .has-bg & .sub-menu{
@@ -144,7 +146,7 @@
   @apply items-center flex my-2 lg:my-0;
 
   img {
-    @apply w-auto max-h-12 max-w-[100px] xs:max-w-[170px];
+    @apply w-auto max-w-[95px];
   }
 }
 
