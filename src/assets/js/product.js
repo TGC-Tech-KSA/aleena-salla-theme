@@ -216,10 +216,10 @@ class Product extends BasePage {
       app.startingPriceTitle?.classList.add('hidden');
 
       app.totalPrice.forEach((el) => {
-        el.innerText = salla.money(data.price);
+        el.innerHTML = salla.money(data.price);
       });
       app.beforePrice.forEach((el) => {
-        el.innerText = salla.money(data.regular_price);
+        el.innerHTML = salla.money(data.regular_price);
       });
 
       app.toggleClassIf(

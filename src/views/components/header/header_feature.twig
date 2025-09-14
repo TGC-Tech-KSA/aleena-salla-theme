@@ -10,7 +10,11 @@
             {% if item_title is iterable %}
               {% set item_title = item_title[user.language.code]|default(item_title|first) %}
             {% endif %}
+             {% if item.code_icon %}
+              {{item.code_icon|raw}}
+             {% else %}
               <i class="{{item.icon}} text-[15px]"></i>
+             {% endif %}
               <span class="font-light">{{ item_title }}</span>
         </div>
       {% endfor %}

@@ -372,12 +372,12 @@ class App extends AppHelpers {
     salla.cart.event.onUpdated((summary) => {
       document
         .querySelectorAll('[data-cart-total]')
-        .forEach((el) => (el.innerText = salla.money(summary.total)));
+        .forEach((el) => (el.innerHTML = salla.money(summary.total)));
       document
         .querySelectorAll('[data-cart-count]')
-        .forEach((el) => (el.innerText = salla.helpers.number(summary.count)));
+        .forEach((el) => (el.innerHTML = salla.helpers.number(summary.count)));
       salla.cart.event.onItemAdded((response, prodId) => {
-        const cartAside = document.querySelector('.neyam-cart-aside');
+        const cartAside = document.querySelector('.aleena-cart-aside');
         cartAside.classList.add('show');
       });
     });

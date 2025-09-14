@@ -115,6 +115,18 @@
             "format": "switch"
         },
         {
+            "id": "page_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون الصفحة",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false
+        },
+        {
             "type": "static",
             "id": "static-line1",
             "format": "line"
@@ -315,7 +327,7 @@
                     "id": "header_feature.code_icon",
                     "type": "string",
                     "format": "code",
-                    "label": "svg icon",
+                    "label": "أيقونة SVG مخصصة",
                     "description": "عند استخدام هذا الحقل سوف يتم تبديله بالايقونة المختارة",
                     "labelHTML": null,
                     "placeholder": null,
