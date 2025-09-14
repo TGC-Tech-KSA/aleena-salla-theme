@@ -21,7 +21,7 @@
                       </button>
                   </div>
                   <div class="logo-area__middle mx-4 flex items-center">
-                      <a class="navbar-brand py-4" href="{{ store.url }}">
+                      <a class="navbar-brand md:py-4" href="{{ store.url }}">
                           <img fetchpriority="high" width="452" height="133" loading="lazy" class="lazy" src="" data-src="{{ store.logo }}" alt="{{ store.name }} logo">
                           {% if is_page('index') %}
                             <h1 class="sr-only">{{ store.name }}</h1>
@@ -54,8 +54,7 @@
           </div>
         </div>
         <div class="bg-white header-search flex md:hidden border-t border-gray-200 relative py-2">
-            <salla-search inline height="36" class="w-full z-0 [&_input]:!border-darker [&_svg]:fill-darker [&_input]:placeholder:!border-darker"></salla-search>
-            <button onclick="salla.event.dispatch('search::open')" class="flex absolute w-full h-full bg-transparent z-1" title="search" aria-label="search"></button>
+            <salla-search inline height="36" class="w-11/12 mx-auto z-0 [&_input]:!border-darker [&_svg]:fill-darker [&_input]:placeholder:!border-darker"></salla-search>
         </div>
         <div class="bg-white hidden md:flex justify-center border-t border-gray-200">
           <custom-main-menu></custom-main-menu>

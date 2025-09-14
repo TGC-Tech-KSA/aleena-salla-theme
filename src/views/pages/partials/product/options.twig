@@ -31,7 +31,7 @@
 {% if product.options|length > 0 %}
     {% set config = {} %}
     {% set config = config|merge({'single-option': { 'type': 'button' }}) %}
-    <salla-product-options options="{{ product.options }}" product-id="{{ product.id }}" config="{{ config|json_encode }}"></salla-product-options>
+    <salla-product-options class="aleena-product-page-options" options="{{ product.options }}" product-id="{{ product.id }}" config="{{ config|json_encode }}"></salla-product-options>
 {% endif %}
 
 {% if product.weight or product.has_size_guide %}

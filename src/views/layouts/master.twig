@@ -121,6 +121,11 @@
             --color-primary-light: {{ theme.color.lighter(0.15) }};
             --color-primary-reverse: {{ theme.color.reverse_text }};
         }
+        {% if theme.settings.get('hide_ad_icon') %}
+          i.s-advertisement-content-icon {
+              display: none;
+          }
+        {% endif %}
     </style>
     {# tracking services, custom css feature. #}
     {% hook 'head:end' %}

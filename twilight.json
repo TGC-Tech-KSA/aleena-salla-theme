@@ -253,6 +253,18 @@
             "selected": true
         },
         {
+            "id": "hide_ad_icon",
+            "label": "اخفاء ايقونة الاعلان",
+            "description": "سوف يتم إخفاء الأيقونة لجميع الإعلانات",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true,
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "عرض مميزات اسفل الهيدر",
@@ -298,6 +310,18 @@
                     "placeholder": "أدخل عنوان الميزة هنا...",
                     "minLength": 0,
                     "maxLength": 50
+                },
+                {
+                    "id": "header_feature.code_icon",
+                    "type": "string",
+                    "format": "code",
+                    "label": "svg icon",
+                    "description": "عند استخدام هذا الحقل سوف يتم تبديله بالايقونة المختارة",
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-browser-code",
+                    "value": null,
+                    "required": false
                 }
             ],
             "conditions": [
@@ -558,6 +582,30 @@
             "required": false,
             "value": true,
             "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "اظهار رقم الموديل",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+            "description": null,
+            "id": "show_product_sku",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "اظهار العنوان الفرعي",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+            "description": null,
+            "id": "show_product_subtitle",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
         },
         {
             "id": "slider_background_size",
