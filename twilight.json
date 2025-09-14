@@ -686,6 +686,84 @@
             ]
         },
         {
+            "id": "promotional_advertisement_bg_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الإعلان الترويجي في صفحة المنتج",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#f8e8e5",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+
+        },
+        {
+            "id": "promotional_advertisement_text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون النص للإعلان الترويجي في صفحة المنتج",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#000000",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "اضافة أيقونة SVG مخصصة للإعلان الترويجي في صفحة المنتج",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+            "description": null,
+            "id": "promotional_advertisement_custom_icon",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "promotional_advertisement_icon_code",
+            "type": "string",
+            "format": "code",
+            "label": "svg icon للأختيار",
+            "description": "تستطيع اختيار صورة أو أيقونة SVG للأختيار",
+            "labelHTML": null,
+            "placeholder": null,
+            "icon": "sicon-browser-code",
+            "value": null,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement_custom_icon",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "خيارات تقديم طلب إرجاع داخل السعودية",

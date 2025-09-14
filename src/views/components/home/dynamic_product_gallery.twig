@@ -11,7 +11,7 @@
         </button>
         <div class="hotspot__card -z-1 p-0 min-w-80 absolute opacity-0 transition-all has-motion left-[var(--data-hotspot-left)] -translate-x-[var(--data-hotspot-left)] top-[calc(var(--data-hotspot-top)+50%)] lg:-top-full lg:left-[160%] lg:translate-x-[none] lg:!transform-none" aria-hidden="true">
             <div class="whole-set-wrapper">
-                <salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0] }}]"{% endif %} slider-id="slider-with-bg-{{ loop.index }}"class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0">
+                <salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0] }}]"{% endif %} slider-id="slider-with-bg-{{ loop.index }}"class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 [&_custom-salla-product-card]:!p-4">
                 </salla-products-list>
             </div>
         </div>
@@ -22,9 +22,9 @@
         <button type="button" class="hotspot__btn hotspot__btn--number relative tap-target  bg-darker text-white rounded-full w-10 h-10" aria-expanded="false" style="animation: hotspot-pulse cubic-bezier(.21,.16,.48,1) 3.5s infinite;">
             <span class="hotspot__btn-number">{{ loop.index + 1 }}</span>
         </button>
-        <div class="hotspot__card -z-1 p-0 min-w-80 absolute opacity-0 transition-all  has-motion left-[var(--data-hotspot-left)] -translate-x-[var(--data-hotspot-left)] top-[calc(var(--data-hotspot-top)+50%)] lg:-top-full lg:left-[160%] lg:translate-x-[none] lg:!transform-none" aria-hidden="true">
+        <div class="hotspot__card -z-1 p-0 min-w-80 absolute opacity-0 transition-all has-motion left-[var(--data-hotspot-left)] -translate-x-[var(--data-hotspot-left)] top-[calc(var(--data-hotspot-top)+50%)] lg:-top-full lg:left-[160%] lg:translate-x-[none] lg:!transform-none" aria-hidden="true">
             <div class="whole-set-wrapper">
-                <salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0] }}]"{% endif %} slider-id="slider-with-bg-{{ loop.index }}"class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0">
+                <salla-products-list minimal {% if item.products|length %} source="selected" source-value="[{{ item.products[0] }}]"{% endif %} slider-id="slider-with-bg-{{ loop.index }}"class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 [&_custom-salla-product-card]:!p-4">
                 </salla-products-list>
             </div>
         </div>
