@@ -69,6 +69,10 @@ salla-slider{
   }
 }
 
+.s-slider-block__title h2{
+  @apply text-xl md:text-2xl font-normal md:font-light;
+}
+
 // Photos block slider
 salla-slider.photos-slider {
   .swiper-pagination-bullets.swiper-pagination-horizontal{
@@ -227,7 +231,7 @@ model-viewer[style*="width"]:before{
         button{
           @apply m-0 border-none bg-transparent;
           svg{
-            @apply w-9 fill-black hover:fill-black;
+            @apply w-9;
           }
         }
       }
@@ -271,7 +275,7 @@ model-viewer[style*="width"]:before{
         button{
           @apply m-0 border-none bg-transparent shadow-none;
           svg{
-            @apply w-9 fill-black hover:fill-black;
+            @apply w-9;
           }
         }
       }
@@ -288,7 +292,7 @@ model-viewer[style*="width"]:before{
           button{
             @apply m-0 border-none bg-transparent shadow-none #{!important};
             svg{
-              @apply w-9 fill-black hover:fill-black;
+              @apply w-9;
             }
             &.swiper-button-disabled{
               @apply opacity-65;
@@ -303,6 +307,10 @@ model-viewer[style*="width"]:before{
   .s-product-card-image {
       @apply flex-none h-52 lg:h-60 lg:max-h-60 #{!important};
   }
+}
+
+.s-slider-nav-arrow svg{
+  fill: none!important;
 }
 
 .product-slider-fade{
