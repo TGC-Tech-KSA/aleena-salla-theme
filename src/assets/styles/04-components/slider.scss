@@ -226,7 +226,7 @@ model-viewer[style*="width"]:before{
       }
     }
     &-left{
-      @apply absolute w-full md:w-[220%];
+      @apply absolute w-full md:w-[185%];
       .s-slider-block__title-nav{
         @apply m-0 justify-between w-full;
         button{

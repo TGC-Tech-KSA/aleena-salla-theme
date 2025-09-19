@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - bufferutil
+  - cwebp-bin
+  - es5-ext
+  - swiper
+  - utf-8-validate

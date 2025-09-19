@@ -23,11 +23,11 @@
     {% set display_all = component.display_all_url %}
     <div class="md:h-[600px] flex items-center md:w-4/5 mx-auto">
       <div class="video-slider-data px-7 w-full hidden md:block">
-      <salla-slider type="fullwidth" class="video-slider md:w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] [&_.swiper]:!overflow-visible my-6" loop id="photos-{{ position }}-instagram" slider-config="{&quot;effect&quot;:&quot;cards&quot;,&quot;slidesPerView&quot;:1, &quot;allowTouchMove&quot;: true,&quot;grabCursor&quot:true}">
+      <salla-slider type="fullwidth" class="video-slider md:w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] [&_.swiper]:!overflow-visible my-6" loop id="photos-{{ position }}-instagram" slider-config="{&quot;effect&quot;:&quot;cards&quot;,&quot;slidesPerView&quot;:1, &quot;allowTouchMove&quot;: true,&quot;grabCursor&quot:true, &quot;speed&quot;: 300, &quot;cardsEffect&quot;: {&quot;perSlideOffset&quot;: 8, &quot;perSlideRotate&quot;: 2, &quot;slideShadows&quot;: true, &quot;shadowOffset&quot;: 20, &quot;shadowScale&quot;: 0.94}}">
           <div slot="items">
             {% for product in component.cards_products %}
             <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)] p-3 bg-white [&_.s-product-card-promotion-title]:hidden ">
-              <custom-salla-product-card product="{{product}}" noImage class="[&_.s-product-card-image]:md:!h-52 [&_.s-product-card-image]:lg:!h-64"></custom-salla-product-card>
+              <custom-salla-product-card product="{{product}}" noImage class="[&_.s-product-card-image]:md:!h-52 [&_.s-product-card-image]:lg:!h-64 [&_.s-slider-block__title]:!hidden"></custom-salla-product-card>
             </div>
             {% endfor %}
           </div>
@@ -55,5 +55,21 @@
     width: 4rem !important;
     overflow: visible !important;
     object-fit: contain !important;
-}
+  }
+  
+  .s-block-slider-products-cards-{{ position }} custom-salla-product-card .s-slider-block__title {
+    display: none !important;
+  }
+
+  .video-slider .s-slider-block__title-nav{
+    width: auto !important;
+  }
+  .video-slider .s-slider-block__title-nav button {
+    border-radius: 4px !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .video-slider .s-slider-block__title-nav button:hover{
+    box-shadow: none !important;
+  }
 </style>
