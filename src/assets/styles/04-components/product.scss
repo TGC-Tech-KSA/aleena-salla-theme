@@ -334,7 +334,9 @@
 }
 
 .s-product-card-promotion-title{
-  @apply bg-white text-dark;
+  @apply bg-white text-dark text-xs font-light;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .s-product-card-sale-price {
@@ -452,4 +454,32 @@ salla-quantity-input[max='1']{
       }
     }
   }
+}
+
+salla-product-options.aleena-product-page-options.s-product-options-wrapper{
+  padding: 0 !important;
+}
+
+.s-product-options-option-content{
+  padding-right: 5px !important;
+}
+
+.aleena-product-page-options .s-product-options-option-container .s-product-options-option{
+  @apply flex flex-col gap-2 !important;
+}
+
+.s-product-options-grid-mode-span{
+  border-radius: 3px !important;
+  min-height: auto !important;
+  min-width: auto !important;
+  padding: 8px 16px !important;
+}
+
+.aleena-product-page-options .s-product-options-option-container .s-product-options-option-label small{
+  display: none;
+}
+
+
+salla-breadcrumb .s-breadcrumb-wrapper .s-breadcrumb-item{
+  @apply font-light text-[#5c5c5c];
 }

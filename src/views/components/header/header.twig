@@ -6,7 +6,7 @@
 | cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
 #}
 <header class="store-header">
-  <div id="mainnav" class="main-nav-container shadow-default bg-white px-4 md:px-12">
+  <div id="mainnav" class="main-nav-container bg-white px-4 md:px-12">
       <div class="inner bg-inherit">
           <div class="container">
               <div class="flex items-stretch justify-between relative">
@@ -14,13 +14,14 @@
                       <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu">
                         <i class="sicon-menu text-primary text-2xl"></i>
                       </a>
-                      <custom-main-menu class="block lg:hidden"></custom-main-menu>
-                      <div class="hidden xl:flex">{% include 'components.header.header_catlink'%}</div>
-                      <button onclick="salla.event.dispatch('search::open')" class="hidden lg:flex xl:hidden gap-2 search-btn w-auto justify-end after:text-xl after:font-['sallaicons'] after:content-['\ef09'] z-1" title="search" aria-label="search"><span class="uppercase">{{ trans('blocks.header.search') }}</span></button>
+                      <button onclick="salla.event.dispatch('search::open')" class="hidden md:flex items-center gap-2 search-btn w-auto justify-end z-1" title="search" aria-label="search">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><g transform="translate(3 3)" stroke="currentColor" stroke-width="1.5" fill="none" fill-rule="evenodd"><circle cx="7.824" cy="7.824" r="7.824"></circle><path stroke-linecap="square" d="m13.971 13.971 4.47 4.47"></path></g></svg>
+                        <span class="uppercase text-xs leading-none">{{ trans('blocks.header.search') }}</span>
+                      </button>
                   </div>
                   <div class="logo-area__middle mx-4 flex items-center">
-                      <a class="navbar-brand py-4" href="{{ store.url }}">
-                          <img fetchpriority="high" width="452" height="133" loading="lazy" class="lazy !w-20" src="" data-src="{{ store.logo }}" alt="{{ store.name }} logo">
+                      <a class="navbar-brand md:py-5" href="{{ store.url }}">
+                          <img fetchpriority="high" width="452" height="133" loading="lazy" class="lazy" src="" data-src="{{ store.logo }}" alt="{{ store.name }} logo">
                           {% if is_page('index') %}
                             <h1 class="sr-only">{{ store.name }}</h1>
                           {% else %}
@@ -37,26 +38,26 @@
                           <i class="sicon-user flex md:hidden text-xl text-darker"></i>
                           </button>
                       {% endif %}
-                        <button onclick="salla.event.dispatch('search::open')" class="hidden xl:flex gap-2 search-btn w-auto justify-end after:text-xl after:font-['sallaicons'] after:content-['\ef09'] z-1" title="search" aria-label="search"><span class="uppercase">{{ trans('blocks.header.search') }}</span></button>
                         {% if is_page('cart') %}
                         {% else %}
-                        <button class="relative items-center gap-2 flex" onclick="document.querySelector('.neyam-cart-aside').classList.add('show')">
-                        <span class="hidden md:flex">{{ trans('blocks.header.cart') }}</span>
-                        <salla-cart-summary class="relative pointer-events-none [&_.s-cart-summary-content]:!hidden [&_#s-cart-icon]:!hidden [&_.s-cart-summary-wrapper]:absolute [&_.s-cart-summary-wrapper]:-top-1 [&_.s-cart-summary-wrapper]:left-1 [&_.s-cart-summary-count]:bg-darker ">
-                          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5"><path d="M2 9.25h20l-4 12H6z"></path><path stroke-linecap="square" d="M12 9V3"></path></g></svg>
-                        </salla-cart-summary>
-                      </button>
+                        <button class="relative items-center gap-2 flex" onclick="document.querySelector('.aleena-cart-aside').classList.add('show')">
+                          <span class="hidden md:flex text-xs leading-none">{{ trans('blocks.header.cart') }}</span>
+                          <salla-cart-summary class="relative pointer-events-none [&_.s-cart-summary-content]:!hidden [&_#s-cart-icon]:!hidden [&_.s-cart-summary-wrapper]:absolute [&_.s-cart-summary-wrapper]:-top-1 [&_.s-cart-summary-wrapper]:left-1 [&_.s-cart-summary-count]:bg-darker ">
+                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="1.5"><path d="M2 9.25h20l-4 12H6z"></path><path stroke-linecap="square" d="M12 9V3"></path></g></svg>
+                          </salla-cart-summary>
+                        </button>
                       {% endif %}
                   </div>
               </div>
-            <div class="hidden lg:flex xl:hidden justify-center border-t border-darker">{% include 'components.header.header_catlink'%}</div>
-            <div class="header-search flex md:hidden border-t border-darker relative py-2">
-                <salla-search inline height="36" class="w-full z-0 [&_input]:!border-darker [&_svg]:fill-darker [&_input]:placeholder:!border-darker"></salla-search>
-                <button onclick="salla.event.dispatch('search::open')" class="flex absolute w-full h-full bg-transparent z-1" title="search" aria-label="search"></button>
             </div>
           </div>
-      </div>
-  </div>
+        </div>
+        <div class="bg-white header-search flex md:hidden border-t border-gray-200 relative py-2">
+            <salla-search inline height="36" class="w-11/12 mx-auto z-0 [&_input]:!border-darker [&_svg]:fill-darker [&_input]:placeholder:!border-darker"></salla-search>
+        </div>
+        <div class="bg-white hidden md:flex justify-center border-t border-gray-200">
+          <custom-main-menu></custom-main-menu>
+        </div>
   {% include 'components.header.header_feature'%}
 </header>
 {% if store.scope %}

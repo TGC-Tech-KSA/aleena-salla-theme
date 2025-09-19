@@ -1,3 +1,17 @@
+.s-user-menu-trigger{
+  @apply py-0 md:py-2.5;
+}
+
+.s-search-input{
+  border-radius: 10px;
+}
+
+.s-cart-summary-count {
+  width: 1rem;
+  height: 1rem;
+  font-size: 10px !important;
+  font-weight: 300;
+}
 
 /* Top Nav */
 .top-navbar {
@@ -63,6 +77,8 @@
 
 /* Main Nav */
 .main-nav-container {
+  @apply min-h-[49px] lg:min-h-[70px];
+
   // Custom background Color
   .has-bg &,
   .has-bg & .sub-menu{
@@ -144,7 +160,7 @@
   @apply items-center flex my-2 lg:my-0;
 
   img {
-    @apply w-auto max-h-12 max-w-[100px] xs:max-w-[170px];
+    @apply w-auto max-w-[95px];
   }
 }
 

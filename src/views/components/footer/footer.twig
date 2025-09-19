@@ -18,8 +18,8 @@
                     <p class="text-xs md:text-sm mb-2.5 lg:mb-3.5 font-medium"> {{ trans('blocks.common.cancelAtAnyTime') }} </p></div>
                     <form action="{{ newsletter_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate class="w-full validate ">
                       <div class="flex flex-col w-full justify-center gap-4">
-                        <input type="email" value="" name="EMAIL" class="required email form-input !bg-transparent border !h-[50px] w-full md:rtl:ml-2.5 mx-0 md:ltr:mr-2.5 p-4 text-sm mb-2.5 md:mb-0 !rounded-none placeholder:text-[16px]" placeholder="{{ trans('common.elements.email') }}" required name="email" />
-                        <salla-button type="submit" loader-position="center" class="!h-[50px]">
+                        <input type="email" value="" name="EMAIL" class="required email form-input !bg-white border !h-[50px] w-full md:rtl:ml-2.5 mx-0 md:ltr:mr-2.5 p-4 text-sm mb-2.5 md:mb-0 !rounded-none placeholder:text-[16px]" placeholder="{{ trans('common.elements.email') }}" required name="email" />
+                        <salla-button type="submit" loader-position="center" class="!h-[50px] !rounded-sm">
                           <span class="btn__text">{{trans('blocks.common.subscribeNow')}}</span>
                         </salla-button>
                       </div>
@@ -32,16 +32,16 @@
               <div class="block md:hidden">
                   <div class="accordion cursor-pointer group">
                       <span class="accordion-title flex justify-start items-center gap-4 py-3">
-                          <i class="sicon-add icone"></i>
-                          <strong class="block text-base">{{ theme.settings.get('newsletter_title') }}</strong>
+                        <strong class="block text-base w-full">{{ theme.settings.get('newsletter_title') }}</strong>
+                        <i class="sicon-add icone"></i>
                       </span>
                   </div>
                   <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
                         <p class="text-xs md:text-sm mb-2.5 lg:mb-3.5 font-medium p-3"> {{ trans('blocks.common.cancelAtAnyTime') }} </p>
                         <form action="{{ newsletter_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate class="w-full validate p-3">
                           <div class="flex flex-col w-full justify-center gap-4">
-                            <input type="email" value="" name="EMAIL" class="required email form-input !bg-transparent border !h-[50px] w-full md:rtl:ml-2.5 mx-0 md:ltr:mr-2.5 p-4 text-sm mb-2.5 md:mb-0 !rounded-none placeholder:text-[16px]" placeholder="{{ trans('common.elements.email') }}" required name="email" />
-                            <salla-button type="submit" loader-position="center" class="!h-[50px]">
+                            <input type="email" value="" name="EMAIL" class="required email form-input bg-white border !h-[50px] w-full md:rtl:ml-2.5 mx-0 md:ltr:mr-2.5 p-4 text-sm mb-2.5 md:mb-0 !rounded-none placeholder:text-[16px]" placeholder="{{ trans('common.elements.email') }}" required name="email" />
+                            <salla-button type="submit" loader-position="center" class="!h-[50px] !rounded-sm">
                               <span class="btn__text">{{trans('blocks.common.subscribeNow')}}</span>
                             </salla-button>
                           </div>
@@ -70,8 +70,8 @@
           <div class="block md:hidden">
               <div class="accordion cursor-pointer group">
                   <span class="accordion-title flex justify-start items-center gap-4 py-3">
-                      <i class="sicon-add icone"></i>
-                      <strong class="block text-base">{{ trans('common.titles.profile') }}</strong>
+                    <strong class="block text-base w-full">{{ trans('common.titles.profile') }}</strong>
+                    <i class="sicon-add icone"></i>
                   </span>
               </div>
               <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
@@ -89,7 +89,7 @@
       <div class="lg:col-span-2">
         {% if customer or commercial %}
         <div class="hidden md:block">
-        <strong class="block text-base">{{ trans('blocks.footer.help') }}</strong>
+        <strong class="block text-base w-full">{{ trans('blocks.footer.help') }}</strong>
         {% if customer %}
         <h3>{{customer_title}}</h3>
         <ul class="data_list mb-4" style="margin-inline-start: 2em;">
@@ -118,8 +118,8 @@
           <div class="block md:hidden">
               <div class="accordion cursor-pointer group">
                   <span class="accordion-title flex justify-start items-center gap-4 py-3">
-                      <i class="sicon-add icone"></i>
-                      <strong class="block text-base">{{ trans('blocks.footer.help') }}</strong>
+                    <strong class="block text-base w-full">{{ trans('blocks.footer.help') }}</strong>
+                    <i class="sicon-add icone"></i>
                   </span>
               </div>
               <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
@@ -176,7 +176,7 @@
 <div class="hidden">
   <custom-navigation-cart></custom-navigation-cart>
 </div>
-<aside class="neyam-cart-aside fixed top-0 rtl:right-0 ltr:left-0 h-screen w-full md:w-[34rem] bg-white shadow-lg transform rtl:translate-x-full ltr:-translate-x-full transition-transform duration-300 z-[70] group">
+<aside class="aleena-cart-aside fixed top-0 rtl:right-0 ltr:left-0 h-screen w-full md:w-[34rem] bg-white shadow-lg transform rtl:translate-x-full ltr:-translate-x-full transition-transform duration-300 z-[70] group">
   <div class="fixed close-cart-button opacity-0 group-[.show]:opacity-100 group-[.show]:w-screen group-[.show]:h-screen group-[.show]:rtl:right-[34rem] group-[.show]:ltr:left-[34rem] bg-black/60 -z-1"></div>
   <div class="flex flex-col h-full">
     {# Header #}
@@ -195,29 +195,29 @@
 </aside>
 <style>
 
-  .neyam-cart-aside {
+  .aleena-cart-aside {
     @apply shadow-xl;
   }
 
   /* RTL specific styles */
-  html[dir="rtl"] .neyam-cart-aside {
+  html[dir="rtl"] .aleena-cart-aside {
     right: 0;
     left: auto;
     transform: translateX(100%);
   }
 
-  html[dir="rtl"] .neyam-cart-aside.show {
+  html[dir="rtl"] .aleena-cart-aside.show {
     transform: translateX(0);
   }
 
   /* LTR specific styles */
-  html[dir="ltr"] .neyam-cart-aside {
+  html[dir="ltr"] .aleena-cart-aside {
     left: auto;
     right: 0;
     transform: translateX(100%);
   }
 
-  html[dir="ltr"] .neyam-cart-aside.show {
+  html[dir="ltr"] .aleena-cart-aside.show {
     transform: translateX(0);
   }
   .cart_items_aside::-webkit-scrollbar {

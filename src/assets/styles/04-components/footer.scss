@@ -47,3 +47,8 @@
 .copyright-text p{
   @apply text-gray-700;
 }
+
+
+salla-user-menu.footer-user-menu ul.s-user-menu-inline li.s-user-menu-dropdown-item a {
+  padding-right: 0 !important;
+}

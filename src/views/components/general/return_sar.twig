@@ -72,14 +72,14 @@
   <div class="panel overflow-hidden transition-all duration-700 mb-1 max-h-0">
     <div class="s-block-tabs my-5" id="{{ component_id }}">
 
-      <div class="tabs hide-scroll">
+      <div class="tabs hide-scroll justify-center">
           {% if return_sar %}
-          <salla-button class="tab-trigger is-active text-sm font-bold" data-target="return_sar_data" data-component-id="{{ component_id }}" fill="outline">
+          <salla-button class="tab-trigger !w-full is-active !text-sm font-bold" data-target="return_sar_data" data-component-id="{{ component_id }}" fill="outline">
             {{ trans('blocks.product.returnSar') }}
           </salla-button>
           {% endif %}
           {% if return_theworld %}
-          <salla-button class="tab-trigger {{ return_sar ? '' : 'is-active text-sm font-bold' }}" data-target="return_theworld_data" data-component-id="{{ component_id }}" fill="outline">
+          <salla-button class="tab-trigger !w-full !text-sm {{ return_sar ? '' : 'is-active font-bold' }}" data-target="return_theworld_data" data-component-id="{{ component_id }}" fill="outline">
             {{ trans('blocks.product.returnTheworld') }}
           </salla-button>
           {% endif %}
@@ -88,7 +88,7 @@
 
       </div>
 
-      <div class="tabs-wrapper py-4">
+      <div class="tabs-wrapper py-4 px-8">
         {% if return_sar %}
             <div id="return_sar_data" class="tabs__item is-active">
                  <ul class="data_list mb-4" style="margin-inline-start: 2em;">
@@ -137,14 +137,14 @@
                 {% if pointtheworld_title is iterable %}
                     {% set pointtheworld_title = pointtheworld_title[user.language.code] | default(pointtheworld_title | first) %}
                 {% endif %}
-                <li>{{pointtheworld_title}}</li>
+                <li class="text-sm">{{pointtheworld_title}}</li>
               {% endfor %}
               </ul>
                 {% if theworld_description is iterable %}
                     {% set theworld_description = theworld_description[user.language.code] | default(theworld_description | first) %}
                 {% endif %}
               {% if theworld_description %}
-                <p class="mb-4">{{theworld_description}}</p>
+                <p class="mb-4 text-sm">{{theworld_description}}</p>
               {% endif %}
               <div class="table-container">
                   <table class="table text-[12px]">
@@ -183,6 +183,7 @@
 <style>
   .table-container {
     width: 100%;
+    border-top: 1px solid #be7f7f;
     overflow-x: auto; /* يسمح بتمرير الجدول أفقياً على الجوال */
 }
 

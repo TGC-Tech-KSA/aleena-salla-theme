@@ -181,7 +181,7 @@ class NavCartMenu extends HTMLElement {
 
         // Function to close cart
         const closeCart = () => {
-            const cartAside = document.querySelector('.neyam-cart-aside');
+            const cartAside = document.querySelector('.aleena-cart-aside');
             cartAside?.classList.remove('show');
             backdrop.classList.remove('show');
             backdrop.classList.add('hidden');
@@ -191,7 +191,7 @@ class NavCartMenu extends HTMLElement {
         // Add click event to close cart when backdrop is clicked
         backdrop.addEventListener('click', closeCart);
 
-        const closeButtons = document.querySelectorAll('.neyam-cart-aside .close-cart-button');
+        const closeButtons = document.querySelectorAll('.aleena-cart-aside .close-cart-button');
         if (closeButtons.length > 0) {
             closeButtons.forEach(button => {
                 button.addEventListener('click', closeCart);
@@ -199,11 +199,11 @@ class NavCartMenu extends HTMLElement {
         }
 
         // Update the cart open logic
-        const cartToggles = document.querySelectorAll('[onclick*="neyam-cart-aside"]');
+        const cartToggles = document.querySelectorAll('[onclick*="aleena-cart-aside"]');
         cartToggles.forEach(toggle => {
             toggle.onclick = (e) => {
                 e.preventDefault();
-                const cartAside = document.querySelector('.neyam-cart-aside');
+                const cartAside = document.querySelector('.aleena-cart-aside');
                 cartAside.classList.add('show');
                 backdrop.classList.remove('hidden');
                 backdrop.classList.add('show');
@@ -223,7 +223,7 @@ class NavCartMenu extends HTMLElement {
                 pointer-events: auto;
             }
 
-            .neyam-cart-aside {
+            .aleena-cart-aside {
                 z-index: 70;
             }
         `;
@@ -259,7 +259,7 @@ class NavCartMenu extends HTMLElement {
 
     updateCartItems(cart) {
         const coupon = document.getElementById('coupon-input')?.value || '';
-        const cartContainer = document.querySelector('.neyam-cart-aside .flex-1.overflow-y-auto');
+        const cartContainer = document.querySelector('.aleena-cart-aside .flex-1.overflow-y-auto');
         if (!cartContainer) return;
 
         // Get user's currency
@@ -316,7 +316,7 @@ class NavCartMenu extends HTMLElement {
                 return `
                     <div class="relative mb-4">
                         <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-${item.id}" class="p-4">
-                            <section class="cart-item border border-gray-200 bg-[var(--store-product-bg)] p-2 rounded-md relative">
+                            <section class="cart-item bg-[var(--store-product-bg)] relative">
                                 <input type="hidden" name="id" value="${item.id
                     }">
                                 <div class="flex flex-col space-y-4">
@@ -324,7 +324,7 @@ class NavCartMenu extends HTMLElement {
                                         <a href="${item.url}" class="shrink-0">
                                             <img src="${item.product_image}"
                                                  alt="${item.product_name}"
-                                                 class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                 class="flex-none w-24 h-auto object-center object-contain">
                                         </a>
                                         <div class="flex-1 space-y-1">
                                             <div class="text-gray-900 leading-6 text-xs flex justify-between items-center gap-3">
@@ -359,45 +359,32 @@ class NavCartMenu extends HTMLElement {
                                         ${item.type === 'donating' ? '<span></span>' : item.is_hidden_quantity ? `<input type="hidden" value="${item.quantity}" name="quantity" aria-label="Quantity"/>
                                           <span class="w-10 text-center">${item.quantity}</span>`
                         : `<div class="flex items-center">
-                                                    ${optionsInputs}
-                                                    <salla-quantity-input cart-item-id="${item.id}"
-                                                        max="${item.max_quantity}"
-                                                        class="transtion transition-color duration-300"
-                                                        aria-label="Quantity"
-                                                        value="${item.quantity}"
-                                                        name="quantity">
-                                                    </salla-quantity-input>
-                                                </div>`
+                            ${optionsInputs}
+                            <salla-quantity-input cart-item-id="${item.id}"
+                                max="${item.max_quantity}"
+                                class="transtion transition-color duration-300"
+                                aria-label="Quantity"
+                                value="${item.quantity}"
+                                name="quantity">
+                            </salla-quantity-input>
+                        </div>`
                     }
-
-                                        <p class="text-darker flex-none font-bold text-sm">
-                                            <span>${salla.lang.get(
-                        'common.total'
-                    )}:</span>
-                                            <span class="inline-block item-total">${item.is_available
-                        ? formatPrice(item.total)
-                        : salla.lang.get(
-                            'common.out_of_stock'
-                        )
-                    }</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <span class="absolute top-1.5 rtl:left-1.5 ltr:right-1.5">
-                                    <button type="button"
-                                            class="btn--delete inline-flex justify-center items-center w-8 h-8 rounded-full bg-red-400 transition-all duration-200"
-                                            aria-label="Remove from the cart"
-                                            onclick="event.preventDefault(); salla.cart.deleteItem(${item.id
-                    })">
-                                        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.96057 3.36421C6.2098 2.67157 6.88232 2.17676 7.67094 2.17676C8.45957 2.17676 9.13209 2.67157 9.38132 3.36421C9.49257 3.67338 9.83791 3.83543 10.1527 3.72615C10.4674 3.61687 10.6324 3.27765 10.5211 2.96848C10.1065 1.81622 8.98783 0.989258 7.67094 0.989258C6.35406 0.989258 5.23535 1.81622 4.82074 2.96848C4.70949 3.27765 4.87446 3.61687 5.18922 3.72615C5.50398 3.83543 5.84932 3.67338 5.96057 3.36421Z" fill="#fff"/>
-                                            <path d="M0.21582 4.74967C0.21582 4.42176 0.48645 4.15592 0.820288 4.15592H14.5216C14.8555 4.15592 15.1261 4.42176 15.1261 4.74967C15.1261 5.07759 14.8555 5.34342 14.5216 5.34342H0.820288C0.48645 5.34342 0.21582 5.07759 0.21582 4.74967Z" fill="#fff"/>
-                                            <path d="M2.1234 6.1364C2.4565 6.11459 2.74454 6.36215 2.76674 6.68934L3.13743 12.1511C3.20985 13.2182 3.26146 13.9606 3.37475 14.5192C3.48464 15.0611 3.63804 15.3479 3.8584 15.5504C4.07876 15.7529 4.38032 15.8842 4.93804 15.9559C5.51301 16.0297 6.27061 16.0309 7.35934 16.0309H7.98263C9.07135 16.0309 9.82896 16.0297 10.4039 15.9559C10.9617 15.8842 11.2632 15.7529 11.4836 15.5504C11.7039 15.3479 11.8573 15.0611 11.9672 14.5192C12.0805 13.9606 12.1321 13.2182 12.2045 12.1511L12.5752 6.68934C12.5974 6.36215 12.8855 6.11459 13.2186 6.1364C13.5517 6.15822 13.8037 6.44114 13.7815 6.76833L13.408 12.2718C13.3391 13.2873 13.2834 14.1076 13.1529 14.7513C13.0171 15.4205 12.7863 15.9794 12.3095 16.4176C11.8327 16.8558 11.2495 17.0448 10.5607 17.1333C9.8982 17.2185 9.06126 17.2184 8.02513 17.2184H7.31683C6.2807 17.2184 5.44376 17.2185 4.78124 17.1333C4.09242 17.0448 3.50928 16.8558 3.03248 16.4176C2.55568 15.9794 2.32483 15.4205 2.18911 14.7513C2.05857 14.1076 2.00291 13.2873 1.934 12.2718L1.56048 6.76833C1.53828 6.44114 1.79031 6.15822 2.1234 6.1364Z" fill="#fff"/>
-                                        </svg>
-                                    </button>
-                                </span>
-                            </section>
-                        </form>
+                    </div>
+                </div>
+                <span class="absolute bottom-1.5 rtl:left-1.5 ltr:right-1.5">
+                    <salla-button size="small" shape="icon" width="normal" color="danger" type="button"
+                            class="btn--delete inline-flex justify-center items-center"
+                            aria-label="Remove from the cart"
+                            onclick="event.preventDefault(); salla.cart.deleteItem('${item.id}')">
+                        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.96057 3.36421C6.2098 2.67157 6.88232 2.17676 7.67094 2.17676C8.45957 2.17676 9.13209 2.67157 9.38132 3.36421C9.49257 3.67338 9.83791 3.83543 10.1527 3.72615C10.4674 3.61687 10.6324 3.27765 10.5211 2.96848C10.1065 1.81622 8.98783 0.989258 7.67094 0.989258C6.35406 0.989258 5.23535 1.81622 4.82074 2.96848C4.70949 3.27765 4.87446 3.61687 5.18922 3.72615C5.50398 3.83543 5.84932 3.67338 5.96057 3.36421Z" fill="#fff"/>
+                            <path d="M0.21582 4.74967C0.21582 4.42176 0.48645 4.15592 0.820288 4.15592H14.5216C14.8555 4.15592 15.1261 4.42176 15.1261 4.74967C15.1261 5.07759 14.8555 5.34342 14.5216 5.34342H0.820288C0.48645 5.34342 0.21582 5.07759 0.21582 4.74967Z" fill="#fff"/>
+                            <path d="M2.1234 6.1364C2.4565 6.11459 2.74454 6.36215 2.76674 6.68934L3.13743 12.1511C3.20985 13.2182 3.26146 13.9606 3.37475 14.5192C3.48464 15.0611 3.63804 15.3479 3.8584 15.5504C4.07876 15.7529 4.38032 15.8842 4.93804 15.9559C5.51301 16.0297 6.27061 16.0309 7.35934 16.0309H7.98263C9.07135 16.0309 9.82896 16.0297 10.4039 15.9559C10.9617 15.8842 11.2632 15.7529 11.4836 15.5504C11.7039 15.3479 11.8573 15.0611 11.9672 14.5192C12.0805 13.9606 12.1321 13.2182 12.2045 12.1511L12.5752 6.68934C12.5974 6.36215 12.8855 6.11459 13.2186 6.1364C13.5517 6.15822 13.8037 6.44114 13.7815 6.76833L13.408 12.2718C13.3391 13.2873 13.2834 14.1076 13.1529 14.7513C13.0171 15.4205 12.7863 15.9794 12.3095 16.4176C11.8327 16.8558 11.2495 17.0448 10.5607 17.1333C9.8982 17.2185 9.06126 17.2184 8.02513 17.2184H7.31683C6.2807 17.2184 5.44376 17.2185 4.78124 17.1333C4.09242 17.0448 3.50928 16.8558 3.03248 16.4176C2.55568 15.9794 2.32483 15.4205 2.18911 14.7513C2.05857 14.1076 2.00291 13.2873 1.934 12.2718L1.56048 6.76833C1.53828 6.44114 1.79031 6.15822 2.1234 6.1364Z" fill="#fff"/>
+                        </svg>
+                    </salla-button>
+                </span>
+            </section>
+        </form>
                 `;
             }).join('');
 

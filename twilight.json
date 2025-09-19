@@ -115,9 +115,136 @@
             "format": "switch"
         },
         {
+            "id": "page_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون الصفحة",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false
+        },
+        {
             "type": "static",
             "id": "static-line1",
             "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label-loader-options",
+            "value": "<div class='rounded-lg' style='background-color: #0e0f0f; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px; color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات شاشة التحميل </div>",
+            "variant": "h6"
+        },
+        {
+            "type": "boolean",
+            "id": "is_loader_enabled",
+            "label": "عرض شاشة التحميل",
+            "format": "switch",
+            "value": true,
+            "required": false,
+            "selected": false,
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
+        },
+        {
+            "id": "loader_bg_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية شاشة التحميل",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "is_loader_enabled",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "loader_logo",
+            "type": "string",
+            "format": "image",
+            "label": "لوقو شاشة التحميل",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": null,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "is_loader_enabled",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "type": "boolean",
+            "id": "is_pulse_logo",
+            "label": "إضافة أنيميشن لللوقو",
+            "format": "switch",
+            "value": false,
+            "required": false,
+            "selected": false,
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+            "conditions": [
+                {
+                    "id": "is_loader_enabled",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "loader_duration",
+            "type": "number",
+            "format": "integer",
+            "inputType": "number",
+            "label": "مدة شاشة التحميل (بالثواني)",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "أدخل رقم مابين 1 إلى 10",
+            "icon": "sicon-clock",
+            "value": 3,
+            "required": false,
+            "minimum": "1",
+            "maximum": "10",
+            "conditions": [
+                {
+                    "id": "is_loader_enabled",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "loader_logo_width",
+            "type": "number",
+            "format": "integer",
+            "inputType": "number",
+            "label": "عرض لوقو شاشة التحميل (بالبكسل)",
+            "description": "سيتم تعديل الارتفاع تلقائياً للحفاظ على تناسق الصورة",
+            "placeholder": "أدخل رقم مابين 10 إلى 500",
+            "icon": "sicon-width",
+            "value": 120,
+            "required": false,
+            "minimum": "10",
+            "maximum": "500",
+            "conditions": [
+                {
+                    "id": "is_loader_enabled",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
         },
         {
             "type": "static",
@@ -138,76 +265,16 @@
             "selected": true
         },
         {
+            "id": "hide_ad_icon",
+            "label": "اخفاء ايقونة الاعلان",
+            "description": "سوف يتم إخفاء الأيقونة لجميع الإعلانات",
             "type": "boolean",
             "icon": "sicon-toggle-off",
-            "label": "عرض قائمة روابط سريعة الهيدر",
-            "description": "يتم اظهار الروابط داخل الهيدر في شاشات الديسك توب",
-            "id": "show_header_catlink",
             "format": "switch",
             "required": false,
-            "value": false,
-            "selected": false,
+            "value": true,
+            "selected": true,
             "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center"
-        },
-        {
-            "id": "header_catlink",
-            "type": "collection",
-            "format": "collection",
-            "required": false,
-            "minLength": 1,
-            "maxLength": 6,
-            "label": null,
-            "item_label": "الرابط",
-            "value": [],
-            "fields": [
-                {
-                    "id": "catlink_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "نص الرابط",
-                    "description": "لإخفاء الرابط اترك النص فارغاً ",
-                    "labelHTML": null,
-                    "placeholder": "أدخل النص المناسب",
-                    "icon": "sicon-format-text-alt",
-                    "value": "عرض الكل",
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": 2,
-                    "maxLength": 30
-                },
-                {
-                    "id": "catlink_url",
-                    "type": "string",
-                    "format": "url",
-                    "inputType": "url",
-                    "label": "ادخل الرابط",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "e.g. https://salla.sa",
-                    "icon": "sicon-link",
-                    "value": null,
-                    "required": false,
-                    "minLength": 0,
-                    "maxLength": "350"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-toggle-off",
-                    "label": "لون نص الرابط",
-                    "description": null,
-                    "id": "catlink_text_color",
-                    "format": "color",
-                    "required": false,
-                    "value": "#000000"
-                }
-            ],
-            "conditions": [
-                {
-                    "id": "show_header_catlink",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
         },
         {
             "type": "boolean",
@@ -255,6 +322,18 @@
                     "placeholder": "أدخل عنوان الميزة هنا...",
                     "minLength": 0,
                     "maxLength": 50
+                },
+                {
+                    "id": "header_feature.code_icon",
+                    "type": "string",
+                    "format": "code",
+                    "label": "أيقونة SVG مخصصة",
+                    "description": "عند استخدام هذا الحقل سوف يتم تبديله بالايقونة المختارة",
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-browser-code",
+                    "value": null,
+                    "required": false
                 }
             ],
             "conditions": [
@@ -517,6 +596,30 @@
             "selected": true
         },
         {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "اظهار رقم الموديل",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+            "description": null,
+            "id": "show_product_sku",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "اظهار العنوان الفرعي",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+            "description": null,
+            "id": "show_product_subtitle",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
             "id": "slider_background_size",
             "type": "items",
             "format": "dropdown-list",
@@ -577,6 +680,84 @@
             "conditions": [
                 {
                     "id": "promotional_advertisement",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "promotional_advertisement_bg_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الإعلان الترويجي في صفحة المنتج",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#f8e8e5",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+
+        },
+        {
+            "id": "promotional_advertisement_text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون النص للإعلان الترويجي في صفحة المنتج",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#000000",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "اضافة أيقونة SVG مخصصة للإعلان الترويجي في صفحة المنتج",
+            "class": "rounded-lg text-primary border hover:bg-gray-50 p-4 items-center",
+            "description": null,
+            "id": "promotional_advertisement_custom_icon",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "promotional_advertisement_icon_code",
+            "type": "string",
+            "format": "code",
+            "label": "svg icon للأختيار",
+            "description": "تستطيع اختيار صورة أو أيقونة SVG للأختيار",
+            "labelHTML": null,
+            "placeholder": null,
+            "icon": "sicon-browser-code",
+            "value": null,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "promotional_advertisement_custom_icon",
                     "operation": "=",
                     "value": true
                 }

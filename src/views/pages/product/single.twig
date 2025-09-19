@@ -89,49 +89,48 @@
     <div class="container">
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
-        <nav class="breadcrumbs w-full py-5 flex justify-between items-center">
-            <salla-breadcrumb></salla-breadcrumb>
+        <nav class="breadcrumbs w-full pb-4 pt-5 flex justify-between items-center">
+            <salla-breadcrumb class="scale-75 rtl:pr-2 ltr:pl-2 !font-light"></salla-breadcrumb>
 
-
-                <div catId="{{ product.category.id }}" productId="{{product.id}}" class="go-to-product-by-arrows flex items-center gap-3 text-xl relative">
-                                {% for n in 0..1 %}
-                                    <div class="{{loop.index == 1 ? 'prev' : 'next'}}-product group">
-                                        {% if user.language.dir == 'ltr'%}
-                                            <a href="#" data-target="product-{{product.id}}-{{loop.index}}" data-event-in="mouseover" data-event-leave="mouseout" class="general-effect text-xs">
-                                                {% if loop.index == 1 %}
-                                                <i class="sicon-caret-{{loop.index == 1 ? 'left' : 'right'}}"></i>
-                                                {{ trans('blocks.product.Previous') }}
-                                                {% else %}
-                                                {{ trans('blocks.product.Next') }}
-                                                <i class="sicon-caret-{{loop.index == 1 ? 'left' : 'right'}}"></i>
-                                                {% endif %}
-                                            </a>
-                                        {% else %}
-                                            <a href="#" data-target="product-{{product.id}}-{{loop.index}}" data-event-in="mouseover" data-event-leave="mouseout" class="general-effect text-xs">
-                                                {% if loop.index == 1 %}
-                                                <i class="sicon-caret-{{loop.index == 1 ? 'right' : 'left'}}"></i>
-                                                {{ trans('blocks.product.Previous') }}
-                                                {% else %}
-                                                {{ trans('blocks.product.Next') }}
-                                                <i class="sicon-caret-{{loop.index == 1 ? 'right' : 'left'}}"></i>
-                                                {% endif %}
-                                            </a>
-                                        {% endif %}
-                                        <a href="#" id="product-{{product.id}}-{{loop.index}}" class="absolute w-60 flex items-center justify-between transition-all duration-300 opacity-0 translate-y-3 gap-2.5 border border-gray-100 shadow-[0_0_10px_#726e6e17] ltr:right-2 rtl:left-2 bg-white rounded-[8px] p-1 z-10">
-                                            <div class="w-36 h-20 rounded-md overflow-hidden">
-                                                <img class="product-image w-full h-full object-cover object-top" src="{{product.image.url}}" />
-                                            </div>
-                                            <div class="flex flex-col gap-.5 w-full">
-                                                <span class="product-name text-xxs font-normal line-clamp-2 leading-[normal]">{{product.name}}</span>
-                                                <span class="product-price text-sm uppercase font-normal">{{product.price|money}}</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                {% endfor %}
-                            <div>
+            <div catId="{{ product.category.id }}" productId="{{product.id}}" class="go-to-product-by-arrows flex items-center gap-3 text-xl relative">
+                {% for n in 0..1 %}
+                    <div class="{{loop.index == 1 ? 'prev' : 'next'}}-product group">
+                        {% if user.language.dir == 'ltr'%}
+                            <a href="#" data-target="product-{{product.id}}-{{loop.index}}" data-event-in="mouseover" data-event-leave="mouseout" class="general-effect text-xs">
+                                {% if loop.index == 1 %}
+                                <i class="sicon-caret-{{loop.index == 1 ? 'left' : 'right'}}"></i>
+                                {{ trans('blocks.product.Previous') }}
+                                {% else %}
+                                {{ trans('blocks.product.Next') }}
+                                <i class="sicon-caret-{{loop.index == 1 ? 'left' : 'right'}}"></i>
+                                {% endif %}
+                            </a>
+                        {% else %}
+                            <a href="#" data-target="product-{{product.id}}-{{loop.index}}" data-event-in="mouseover" data-event-leave="mouseout" class="general-effect text-xs">
+                                {% if loop.index == 1 %}
+                                <i class="sicon-caret-{{loop.index == 1 ? 'right' : 'left'}}"></i>
+                                {{ trans('blocks.product.Previous') }}
+                                {% else %}
+                                {{ trans('blocks.product.Next') }}
+                                <i class="sicon-caret-{{loop.index == 1 ? 'right' : 'left'}}"></i>
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                        <a href="#" id="product-{{product.id}}-{{loop.index}}" class="absolute w-60 flex items-center justify-between transition-all duration-300 opacity-0 translate-y-3 gap-2.5 border border-gray-100 shadow-[0_0_10px_#726e6e17] ltr:right-2 rtl:left-2 bg-white rounded-[8px] p-1 z-10">
+                            <div class="w-36 h-20 rounded-md overflow-hidden">
+                                <img class="product-image w-full h-full object-cover object-top" src="{{product.image.url}}" />
+                            </div>
+                            <div class="flex flex-col gap-.5 w-full">
+                                <span class="product-name text-xxs font-normal line-clamp-2 leading-[normal]">{{product.name}}</span>
+                                <span class="product-price text-sm uppercase font-normal">{{product.price|money}}</span>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            <div>
         </nav>
-        <div class="flex flex-col items-start md:flex-row md:justify-center md:gap-8" id="product-{{ product.id }}">
-            <div class="sidebar w-full md:!w-[45%] pb-8 md:pb-16 overflow-hidden shrink-0">
+        <div class="flex flex-col items-start md:flex-row md:justify-center md:gap-11" id="product-{{ product.id }}">
+            <div class="sidebar w-full md:!w-[40%] pb-8 md:pb-16 overflow-hidden shrink-0">
                 {% set has_many_images = product.images|length > 1 %}
                 <salla-slider id="details-slider-{{ product.id }}" class="details-slider rounded-md image-slider [&_.swiper-slide-thumb-active]:border-dark " type="thumbs" loop="false" auto-height listen-to-thumbnails-option show-thumbs-controls="false">
                     {% if product.promotion_title %}
@@ -171,7 +170,7 @@
                     {% if has_many_images %}
                         <div slot="thumbs">
                             {% for image in product.images %}
-                                <div class="!w-14 !h-auto !mx-1 !rounded-none after:!hidden border-b-[3px] border-transparent {{ image.video_url?'video-entry':'' }} {{ image.three_d_image_url?'model-entry':'' }} {% if image.video_url %} data-video-src {% endif %}">
+                                <div class="!w-14 !h-auto !mx-0.5 !rounded-none after:!hidden border-b-[3px] border-transparent {{ image.video_url?'video-entry':'' }} {{ image.three_d_image_url?'model-entry':'' }} {% if image.video_url %} data-video-src {% endif %}">
                                     {% if loop.index < 5 %}
                                         <img src="{{ image.url }}" loading="eager" class="object-cover w-full h-full bg-gray-100 overflow-hidden" title="{{ image.alt }}" alt="{{ image.alt }}"/>
                                     {% else %}
@@ -184,7 +183,7 @@
                 </salla-slider>
             </div>
 
-            <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-[55%] md:max-w-[490px] md:pb-16">
+            <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-[60%] md:max-w-[490px] md:pb-16">
 
                 {% hook 'product:single.description.start' %}
 
@@ -195,20 +194,27 @@
                         </a>
                     </div>
                 {% endif %}
-                <div class="flex justify-between items-start gap-3 mb-6">
-                <h1 class="text-sm md:text-xl leading-[normal] text-dark font-normal ">{{ product.name }}</h1>
-                <div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
-                <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                <h2 class="total-price text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
-                <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
-                </div>
-                <div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-                {% if product.starting_price %}
-                    <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
-                {% endif %}
-                <h2 class="total-price font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
-                </div>
-                </div>
+                    <div class="flex justify-between items-start gap-3 mb-6">
+                        <div class="flex flex-col gap-2">
+                            <h1 class="text-xl leading-[normal] text-dark font-normal max-w-xs">{{ product.name }}</h1>
+                            {% if product.subtitle and theme.settings.get('show_product_subtitle') %}
+                                <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
+                                    {{ product.subtitle }}
+                                </h2>
+                            {% endif %}
+                        </div>
+                        <div class="flex whitespace-nowrap price-wrapper gap-4 items-center rtl:ml-5 ltr:mr-5">
+                            <div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
+                            <h2 class="total-price text-red-800 font-bold text-base inline-block">{{product.sale_price|money}}</h2>
+                            <span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
+                            </div>
+                            <div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+                            {% if product.starting_price %}
+                                <span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
+                            {% endif %}
+                            <h2 class="total-price font-bold text-base inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</h2>
+                        </div>
+                    </div>
                 </div>
                 {% if product.sold_quantity or product.can_show_remained_quantity %}
                 <div class="bg-white py-2.5 mb-5 rounded-md inline-flex text-sm">
@@ -230,7 +236,7 @@
                 <hr class="my-5">
                     {% set return_sar = theme.settings.get('return_sar') %}
                     {% set return_theworld = theme.settings.get('return_theworld') %}
-                    <div class="{{ delivery_details or return_theworld or return_sar ? 'p-3 bg-[#ededed] flex flex-col items-center gap-3 mb-3 rounded m-2' :'' }}">
+                    <div class="{{ delivery_details or return_theworld or return_sar ? 'p-3 bg-[#ededed] flex flex-col items-center gap-3 mb-3 rounded' :'' }}">
                         {% include 'components.general.return_sar' with {is_select_branches:true} %}
                         {% if delivery_details %}
                         <div class="flex items-center gap-3 rounded bg-white p-3 w-full">
@@ -248,18 +254,19 @@
                 {% set title_advertisement = theme.settings.get('title_advertisement') %}
                 {% if promotional_advertisement %}
                 <hr class="my-5">
-                <div class="flex items-center gap-4 bg-[#f8e8e5] rounded-2xl p-4 py-5 w-full text-sm my-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"></path>
-                    </svg>
-                    <span>{{title_advertisement}}</span>
+                <div class="flex items-center gap-4 rounded-3xl p-4 py-5 w-full text-sm my-5"
+                style="background-color: {{ theme.settings.get('promotional_advertisement_bg_color')|default('#f8e8e5') }};"
+                >
+                    {% if theme.settings.get('promotional_advertisement_custom_icon') %}
+                        {{ theme.settings.get('promotional_advertisement_icon_code') }}
+                    {% else %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"></path>
+                        </svg>
+                    {% endif %}
+                    <span style="color: {{ theme.settings.get('promotional_advertisement_text_color')|default('#000000') }};">{{title_advertisement}}</span>
                 </div>
-                {% endif %}
-                {% if product.subtitle %}
-                    <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
-                        {{ product.subtitle }}
-                    </h2>
                 {% endif %}
 
                 {% if product.rating %}
@@ -286,7 +293,7 @@
                 </div> #}
 
 
-                {% if product.sku %}
+                {% if product.sku and theme.settings.get('show_product_sku') %}
                     <div class="mb-4 flex justify-between x-4 py-2">
                         <div class="flex items-center">
                             <i class="sicon-barcode mx-1"></i>
@@ -297,9 +304,8 @@
                 {% endif %}
                 {% hook 'product:single.description' %}
 
-                {# Installment Methods #}
                 {% if product.show_availability %}
-                    <section class="bg-white p-5 rounded-md mb-5 last:mb-0">
+                    <section class="bg-white rounded-md mb-5 last:mb-0">
                         <div class="center-between">
                             <label class="flex items-center text-base">
                                 <span class="sicon-location rtl:ml-1 ltr:mr-1"></span>
@@ -320,16 +326,10 @@
                 <form class="form product-form w-full" id="single-product-form" enctype="multipart/form-data" method="post" onsubmit="return salla.form.onSubmit('cart.addItem', event)" >
                     <input type="hidden" name="id" value="{{ product.id }}">
                     {% hook 'product:single.form.start' %}
-                    {# show options #}
-                <div id="options-panel-trigger" data-show="product-options-panel" class="relative flex justify-between w-full cursor-pointer group mb-4">
-                    <div class="option-item__label w-full">
-                    <div id="options-menu" class="w-full flex divide-y my-2 [&_div]:border-y-transparent [&_div]:border-primary [&_div]:p-2 [&_div]:relative [&_div]:before:absolute [&_div]:before:content-[''] [&_div]:before:rtl:left-0 [&_div]:before:ltr:right-0 [&_div]:before:w-[1px] [&_div]:before:h-1/2 [&_div]:before:top-1/2 [&_div]:before:bg-gray-200 [&_div]:before:-translate-y-1/2 [&_div]:last:before:hidden [&_div]:first:rtl:pr-0 [&_div]:first:ltr:pl-0 [&_div]:flex-wrap"> {# // show options that is selected here #} </div>
-                    </div>
-                </div>
                     {% include 'pages.partials.product.options' %}
 
                     {% hook 'product:single.form.end' %}
-                    <section class="sticky-product-bar bg-white p-5 rounded-md rounded-b-none">
+                    <section class="sticky-product-bar pb-5">
                         {# Quantity #}
                         {% if product.is_hidden_quantity or product.type == 'booking' %}
                             <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
@@ -339,11 +339,11 @@
                                 {{ trans('pages.products.quantity') }}
                                 <div class="out-of-stock min-h-7 leading-7 hidden text-base text-red-600 !opacity-50 font-bold">{{ trans('pages.products.out_of_stock')}}</div>
                                 </label>
-                                <salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity" class="flex [&_.s-quantity-input-container]:gap-3 [&_.s-quantity-input-container]:border-none [&_button]:border [&_input]:border"></salla-quantity-input>
+                                <salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity" class="flex [&_.s-quantity-input-container]:h-12 [&_.s-quantity-input-container]:gap-2.5 [&_.s-quantity-input-container]:border-none [&_button]:border [&_button]:w-12 [&_button]:rounded-[3px] [&_input]:border [&_input]:w-12 [&_input]:rounded-[3px]"></salla-quantity-input>
                             </div>
                         {% endif %}
                         {# Add to cart #}
-                        <salla-add-product-button quick-buy {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} {{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="mt-5 !w-full sticky-product-bar__btn add-product-page !flex-col [&_.s-add-product-button-main]:!flex-col [&_.s-add-product-button-main]:gap-4 [&_salla-button]:!w-full [&_button]:!w-full [&_salla-mini-checkout-widget]:!w-full" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="normal" fill="outline"
+                        <salla-add-product-button quick-buy {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} {{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="mt-5 !w-full sticky-product-bar__btn add-product-page !flex-col [&_.s-add-product-button-main]:!flex-col [&_.s-add-product-button-main]:gap-4 [&_salla-button]:!w-full [&_button]:!w-full [&_button]:py-3 [&_button]:rounded-2xl [&_salla-mini-checkout-widget]:!w-full" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="normal" fill="solid"
                                 {# Notify availability props#}
                                 {% if product.notify_availability %}
                                     {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }}
@@ -392,12 +392,11 @@
     .s-add-product-button-main:not(.w-full) > salla-button {
         width: 100% !important;
     }
-
-.s-product-options-grid-mode input:checked + div {
-    background-color: #000;
-    color: #fff;
-    border-color: var(--color-primary);
-}
+    .s-product-options-grid-mode input:checked + div {
+        background-color: #000;
+        color: #fff;
+        border-color: var(--color-primary);
+    }
 
 </style>
 {% endblock %}

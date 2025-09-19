@@ -17,6 +17,7 @@ module.exports = {
       asset('js/wishlist.js'),
       asset('js/app.js'),
       asset('js/blog.js'),
+      asset('js/partials/slider-arrows.js'),
     ],
     home: asset('js/home.js'),
     'product-card': asset('js/partials/product-card.js'),

@@ -51,8 +51,9 @@ salla-slider{
 }
 
 .promotion-title{
-  @apply absolute z-10 top-4 rtl:right-0 ltr:left-0 font-bold text-sm bg-red-800 text-white rtl:rounded-l-md ltr:rounded-r-md;
-  @apply w-auto m-0 px-3 py-2 #{!important};
+  padding: .5em 1em;
+  @apply absolute z-10 top-4 rtl:right-0 ltr:left-0 font-light text-xs bg-white text-[#5c5c5c] rtl:rounded-l-md ltr:rounded-r-md;
+  @apply w-auto m-0 #{!important};
 }
 
 .home-slider {
@@ -67,6 +68,10 @@ salla-slider{
       }
     }
   }
+}
+
+.s-slider-block__title h2{
+  @apply text-xl md:text-2xl font-normal md:font-light;
 }
 
 // Photos block slider
@@ -227,7 +232,7 @@ model-viewer[style*="width"]:before{
         button{
           @apply m-0 border-none bg-transparent;
           svg{
-            @apply w-9 fill-black hover:fill-black;
+            @apply w-9;
           }
         }
       }
@@ -271,7 +276,7 @@ model-viewer[style*="width"]:before{
         button{
           @apply m-0 border-none bg-transparent shadow-none;
           svg{
-            @apply w-9 fill-black hover:fill-black;
+            @apply w-9;
           }
         }
       }
@@ -288,7 +293,7 @@ model-viewer[style*="width"]:before{
           button{
             @apply m-0 border-none bg-transparent shadow-none #{!important};
             svg{
-              @apply w-9 fill-black hover:fill-black;
+              @apply w-9;
             }
             &.swiper-button-disabled{
               @apply opacity-65;
@@ -303,6 +308,10 @@ model-viewer[style*="width"]:before{
   .s-product-card-image {
       @apply flex-none h-52 lg:h-60 lg:max-h-60 #{!important};
   }
+}
+
+.s-slider-nav-arrow svg{
+  fill: none!important;
 }
 
 .product-slider-fade{
