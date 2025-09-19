@@ -398,8 +398,8 @@ class NavCartMenu extends HTMLElement {
                      <div class="flex gap-2 relative">
                                 <input type="text" id="coupon-input" placeholder="${salla.lang.get(
                 'cart.coupon_placeholder'
-            )}"class="flex-1 px-4 py-4 border focus:outline-none focus:ring-2 focus:ring-primary"/>
-                                <salla-button class="absolute !w-auto ltr:right-2 rtl:left-2 top-1 !rounded-none" onclick="salla.cart.addCoupon(document.getElementById('coupon-input').value)" width="wide" fill="solid" color="primary" loader-position="center">${salla.lang.get(
+            )}"class="flex-1 p-4 border focus:outline-none focus:ring-2 focus:ring-primary"/>
+                                <salla-button class="absolute !w-auto ltr:right-1 rtl:left-1 top-1 !rounded-none" onclick="salla.cart.addCoupon(document.getElementById('coupon-input').value)" width="wide" fill="solid" color="primary" loader-position="center">${salla.lang.get(
                 'cart.apply_coupon'
             )}</salla-button>
                             </div>

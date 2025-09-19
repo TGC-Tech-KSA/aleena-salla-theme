@@ -90,7 +90,7 @@
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         <nav class="breadcrumbs w-full pb-4 pt-5 flex justify-between items-center">
-            <salla-breadcrumb class="scale-75 rtl:pr-2 ltr:pl-2 !font-light"></salla-breadcrumb>
+            <salla-breadcrumb class="rtl:md:pr-14 ltr:md:pl-14 !font-light"></salla-breadcrumb>
 
             <div catId="{{ product.category.id }}" productId="{{product.id}}" class="go-to-product-by-arrows flex items-center gap-3 text-xl relative">
                 {% for n in 0..1 %}

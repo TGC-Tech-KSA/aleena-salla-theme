@@ -748,8 +748,8 @@
             "id": "promotional_advertisement_icon_code",
             "type": "string",
             "format": "code",
-            "label": "svg icon للأختيار",
-            "description": "تستطيع اختيار صورة أو أيقونة SVG للأختيار",
+            "label": "أيقونة SVG مخصصة للإعلان الترويجي في صفحة المنتج",
+            "description": "يرجى مراعاة الحجم واللون للأيقونة داخل الكود",
             "labelHTML": null,
             "placeholder": null,
             "icon": "sicon-browser-code",
@@ -1452,32 +1452,6 @@
             "image": "https://github.com/Ashaheen892/Videos/blob/main/aleena-photo/7.jpg?raw=true",
             "is_default": true,
             "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "with-bg",
-                    "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #ebebeb;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg?v=1.1'></div>",
-                    "conditions": [
-                        {
-                            "id": "merge_with_top_component",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "without-bg",
-                    "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #ebebeb;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/main-links.png?v=1.1'></div>",
-                    "conditions": [
-                        {
-                            "id": "merge_with_top_component",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
                 {
                     "type": "boolean",
                     "icon": "sicon-toggle-off",
@@ -2212,14 +2186,7 @@
             "title": "منتجات متحركة مع فيديو",
             "icon": "sicon-list-play",
             "path": "home.slider-products-cards",
-            "image": "https://github.com/Ashaheen892/Videos/blob/main/aleena-photo/2.jpg?raw=true",
             "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "with-bg",
-                    "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #ebebeb;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1'></div>"
-                },
                 {
                     "id": "background_video",
                     "key": "fe150697-b05a-4766-929a-1115388e03f9",

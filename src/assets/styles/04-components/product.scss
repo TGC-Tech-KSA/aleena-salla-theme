@@ -481,5 +481,9 @@ salla-product-options.aleena-product-page-options.s-product-options-wrapper{
 
 
 salla-breadcrumb .s-breadcrumb-wrapper .s-breadcrumb-item{
-  @apply font-light text-[#5c5c5c];
+  @apply text-xs font-light text-[#5c5c5c];
+}
+
+[dir=rtl] .s-breadcrumb-arrow svg {
+  transform: scaleX(-1);
 }

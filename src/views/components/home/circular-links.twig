@@ -17,10 +17,10 @@
             {% for cat in component.circular_categories %}
                 <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)] hidden md:block">
                     <a href="{{ cat.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
-                        <div class="p-2 md:p-4 overflow-hidden mb-2">
+                        <div class="overflow-hidden mb-2">
                         <div class="lazy lazy__bg !relative rounded-full aspect-square" data-bg="{{ cat.image ? cat.image : store.logo }}" loading="lazy" ></div>
                         </div>
-                        <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ cat.name }}</h2>
+                        <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ cat.name }}</h2>
                     </a>
                 </div>
             {% endfor %}
@@ -28,10 +28,10 @@
                 <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)] block md:hidden">
                     {% for cat in cat_group %}
                         <a href="{{ cat.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
-                            <div class="p-2 md:p-4 overflow-hidden mb-2">
+                            <div class="overflow-hidden mb-2">
                             <div class="lazy lazy__bg !relative rounded-full aspect-square" data-bg="{{ cat.image ? cat.image : store.logo }}" loading="lazy" ></div>
                             </div>
-                            <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ cat.name }}</h2>
+                            <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ cat.name }}</h2>
                         </a>
                     {% endfor %}
                 </div>
@@ -41,10 +41,10 @@
                 {% if link.title %}
                 <div class="swiper-slide w-[calc(100%/3)] lg:w-[calc(100%/5)] xl:w-[calc(100%/8)] hidden md:block">
                     <a href="{{ link.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
-                        <div class="p-2 md:p-4 overflow-hidden mb-2">
+                        <div class="overflow-hidden mb-2">
                         <div class="lazy lazy__bg !relative rounded-full aspect-square" data-bg="{{ link.image_icone }}" loading="lazy" ></div>
                         </div>
-                        <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ link.title }}</h2>
+                        <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ link.title }}</h2>
                     </a>
                 </div>
                 {% endif %}
@@ -54,10 +54,10 @@
                 {% for link in links_group %}
                     {% if link.title %}
                         <a href="{{ link.url }}" class="slide--cat-entry text-center text-[var(--data-color)] block group aleena-anime-item">
-                            <div class="p-2 md:p-4 overflow-hidden mb-2">
+                            <div class="overflow-hidden mb-2">
                                 <div class="lazy lazy__bg !relative rounded-full aspect-square" data-bg="{{ link.image_icone }}" loading="lazy" ></div>
                             </div>
-                            <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item">{{ link.title }}</h2>
+                            <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ link.title }}</h2>
                         </a>
                     {% endif %}
                 {% endfor %}
