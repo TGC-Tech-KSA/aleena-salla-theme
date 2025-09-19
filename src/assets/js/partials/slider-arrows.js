@@ -28,21 +28,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Function to replace breadcrumb arrows
+    function replaceBreadcrumbArrows() {
+        // Find all breadcrumb arrows
+        const breadcrumbArrows = document.querySelectorAll('.s-breadcrumb-arrow');
+        
+        breadcrumbArrows.forEach(arrow => {
+            const svg = arrow.querySelector('svg');
+            if (svg) {
+                const title = svg.querySelector('title');
+                if (title && title.textContent === 'keyboard_arrow_left') {
+                    arrow.innerHTML = rightArrowSVG;
+                }
+            }
+        });
+    }
+
     // Run replacement on page load
     replaceSliderArrows();
-    console.log('replaceSliderArrows');
+    replaceBreadcrumbArrows();
+    console.log('replaceSliderArrows and replaceBreadcrumbArrows');
     
     // Also run when new content is dynamically loaded (for AJAX content)
     const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.addedNodes.length > 0) {
-                // Check if any added nodes contain slider icons
+                // Check if any added nodes contain slider icons or breadcrumb arrows
                 mutation.addedNodes.forEach(function(node) {
                     if (node.nodeType === Node.ELEMENT_NODE) {
-                        if (node.classList && node.classList.contains('s-slider-button-icon')) {
+                        if (node.classList && (node.classList.contains('s-slider-button-icon') || node.classList.contains('s-breadcrumb-arrow'))) {
                             replaceSliderArrows();
-                        } else if (node.querySelector && node.querySelector('.s-slider-button-icon')) {
+                            replaceBreadcrumbArrows();
+                        } else if (node.querySelector && (node.querySelector('.s-slider-button-icon') || node.querySelector('.s-breadcrumb-arrow'))) {
                             replaceSliderArrows();
+                            replaceBreadcrumbArrows();
                         }
                     }
                 });
