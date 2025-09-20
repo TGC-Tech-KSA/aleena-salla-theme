@@ -4,7 +4,7 @@
         "en": "aleena"
     },
     "repository": "https://github.com/TGC-Tech-KSA/aleena-salla-theme",
-    "author_email": "sajispprt@gmail.com",
+    "author_email": "customerservice@shopaleena.com",
     "features": [
         "mega-menu",
         "fonts",
@@ -703,7 +703,6 @@
                     "value": true
                 }
             ]
-
         },
         {
             "id": "promotional_advertisement_text_color",
@@ -723,7 +722,6 @@
                     "value": true
                 }
             ]
-
         },
         {
             "type": "boolean",
@@ -3134,7 +3132,7 @@
             ]
         }
     ],
-    "support_url": "https://s.salla.sa/marketplace/themes/management",
+    "support_url": "https://wa.me/966559255428",
     "description": {
         "ar": null,
         "en": null
