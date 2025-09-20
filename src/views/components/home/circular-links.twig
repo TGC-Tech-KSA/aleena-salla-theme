@@ -20,7 +20,7 @@
                         <div class="overflow-hidden mb-2">
                         <div class="lazy lazy__bg !relative rounded-full aspect-square" data-bg="{{ cat.image ? cat.image : store.logo }}" loading="lazy" ></div>
                         </div>
-                        <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ cat.name }}</h2>
+                        <h2 class="text-xs md:text-sm p-1 pb-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ cat.name }}</h2>
                     </a>
                 </div>
             {% endfor %}
@@ -31,7 +31,7 @@
                             <div class="overflow-hidden mb-2">
                             <div class="lazy lazy__bg !relative rounded-full aspect-square" data-bg="{{ cat.image ? cat.image : store.logo }}" loading="lazy" ></div>
                             </div>
-                            <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ cat.name }}</h2>
+                            <h2 class="text-xs md:text-sm p-1 pb-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ cat.name }}</h2>
                         </a>
                     {% endfor %}
                 </div>
@@ -44,7 +44,7 @@
                         <div class="overflow-hidden mb-2">
                         <div class="lazy lazy__bg !relative rounded-full aspect-square" data-bg="{{ link.image_icone }}" loading="lazy" ></div>
                         </div>
-                        <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ link.title }}</h2>
+                        <h2 class="text-xs md:text-sm p-1 pb-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ link.title }}</h2>
                     </a>
                 </div>
                 {% endif %}
@@ -57,7 +57,7 @@
                             <div class="overflow-hidden mb-2">
                                 <div class="lazy lazy__bg !relative rounded-full aspect-square" data-bg="{{ link.image_icone }}" loading="lazy" ></div>
                             </div>
-                            <h2 class="text-xs md:text-sm p-1 md:p-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ link.title }}</h2>
+                            <h2 class="text-xs md:text-sm p-1 pb-3 bg-[var(--data-bg-cat)] aleena-anime-item font-light">{{ link.title }}</h2>
                         </a>
                     {% endif %}
                 {% endfor %}
@@ -67,3 +67,11 @@
         </div>
     </salla-slider>
 </section>
+
+
+<style>
+    salla-slider#main-links-{{ position }}.carousel-slider .swiper-wrapper>div {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+</style>

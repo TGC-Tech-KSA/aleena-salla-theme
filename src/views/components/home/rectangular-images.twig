@@ -1,17 +1,20 @@
 <section id="rectangular-images-{{ position }}" class="s-block s-block--rectangular-images px-3 lg:px-12 my-5 lg:my-10 overflow-hidden">
   <div class="pb-4 md:pb-8 text-center">
-      <h2 class="text-sm md:text-xl font-bold">{{ component.rectangular_title }}</h2>
+    <h2 class="text-xl md:text-2xl font-light">{{ component.rectangular_title }}</h2>
   </div>
-  <salla-slider type="carousel" class="rectangular-slider" show-controls="false" id="photos-{{ position }}-rectangular">
+  <salla-slider 
+  slides-per-view="auto"
+  slider-config="{&quot;slidesPerView&quot;:2.5, &quot;breakpoints&quot;: {&quot;768&quot;: {&quot;slidesPerView&quot;: 3.5}, &quot;1024&quot;: {&quot;slidesPerView&quot;: 4}, &quot;1280&quot;: {&quot;slidesPerView&quot;: 5.2}}}"
+  type="carousel" class="rectangular-slider" show-controls="false" id="photos-{{ position }}-rectangular">
     <div slot="items">
       {% for item in component.rectangular %}
-      <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6.5)]">
-        <a href="{{item.url}}">
+      <div class="swiper-slide md:min-h-[500px]">
+        <a href="{{item.url}}" class="relative">
           {% if item.video_owner %}
-          <span class="bg-darker text-white text-sm z-1 absolute rtl:right-3 ltr:left-3 bottom-8 p-2 rtl:rounded-tl-2xl ltr:rounded-tr-2xl rtl:rounded-bl-2xl ltr:rounded-br-2xl">{{item.video_owner}}</span>
+          <span class="bg-darker text-white text-sm z-1 absolute rtl:right-0 ltr:left-0 bottom-8 p-2 rtl:rounded-tl-2xl ltr:rounded-tr-2xl rtl:rounded-bl-2xl ltr:rounded-br-2xl">{{item.video_owner}}</span>
           {% endif %}
-          <div class="w-full h-full overflow-hidden aspect-[9/16] rounded-xl">
-              <div class="lazy lazy__bg !relative" data-bg="{{ item.image }}" loading="lazy" ></div>
+          <div class="w-full h-full overflow-hidden rounded-[20px]">
+              <img src="{{ item.image }}" alt="{{ item.image.alt }}" class="w-full h-full object-cover">
           </div>
         </a>
       </div>

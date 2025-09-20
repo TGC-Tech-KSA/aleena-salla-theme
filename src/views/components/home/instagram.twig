@@ -1,6 +1,6 @@
 <section id="instagram-{{ position }}" class="s-block s-block--instagram px-3 lg:px-12 my-5 lg:my-10 overflow-hidden">
   <div class="pb-4 md:pb-8 text-center">
-      <h2 class="text-sm md:text-xl font-bold">{{ component.instagram_title }}</h2>
+      <h2 class="text-xl md:text-2xl font-light">{{ component.instagram_title }}</h2>
   </div>
 
 
@@ -9,14 +9,20 @@
 
 
 
-<salla-slider type="carousel" class="instagram-slider" show-controls="false" id="photos-{{ position }}-instagram">
+<salla-slider
+  slides-per-view="auto"
+  slider-config="{&quot;slidesPerView&quot;:2.5, &quot;breakpoints&quot;: {&quot;768&quot;: {&quot;slidesPerView&quot;: 3.5}, &quot;1024&quot;: {&quot;slidesPerView&quot;: 4}, &quot;1280&quot;: {&quot;slidesPerView&quot;: 5.2}}}"
+  type="carousel" class="instagram-slider" show-controls="false" id="photos-{{ position }}-instagram">
   <div slot="items">
     {% for banner in component.instagram %}
-      <div class="swiper-slide w-[calc(100%/2)] md:w-[calc(100%/4)] lg:w-[calc(100%/5)] xl:w-[calc(100%/6)]">
-        <a href="javascript:void(0);" class="open-video-popup block w-full cursor-pointer" data-index="{{ loop.index0 }}">
-          <div class="aspect-[9/16] relative rounded-xl overflow-hidden">
-            <i class="sicon-play absolute left-3 top-3 text-white text-2xl z-10"></i>
-            <div class="lazy lazy__bg !relative" data-bg="{{ banner.image }}" loading="lazy"></div>
+      <div class="swiper-slide md:min-h-[500px]">
+        <a href="javascript:void(0);" class="open-video-popup cursor-pointer" data-index="{{ loop.index0 }}">
+          <div class="relative rounded-[20px] overflow-hidden">
+            {# <i class="sicon-play absolute left-3 top-3 text-white text-2xl z-10"></i> #}
+            <svg class="absolute left-4 top-4 z-10 " width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.9544 11.7042C16.4802 12.1044 16.4802 12.8956 15.9544 13.2958L2.10562 23.8354C1.44729 24.3364 0.500001 23.8669 0.500001 23.0397L0.500002 1.96035C0.500002 1.13305 1.44729 0.663569 2.10562 1.16459L15.9544 11.7042Z" fill="white"></path>
+            </svg>
+            <img src="{{ banner.image }}" alt="{{ banner.image.alt }}" class="w-full h-full object-cover">
           </div>
         </a>
       </div>
@@ -54,7 +60,7 @@
         </button>
         </div>
         {% if banner.products and banner.products[0] %}
-          <salla-products-list minimal source="selected" source-value="[{{ banner.products[0] }}]" class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 absolute bottom-20 w-4/5 right-0"></salla-products-list>
+          <salla-products-list minimal source="selected" source-value="[{{ banner.products[0] }}]" class="[&_.s-products-list-vertical-cards]:!grid-cols-1 [&_.s-products-list-vertical-cards]:!m-0 [&_.s-product-card-entry]:h-[85%] [&_.s-product-card-content-title]:text-end [&_.s-product-card-entry]:flex-row-reverse [&_.s-product-card-image-contain]:object-cover [&_.s-product-card-minimal.s-product-card-content]:items-end [&_.s-product-card-content-sub]:justify-end absolute bottom-20 w-4/5 right-0"></salla-products-list>
         {% endif %}
       </div>
     {% endfor %}

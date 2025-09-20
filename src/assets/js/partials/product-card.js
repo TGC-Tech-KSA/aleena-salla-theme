@@ -301,7 +301,7 @@ class ProductCard extends HTMLElement {
             this.isSpecial ? 's-product-card-content-extra-padding' : ''
           }">
             <h3 class="s-product-card-content-title !mb-0 line-clamp-1 md:line-clamp-2">
-              <a class="!font-light" href="${this.product?.url}">${this.product?.name}</a>
+              <a class="!font-light !text-[#5C5C5C]" href="${this.product?.url}">${this.product?.name}</a>
             </h3>
 
             ${
